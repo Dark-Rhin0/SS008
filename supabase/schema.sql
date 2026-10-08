@@ -63,6 +63,7 @@ set search_path = ''
 as $$
 declare
   normalized_player_name text;
+  current_score public.investigation_scores%rowtype;
 begin
   normalized_player_name := pg_catalog.regexp_replace(
     pg_catalog.btrim(p_player_name),
@@ -82,18 +83,38 @@ begin
       using errcode = '22023';
   end if;
 
-  return query
-  insert into public.investigation_scores as current_score (
+  insert into public.investigation_scores (
     player_name,
     duration_ms
   )
   values (normalized_player_name, p_duration_ms)
   on conflict (player_name_key)
-  do update set
-    player_name = excluded.player_name,
-    duration_ms = excluded.duration_ms,
-    completed_at = pg_catalog.now()
-  returning
+  do nothing;
+
+  if found then
+    select *
+      into current_score
+      from public.investigation_scores
+     where player_name_key = pg_catalog.lower(normalized_player_name);
+  else
+    select *
+      into current_score
+      from public.investigation_scores
+     where player_name_key = pg_catalog.lower(normalized_player_name)
+     for update;
+
+    if p_duration_ms < current_score.duration_ms then
+      update public.investigation_scores
+         set player_name = normalized_player_name,
+             duration_ms = p_duration_ms,
+             completed_at = pg_catalog.now()
+       where id = current_score.id
+       returning * into current_score;
+    end if;
+  end if;
+
+  return query
+  select
     current_score.id,
     current_score.player_name,
     current_score.duration_ms,
