@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowLeft, Clock3, FileCheck2, GitBranch, KeyRound, ScrollText, Search } from 'lucide-react'
 import Stage1CaseFile from '../game/Stage1CaseFile'
@@ -33,6 +33,7 @@ export default function GamePlayPage() {
     { label: 'Nối dữ kiện', detail: 'Phân tích hai mặt', icon: GitBranch },
     { label: 'Báo cáo', detail: 'Kết luận hồ sơ', icon: FileCheck2 },
   ]
+  const progressStage = playerName ? currentStage : 0
 
   useEffect(() => {
     if (startedAt === null || durationMs !== null) return undefined
@@ -75,7 +76,7 @@ export default function GamePlayPage() {
     setCurrentStage(1)
   }
 
-  const loadLeaderboard = async () => {
+  const loadLeaderboard = useCallback(async () => {
     setLeaderboardStatus(isLeaderboardConfigured ? 'loading' : 'unconfigured')
     setLeaderboardError('')
     if (!isLeaderboardConfigured) return
@@ -88,7 +89,11 @@ export default function GamePlayPage() {
       setLeaderboardError(error.message)
       setLeaderboardStatus('error')
     }
-  }
+  }, [])
+
+  useEffect(() => {
+    void loadLeaderboard()
+  }, [loadLeaderboard])
 
   const handleInvestigationComplete = async () => {
     const completedDuration = durationMs ?? (
@@ -137,10 +142,8 @@ export default function GamePlayPage() {
     setDurationMs(null)
     setScoreStatus('idle')
     setScoreError('')
-    setLeaderboard([])
-    setLeaderboardStatus('idle')
-    setLeaderboardError('')
     setSavedScoreId(null)
+    void loadLeaderboard()
   }
 
   return (
@@ -154,7 +157,7 @@ export default function GamePlayPage() {
           </span>
         </Link>
 
-        <div className="investigator-card">
+        <div className={`investigator-card ${playerName ? '' : 'awaiting-player'}`}>
           <span className="investigator-icon"><Search size={17} /></span>
           <span><small>PHÓNG VIÊN ĐIỀU TRA</small><strong>{playerName || 'Chưa nhận hồ sơ'}</strong></span>
         </div>
@@ -162,7 +165,7 @@ export default function GamePlayPage() {
         <nav className="case-stage-menu" aria-label="Các phần hồ sơ">
           {stageItems.map(({ label, detail, icon: Icon }, index) => {
             const stage = index + 1
-            const isActive = currentStage === stage
+            const isActive = Boolean(playerName) && currentStage === stage
             const isComplete = currentStage > stage
 
             return (
@@ -203,13 +206,13 @@ export default function GamePlayPage() {
             </div>
           )}
           <div className="status-progress">
-            <span><small>TIẾN ĐỘ ĐIỀU TRA</small><strong>{currentStage}<i>/4</i></strong></span>
-            <div className="status-keys" aria-label={`${currentStage} trên 4 màn hoàn thành`}>
+            <span><small>TIẾN ĐỘ ĐIỀU TRA</small><strong>{progressStage}<i>/4</i></strong></span>
+            <div className="status-keys" aria-label={`${progressStage} trên 4 màn hoàn thành`}>
               {stageItems.map((item, index) => (
                 <KeyRound
                   key={item.label}
                   size={19}
-                  className={index < currentStage ? 'earned' : ''}
+                  className={index < progressStage ? 'earned' : ''}
                   aria-hidden="true"
                 />
               ))}
@@ -219,11 +222,11 @@ export default function GamePlayPage() {
 
         <section className="game-sheet" aria-label="Nội dung hồ sơ">
           <div className="sheet-toolbar">
-            <span className="sheet-progress-label">Tiến độ hồ sơ {currentStage}/4</span>
+            <span className="sheet-progress-label">Tiến độ hồ sơ {progressStage}/4</span>
             <div className="sheet-progress-track" aria-hidden="true">
               <div
                 className="sheet-progress-fill"
-                style={{ width: `${(currentStage / 4) * 100}%` }}
+                style={{ width: `${(progressStage / 4) * 100}%` }}
               />
             </div>
             <span className="sheet-case-mark"><KeyRound size={13} /> CASE 0815</span>
@@ -237,7 +240,7 @@ export default function GamePlayPage() {
                 <h1>Trước khi mở hồ sơ</h1>
                 <p className="player-entry-copy">
                   Nhập tên phóng viên để lưu kết quả và ghi danh lên bảng xếp hạng điều tra.
-                  Đồng hồ sẽ bắt đầu khi bạn vào hồ sơ. Dùng cùng tên ở lần chơi sau để cập nhật kết quả trước đó.
+                  Đồng hồ sẽ bắt đầu khi bạn vào hồ sơ.
                 </p>
                 <label htmlFor="investigator-name">TÊN PHÓNG VIÊN</label>
                 <input
@@ -259,6 +262,52 @@ export default function GamePlayPage() {
                 {nameError && <p className="player-entry-error" id="investigator-name-error" role="alert">{nameError}</p>}
                 <button className="game-btn" type="submit">NHẬN HỒ SƠ & BẮT ĐẦU →</button>
               </form>
+            )}
+            {!playerName && (
+              <section className="leaderboard-panel player-entry-leaderboard" aria-labelledby="entry-leaderboard-title">
+                <div className="leaderboard-heading">
+                  <div>
+                    <span className="leaderboard-eyebrow">THÀNH TÍCH ĐIỀU TRA</span>
+                    <h3 id="entry-leaderboard-title">BẢNG XẾP HẠNG</h3>
+                    <p>Thời gian nhanh nhất của từng phóng viên.</p>
+                  </div>
+                  {(leaderboardStatus === 'loaded' || leaderboardStatus === 'error') && (
+                    <button className="leaderboard-refresh" type="button" onClick={loadLeaderboard}>
+                      Làm mới
+                    </button>
+                  )}
+                </div>
+
+                {leaderboardStatus === 'loading' && <p className="leaderboard-status" role="status">Đang tải bảng xếp hạng…</p>}
+                {leaderboardStatus === 'unconfigured' && (
+                  <p className="leaderboard-status">Bảng xếp hạng sẽ hiển thị sau khi cấu hình kết nối Supabase.</p>
+                )}
+                {leaderboardStatus === 'error' && (
+                  <p className="leaderboard-status error" role="alert">{leaderboardError}</p>
+                )}
+                {leaderboardStatus === 'loaded' && (
+                  leaderboard.length > 0 ? (
+                    <div className="leaderboard-table-wrap">
+                      <table className="leaderboard-table">
+                        <thead>
+                          <tr><th>HẠNG</th><th>PHÓNG VIÊN</th><th>THỜI GIAN</th></tr>
+                        </thead>
+                        <tbody>
+                          {leaderboard.map((score, index) => (
+                            <tr key={score.id}>
+                              <td>{String(index + 1).padStart(2, '0')}</td>
+                              <td>{score.player_name}</td>
+                              <td>{formatInvestigationTime(score.duration_ms)}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  ) : (
+                    <p className="leaderboard-status">Chưa có kết quả nào. Hãy là người đầu tiên ghi danh.</p>
+                  )
+                )}
+              </section>
             )}
             {playerName && currentStage === 1 && (
               <Stage1CaseFile
