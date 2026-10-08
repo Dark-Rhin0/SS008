@@ -1474,6 +1474,23 @@ html.game-mode body::-webkit-scrollbar {
     gap: 8px;
   }
 
+  .game-standalone-page .status-timer {
+    gap: 4px;
+  }
+
+  .game-standalone-page .status-timer svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .game-standalone-page .status-timer small {
+    font-size: 0.45rem;
+  }
+
+  .game-standalone-page .status-timer strong {
+    font-size: 0.7rem;
+  }
+
   .status-progress strong {
     font-size: 0.85rem;
   }
@@ -1641,6 +1658,31 @@ html.game-mode body::-webkit-scrollbar {
 
 .game-standalone-page .status-keys {
   color: #46536a;
+}
+
+.game-standalone-page .status-timer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #8da4ff;
+}
+
+.game-standalone-page .status-timer > span {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.game-standalone-page .status-timer small {
+  color: #a8b8d6;
+  font: 700 0.62rem/1.2 'Space Grotesk', sans-serif;
+  letter-spacing: 0.12em;
+}
+
+.game-standalone-page .status-timer strong {
+  color: var(--case-text);
+  font: 700 1rem/1 'Space Grotesk', sans-serif;
+  font-variant-numeric: tabular-nums;
 }
 
 .game-standalone-page .game-sheet {

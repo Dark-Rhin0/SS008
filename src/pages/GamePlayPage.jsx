@@ -1,11 +1,12 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowLeft, FileCheck2, GitBranch, KeyRound, ScrollText, Search } from 'lucide-react'
+import { ArrowLeft, Clock3, FileCheck2, GitBranch, KeyRound, ScrollText, Search } from 'lucide-react'
 import Stage1CaseFile from '../game/Stage1CaseFile'
 import Stage2Board from '../game/Stage2Board'
 import Stage3Connect from '../game/Stage3Connect'
 import Stage4Report from '../game/Stage4Report'
 import {
+  formatInvestigationTime,
   getInvestigationLeaderboard,
   isLeaderboardConfigured,
   saveInvestigationScore,
@@ -18,6 +19,7 @@ export default function GamePlayPage() {
   const [nameDraft, setNameDraft] = useState('')
   const [nameError, setNameError] = useState('')
   const [startedAt, setStartedAt] = useState(null)
+  const [timerNow, setTimerNow] = useState(null)
   const [durationMs, setDurationMs] = useState(null)
   const [scoreStatus, setScoreStatus] = useState('idle')
   const [scoreError, setScoreError] = useState('')
@@ -32,6 +34,29 @@ export default function GamePlayPage() {
     { label: 'Báo cáo', detail: 'Kết luận hồ sơ', icon: FileCheck2 },
   ]
 
+  useEffect(() => {
+    if (startedAt === null || durationMs !== null) return undefined
+
+    const timer = window.setInterval(() => setTimerNow(Date.now()), 1000)
+    return () => window.clearInterval(timer)
+  }, [startedAt, durationMs])
+
+  const elapsedMs = durationMs ?? (
+    startedAt === null || timerNow === null ? 0 : Math.max(0, timerNow - startedAt)
+  )
+
+  const formatClock = (milliseconds) => {
+    const totalSeconds = Math.floor(milliseconds / 1000)
+    const hours = Math.floor(totalSeconds / 3600)
+    const minutes = Math.floor((totalSeconds % 3600) / 60)
+    const seconds = totalSeconds % 60
+    const pad = (value) => String(value).padStart(2, '0')
+
+    return hours > 0
+      ? `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`
+      : `${pad(minutes)}:${pad(seconds)}`
+  }
+
   const handlePlayerEntry = (event) => {
     event.preventDefault()
     const trimmedName = nameDraft.trim().replace(/\s+/g, ' ')
@@ -43,7 +68,9 @@ export default function GamePlayPage() {
     setPlayerName(trimmedName)
     setNameDraft(trimmedName)
     setNameError('')
-    setStartedAt(Date.now())
+    const startTime = Date.now()
+    setStartedAt(startTime)
+    setTimerNow(startTime)
     setDurationMs(null)
     setCurrentStage(1)
   }
@@ -106,6 +133,7 @@ export default function GamePlayPage() {
     setNameDraft('')
     setNameError('')
     setStartedAt(null)
+    setTimerNow(null)
     setDurationMs(null)
     setScoreStatus('idle')
     setScoreError('')
@@ -168,6 +196,12 @@ export default function GamePlayPage() {
             <span className="status-case-icon"><KeyRound size={25} /></span>
             <span><small>HỒ SƠ SỐ</small><strong>0815 <i>/ SEOUL 2022</i></strong></span>
           </div>
+          {playerName && (
+            <div className="status-timer" role="timer" aria-label={`Thời gian điều tra ${formatInvestigationTime(elapsedMs)}`}>
+              <Clock3 size={17} aria-hidden="true" />
+              <span><small>THỜI GIAN</small><strong>{formatClock(elapsedMs)}</strong></span>
+            </div>
+          )}
           <div className="status-progress">
             <span><small>TIẾN ĐỘ ĐIỀU TRA</small><strong>{currentStage}<i>/4</i></strong></span>
             <div className="status-keys" aria-label={`${currentStage} trên 4 màn hoàn thành`}>
