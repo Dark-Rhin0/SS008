@@ -7,12 +7,22 @@ import {
   Scale,
   FileText,
 } from 'lucide-react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+
+import {
+  motion,
+  useInView,
+  useScroll,
+  useTransform,
+} from 'framer-motion'
+
 import { useRef } from 'react'
+
 import { sections } from '../data'
 import { FLIPBOOK_URL, GAME_URL } from '../config'
 import Reveal from '../components/Reveal'
+
 import '../page-styles/home.css'
+
 
 function HeroBackdrop({ progress }) {
   const scale = useTransform(
@@ -64,9 +74,33 @@ function HeroBackdrop({ progress }) {
   )
 }
 
+
 export default function Home() {
   const heroRef = useRef(null)
 
+  /*
+   * =========================================================
+   * THE CENTRAL TENSION
+   * =========================================================
+   *
+   * Dùng ref riêng để biết chính xác khi phần
+   * THE CENTRAL TENSION đi vào viewport.
+   */
+  const centralTensionRef = useRef(null)
+
+  const centralTensionInView = useInView(
+    centralTensionRef,
+    {
+      amount: 0.05,
+    }
+  )
+
+
+  /*
+   * =========================================================
+   * HERO SCROLL PROGRESS
+   * =========================================================
+   */
   const {
     scrollYProgress: heroProgress,
   } = useScroll({
@@ -74,21 +108,32 @@ export default function Home() {
     offset: ['start start', 'end start'],
   })
 
+
+  /*
+   * Hero content movement
+   */
   const copyY = useTransform(
     heroProgress,
     [0, 1],
     [0, -46]
   )
 
+
+  /*
+   * Hero content opacity
+   */
   const copyOpacity = useTransform(
     heroProgress,
     [0, 0.48, 1],
     [1, 1, 0.25]
   )
 
-  // =========================================================
-  // CUỘN MƯỢT TỚI PHẦN STORY MAP
-  // =========================================================
+
+  /*
+   * =========================================================
+   * CUỘN MƯỢT TỚI STORY MAP
+   * =========================================================
+   */
   const handleStoryScroll = (event) => {
     event.preventDefault()
 
@@ -111,7 +156,10 @@ export default function Home() {
       })
     }
 
-    // Cập nhật URL hash mà không làm browser tự nhảy
+    /*
+     * Cập nhật URL hash mà không để browser
+     * tự nhảy vị trí.
+     */
     window.history.replaceState(
       null,
       '',
@@ -119,21 +167,26 @@ export default function Home() {
     )
   }
 
+
   return (
     <div>
+
       {/* =====================================================
           HERO
-      ===================================================== */}
+          ===================================================== */}
       <section
         className="home-hero-stage"
         ref={heroRef}
       >
+
         <div className="hero-pin">
+
           <HeroBackdrop progress={heroProgress} />
 
           <div className="hero-vignette" />
 
           <div className="container hero-content-wrap">
+
             <motion.div
               className="hero-copy"
               style={{
@@ -141,17 +194,41 @@ export default function Home() {
                 opacity: copyOpacity,
               }}
             >
+
               <span className="eyebrow hero-eyebrow">
-                CASE STUDY / SOUTH KOREA / 2022
+                SS008 / HÀN QUỐC / 2022
               </span>
 
-              <h1 className="h1 hero-title" style={{ marginTop: 12 }}>
-                Khi <span style={{ color:'#35cc27'}}>KINH TẾ</span>
+
+              <h1
+                className="h1 hero-title"
+                style={{
+                  marginTop: 12,
+                }}
+              >
+                Khi{' '}
+                <span style={{ color: '#35cc27' }}>
+                  KINH TẾ
+                </span>
+
                 <br />
-                <span>tác động đến</span>
+
+                <span>
+                  tác động đến
+                </span>
+
                 <br />
-                <span style={{ color:'#0c6ec9', lineHeight: 1.2 }}>CHÍNH TRỊ</span>
+
+                <span
+                  style={{
+                    color: '#0c6ec9',
+                    lineHeight: 1.2,
+                  }}
+                >
+                  CHÍNH TRỊ
+                </span>
               </h1>
+
 
               <p className="lead hero-lead">
                 Tại sao Chính phủ Hàn Quốc đặc xá cho Lee
@@ -159,7 +236,9 @@ export default function Home() {
                 tháng 8/2022?
               </p>
 
+
               <div className="hero-actions">
+
                 <Link
                   className="btn btn-primary"
                   to="/event"
@@ -167,6 +246,7 @@ export default function Home() {
                   Bắt đầu câu chuyện
                   <ArrowUpRight size={17} />
                 </Link>
+
 
                 <a
                   className="btn btn-hero-ghost"
@@ -177,62 +257,88 @@ export default function Home() {
                   <BookOpen size={16} />
                   Mở Flipbook
                 </a>
+
               </div>
+
 
               <div className="hero-under">
-                <span>
-                  <span className="pulse" />
-                  scroll để nội dung tiến lên
-                </span>
-
-                <span>
-                  8 chương / 1 câu hỏi lớn
-                </span>
+                <span className="hero-under-copy"></span>
               </div>
+
             </motion.div>
+
           </div>
+
 
           {/* =================================================
               SMOOTH SCROLL CUE
+
+              QUAN TRỌNG:
+              Không dùng heroProgress để ẩn nữa.
+
+              Nó sẽ biến mất ngay khi
+              THE CENTRAL TENSION xuất hiện.
               ================================================= */}
-          <a
+          <motion.a
             href="#map"
             className="scroll-cue scroll-cue-dark"
             onClick={handleStoryScroll}
-            style={{ position: 'fixed', bottom: '5vh'}}
+            animate={{
+              opacity: centralTensionInView ? 0 : 1,
+            }}
+            transition={{
+              duration: 0.25,
+              ease: 'easeOut',
+            }}
+            style={{
+              position: 'fixed',
+              bottom: '5vh',
+              pointerEvents: centralTensionInView
+                ? 'none'
+                : 'auto',
+            }}
           >
-            <ArrowDown size={16}/>
+            <ArrowDown size={16} />
             cuộn để mở câu chuyện
-          </a>
+          </motion.a>
+
         </div>
+
 
         {/* =====================================================
             HERO COVER
-        ===================================================== */}
+            ===================================================== */}
         <section
           className="hero-cover"
           id="map"
         >
+
           <div className="container hero-cover-inner">
+
             <Reveal>
               <div className="cover-kicker">
+
                 <span className="eyebrow">
-                  THE QUESTION
+                  BÀI TOÁN ĐÁNH ĐỔI
                 </span>
 
                 <span className="cover-rule" />
+
               </div>
             </Reveal>
+
 
             <Reveal delay={0.08}>
               <h2 className="cover-title">
                 Một quyết định đặc xá.
                 <br />
+
                 <span>
                   Nhưng đằng sau nó là một bài toán quốc gia.
                 </span>
               </h2>
             </Reveal>
+
 
             <Reveal delay={0.14}>
               <p className="cover-copy">
@@ -244,74 +350,106 @@ export default function Home() {
               </p>
             </Reveal>
 
+
             <Reveal delay={0.2}>
               <div className="cover-actions">
+
                 <Link
                   className="btn btn-primary"
                   to="/context"
                 >
-                  Đi vào bối cảnh
+                  Xem bối cảnh
                   <ArrowUpRight size={16} />
                 </Link>
+
 
                 <Link
                   className="btn btn-ghost"
                   to="/tradeoff"
                 >
                   <Scale size={16} />
-                  Xem điểm căng thẳng
+                  Xem cán cân
                 </Link>
+
               </div>
             </Reveal>
+
           </div>
+
         </section>
+
       </section>
+
 
       {/* =======================================================
           STORY MAP
-      ======================================================= */}
+          ======================================================= */}
       <section className="section section-map">
+
         <div className="container">
+
           <Reveal>
+
             <div className="kicker-line">
+
               <div>
+
                 <span className="eyebrow">
-                  THE STORY MAP
+                  Bảng Mục Lục
                 </span>
+
 
                 <h2
                   className="h2"
-                  style={{ marginTop: 15 }}
+                  style={{
+                    marginTop: 15,
+                  }}
                 >
                   Đừng đọc hết.
                   <br />
-                  <span style={{ color: 'var(--blue)' }}>
+
+                  <span
+                    style={{
+                      color: 'var(--blue)',
+                    }}
+                  >
                     Hãy chọn nơi muốn đi.
                   </span>
                 </h2>
+
               </div>
 
+
               <div className="right">
+
                 <p className="copy">
                   Trang chủ chỉ giữ lại những câu mở đầu
                   quan trọng. Mỗi chương mở sang một trang
                   nhánh để câu chuyện có nhịp, có khoảng thở
                   và có tương tác.
                 </p>
+
               </div>
+
             </div>
+
           </Reveal>
 
+
           <div>
+
             {sections.map((s, i) => (
+
               <Reveal
                 key={s.id}
                 delay={Math.min(i * 0.03, 0.18)}
               >
+
                 <Link
                   className="section-link"
                   to={s.path}
                 >
+
                   <div
                     style={{
                       display: 'flex',
@@ -319,56 +457,90 @@ export default function Home() {
                       gap: 15,
                     }}
                   >
+
                     <div className="num">
                       {s.number}
                     </div>
 
+
                     <div>
-                      <h3>{s.title}</h3>
-                      <p>{s.subtitle}</p>
+
+                      <h3>
+                        {s.title}
+                      </h3>
+
+                      <p>
+                        {s.subtitle}
+                      </p>
+
                     </div>
+
                   </div>
+
 
                   <ArrowUpRight
                     size={24}
                     color="#98A2B3"
                   />
+
                 </Link>
+
               </Reveal>
+
             ))}
+
           </div>
+
         </div>
+
       </section>
+
 
       {/* =======================================================
           CENTRAL TENSION
-      ======================================================= */}
-      <section className="section home-feature">
+          ======================================================= */}
+      <section
+        ref={centralTensionRef}
+        className="section home-feature"
+      >
+
         <div className="container grid grid-2 home-feature-grid">
+
           <Reveal>
+
             <div className="editorial-image" />
+
           </Reveal>
 
+
           <Reveal delay={0.12}>
+
             <div
               style={{
                 alignSelf: 'center',
               }}
             >
+
               <span className="eyebrow">
                 THE CENTRAL TENSION
               </span>
 
+
               <h2
                 className="h2"
-                style={{ marginTop: 16 }}
+                style={{
+                  marginTop: 16,
+                }}
               >
                 “Samsung có quá quan trọng để bị đứng yên?”
               </h2>
 
+
               <p
                 className="copy"
-                style={{ marginTop: 22 }}
+                style={{
+                  marginTop: 22,
+                }}
               >
                 Tài liệu đặt trọng tâm vào mối căng thẳng
                 giữa hai giá trị: một phía là phục hồi kinh
@@ -377,7 +549,9 @@ export default function Home() {
                 vào tư pháp.
               </p>
 
+
               <div className="mini-actions">
+
                 <Link
                   className="btn btn-ghost"
                   to="/tradeoff"
@@ -386,6 +560,7 @@ export default function Home() {
                   <Scale size={16} />
                 </Link>
 
+
                 <Link
                   className="btn btn-ghost"
                   to="/sources"
@@ -393,31 +568,46 @@ export default function Home() {
                   <FileText size={16} />
                   Xem nguồn
                 </Link>
+
               </div>
+
             </div>
+
           </Reveal>
+
         </div>
+
       </section>
+
 
       {/* =======================================================
           FLIPBOOK + GAME
-      ======================================================= */}
+          ======================================================= */}
       <section className="section home-portal">
+
         <div className="container">
+
           <Reveal>
+
             <div className="portal card">
+
               <div>
+
                 <span className="eyebrow">
                   NEXT LAYER
                 </span>
 
+
                 <h2
                   className="h3"
-                  style={{ marginTop: 14 }}
+                  style={{
+                    marginTop: 14,
+                  }}
                 >
                   Flipbook & Game sẽ là hai lớp trải nghiệm
                   tiếp theo.
                 </h2>
+
 
                 <p className="copy">
                   Flipbook dành cho tài liệu đầy đủ. Game
@@ -425,9 +615,12 @@ export default function Home() {
                   — có thể thay URL ngay trong{' '}
                   <code>src/config.js</code>.
                 </p>
+
               </div>
 
+
               <div className="portal-actions">
+
                 <a
                   className="btn btn-primary"
                   href={FLIPBOOK_URL}
@@ -438,6 +631,7 @@ export default function Home() {
                   Flipbook
                 </a>
 
+
                 <a
                   className="btn btn-red"
                   href={GAME_URL}
@@ -445,11 +639,17 @@ export default function Home() {
                   <Gamepad2 size={16} />
                   Game Hub
                 </a>
+
               </div>
+
             </div>
+
           </Reveal>
+
         </div>
+
       </section>
+
     </div>
   )
 }
