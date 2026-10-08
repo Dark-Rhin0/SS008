@@ -405,14 +405,14 @@ export default function Home() {
                     marginTop: 15,
                   }}
                 >
-                  Đừng chỉ nghe kể.
+                  Đừng chỉ nghe kể.<span> </span>
 
                   <span
                     style={{
                       color: 'var(--blue)',
                     }}
                   >
-                    Hãy chọn tìm hiểu.
+                    Hãy tự tìm hiểu.
                   </span>
                 </h2>
 
@@ -522,7 +522,7 @@ export default function Home() {
             >
 
               <span className="eyebrow">
-                THE CENTRAL TENSION
+                Tâm điểm tranh luận
               </span>
 
 
@@ -532,7 +532,7 @@ export default function Home() {
                   marginTop: 16,
                 }}
               >
-                “Samsung có quá quan trọng để bị đứng yên?”
+                “Liệu Samsung có quan trọng đến thế?”
               </h2>
 
 
