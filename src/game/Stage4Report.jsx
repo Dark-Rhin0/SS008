@@ -83,7 +83,7 @@ export default function Stage4Report({
           <h2>WHAT REALLY HAPPENED? — 15 AUGUST 2022</h2>
           <p className="completion-player">
             Phóng viên: <strong>{playerName}</strong>
-            {durationMs !== null && <> · Thời gian: <strong>{formatInvestigationTime(durationMs)}</strong></>}
+            {durationMs !== null && <> · Thời gian điều tra: <strong>{formatInvestigationTime(durationMs)}</strong></>}
           </p>
           
           <div className="profile-card" style={{ borderLeftColor: '#38bdf8', maxWidth: '700px', margin: '20px auto' }}>
