@@ -1,5 +1,6 @@
 .home-hero-stage {
-  height: 200vh;
+  min-height: 200vh;
+  height: auto;
   position: relative;
   background: #07102b;
 }
@@ -38,9 +39,18 @@
 
 .hero-vignette {
   inset: 0;
-  background: 
-    linear-gradient(180deg, rgba(0, 0, 0, 0.28) 0%, rgba(0, 0, 0, 0.06) 42%, rgba(0, 0, 0, 0.50) 100%),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.18), transparent 54%);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.28) 0%,
+      rgba(0, 0, 0, 0.06) 42%,
+      rgba(0, 0, 0, 0.50) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.18),
+      transparent 54%
+    );
 }
 
 .hero-content-wrap {
@@ -149,20 +159,43 @@
   }
 }
 
+
+/* =========================================================
+   THE QUESTION
+   ========================================================= */
+
 .hero-cover {
   position: relative;
   z-index: 5;
+
+  /*
+   * Tối thiểu bằng một màn hình.
+   * Nếu nội dung dài hơn, section sẽ tự cao lên.
+   */
   min-height: 100vh;
+  height: auto;
+
   margin-top: 0;
-  background: linear-gradient(180deg, #f8fbff 0%, #eef3ff 100%);
+
+  background: linear-gradient(
+    180deg,
+    #f8fbff 0%,
+    #eef3ff 100%
+  );
+
   color: var(--ink);
+
   border-radius: 38px 38px 0 0;
-  box-shadow: 0 -30px 80px rgba(6, 15, 42, 0.16);
+
+  box-shadow:
+    0 -30px 80px rgba(6, 15, 42, 0.16);
+
   display: flex;
   align-items: center;
 }
 
 .hero-cover-inner {
+  width: 100%;
   padding: 96px 0 110px;
   max-width: 1050px;
 }
@@ -206,12 +239,23 @@
   margin-top: 30px;
 }
 
+
+/* =========================================================
+   STORY MAP
+   ========================================================= */
+
 .section-map {
+  position: relative;
+  z-index: 6;
   background: #fff;
 }
 
 .home-feature {
-  background: linear-gradient(180deg, #f7f9fd, #fff);
+  background: linear-gradient(
+    180deg,
+    #f7f9fd,
+    #fff
+  );
 }
 
 .home-feature-grid {
@@ -266,6 +310,11 @@
   flex-shrink: 0;
 }
 
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
 @media (max-width: 900px) {
   .hero-title {
     font-size: clamp(48px, 10vw, 80px);
@@ -283,8 +332,13 @@
     font-size: 18px;
   }
 
+  /*
+   * Không còn height: 190vh.
+   * Parent tự mở rộng theo nội dung.
+   */
   .home-hero-stage {
-    height: 190vh;
+    min-height: 200vh;
+    height: auto;
   }
 
   .hero-photo {
@@ -292,7 +346,27 @@
   }
 }
 
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
 @media (max-width: 620px) {
+  .home-hero-stage {
+    /*
+     * Quan trọng:
+     * Không ép 185vh nữa.
+     *
+     * Hero = 100vh
+     * THE QUESTION >= 100vh
+     *
+     * Nếu THE QUESTION dài hơn 100vh,
+     * parent sẽ tự mở rộng theo nội dung.
+     */
+    min-height: 200vh;
+    height: auto;
+  }
+
   .hero-content-wrap {
     align-items: flex-end;
     padding-bottom: 88px;
@@ -318,16 +392,32 @@
     gap: 12px;
   }
 
+  /*
+   * THE QUESTION tự mở rộng theo nội dung.
+   */
+  .hero-cover {
+    min-height: 100vh;
+    height: auto;
+    align-items: flex-start;
+    border-radius: 24px 24px 0 0;
+  }
+
   .hero-cover-inner {
     padding: 68px 0 78px;
   }
 
   .cover-title {
     font-size: clamp(40px, 12vw, 60px);
+    line-height: 0.98;
   }
 
   .cover-copy {
     font-size: 17px;
+    line-height: 1.65;
+  }
+
+  .cover-actions {
+    margin-top: 24px;
   }
 
   .portal {
@@ -340,10 +430,22 @@
     flex-wrap: wrap;
   }
 
-  .home-hero-stage {
-    height: 185vh;
+  /*
+   * Đảm bảo Story Map luôn bắt đầu
+   * sau toàn bộ THE QUESTION.
+   */
+  .section-map {
+    position: relative;
+    z-index: 6;
+    margin-top: 0;
+    padding-top: 76px;
   }
 }
+
+
+/* =========================================================
+   PAGE FOOTER
+   ========================================================= */
 
 .page-footer-nav {
   padding: 70px 0 90px;
@@ -357,6 +459,7 @@
   align-items: center;
   gap: 20px;
 }
+
 
 /* =========================================================
    CHUNG
@@ -385,6 +488,7 @@
     background 0.22s ease;
 }
 
+
 /* =========================================================
    VỀ TRANG TỔNG QUAN - TRÁI
    ========================================================= */
@@ -403,6 +507,7 @@
   box-shadow: 0 12px 28px rgba(16, 24, 40, 0.08);
 }
 
+
 /* =========================================================
    VỀ ĐẦU TRANG - GIỮA
    ========================================================= */
@@ -420,6 +525,7 @@
   border-color: #a9b7ef;
   box-shadow: 0 12px 28px rgba(16, 24, 40, 0.08);
 }
+
 
 /* =========================================================
    TRANG TIẾP THEO - PHẢI
@@ -443,15 +549,18 @@
   box-shadow: 0 12px 28px rgba(39, 72, 219, 0.2);
 }
 
+
 /* Giữ cột phải khi trang cuối không có nextPath */
+
 .page-footer-next-placeholder {
   justify-self: end;
   width: 1px;
   height: 1px;
 }
 
+
 /* =========================================================
-   MOBILE
+   FOOTER MOBILE
    ========================================================= */
 
 @media (max-width: 620px) {
