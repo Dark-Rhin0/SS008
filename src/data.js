@@ -1,7 +1,7 @@
 export const sections = [
   { id: 'event', number: '01', title: 'Điều gì đã xảy ra?', subtitle: 'Đặc xá tháng 8/2022 và Lee Jae-yong', path: '/event' },
   { id: 'context', number: '02', title: 'Tại sao lại là lúc đó?', subtitle: 'Bối cảnh kinh tế Hàn Quốc năm 2022', path: '/context' },
-  { id: 'chaebol', number: '03', title: 'Tại sao Samsung quan trọng?', subtitle: 'Chaebol, bán dẫn và quyền lực kinh tế', path: '/chaebol' },
+  { id: 'chaebol', number: '03', title: 'Tại sao Samsung lại quan trọng?', subtitle: 'Chaebol, bán dẫn và quyền lực kinh tế', path: '/chaebol' },
   { id: 'government', number: '04', title: 'Chính phủ nói gì?', subtitle: 'Lập luận chính thức và cơ chế kỳ vọng', path: '/government' },
   { id: 'debate', number: '05', title: 'Tại sao gây tranh cãi?', subtitle: 'Phục hồi kinh tế ↔ pháp quyền', path: '/debate' },
   { id: 'myth', number: '06', title: 'Điều gì dễ bị hiểu sai?', subtitle: 'Myth vs Fact', path: '/myth' },

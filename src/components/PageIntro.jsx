@@ -94,7 +94,7 @@ export default function PageIntro({
             <span className="detail-hero-meta-line" />
 
             <span className="detail-hero-meta-label">
-              CASE STUDY / SOUTH KOREA
+              HÀN QUỐC / 2022
             </span>
 
           </motion.div>

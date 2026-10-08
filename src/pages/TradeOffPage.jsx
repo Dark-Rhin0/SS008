@@ -13,7 +13,7 @@ export default function TradeOffPage(){
 return (
   <>
     <PageIntro
-      number="07 / TRADE-OFF"
+      number="07 / Cái giá phải trả"
       title="Chính phủ đang đánh đổi điều gì?"
       subtitle="Hai phía cùng tồn tại: lợi ích kinh tế kỳ vọng ↔ công bằng pháp luật và niềm tin xã hội."
     />

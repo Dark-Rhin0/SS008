@@ -35,9 +35,9 @@ export default function EventPage() {
           PAGE INTRO
       ===================================================== */}
       <PageIntro
-        number="01 / EVENT"
+        number="01 / Sự kiện"
         title="Điều gì đã xảy ra?"
-        subtitle="Một quyết định đặc xá được công bố ngày 12/08/2022 và có hiệu lực vào ngày 15/08/2022, nhân Ngày Giải phóng Hàn Quốc."
+        subtitle="Quyết định đặc xá được công bố ngày 12/08/2022 và có hiệu lực vào ngày 15/08/2022, nhân Ngày Giải phóng Hàn Quốc."
       />
 
       {/* =====================================================
@@ -181,7 +181,7 @@ export default function EventPage() {
 
               <div className="event-video-heading">
                 <span className="eyebrow">
-                  RELATED VIDEO
+                  xem video
                 </span>
 
                 <h2

@@ -108,7 +108,7 @@ export default function ContextPage() {
           ===================================================== */}
 
       <PageIntro
-        number="02 / CONTEXT"
+        number="02 / Bối cảnh"
         title="Tại sao lại là lúc đó?"
         subtitle="Năm 2022, Hàn Quốc phải xử lý cùng lúc lạm phát, chi phí năng lượng, tỷ giá, chuỗi cung ứng và nguy cơ giảm tốc. Đây là đòn đánh cực kỳ nặng nề vào nền kinh tế Hàn Quốc"
       />
@@ -379,7 +379,7 @@ export default function ContextPage() {
             >
 
               <span className="eyebrow">
-                THE GOVERNMENT'S NEED
+                THỨ CHÍNH PHỦ CẦN
               </span>
 
 
