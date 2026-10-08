@@ -405,15 +405,14 @@ export default function Home() {
                     marginTop: 15,
                   }}
                 >
-                  Đừng đọc hết.
-                  <br />
+                  Đừng chỉ nghe kể.
 
                   <span
                     style={{
                       color: 'var(--blue)',
                     }}
                   >
-                    Hãy chọn nơi muốn đi.
+                    Hãy chọn tìm hiểu.
                   </span>
                 </h2>
 
@@ -423,10 +422,11 @@ export default function Home() {
               <div className="right">
 
                 <p className="copy">
-                  Trang chủ chỉ giữ lại những câu mở đầu
-                  quan trọng. Mỗi chương mở sang một trang
-                  nhánh để câu chuyện có nhịp, có khoảng thở
-                  và có tương tác.
+                  Chỉ khi tự đi tìm câu trả lời, bạn mới hiểu được đằng sau một 
+                  quyết định tưởng như đơn giản là cả một bài toán đánh đổi.
+                    <br />
+                  Mỗi chương bạn khám phá sẽ mở ra một góc nhìn khác — từ bối cảnh, 
+                  con người, lợi ích kinh tế đến câu hỏi về công bằng và pháp quyền.
                 </p>
 
               </div>
@@ -583,72 +583,185 @@ export default function Home() {
       {/* =======================================================
           FLIPBOOK + GAME
           ======================================================= */}
-      <section className="section home-portal">
+        <section className="section final-experience">
 
-        <div className="container">
+          <div className="container">
 
-          <Reveal>
-
-            <div className="portal card">
-
-              <div>
-
-                <span className="eyebrow">
-                  NEXT LAYER
-                </span>
-
-
-                <h2
-                  className="h3"
-                  style={{
-                    marginTop: 14,
-                  }}
-                >
-                  Flipbook & Game sẽ là hai lớp trải nghiệm
-                  tiếp theo.
-                </h2>
-
-
-                <p className="copy">
-                  Flipbook dành cho tài liệu đầy đủ. Game
-                  dành cho phần tương tác/kiểm tra tình huống
-                  — có thể thay URL ngay trong{' '}
-                  <code>src/config.js</code>.
-                </p>
-
-              </div>
-
-
-              <div className="portal-actions">
+            {/* TOP MINI NAV */}
+            <Reveal>
+              <div className="final-mini-nav">
 
                 <a
-                  className="btn btn-primary"
+                  href={GAME_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="final-mini-link"
+                >
+                  Game
+                  <ArrowUpRight size={15} />
+                </a>
+
+
+                <a
                   href={FLIPBOOK_URL}
                   target="_blank"
                   rel="noreferrer"
+                  className="final-mini-link"
                 >
-                  <BookOpen size={16} />
                   Flipbook
+                  <ArrowUpRight size={15} />
                 </a>
 
 
-                <a
-                  className="btn btn-red"
-                  href={GAME_URL}
+                <Link
+                  to="/sources"
+                  className="final-mini-link"
                 >
-                  <Gamepad2 size={16} />
-                  Game Hub
-                </a>
+                  Nguồn
+                  <ArrowUpRight size={15} />
+                </Link>
+
+              </div>
+            </Reveal>
+
+
+            {/* MAIN FEATURE */}
+            <Reveal delay={0.08}>
+
+              <div className="final-feature">
+
+                {/* IMAGE SIDE */}
+                <div className="final-feature-image">
+
+                  <div className="final-image-overlay" />
+
+                  <div className="final-image-label">
+                    SS008
+                    <span>·</span>
+                    2022
+                  </div>
+
+                </div>
+
+
+                {/* CONTENT SIDE */}
+                <div className="final-feature-content">
+
+                  <span className="eyebrow final-eyebrow">
+                    Đa góc nhìn
+                  </span>
+
+
+                  <h2 className="final-title">
+                    Một quyết định.
+                    <br />
+
+                    <span>
+                      Nhiều cách để nhìn.
+                    </span>
+                  </h2>
+
+
+                  <p className="final-description">
+                    Bạn đã thấy vì sao Chính phủ Hàn Quốc lựa chọn
+                    đặc xá cho Lee Jae-yong và các lãnh đạo Chaebol.
+                    Nhưng để hiểu đầy đủ quyết định ấy, hãy nhìn nó
+                    từ cả dữ kiện lẫn góc nhìn của người ra quyết định.
+                  </p>
+
+
+                  {/* OPTIONS */}
+                  <div className="final-options">
+
+                    {/* Ý kiến */}
+                    <a
+                      href={URL}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="final-option"
+                    >
+
+                      <div className="final-option-number">
+                      </div>
+
+                      <div className="final-option-content">
+
+                        <span className="final-option-label">
+                          Đóng góp
+                        </span>
+
+                        <h3>
+                          Đánh giá của bạn
+                          <ArrowUpRight size={19} />
+                        </h3>
+
+                        <p>
+                          Cho mình biết ý kiến của bạn về quyết định 
+                          của chính quyền Hàn Quốc.
+                        </p>
+
+                      </div>
+
+                    </a>
+
+
+                    {/* GAME */}
+                    <a
+                      href={GAME_URL}
+                      className="final-option final-option-game"
+                    >
+
+                      <div className="final-option-number">
+                      </div>
+
+                      <div className="final-option-content">
+
+                        <span className="final-option-label">
+                          TƯƠNG TÁC
+                        </span>
+
+                        <h3>
+                          Thử đưa ra quyết định
+                          <ArrowUpRight size={19} />
+                        </h3>
+
+                        <p>
+                          Nếu bạn là người ra quyết định, bạn sẽ
+                          cân bằng tăng trưởng kinh tế và pháp quyền
+                          như thế nào?
+                        </p>
+
+                      </div>
+
+                    </a>
+
+                  </div>
+
+
+                  {/* CLOSING LINE */}
+                  <div className="final-closing">
+
+                    <span className="final-closing-line" />
+
+                    <span>
+                      KINH TẾ
+                      <b> × </b>
+                      PHÁP QUYỀN
+                    </span>
+
+                    <span className="final-closing-line" />
+
+                  </div>
+
+                </div>
 
               </div>
 
-            </div>
+            </Reveal>
 
-          </Reveal>
+          </div>
 
-        </div>
-
-      </section>
+</section>
 
     </div>
   )
