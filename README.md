@@ -28,7 +28,7 @@ npm run build
 2. Sao chép `.env.example` thành `.env`, sau đó điền Project URL và anon/public key từ Project Settings → API.
 3. Khởi động lại Vite bằng `npm run dev` để nạp biến môi trường.
 
-Sau khi hoàn thành Màn 4, game lưu thời gian hoàn thành và tải bảng xếp hạng dùng chung (tối đa 100 người chơi). Mỗi tên chỉ có một kết quả; nhập lại cùng tên (không phân biệt chữ hoa/thường) sẽ thay thời gian cũ bằng thời gian của lượt mới và cập nhật thứ hạng. Nếu bảng hiện có nhiều dòng trùng tên, schema giữ lại kết quả nhanh nhất trong lần nâng cấp.
+Sau khi hoàn thành Màn 4, game ghi nhận thời gian hoàn thành và tải bảng xếp hạng dùng chung (tối đa 100 người chơi). Mỗi tên chỉ có một kết quả; nhập lại cùng tên (không phân biệt chữ hoa/thường) chỉ cập nhật thành tích nếu thời gian mới nhanh hơn, còn thành tích tốt nhất hiện có sẽ được giữ nguyên nếu lượt mới chậm hơn hoặc bằng. Nếu bảng hiện có nhiều dòng trùng tên, schema giữ lại kết quả nhanh nhất trong lần nâng cấp.
 
 Chỉ dùng anon/public key ở frontend; không đưa service-role key vào file `.env` của ứng dụng web. Vì người chơi chưa cần đăng nhập, người chơi có thể mạo danh tên khác và kết quả không có cơ chế chống gian lận.
 

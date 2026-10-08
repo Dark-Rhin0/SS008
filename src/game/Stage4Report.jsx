@@ -122,7 +122,7 @@ export default function Stage4Report({
               <div>
                 <span className="leaderboard-eyebrow">HỒ SƠ ĐÃ ĐÓNG</span>
                 <h3 id="leaderboard-title">BẢNG XẾP HẠNG ĐIỀU TRA</h3>
-                <p>Xếp theo thời gian mới nhất của từng tên phóng viên; tên trùng sẽ được cập nhật kết quả.</p>
+                <p>Mỗi phóng viên giữ thành tích nhanh nhất. Lượt chơi mới chỉ cập nhật bảng nếu nhanh hơn kỷ lục trước đó.</p>
               </div>
               {leaderboardStatus === 'loaded' && (
                 <button className="leaderboard-refresh" type="button" onClick={onRefreshLeaderboard}>
@@ -132,7 +132,7 @@ export default function Stage4Report({
             </div>
 
             {scoreStatus === 'saving' && <p className="leaderboard-status" role="status">Đang lưu kết quả lên bảng xếp hạng…</p>}
-            {scoreStatus === 'saved' && <p className="leaderboard-status success" role="status">Đã lưu hoặc cập nhật kết quả của bạn. Bảng xếp hạng đã được làm mới.</p>}
+            {scoreStatus === 'saved' && <p className="leaderboard-status success" role="status">Đã ghi nhận lượt chơi. Bảng xếp hạng luôn giữ thành tích nhanh nhất của bạn.</p>}
             {scoreStatus === 'unconfigured' && (
               <p className="leaderboard-status error" role="alert">
                 Kết quả chưa được lưu trực tuyến vì dự án chưa cấu hình Supabase. Thêm URL và anon key vào file .env, sau đó chạy script supabase/schema.sql.
