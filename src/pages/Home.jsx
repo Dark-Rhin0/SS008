@@ -1,10 +1,9 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import {
   ArrowDown,
   ArrowUpRight,
   BookOpen,
-  Gamepad2,
   Scale,
   FileText,
   X,
@@ -12,8 +11,10 @@ import {
 } from 'lucide-react'
 
 import {
+  animate,
   motion,
   useInView,
+  useMotionValue,
   useScroll,
   useTransform,
 } from 'framer-motion'
@@ -35,30 +36,47 @@ import '../page-styles/home.css'
  * =========================================================
  * BIG CHAEBOL IMAGE
  * =========================================================
- *
- * Ảnh hiện tại vẫn được hiển thị bằng background-image
- * trong home.css.
- *
- * Đường dẫn này dùng cho lightbox khi người dùng click ảnh.
- *
- * Nếu bigChaebol.jpg nằm ở src/page-styles/assets/
- * thì đường dẫn này là chính xác.
  */
+
 import bigChaebol from '../assets/bigChaebol.jpg'
 
 
-function HeroBackdrop({ progress }) {
-  const scale = useTransform(
+/*
+ * =========================================================
+ * HERO BACKDROP
+ * =========================================================
+ *
+ * Có 2 trạng thái:
+ *
+ * 1. replay = false
+ *    → hoạt động hoàn toàn bằng scroll như hiện tại.
+ *
+ * 2. replay = true
+ *    → khi đang ở Home và bấm logo,
+ *      ảnh bắt đầu lớn rồi thu nhỏ về bình thường.
+ */
+
+function HeroBackdrop({ progress, replay }) {
+
+  /*
+   * =========================================================
+   * SCROLL ANIMATION
+   * =========================================================
+   */
+
+  const scrollScale = useTransform(
     progress,
     [0, 0.45, 1],
     [1, 1.06, 1.12]
   )
+
 
   const y = useTransform(
     progress,
     [0, 1],
     [0, 46]
   )
+
 
   const brightness = useTransform(
     progress,
@@ -70,22 +88,102 @@ function HeroBackdrop({ progress }) {
     ]
   )
 
+
   const overlay = useTransform(
     progress,
     [0, 0.6, 1],
     [0.18, 0.34, 0.55]
   )
 
+
+  /*
+   * =========================================================
+   * REPLAY SCALE
+   * =========================================================
+   *
+   * Khi replay:
+   *
+   * 1.12
+   *   ↓
+   * 1
+   *
+   * Khi không replay:
+   * dùng scrollScale bình thường.
+   */
+
+  const replayScale = useMotionValue(
+    replay ? 1.12 : 1
+  )
+
+
+  /*
+   * =========================================================
+   * REPLAY ANIMATION
+   * =========================================================
+   */
+
+  useEffect(() => {
+
+    if (!replay) {
+
+      replayScale.set(1)
+
+      return
+
+    }
+
+
+    /*
+     * Luôn bắt đầu từ ảnh lớn.
+     */
+
+    replayScale.set(1.12)
+
+
+    /*
+     * Thu nhỏ về kích thước bình thường.
+     */
+
+    const controls = animate(
+      replayScale,
+      1,
+      {
+        duration: 0.65,
+        ease: [0.22, 1, 0.36, 1],
+      }
+    )
+
+
+    return () => {
+
+      controls.stop()
+
+    }
+
+  }, [replay, replayScale])
+
+
+  /*
+   * Khi replay → dùng replayScale.
+   * Bình thường → dùng scrollScale.
+   */
+
+  const finalScale = replay
+    ? replayScale
+    : scrollScale
+
+
   return (
     <>
       <motion.div
         className="hero-photo"
         style={{
-          scale,
+          scale: finalScale,
           y,
           filter: brightness,
         }}
       />
+
 
       <motion.div
         className="hero-photo-tint"
@@ -98,7 +196,57 @@ function HeroBackdrop({ progress }) {
 }
 
 
+/*
+ * =========================================================
+ * HOME
+ * =========================================================
+ */
+
 export default function Home() {
+
+  /*
+   * =========================================================
+   * ROUTER LOCATION
+   * =========================================================
+   *
+   * Header sẽ truyền:
+   *
+   * state={{ replayHero: true }}
+   *
+   * khi người dùng đang ở Home và bấm logo.
+   */
+
+  const location = useLocation()
+
+
+  const replayHero =
+    location.state?.replayHero === true
+
+
+  /*
+   * =========================================================
+   * CLEAR REPLAY STATE
+   * =========================================================
+   *
+   * Sau khi nhận replayHero, xóa state khỏi history.
+   *
+   * Điều này tránh việc refresh Home lại tiếp tục replay.
+   */
+
+  useEffect(() => {
+
+    if (!replayHero) return
+
+
+    window.history.replaceState(
+      {},
+      document.title,
+      window.location.pathname +
+        window.location.search
+    )
+
+  }, [replayHero])
+
 
   /*
    * =========================================================
@@ -120,7 +268,9 @@ export default function Home() {
     const handleKeyDown = (event) => {
 
       if (event.key === 'Escape') {
+
         setSelectedImage(null)
+
       }
 
     }
@@ -148,12 +298,10 @@ export default function Home() {
    * =========================================================
    * THE CENTRAL TENSION
    * =========================================================
-   *
-   * Dùng ref riêng để biết chính xác khi phần
-   * THE CENTRAL TENSION đi vào viewport.
    */
 
   const centralTensionRef = useRef(null)
+
 
   const centralTensionInView = useInView(
     centralTensionRef,
@@ -187,7 +335,9 @@ export default function Home() {
 
 
   /*
-   * Hero content movement
+   * =========================================================
+   * HERO CONTENT MOVEMENT
+   * =========================================================
    */
 
   const copyY = useTransform(
@@ -198,7 +348,9 @@ export default function Home() {
 
 
   /*
-   * Hero content opacity
+   * =========================================================
+   * HERO CONTENT OPACITY
+   * =========================================================
    */
 
   const copyOpacity = useTransform(
@@ -218,11 +370,15 @@ export default function Home() {
 
     event.preventDefault()
 
+
     const target = document.getElementById('map')
+
 
     if (!target) return
 
+
     const lenis = window.__lenis
+
 
     if (lenis) {
 
@@ -266,7 +422,9 @@ export default function Home() {
    */
 
   const openImage = () => {
+
     setSelectedImage(bigChaebol)
+
   }
 
 
@@ -277,7 +435,9 @@ export default function Home() {
    */
 
   const closeImage = () => {
+
     setSelectedImage(null)
+
   }
 
 
@@ -295,8 +455,14 @@ export default function Home() {
 
         <div className="hero-pin">
 
+
+          {/* =================================================
+              HERO BACKDROP
+              ================================================= */}
+
           <HeroBackdrop
             progress={heroProgress}
+            replay={replayHero}
           />
 
 
@@ -314,7 +480,9 @@ export default function Home() {
             >
 
               <span className="eyebrow hero-eyebrow">
+
                 SS008 / HÀN QUỐC / 2022
+
               </span>
 
 
@@ -411,11 +579,6 @@ export default function Home() {
 
           {/* =================================================
               SMOOTH SCROLL CUE
-
-              Không dùng heroProgress để ẩn nữa.
-
-              Nó sẽ biến mất ngay khi
-              THE CENTRAL TENSION xuất hiện.
               ================================================= */}
 
           <motion.a
@@ -919,7 +1082,7 @@ export default function Home() {
 
 
                   {/* =================================================
-                      Ý KIẾN
+                      ĐÓNG GÓP
                       ================================================= */}
 
                   <a
