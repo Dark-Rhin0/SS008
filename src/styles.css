@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap');
 
 /* =========================================================
    ROOT
@@ -7,22 +7,18 @@
 :root {
   --blue: #1428A0;
   --blue-2: #2F5BFF;
-
   --ink: #101828;
   --muted: #667085;
-
   --line: #DCE4F1;
   --paper: #F8FAFD;
   --surface: #FFFFFF;
-
   --navy: #0A1333;
-
   --red: #D73645;
   --green: #1C9A66;
-
   --radius: 26px;
 
-  font-family: 'DM Sans', system-ui, sans-serif;
+  /* Font chính — tối ưu hiển thị tiếng Việt */
+  font-family: 'Be Vietnam Pro', system-ui, sans-serif;
 
   color: var(--ink);
   background: var(--paper);
@@ -47,6 +43,13 @@ body {
   margin: 0;
   background: var(--paper);
   overflow-x: hidden;
+
+  font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -129,14 +132,30 @@ html.lenis body {
    TYPOGRAPHY
    ========================================================= */
 
+/*
+ * Be Vietnam Pro:
+ * - Font chính cho tiếng Việt
+ * - Body
+ * - Navigation
+ * - Button
+ * - Metadata
+ * - Description
+ *
+ * Space Grotesk:
+ * - Heading lớn
+ * - Editorial title
+ * - Stat numbers
+ */
+
 .eyebrow {
   display: inline-flex;
   gap: 9px;
   align-items: center;
 
+  font-family: 'Be Vietnam Pro', system-ui, sans-serif;
   font-size: 15px;
   font-weight: 700;
-  letter-spacing: .12em;
+  letter-spacing: .08em;
   text-transform: uppercase;
 
   color: var(--blue);
@@ -152,18 +171,18 @@ html.lenis body {
 }
 
 
-/*
- * Heading dùng Space Grotesk để đồng bộ
- * với visual editorial của toàn bộ website.
- */
+/* =========================================================
+   DISPLAY HEADINGS
+   ========================================================= */
 
 .h1,
 .h2,
 .h3 {
   font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
 
-  letter-spacing: -.035em;
-  line-height: 1.05;
+  letter-spacing: -.025em;
+  line-height: 1.08;
 
   margin: 0;
 }
@@ -180,20 +199,37 @@ html.lenis body {
   font-size: clamp(28px, 3vw, 42px);
 }
 
+
+/* =========================================================
+   BODY TEXT
+   ========================================================= */
+
 .lead {
+  font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+
   font-size: clamp(18px, 2.1vw, 23px);
-  line-height: 1.5;
+  font-weight: 400;
+  line-height: 1.55;
+
   color: #334155;
 }
 
 .copy {
+  font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+
   font-size: 20px;
+  font-weight: 400;
   line-height: 1.72;
+
   color: #475467;
 }
 
 .small {
+  font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+
   font-size: 13px;
+  font-weight: 500;
+
   color: var(--muted);
 }
 
@@ -228,7 +264,6 @@ html.lenis body {
   background: rgba(255, 255, 255, .82);
 
   border: 1px solid rgba(20, 40, 160, .1);
-
   border-radius: var(--radius);
 
   box-shadow:
@@ -251,6 +286,9 @@ html.lenis body {
   padding: 13px 18px;
 
   cursor: pointer;
+
+  font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+  font-weight: 600;
 
   transition:
     transform .25s ease,
@@ -299,7 +337,6 @@ html.lenis body {
   align-items: flex-end;
 
   gap: 24px;
-
   margin-bottom: 38px;
 }
 
@@ -336,26 +373,32 @@ html.lenis body {
 }
 
 .section-link .num {
+  min-width: 58px;
+
+  font-family: 'Be Vietnam Pro', system-ui, sans-serif;
   font-size: 13px;
   font-weight: 700;
 
   color: var(--blue);
-
-  min-width: 58px;
 }
 
 .section-link h3 {
-  font-family: 'Space Grotesk', sans-serif;
-
   margin: 0;
 
+  font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(22px, 3vw, 38px);
+  font-weight: 700;
 
-  letter-spacing: -.04em;
+  letter-spacing: -.025em;
+  line-height: 1.12;
 }
 
 .section-link p {
   margin: 7px 0 0;
+
+  font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
 
   color: var(--muted);
 }
@@ -367,7 +410,6 @@ html.lenis body {
 
 .progress {
   position: fixed;
-
   z-index: 100;
 
   width: 100%;
@@ -404,7 +446,6 @@ html.lenis body {
 
 .reveal.visible {
   opacity: 1;
-
   transform: none;
 }
 
@@ -414,11 +455,10 @@ html.lenis body {
    ========================================================= */
 
 .stat-card {
-  padding: 26px;
-
-  min-height: 180px;
-
   position: relative;
+
+  padding: 26px;
+  min-height: 180px;
 
   overflow: hidden;
 }
@@ -426,13 +466,14 @@ html.lenis body {
 .stat-card strong {
   display: block;
 
-  font:
-    700 clamp(35px, 4vw, 58px) / 1
-    'Space Grotesk';
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(35px, 4vw, 58px);
+  font-weight: 700;
+  line-height: 1;
 
   color: var(--blue);
 
-  letter-spacing: -.05em;
+  letter-spacing: -.025em;
 }
 
 .stat-card span {
@@ -440,15 +481,18 @@ html.lenis body {
 
   margin-top: 11px;
 
+  font-family: 'Be Vietnam Pro', system-ui, sans-serif;
   font-weight: 700;
 }
 
 .stat-card p {
   margin: 7px 0 0;
 
-  color: var(--muted);
-
+  font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+  font-size: 15px;
   line-height: 1.55;
+
+  color: var(--muted);
 }
 
 
@@ -490,9 +534,9 @@ iframe {
   border-radius: 999px;
 
   background: #eef2ff;
-
   color: var(--blue);
 
+  font-family: 'Be Vietnam Pro', system-ui, sans-serif;
   font-size: 12px;
   font-weight: 700;
 }
@@ -518,7 +562,6 @@ iframe {
   flex-wrap: wrap;
 
   gap: 9px;
-
   margin-top: 28px;
 }
 
@@ -528,6 +571,8 @@ iframe {
    ========================================================= */
 
 .editorial-image {
+  position: relative;
+
   min-height: 450px;
 
   border-radius: 34px;
@@ -545,8 +590,6 @@ iframe {
 
   box-shadow:
     0 35px 90px rgba(10, 19, 51, .22);
-
-  position: relative;
 
   overflow: hidden;
 }
@@ -578,9 +621,11 @@ iframe {
 
   backdrop-filter: blur(10px);
 
+  font-family: 'Be Vietnam Pro', system-ui, sans-serif;
   font-size: 11px;
+  font-weight: 600;
 
-  letter-spacing: .12em;
+  letter-spacing: .08em;
 
   pointer-events: none;
 }
@@ -601,13 +646,11 @@ iframe {
   display: block;
 
   width: 100%;
-
   min-height: 450px;
 
   padding: 0;
 
   border: 0;
-
   border-radius: 34px;
 
   background: transparent;
@@ -663,9 +706,7 @@ iframe {
   content: '';
 
   position: absolute;
-
   inset: 0;
-
   z-index: 1;
 
   background:
@@ -701,7 +742,6 @@ iframe {
   z-index: 3;
 
   display: flex;
-
   align-items: center;
   justify-content: center;
 
@@ -732,11 +772,8 @@ iframe {
 
 .image-expand-trigger:hover .image-expand-icon {
   opacity: 1;
-
   transform: scale(1);
-}
 
-.image-expand-trigger:hover .image-expand-icon {
   background:
     rgba(20, 40, 160, .78);
 }
@@ -770,9 +807,11 @@ iframe {
 
   backdrop-filter: blur(10px);
 
+  font-family: 'Be Vietnam Pro', system-ui, sans-serif;
   font-size: 11px;
+  font-weight: 600;
 
-  letter-spacing: .12em;
+  letter-spacing: .08em;
 
   pointer-events: none;
 }
@@ -784,13 +823,11 @@ iframe {
 
 .image-lightbox {
   position: fixed;
-
   inset: 0;
 
   z-index: 9999;
 
   display: flex;
-
   align-items: center;
   justify-content: center;
 
@@ -844,7 +881,6 @@ iframe {
   z-index: 10000;
 
   display: flex;
-
   align-items: center;
   justify-content: center;
 
@@ -897,13 +933,11 @@ iframe {
 @keyframes lightboxImageIn {
   from {
     opacity: 0;
-
     transform: scale(.94);
   }
 
   to {
     opacity: 1;
-
     transform: scale(1);
   }
 }
@@ -949,19 +983,16 @@ iframe {
 
   .kicker-line {
     align-items: flex-start;
-
     flex-direction: column;
   }
 
   .editorial-image {
     min-height: 320px;
-
     border-radius: 24px;
   }
 
   .image-expand-trigger {
     min-height: 320px;
-
     border-radius: 24px;
   }
 
@@ -1003,27 +1034,34 @@ iframe {
 
   .lead {
     font-size: 16px;
+    line-height: 1.6;
   }
 
   .copy {
     font-size: 16px;
+    line-height: 1.7;
   }
 
   .h1 {
     font-size: clamp(42px, 14vw, 70px);
+    letter-spacing: -.02em;
+    line-height: 1.08;
   }
 
   .h2 {
     font-size: clamp(36px, 11vw, 58px);
+    letter-spacing: -.02em;
+    line-height: 1.08;
   }
 
   .h3 {
     font-size: clamp(26px, 8vw, 40px);
+    letter-spacing: -.02em;
+    line-height: 1.1;
   }
 
   .section-link {
     align-items: flex-start;
-
     gap: 14px;
   }
 
@@ -1033,12 +1071,14 @@ iframe {
 
   .section-link h3 {
     font-size: clamp(22px, 7vw, 32px);
+    letter-spacing: -.02em;
   }
 
   .section-link:hover {
     padding-left: 6px;
     padding-right: 6px;
   }
+
 
   /*
    * Lightbox mobile
@@ -1136,6 +1176,5 @@ iframe {
 button:focus-visible,
 a:focus-visible {
   outline: 3px solid rgba(47, 91, 255, .45);
-
   outline-offset: 4px;
 }
