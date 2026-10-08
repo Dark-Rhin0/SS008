@@ -848,6 +848,67 @@
   background: rgba(10, 10, 30, 0.13);
 }
 
+/* =========================================
+   FINAL MINI NAV
+========================================= */
+
+.final-mini-nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+
+  overflow: hidden;
+
+  background: #fff;
+  border: 1px solid rgba(20, 40, 160, 0.08);
+  border-radius: 18px;
+
+  box-shadow: 0 5px 20px rgba(10, 19, 51, 0.05);
+}
+
+.final-mini-link {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 60px;
+  padding: 16px 20px;
+
+  color: var(--navy);
+  background: transparent;
+
+  text-decoration: none;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* đường ngăn giữa các item */
+.final-mini-link + .final-mini-link {
+  border-left: 1px solid rgba(20, 40, 160, 0.08);
+}
+
+/* hover */
+.final-mini-link:hover {
+  color: #fff;
+  background: #1e67f3fa;
+}
+
+/* icon */
+.final-mini-link svg {
+  transition: transform 0.25s ease;
+}
+
+.final-mini-link:hover svg {
+  transform: translate(2px, -2px);
+}
 
 /* =========================================================
    CLOSING LINE
