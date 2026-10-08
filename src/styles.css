@@ -1,26 +1,78 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 
-:root{
-  --blue:#1428A0;
-  --blue-2:#2F5BFF;
-  --ink:#101828;
-  --muted:#667085;
-  --line:#DCE4F1;
-  --paper:#F8FAFD;
-  --surface:#FFFFFF;
-  --navy:#0A1333;
-  --red:#D73645;
-  --green:#1C9A66;
-  --radius:26px;
-  font-family:'DM Sans',system-ui,sans-serif;
-  color:var(--ink);
-  background:var(--paper);
-  font-synthesis:none;
+/* =========================================================
+   ROOT
+   ========================================================= */
+
+:root {
+  --blue: #1428A0;
+  --blue-2: #2F5BFF;
+
+  --ink: #101828;
+  --muted: #667085;
+
+  --line: #DCE4F1;
+  --paper: #F8FAFD;
+  --surface: #FFFFFF;
+
+  --navy: #0A1333;
+
+  --red: #D73645;
+  --green: #1C9A66;
+
+  --radius: 26px;
+
+  font-family: 'DM Sans', system-ui, sans-serif;
+
+  color: var(--ink);
+  background: var(--paper);
+
+  font-synthesis: none;
 }
 
-*{
-  box-sizing:border-box;
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+img {
+  max-width: 100%;
+}
+
+.page-shell {
+  min-height: 100vh;
+}
+
 
 /* =========================================================
    LENIS
@@ -28,19 +80,19 @@
 
 html.lenis,
 html.lenis body {
-  height:auto;
+  height: auto;
 }
 
 .lenis.lenis-smooth {
-  scroll-behavior:auto !important;
+  scroll-behavior: auto !important;
 }
 
 .lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior:contain;
+  overscroll-behavior: contain;
 }
 
 .lenis.lenis-stopped {
-  overflow:hidden;
+  overflow: hidden;
 }
 
 /*
@@ -49,418 +101,820 @@ html.lenis body {
  * Nếu dùng none thì YouTube vẫn hiện thumbnail
  * nhưng không thể click Play.
  */
+
 .lenis.lenis-smooth iframe {
-  pointer-events:auto;
+  pointer-events: auto;
 }
+
 
 /* =========================================================
-   BASE
+   CONTAINER / SECTION
    ========================================================= */
 
-body{
-  margin:0;
-  background:var(--paper);
-  overflow-x:hidden;
+.container {
+  width: min(1180px, calc(100% - 36px));
+  margin: auto;
 }
 
-a{
-  color:inherit;
-  text-decoration:none;
+.section {
+  padding: 110px 0;
 }
 
-button{
-  font:inherit;
+.section-tight {
+  padding: 72px 0;
 }
 
-.page-shell{
-  min-height:100vh;
-}
-
-.container{
-  width:min(1180px,calc(100% - 36px));
-  margin:auto;
-}
-
-.section{
-  padding:110px 0;
-}
-
-.section-tight{
-  padding:72px 0;
-}
-
-.eyebrow{
-  display:inline-flex;
-  gap:9px;
-  align-items:center;
-  font-size:15px;
-  font-weight:700;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:var(--blue);
-}
-
-.eyebrow::before{
-  content:'';
-  width:28px;
-  height:2px;
-  background:currentColor;
-}
-
-.h1, .h2, .h3 {
-    font-family: Arial, sans-serif;
-    letter-spacing: normal;
-    line-height: 1.2;
-    margin: 0
-}
-.section-link h3 {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    font-size: clamp(22px,3vw,38px);
-    letter-spacing: -.04em
-}
-.detail-hero .h1 {
-  position: relative;
-  top: 120px;
-}
-
-.h1{
-  font-size:clamp(54px,8vw,120px);
-}
-
-.h2{
-  font-size:clamp(42px,5vw,78px);
-}
-
-.h3{
-  font-size:clamp(28px,3vw,42px);
-}
-
-.lead{
-  font-size:clamp(18px,2.1vw,23px);
-  line-height:1.5;
-  color:#334155;
-}
-
-.copy{
-  font-size:20px;
-  line-height:1.72;
-  color:#475467;
-}
-
-.small{
-  font-size:13px;
-  color:var(--muted);
-}
-
-.card{
-  background:rgba(255,255,255,.82);
-  border:1px solid rgba(20,40,160,.1);
-  border-radius:var(--radius);
-  box-shadow:0 24px 70px rgba(32,55,110,.08);
-}
-
-.grid{
-  display:grid;
-  gap:18px;
-}
-
-.grid-2{
-  grid-template-columns:repeat(2,minmax(0,1fr));
-}
-
-.grid-3{
-  grid-template-columns:repeat(3,minmax(0,1fr));
-}
-
-.grid-4{
-  grid-template-columns:repeat(4,minmax(0,1fr));
-}
-
-@media(max-width:900px){
-  .grid-2,
-  .grid-3,
-  .grid-4{
-    grid-template-columns:1fr 1fr;
-  }
-}
-
-@media(max-width:620px){
-  .grid-2,
-  .grid-3,
-  .grid-4{
-    grid-template-columns:1fr;
-  }
-
-  .section{
-    padding:76px 0;
-  }
-}
 
 /* =========================================================
-   SHARED UI
+   TYPOGRAPHY
    ========================================================= */
 
-.btn{
-  display:inline-flex;
-  align-items:center;
-  gap:9px;
-  border:0;
-  border-radius:999px;
-  padding:13px 18px;
-  cursor:pointer;
+.eyebrow {
+  display: inline-flex;
+  gap: 9px;
+  align-items: center;
+
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+
+  color: var(--blue);
+}
+
+.eyebrow::before {
+  content: '';
+
+  width: 28px;
+  height: 2px;
+
+  background: currentColor;
+}
+
+
+/*
+ * Heading dùng Space Grotesk để đồng bộ
+ * với visual editorial của toàn bộ website.
+ */
+
+.h1,
+.h2,
+.h3 {
+  font-family: 'Space Grotesk', sans-serif;
+
+  letter-spacing: -.035em;
+  line-height: 1.05;
+
+  margin: 0;
+}
+
+.h1 {
+  font-size: clamp(54px, 8vw, 120px);
+}
+
+.h2 {
+  font-size: clamp(42px, 5vw, 78px);
+}
+
+.h3 {
+  font-size: clamp(28px, 3vw, 42px);
+}
+
+.lead {
+  font-size: clamp(18px, 2.1vw, 23px);
+  line-height: 1.5;
+  color: #334155;
+}
+
+.copy {
+  font-size: 20px;
+  line-height: 1.72;
+  color: #475467;
+}
+
+.small {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+.grid {
+  display: grid;
+  gap: 18px;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.card {
+  background: rgba(255, 255, 255, .82);
+
+  border: 1px solid rgba(20, 40, 160, .1);
+
+  border-radius: var(--radius);
+
+  box-shadow:
+    0 24px 70px rgba(32, 55, 110, .08);
+}
+
+
+/* =========================================================
+   SHARED BUTTONS
+   ========================================================= */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  border: 0;
+  border-radius: 999px;
+
+  padding: 13px 18px;
+
+  cursor: pointer;
+
   transition:
     transform .25s ease,
     box-shadow .25s ease,
     background .25s ease;
 }
 
-.btn:hover{
-  transform:translateY(-3px);
+.btn:hover {
+  transform: translateY(-3px);
 }
 
-.btn-primary{
-  background:var(--blue);
-  color:#fff;
-  box-shadow:0 12px 28px rgba(20,40,160,.25);
+.btn-primary {
+  background: var(--blue);
+  color: #fff;
+
+  box-shadow:
+    0 12px 28px rgba(20, 40, 160, .25);
 }
 
-.btn-ghost{
-  background:#fff;
-  border:1px solid var(--line);
+.btn-primary:hover {
+  background: #10218a;
 }
 
-.btn-red{
-  background:var(--red);
-  color:#fff;
+.btn-ghost {
+  background: #fff;
+  border: 1px solid var(--line);
 }
 
-.kicker-line{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-end;
-  gap:24px;
-  margin-bottom:38px;
+.btn-ghost:hover {
+  background: #f5f7fb;
 }
 
-.kicker-line .right{
-  max-width:520px;
+.btn-red {
+  background: var(--red);
+  color: #fff;
 }
 
-.section-link{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:26px 0;
-  border-top:1px solid var(--line);
-  transition:padding .28s ease;
+
+/* =========================================================
+   KICKER
+   ========================================================= */
+
+.kicker-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  gap: 24px;
+
+  margin-bottom: 38px;
 }
 
-.section-link:last-child{
-  border-bottom:1px solid var(--line);
+.kicker-line .right {
+  max-width: 520px;
 }
 
-.section-link:hover{
-  padding-left:12px;
-  padding-right:12px;
+
+/* =========================================================
+   SECTION LINKS
+   ========================================================= */
+
+.section-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 26px 0;
+
+  border-top: 1px solid var(--line);
+
+  transition:
+    padding .28s ease,
+    background .28s ease;
 }
 
-.section-link .num{
-  font-size:13px;
-  font-weight:700;
-  color:var(--blue);
-  min-width:58px;
+.section-link:last-child {
+  border-bottom: 1px solid var(--line);
 }
 
-.section-link h3{
-  font-family:'Space Grotesk';
-  margin:0;
-  font-size:clamp(22px,3vw,38px);
-  letter-spacing:-.04em;
+.section-link:hover {
+  padding-left: 12px;
+  padding-right: 12px;
 }
 
-.section-link p{
-  margin:7px 0 0;
-  color:var(--muted);
+.section-link .num {
+  font-size: 13px;
+  font-weight: 700;
+
+  color: var(--blue);
+
+  min-width: 58px;
 }
+
+.section-link h3 {
+  font-family: 'Space Grotesk', sans-serif;
+
+  margin: 0;
+
+  font-size: clamp(22px, 3vw, 38px);
+
+  letter-spacing: -.04em;
+}
+
+.section-link p {
+  margin: 7px 0 0;
+
+  color: var(--muted);
+}
+
 
 /* =========================================================
    PROGRESS
    ========================================================= */
 
-.progress{
-  position:fixed;
-  z-index:100;
-  width:100%;
-  height:3px;
-  top:0;
-  left:0;
-  background:transparent;
+.progress {
+  position: fixed;
+
+  z-index: 100;
+
+  width: 100%;
+  height: 3px;
+
+  top: 0;
+  left: 0;
+
+  background: transparent;
 }
 
-.progress>div{
-  height:100%;
-  background:var(--blue);
-  transform-origin:left;
+.progress > div {
+  height: 100%;
+
+  background: var(--blue);
+
+  transform-origin: left;
 }
+
 
 /* =========================================================
    REVEAL
    ========================================================= */
 
-.reveal{
-  opacity:0;
-  transform:translateY(32px);
+.reveal {
+  opacity: 0;
+
+  transform: translateY(32px);
+
   transition:
-    opacity .8s cubic-bezier(.22,1,.36,1),
-    transform .8s cubic-bezier(.22,1,.36,1);
+    opacity .8s cubic-bezier(.22, 1, .36, 1),
+    transform .8s cubic-bezier(.22, 1, .36, 1);
 }
 
-.reveal.visible{
-  opacity:1;
-  transform:none;
+.reveal.visible {
+  opacity: 1;
+
+  transform: none;
 }
+
 
 /* =========================================================
-   DATA
+   DATA / STAT CARDS
    ========================================================= */
 
-.stat-card{
-  padding:26px;
-  min-height:180px;
-  position:relative;
-  overflow:hidden;
+.stat-card {
+  padding: 26px;
+
+  min-height: 180px;
+
+  position: relative;
+
+  overflow: hidden;
 }
 
-.stat-card strong{
-  display:block;
-  font:700 clamp(35px,4vw,58px)/1 'Space Grotesk';
-  color:var(--blue);
-  letter-spacing:-.05em;
+.stat-card strong {
+  display: block;
+
+  font:
+    700 clamp(35px, 4vw, 58px) / 1
+    'Space Grotesk';
+
+  color: var(--blue);
+
+  letter-spacing: -.05em;
 }
 
-.stat-card span{
-  display:block;
-  margin-top:11px;
-  font-weight:700;
+.stat-card span {
+  display: block;
+
+  margin-top: 11px;
+
+  font-weight: 700;
 }
 
-.stat-card p{
-  margin:7px 0 0;
-  color:var(--muted);
-  line-height:1.55;
+.stat-card p {
+  margin: 7px 0 0;
+
+  color: var(--muted);
+
+  line-height: 1.55;
 }
+
 
 /* =========================================================
    VIDEO / IFRAME
    ========================================================= */
 
-iframe{
-  border:0;
+iframe {
+  border: 0;
 }
 
-.video-shell{
-  overflow:hidden;
-  border-radius:30px;
-  box-shadow:0 30px 80px rgba(16,24,40,.18);
-  background:#0b1020;
-  aspect-ratio:16/9;
+.video-shell {
+  overflow: hidden;
+
+  border-radius: 30px;
+
+  box-shadow:
+    0 30px 80px rgba(16, 24, 40, .18);
+
+  background: #0b1020;
+
+  aspect-ratio: 16 / 9;
 }
 
-.video-shell iframe{
-  width:100%;
-  height:100%;
-  pointer-events:auto;
+.video-shell iframe {
+  width: 100%;
+  height: 100%;
+
+  pointer-events: auto;
 }
 
-.source-chip{
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-  padding:7px 11px;
-  border-radius:999px;
-  background:#eef2ff;
-  color:var(--blue);
-  font-size:12px;
-  font-weight:700;
+.source-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 7px 11px;
+
+  border-radius: 999px;
+
+  background: #eef2ff;
+
+  color: var(--blue);
+
+  font-size: 12px;
+  font-weight: 700;
 }
+
 
 /* =========================================================
    PAGE HERO
    ========================================================= */
 
-.detail-hero{
-  padding:150px 0 70px;
-  background:linear-gradient(
-    180deg,
-    #fff 0%,
-    #f5f8ff 100%
-  );
+.detail-hero {
+  padding: 150px 0 70px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fff 0%,
+      #f5f8ff 100%
+    );
 }
 
-.detail-hero .meta{
-  display:flex;
-  flex-wrap:wrap;
-  gap:9px;
-  margin-top:28px;
+.detail-hero .meta {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 9px;
+
+  margin-top: 28px;
 }
+
 
 /* =========================================================
-   IMAGE
+   EDITORIAL IMAGE
    ========================================================= */
 
-.editorial-image{
-  min-height:450px;
-  border-radius:34px;
+.editorial-image {
+  min-height: 450px;
+
+  border-radius: 34px;
+
   background-image:
     linear-gradient(
       135deg,
-      rgba(244, 247, 246, 0.14),
-      rgba(53, 46, 34, 0.35)
+      rgba(244, 247, 246, .14),
+      rgba(53, 46, 34, .35)
     ),
     url('./assets/bigChaebol.jpg');
-  background-size:cover;
-  background-position:center;
-  box-shadow:0 35px 90px rgba(10,19,51,.22);
-  position:relative;
-  overflow:hidden;
+
+  background-size: cover;
+  background-position: center;
+
+  box-shadow:
+    0 35px 90px rgba(10, 19, 51, .22);
+
+  position: relative;
+
+  overflow: hidden;
 }
 
-.editorial-image::after{
-  content:'CHAEBOL / Big 5';
-  position:absolute;
-  left:24px;
-  bottom:22px;
-  padding:9px 12px;
-  border:1px solid rgba(255,255,255,.4);
-  border-radius:999px;
-  color:#fff;
-  background:rgba(0,0,0,.25);
-  backdrop-filter:blur(10px);
-  font-size:11px;
-  letter-spacing:.12em;
+
+/*
+ * Nhãn CHAEBOL / Big 5
+ */
+
+.editorial-image::after {
+  content: 'CHAEBOL / Big 5';
+
+  position: absolute;
+
+  left: 24px;
+  bottom: 22px;
+
+  padding: 9px 12px;
+
+  border:
+    1px solid rgba(255, 255, 255, .4);
+
+  border-radius: 999px;
+
+  color: #fff;
+
+  background:
+    rgba(0, 0, 0, .25);
+
+  backdrop-filter: blur(10px);
+
+  font-size: 11px;
+
+  letter-spacing: .12em;
+
+  pointer-events: none;
 }
+
 
 /* =========================================================
-   RESPONSIVE
+   CLICKABLE IMAGE
    ========================================================= */
 
-@media(max-width:700px){
-  .kicker-line{
-    align-items:flex-start;
-    flex-direction:column;
+/*
+ * Dùng class này khi .editorial-image được đổi từ
+ * <div> sang <button>.
+ */
+
+.image-expand-trigger {
+  position: relative;
+
+  display: block;
+
+  width: 100%;
+
+  min-height: 450px;
+
+  padding: 0;
+
+  border: 0;
+
+  border-radius: 34px;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  text-align: left;
+
+  overflow: hidden;
+
+  appearance: none;
+
+  box-shadow:
+    0 35px 90px rgba(10, 19, 51, .22);
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+.image-expand-trigger:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 42px 100px rgba(10, 19, 51, .27);
+}
+
+
+/*
+ * Nếu .editorial-image nằm cùng class với
+ * .image-expand-trigger thì giữ background ở đây.
+ */
+
+.image-expand-trigger.editorial-image {
+  background-image:
+    linear-gradient(
+      135deg,
+      rgba(244, 247, 246, .14),
+      rgba(53, 46, 34, .35)
+    ),
+    url('./assets/bigChaebol.jpg');
+
+  background-size: cover;
+  background-position: center;
+}
+
+
+/*
+ * Overlay nhẹ khi hover
+ */
+
+.image-expand-trigger::before {
+  content: '';
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent 45%,
+      rgba(0, 0, 0, .2) 100%
+    );
+
+  pointer-events: none;
+
+  opacity: .7;
+
+  transition:
+    opacity .3s ease;
+}
+
+.image-expand-trigger:hover::before {
+  opacity: 1;
+}
+
+
+/*
+ * Icon mở ảnh
+ */
+
+.image-expand-icon {
+  position: absolute;
+
+  top: 18px;
+  right: 18px;
+
+  z-index: 3;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  color: #fff;
+
+  background:
+    rgba(10, 19, 51, .58);
+
+  border:
+    1px solid rgba(255, 255, 255, .25);
+
+  backdrop-filter: blur(12px);
+
+  opacity: 0;
+
+  transform: scale(.9);
+
+  transition:
+    opacity .25s ease,
+    transform .25s ease,
+    background .25s ease;
+}
+
+.image-expand-trigger:hover .image-expand-icon {
+  opacity: 1;
+
+  transform: scale(1);
+}
+
+.image-expand-trigger:hover .image-expand-icon {
+  background:
+    rgba(20, 40, 160, .78);
+}
+
+
+/*
+ * Nhãn của ảnh khi dùng button
+ */
+
+.image-expand-trigger::after {
+  content: 'CHAEBOL / Big 5';
+
+  position: absolute;
+
+  left: 24px;
+  bottom: 22px;
+
+  z-index: 3;
+
+  padding: 9px 12px;
+
+  border:
+    1px solid rgba(255, 255, 255, .4);
+
+  border-radius: 999px;
+
+  color: #fff;
+
+  background:
+    rgba(0, 0, 0, .25);
+
+  backdrop-filter: blur(10px);
+
+  font-size: 11px;
+
+  letter-spacing: .12em;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   IMAGE LIGHTBOX
+   ========================================================= */
+
+.image-lightbox {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9999;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+
+  background:
+    rgba(3, 7, 18, .88);
+
+  backdrop-filter: blur(14px);
+
+  animation:
+    lightboxFadeIn .22s ease forwards;
+}
+
+
+/*
+ * Ảnh full-size
+ */
+
+.image-lightbox-img {
+  display: block;
+
+  width: auto;
+  height: auto;
+
+  max-width: min(1400px, 94vw);
+  max-height: 90vh;
+
+  object-fit: contain;
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 30px 100px rgba(0, 0, 0, .45);
+
+  animation:
+    lightboxImageIn .28s cubic-bezier(.22, 1, .36, 1);
+}
+
+
+/*
+ * Nút đóng
+ */
+
+.image-lightbox-close {
+  position: fixed;
+
+  top: 22px;
+  right: 22px;
+
+  z-index: 10000;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 46px;
+  height: 46px;
+
+  padding: 0;
+
+  border:
+    1px solid rgba(255, 255, 255, .2);
+
+  border-radius: 50%;
+
+  color: #fff;
+
+  background:
+    rgba(255, 255, 255, .1);
+
+  backdrop-filter: blur(12px);
+
+  cursor: pointer;
+
+  transition:
+    background .2s ease,
+    transform .2s ease;
+}
+
+.image-lightbox-close:hover {
+  background:
+    rgba(255, 255, 255, .2);
+
+  transform: rotate(90deg);
+}
+
+
+/* =========================================================
+   LIGHTBOX ANIMATION
+   ========================================================= */
+
+@keyframes lightboxFadeIn {
+  from {
+    opacity: 0;
   }
 
-  .editorial-image{
-    min-height:320px;
+  to {
+    opacity: 1;
   }
 }
 
+@keyframes lightboxImageIn {
+  from {
+    opacity: 0;
+
+    transform: scale(.94);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: scale(1);
+  }
+}
+
+
 /* =========================================================
-   GLOBAL RESPONSIVE
+   RESPONSIVE — 900PX
    ========================================================= */
 
 @media (max-width: 900px) {
+
   .container {
     width: min(100% - 32px, 760px);
   }
@@ -472,12 +926,67 @@ iframe{
   .grid-2,
   .grid-3,
   .grid-4 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  /*
+   * Không để hero title bị đẩy xuống 120px
+   * trên màn hình nhỏ.
+   */
+
+  .detail-hero .h1 {
+    top: 0;
   }
 }
 
 
+/* =========================================================
+   RESPONSIVE — 700PX
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .kicker-line {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .editorial-image {
+    min-height: 320px;
+
+    border-radius: 24px;
+  }
+
+  .image-expand-trigger {
+    min-height: 320px;
+
+    border-radius: 24px;
+  }
+
+  .image-expand-icon {
+    opacity: 1;
+
+    width: 38px;
+    height: 38px;
+
+    top: 14px;
+    right: 14px;
+  }
+
+  .detail-hero {
+    padding-top: 110px;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE — 620PX
+   ========================================================= */
+
 @media (max-width: 620px) {
+
   .container {
     width: calc(100% - 28px);
   }
@@ -499,10 +1008,69 @@ iframe{
   .copy {
     font-size: 16px;
   }
+
+  .h1 {
+    font-size: clamp(42px, 14vw, 70px);
+  }
+
+  .h2 {
+    font-size: clamp(36px, 11vw, 58px);
+  }
+
+  .h3 {
+    font-size: clamp(26px, 8vw, 40px);
+  }
+
+  .section-link {
+    align-items: flex-start;
+
+    gap: 14px;
+  }
+
+  .section-link .num {
+    min-width: 42px;
+  }
+
+  .section-link h3 {
+    font-size: clamp(22px, 7vw, 32px);
+  }
+
+  .section-link:hover {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+
+  /*
+   * Lightbox mobile
+   */
+
+  .image-lightbox {
+    padding: 16px;
+  }
+
+  .image-lightbox-img {
+    max-width: 96vw;
+    max-height: 82vh;
+
+    border-radius: 7px;
+  }
+
+  .image-lightbox-close {
+    top: 14px;
+    right: 14px;
+
+    width: 42px;
+    height: 42px;
+  }
 }
 
 
+/* =========================================================
+   RESPONSIVE — 380PX
+   ========================================================= */
+
 @media (max-width: 380px) {
+
   .container {
     width: calc(100% - 20px);
   }
@@ -510,4 +1078,64 @@ iframe{
   .section {
     padding: 52px 0;
   }
+
+  .h1 {
+    font-size: 40px;
+  }
+
+  .h2 {
+    font-size: 34px;
+  }
+
+  .copy {
+    font-size: 15px;
+  }
+
+  .lead {
+    font-size: 15px;
+  }
+
+  .editorial-image {
+    min-height: 280px;
+  }
+
+  .image-expand-trigger {
+    min-height: 280px;
+  }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+
+    transition-duration: .01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+/* =========================================================
+   FOCUS
+   ========================================================= */
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid rgba(47, 91, 255, .45);
+
+  outline-offset: 4px;
 }
