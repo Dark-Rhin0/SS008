@@ -20,6 +20,7 @@ import FlipbookPage from './pages/FlipbookPage'
 import GamePage from './pages/GamePage'
 import GamePlayPage from './pages/GamePlayPage'
 import Sections from './pages/Sections'
+import QnA from './pages/QnA'
 
 function Shell() {
   const location = useLocation()
@@ -212,6 +213,7 @@ function Shell() {
       <Route path="/tradeoff" element={<TradeOffPage />} />
       <Route path="/conclusion" element={<ConclusionPage />} />
       <Route path="/sources" element={<SourcesPage />} />
+      <Route path="/qna" element={<QnA />} />
       <Route path="/flipbook" element={<FlipbookPage />} />
       <Route path="/game/play" element={<GamePlayPage />} />
       <Route path="/game" element={<GamePage />} />

@@ -1099,10 +1099,8 @@ export default function Home() {
                       ĐÓNG GÓP
                       ================================================= */}
 
-                  <a
-                    href={URL}
-                    target="_blank"
-                    rel="noreferrer"
+                  <Link
+                    to="/qna"
                     className="final-option"
                   >
 
@@ -1119,7 +1117,7 @@ export default function Home() {
 
                       <h3>
 
-                        Đánh giá của bạn
+                        Câu hỏi của bạn
 
                         <ArrowUpRight size={19} />
 
@@ -1128,14 +1126,13 @@ export default function Home() {
 
                       <p>
 
-                        Cho mình biết ý kiến của bạn về quyết định
-                        của chính quyền Hàn Quốc.
+                        Gửi cho mình câu hỏi phản biện của bạn để mình có thể trả lời ngay
 
                       </p>
 
                     </div>
 
-                  </a>
+                  </Link>
 
 
                   {/* =================================================

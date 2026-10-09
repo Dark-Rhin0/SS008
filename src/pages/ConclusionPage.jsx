@@ -91,7 +91,7 @@ export default function ConclusionPage() {
           </Reveal>
         </div>
       </section>
-      <PageFooterNav nextPath="none" nextLabel="Đến trang kế" />
+      <PageFooterNav nextPath="/qna" nextLabel="Đến trang kế" />
     </>
   );
 }
