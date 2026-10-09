@@ -64,6 +64,14 @@ export default function SourcesPage() {
                         >
                             Xem nguồn ảnh 2↗
                         </a>
+                        <span> </span>
+                        <a
+                            href="https://tuoitre.vn/thai-tu-samsung-lee-jae-yong-duoc-tong-thong-han-quoc-an-x-20220812095537723.htm"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            Xem nguồn ảnh 3↗
+                        </a>
                     </div>
                 </div>
             </section>
