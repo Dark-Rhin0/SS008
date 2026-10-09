@@ -70,7 +70,7 @@ export default function EventPage() {
               <div className="card fact">
                 <Users />
 
-                <strong>1.693</strong>
+                <strong>1600+</strong>
 
                 <span>
                   người được ân xá theo thông báo chính thức
