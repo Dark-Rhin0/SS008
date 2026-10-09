@@ -239,6 +239,74 @@
   margin-top: 30px;
 }
 
+/* Tiêu đề nằm riêng ở trên */
+.hero-cover-header {
+  margin-bottom: 2.5rem;
+  max-width: 850px; /* Nới rộng độ dài tiêu đề nếu cần */
+}
+
+/* Khối 2 cột chứa Nội dung (Trái) và Ảnh (Phải) */
+.editorial-body-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Chia đều 2 bên */
+  gap: 3.5rem;
+  align-items: start; /* Căn lề trên bằng nhau giữa chữ và ảnh */
+}
+
+.editorial-content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Khung ảnh phong cách báo chí */
+.editorial-figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.editorial-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10; /* Tỉ lệ ảnh vừa vặn với chiều cao đoạn văn */
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f1f5f9;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+}
+
+.editorial-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+}
+
+/* Chú thích ảnh */
+.editorial-caption {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: #64748b;
+  border-left: 2px solid var(--blue, #0c6ec9);
+  padding-left: 0.75rem;
+  text-align: left;
+}
+
+.editorial-caption strong {
+  color: #1e293b;
+  font-weight: 600;
+}
+
+/* Responsive cho Mobile & Tablet */
+@media (max-width: 868px) {
+  .editorial-body-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
 
 /* =========================================================
    STORY MAP
@@ -346,6 +414,12 @@
   }
 }
 
+@media (max-width: 768px) {
+  .hero-cover-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+}
 
 /* =========================================================
    MOBILE

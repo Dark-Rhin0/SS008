@@ -34,12 +34,12 @@ import '../page-styles/home.css'
 
 /*
  * =========================================================
- * BIG CHAEBOL IMAGE
+ * IMPORT IMAGE
  * =========================================================
  */
 
 import bigChaebol from '../assets/bigChaebol.jpg'
-
+import leeJaeYong from '../assets/LeeJaeYong.jpg'
 
 /*
  * =========================================================
@@ -617,93 +617,77 @@ export default function Home() {
             HERO COVER
             ===================================================== */}
 
-        <section
-          className="hero-cover"
-          id="map"
-        >
-
+        <section className="hero-cover" id="map">
           <div className="container hero-cover-inner">
+            
+            {/* TIÊU ĐỀ ĐẶT RIÊNG Ở TRÊN CÙNG */}
+            <div className="hero-cover-header">
+              <Reveal>
+                <div className="cover-kicker">
+                  <span className="eyebrow">BÀI TOÁN ĐÁNH ĐỔI</span>
+                  <span className="cover-rule" />
+                </div>
+              </Reveal>
 
-            <Reveal>
+              <Reveal delay={0.08}>
+                <h2 className="cover-title">
+                  Một quyết định đặc xá.
+                  <br />
+                  <span>
+                    Nhưng đằng sau nó là một bài toán quốc gia.
+                  </span>
+                </h2>
+              </Reveal>
+            </div>
 
-              <div className="cover-kicker">
+            {/* KHỐI GRID 2 CỘT: NỘI DUNG (TRÁI) & ẢNH (PHẢI) */}
+            <div className="editorial-body-grid">
+              
+              {/* CỘT TRÁI: NỘI DUNG & NÚT */}
+              <div className="editorial-content">
+                <Reveal delay={0.14}>
+                  <p className="cover-copy">
+                    Kinh tế Hàn Quốc năm 2022 chịu sức ép từ lạm phát, thương mại,
+                    năng lượng và cạnh tranh công nghệ. Chính phủ đặt cược vào năng
+                    lực của các Chaebol — đồng thời chấp nhận một cuộc tranh luận lớn
+                    về pháp quyền.
+                  </p>
+                </Reveal>
 
-                <span className="eyebrow">
-                  BÀI TOÁN ĐÁNH ĐỔI
-                </span>
+                <Reveal delay={0.2}>
+                  <div className="cover-actions">
+                    <Link className="btn btn-primary" to="/context">
+                      Xem bối cảnh
+                      <ArrowUpRight size={16} />
+                    </Link>
 
-                <span className="cover-rule" />
-
+                    <Link className="btn btn-ghost" to="/tradeoff">
+                      <Scale size={16} />
+                      Xem cán cân
+                    </Link>
+                  </div>
+                </Reveal>
               </div>
 
-            </Reveal>
+              {/* CỘT PHẢI: KHUNG ẢNH CẠNH NỘI DUNG */}
+              <Reveal delay={0.16}>
+                <figure className="editorial-figure">
+                  <div className="editorial-image-wrapper">
+                    <img
+                      src={leeJaeYong}
+                      alt="Lee Jae-yong tại tòa án"
+                      className="editorial-img"
+                    />
+                  </div>
+                  <figcaption className="editorial-caption">
+                    Ông <strong>Lee Jae-yong</strong> (Phó chủ tịch Samsung) xuất hiện tại phiên tòa — biểu tượng của cuộc tranh luận giữa lợi ích kinh tế và tính nghiêm minh của pháp luật.
+                  </figcaption>
+                </figure>
+              </Reveal>
 
-
-            <Reveal delay={0.08}>
-
-              <h2 className="cover-title">
-
-                Một quyết định đặc xá.
-
-                <br />
-
-                <span>
-                  Nhưng đằng sau nó là một bài toán quốc gia.
-                </span>
-
-              </h2>
-
-            </Reveal>
-
-
-            <Reveal delay={0.14}>
-
-              <p className="cover-copy">
-
-                Kinh tế Hàn Quốc năm 2022 chịu sức ép từ
-                lạm phát, thương mại, năng lượng và cạnh
-                tranh công nghệ. Chính phủ đặt cược vào
-                năng lực của các Chaebol — đồng thời chấp
-                nhận một cuộc tranh luận lớn về pháp quyền.
-
-              </p>
-
-            </Reveal>
-
-
-            <Reveal delay={0.2}>
-
-              <div className="cover-actions">
-
-                <Link
-                  className="btn btn-primary"
-                  to="/context"
-                >
-
-                  Xem bối cảnh
-
-                  <ArrowUpRight size={16} />
-
-                </Link>
-
-
-                <Link
-                  className="btn btn-ghost"
-                  to="/tradeoff"
-                >
-
-                  <Scale size={16} />
-
-                  Xem cán cân
-
-                </Link>
-
-              </div>
-
-            </Reveal>
+            </div>
 
           </div>
-
         </section>
 
       </section>
