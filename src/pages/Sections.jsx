@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Filter, Clock, ArrowUpRight, BookOpen } from 'lucide-react';
 import PageIntro from '../components/PageIntro';
 import '../page-styles/sections.css';
+import PageFooterNav from "../components/PageFooterNav";
 
 // 1. DỮ LIỆU 8 CHƯƠNG ĐÃ TÍCH HỢP CATEGORY BỘ LỌC
 export const sections = [
@@ -31,7 +32,7 @@ export const sections = [
     title: 'Tại sao Samsung lại quan trọng?', 
     subtitle: 'Chaebol, bán dẫn và quyền lực kinh tế', 
     path: '/chaebol',
-    readTime: '4-6 phút'
+    readTime: '2-3 phút'
   },
   { 
     id: 'government', 
@@ -40,7 +41,7 @@ export const sections = [
     title: 'Chính phủ nói gì?', 
     subtitle: 'Lập luận chính thức và cơ chế kỳ vọng', 
     path: '/government',
-    readTime: '3-5 phút'
+    readTime: '2-4 phút'
   },
   { 
     id: 'debate', 
@@ -49,7 +50,7 @@ export const sections = [
     title: 'Tại sao gây tranh cãi?', 
     subtitle: 'Phục hồi kinh tế ↔ pháp quyền', 
     path: '/debate',
-    readTime: '5-7 phút'
+    readTime: '4-6 phút'
   },
   { 
     id: 'myth', 
@@ -67,7 +68,7 @@ export const sections = [
     title: 'Chính phủ đang đánh đổi điều gì?', 
     subtitle: 'Bài toán cân bằng', 
     path: '/tradeoff',
-    readTime: '5-6 phút'
+    readTime: '2-3 phút'
   },
   { 
     id: 'conclusion', 
@@ -175,6 +176,7 @@ export default function Sections() {
           </Link>
         </div>
       </div>
+      <PageFooterNav nextPath="none" nextLabel="Đến trang kế" />
     </div>
   );
 }

@@ -7,7 +7,6 @@
   background-color: #ffffff;
   color: #0f172a;
   min-height: 100vh;
-  padding-bottom: 6rem;
 }
 
 /* 2. PAGEINTRO HERO TRÊN NỀN TRẮNG */
@@ -167,7 +166,8 @@
 .sections-body {
   position: relative;
   z-index: 20;
-  margin-top: 3.5rem !important; /* Tạo khoảng cách phân tách rõ ràng với phần Hero */
+  margin-top: 3.5rem !important;
+  padding-bottom: 3em;
 }
 
 .sections-grid {
