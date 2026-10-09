@@ -7,7 +7,7 @@ import {
   Scale,
   FileText,
   X,
-  Maximize2,
+  Maximize2, Compass
 } from 'lucide-react'
 
 import {
@@ -694,39 +694,29 @@ export default function Home() {
 
 
       {/* =======================================================
-          STORY MAP
+          STORY MAP (HIỂN THỊ 4 CHƯƠNG ĐẦU + NÚT XEM TẤT CẢ)
           ======================================================= */}
 
-      <section className="section section-map">
+      <section className="story-map-section" id="map">
 
         <div className="container">
 
+          {/* SECTION HEADER */}
           <Reveal>
 
-            <div className="kicker-line">
+            <div className="story-map-header">
 
-              <div>
+              <div className="header-left">
 
-                <span className="eyebrow">
-                  Bảng Mục Lục
+                <span className="eyebrow-badge">
+                  <Compass size={14} /> BẢNG MỤC LỤC
                 </span>
 
+                <h2 className="h2 header-title">
 
-                <h2
-                  className="h2"
-                  style={{
-                    marginTop: 15,
-                  }}
-                >
+                  Đừng chỉ nghe kể.{' '}
 
-                  Đừng chỉ nghe kể.
-                  <span> </span>
-
-                  <span
-                    style={{
-                      color: 'var(--blue)',
-                    }}
-                  >
+                  <span className="highlight-text">
                     Hãy tự tìm hiểu.
                   </span>
 
@@ -735,17 +725,13 @@ export default function Home() {
               </div>
 
 
-              <div className="right">
+              <div className="header-right">
 
-                <p className="copy">
+                <p className="copy header-desc">
 
                   Chỉ khi tự đi tìm câu trả lời, bạn mới hiểu được đằng sau một
-                  quyết định là cả một bài toán đánh đổi.
-
-                  <br />
-
-                  Mỗi chương bạn khám phá sẽ mở ra một góc nhìn khác — từ bối cảnh,
-                  con người, lợi ích kinh tế đến câu hỏi về công bằng và pháp quyền.
+                  quyết định là cả một bài toán đánh đổi. Mỗi chương bạn khám phá
+                  sẽ mở ra một góc nhìn khác.
 
                 </p>
 
@@ -756,53 +742,61 @@ export default function Home() {
           </Reveal>
 
 
-          <div>
+          {/* LƯỚI 4 CARD (2 CỘT x 2 HÀNG) */}
+          <div className="story-map-grid">
 
-            {sections.map((s, i) => (
+            {sections.slice(0, 4).map((s, i) => (
 
               <Reveal
-                key={s.id}
-                delay={Math.min(i * 0.03, 0.18)}
+                key={s.id || i}
+                delay={Math.min(i * 0.04, 0.16)}
               >
 
                 <Link
-                  className="section-link"
+                  className="story-card"
                   to={s.path}
                 >
 
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 15,
-                    }}
-                  >
-
-                    <div className="num">
-                      {s.number}
-                    </div>
+                  {/* Số thứ tự chìm ở nền */}
+                  <span className="card-watermark-num">
+                    {s.number || (i + 1).toString().padStart(2, '0')}
+                  </span>
 
 
-                    <div>
+                  {/* Đỉnh thẻ: Tag & Mũi tên */}
+                  <div className="card-top">
 
-                      <h3>
-                        {s.title}
-                      </h3>
+                    <span className="card-index-tag">
+                      CHƯƠNG {s.number || (i + 1).toString().padStart(2, '0')}
+                    </span>
 
 
-                      <p>
-                        {s.subtitle}
-                      </p>
+                    <div className="card-arrow-circle">
+
+                      <ArrowUpRight size={18} className="arrow-icon" />
 
                     </div>
 
                   </div>
 
 
-                  <ArrowUpRight
-                    size={24}
-                    color="#98A2B3"
-                  />
+                  {/* Thân thẻ: Tiêu đề & Mô tả */}
+                  <div className="card-body">
+
+                    <h3 className="card-title">
+                      {s.title}
+                    </h3>
+
+
+                    <p className="card-subtitle">
+                      {s.subtitle}
+                    </p>
+
+                  </div>
+
+
+                  {/* Đường viền phát sáng khi Hover */}
+                  <div className="card-hover-line" />
 
                 </Link>
 
@@ -811,6 +805,42 @@ export default function Home() {
             ))}
 
           </div>
+
+
+          {/* BANNER NÚT CHUYỂN HƯỚNG TỚI TRANG FULL */}
+          <Reveal delay={0.2}>
+
+            <div className="story-map-footer">
+
+              <div className="footer-info">
+
+                <span className="footer-badge">
+                  Đang hiển thị 4 / {sections.length || 8} chương
+                </span>
+
+                <p className="footer-text">
+
+                  Vẫn còn nhiều góc nhìn quan trọng về kinh tế, con người và pháp quyền phía trước.
+
+                </p>
+
+              </div>
+
+
+              <Link
+                to="/sections" /* Thay đường dẫn tới trang hiển thị full của bạn */
+                className="btn-view-all"
+              >
+
+                <span>Mở toàn bộ mục lục</span>
+
+                <ArrowUpRight size={18} />
+
+              </Link>
+
+            </div>
+
+          </Reveal>
 
         </div>
 

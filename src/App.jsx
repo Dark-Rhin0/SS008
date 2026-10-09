@@ -19,6 +19,7 @@ import SourcesPage from './pages/SourcesPage'
 import FlipbookPage from './pages/FlipbookPage'
 import GamePage from './pages/GamePage'
 import GamePlayPage from './pages/GamePlayPage'
+import Sections from './pages/Sections'
 
 function Shell() {
   const location = useLocation()
@@ -201,6 +202,7 @@ function Shell() {
     <Routes location={location}>
       <Route path="/" element={<Home />} />
 
+      <Route path="/sections" element={<Sections />} />
       <Route path="/event" element={<EventPage />} />
       <Route path="/context" element={<ContextPage />} />
       <Route path="/chaebol" element={<ChaebolPage />} />

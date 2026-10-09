@@ -308,6 +308,280 @@
   }
 }
 
+/* ==========================================================================
+   STORY MAP SECTION (EDITONAL - SHOW 4 CARDS ONLY)
+   ========================================================================== */
+
+.story-map-section {
+  padding: 5.5rem 0;
+  background-color: #f8fafc;
+  position: relative;
+}
+
+/* --- Header Section (Căn giữa hàng dọc) --- */
+.story-map-header {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.eyebrow-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--blue, #0c6ec9);
+  background: rgba(12, 110, 201, 0.08);
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+}
+
+.header-title {
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.25;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.header-title .highlight-text {
+  color: var(--blue, #0c6ec9);
+  background: rgba(12, 110, 201, 0.08);
+  padding: 0 8px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.header-desc {
+  line-height: 1.6;
+  color: #64748b;
+  margin: 0;
+}
+
+/* --- Grid 4 Cards (2 Cột x 2 Hàng) --- */
+.story-map-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.story-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 175px;
+  padding: 1.6rem 1.75rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.03);
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.story-card:hover {
+  border-color: rgba(12, 110, 201, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -8px rgba(12, 110, 201, 0.12);
+}
+
+/* Watermark Số Lớn Chìm ở Nền */
+.card-watermark-num {
+  position: absolute;
+  right: 12px;
+  bottom: -10px;
+  font-family: 'Space Grotesk', sans-serif, system-ui;
+  font-size: 6rem;
+  font-weight: 900;
+  color: rgba(15, 23, 42, 0.03);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.story-card:hover .card-watermark-num {
+  color: rgba(12, 110, 201, 0.07);
+  transform: translateY(-4px);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  z-index: 2;
+}
+
+.card-index-tag {
+  font-family: monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--blue, #0c6ec9);
+  background: rgba(12, 110, 201, 0.06);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+}
+
+.card-arrow-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  color: #64748b;
+  transition: all 0.25s ease;
+}
+
+.story-card:hover .card-arrow-circle {
+  background: var(--blue, #0c6ec9);
+  color: #ffffff;
+  transform: rotate(45deg);
+}
+
+.card-body {
+  position: relative;
+  z-index: 2;
+}
+
+.card-title {
+  color: #0f172a;
+  margin: 0 0 0.4rem 0;
+  font-size: 18.8px;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.story-card:hover .card-title {
+  color: var(--blue, #0c6ec9);
+}
+
+.card-subtitle {
+  color: #64748b;
+  margin: 0;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-hover-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue, #0c6ec9) 0%, #35cc27 100%);
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: all 0.3s ease;
+}
+
+.story-card:hover .card-hover-line {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+/* --- Banner Footer chuyển hướng trang --- */
+.story-map-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 1.25rem 1.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+.footer-info {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.footer-badge {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #475569;
+  background: #f1f5f9;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.footer-text {
+
+  color: #64748b;
+  margin: 0;
+}
+
+.btn-view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #0f172a;
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.7rem 1.3rem;
+  border-radius: 8px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+}
+
+.btn-view-all:hover {
+  background: var(--blue, #0c6ec9);
+  box-shadow: 0 6px 16px rgba(12, 110, 201, 0.25);
+  transform: translateY(-1px);
+}
+
+/* --- Responsive cho Mobile & Tablet --- */
+@media (max-width: 868px) {
+  .story-map-header {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .story-map-grid {
+    grid-template-columns: 1fr; /* Trở về 1 cột trên điện thoại */
+  }
+
+  .story-map-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .footer-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .btn-view-all {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 /* =========================================================
    STORY MAP
    ========================================================= */
