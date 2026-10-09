@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
+//lười thêm vô environment quá nên để v luôn=))
 const firebaseConfig = {
   apiKey: "AIzaSyDFK3QPqZk4klVNov6_54H_PuWhxB88lnU",
   authDomain: "ss008-qna.firebaseapp.com",
