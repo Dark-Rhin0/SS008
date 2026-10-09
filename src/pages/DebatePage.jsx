@@ -465,7 +465,7 @@ export default function DebatePage() {
                                   ? "Tạm dừng"
                                   : isThisAudio
                                     ? "Tiếp tục nghe"
-                                    : "Nghe giải thích"}
+                                    : "Nghe ý kiến"}
                             </span>
                           </button>
 

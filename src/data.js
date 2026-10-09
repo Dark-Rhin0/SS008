@@ -58,9 +58,9 @@ export const policySteps = [
 ]
 
 export const myths = [
-  { myth: 'Được đặc xá = được tuyên vô tội', fact: 'Sai. Đặc xá không thay đổi phán quyết của tòa và không đồng nghĩa xóa mọi hậu quả pháp lý.', tone: 'blue' },
-  { myth: 'Chính phủ chỉ đặc xá riêng Samsung', fact: 'Sai. Đợt đặc xá có quy mô gần 1.700 người và bao gồm nhiều nhóm khác nhau.', tone: 'blue' },
-  { myth: 'Samsung sẽ cứu nền kinh tế', fact: 'Quá đơn giản hóa. Chính phủ nói về kỳ vọng đóng góp của các lãnh đạo doanh nghiệp lớn thông qua đầu tư, công nghệ và việc làm.', tone: 'blue' },
+  { myth: 'Được đặc xá = được tuyên vô tội', fact: 'Sai. Đặc xá không đồng nghĩa với hủy bản án hay tuyên vô tội. Đây là quyết định miễn hoặc giảm một số hậu quả pháp lý của bản án, chứ không thay đổi phán quyết của tòa.', tone: 'blue' },
+  { myth: 'Chính phủ chỉ đặc xá riêng Samsung', fact: 'Sai. Đợt đặc xá năm 2022 áp dụng cho gần 1.700 người, trong đó có nhiều doanh nhân và lãnh đạo doanh nghiệp khác như Shin Dong-bin của Lotte.', tone: 'blue' },
+  { myth: 'Tất cả các Chaebol đều được đối xử giống nhau.', fact: 'Không hoàn toàn đúng. Không phải tất cả lãnh đạo Chaebol đều được đặc xá. Khi so sánh cần xem xét tình trạng pháp lý, hoàn cảnh của từng cá nhân và tiêu chí của từng đợt đặc xá, thay vì chỉ nhìn vào việc họ thuộc Chaebol.', tone: 'blue' },
   { myth: 'Đặc xá chắc chắn tạo tăng trưởng', fact: 'Chưa thể khẳng định. Kỳ vọng chính sách không phải bằng chứng về quan hệ nhân quả trực tiếp.', tone: 'red' },
 ]
 

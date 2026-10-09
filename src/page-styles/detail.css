@@ -542,7 +542,7 @@
 }
 
 .flip-face h3 {
-  font: 700 clamp(25px, 3vw, 37px) / 1.05 'Space Grotesk';
+  font: 700 clamp(25px, 3vw, 27px) / 1.15 'Space Grotesk';
   letter-spacing: -.04em;
   max-width: 90%;
 }
