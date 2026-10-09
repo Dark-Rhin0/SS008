@@ -198,7 +198,7 @@ export default function EventPage() {
                     maxWidth: 720,
                   }}
                 >
-                  Phóng sự Reuters về việc Chính phủ
+                  Phóng sự của quốc hội về việc Chính phủ
                   Hàn Quốc đặc xá Lee Jae-yong trong
                   bối cảnh nước này đối mặt với áp lực
                   kinh tế năm 2022.
@@ -213,7 +213,7 @@ export default function EventPage() {
                 <div className="event-video-frame">
                   <iframe
                     src={YOUTUBE_EMBED_URL}
-                    title="South Korea pardons Samsung's Lee over economic crisis - Reuters"
+                    title="Hàn Quốc ân xá cho ông Lee của Samsung vì lý do khủng hoảng kinh tế."
                     loading="lazy"
                     allow="
                       accelerometer;
@@ -235,12 +235,11 @@ export default function EventPage() {
                 <div className="event-video-footer">
                   <div className="event-video-info">
                     <strong>
-                      Reuters — 12/08/2022
+                      Thông Tin QUốc Hội — 13/08/2022
                     </strong>
 
                     <p>
-                      South Korea pardons Samsung's Lee
-                      over 'economic crisis'
+                      Hàn Quốc ân xá cho ông Lee của Samsung vì lý do 'khủng hoảng kinh tế'
                     </p>
                   </div>
 

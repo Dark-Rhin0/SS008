@@ -35,9 +35,9 @@ export const eventTimeline = [
 ]
 
 export const crisisStats = [
-  { value: '2,6%', label: 'Dự báo tăng trưởng 2022', detail: 'Từ mức 4,1% năm 2021, dự báo tăng trưởng bị hạ xuống quanh 2,6% trong bối cảnh toàn cầu xấu đi.' },
-  { value: '6,3%', label: 'Lạm phát tháng 7/2022', detail: 'Mức tăng cao nhất trong gần 24 năm theo tài liệu; lạm phát vượt mục tiêu 2% kéo dài.' },
-  { value: '23,1%', label: 'Giá năng lượng, 11/2022', detail: 'Giá điện, nước và khí đốt tăng mạnh, gây áp lực lên sản xuất và đời sống.' },
+  { value: '2,6%↘', label: 'Dự báo tăng trưởng 2022', detail: 'Từ mức 4,1% năm 2021, dự báo tăng trưởng bị hạ xuống quanh 2,6% trong bối cảnh toàn cầu xấu đi.' },
+  { value: '6,3%', label: 'Lạm phát tháng 7/2022', detail: 'Mức tăng cao nhất trong gần 24 năm; lạm phát vượt mục tiêu 2% kéo dài.' },
+  { value: '23,1%', label: 'Giá năng lượng, 11/2022', detail: 'Giá điện, nước và khí đốt tăng mạnh, gây áp lực lên sản xuất và đời sống người dân.' },
   { value: '8 tháng', label: 'Thâm hụt thương mại liên tiếp', detail: 'Xuất khẩu suy yếu khi nhu cầu chip toàn cầu lao dốc, kéo theo thâm hụt thương mại kéo dài.' },
   { value: '3,25%', label: 'Lãi suất cơ bản BOK', detail: 'BOK tăng lãi suất để chống lạm phát và bám đuổi chu kỳ thắt chặt của Fed.' },
   { value: '21 tháng', label: 'Việc làm tăng liên tiếp', detail: 'Thị trường lao động là một điểm sáng hiếm hoi giữa bức tranh kinh tế nhiều sức ép.' },

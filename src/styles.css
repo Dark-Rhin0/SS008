@@ -192,7 +192,7 @@ html.lenis body {
 }
 
 .h2 {
-  font-size: clamp(42px, 5vw, 78px);
+  font-size: clamp(42px, 5vw, 70px);
 }
 
 .h3 {

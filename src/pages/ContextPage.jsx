@@ -200,7 +200,7 @@ export default function ContextPage() {
 
                     <span className="eyebrow">
 
-                      SIGNAL{' '}
+                      Lí do {' '}
 
                       {String(active + 1).padStart(2, '0')}
 
@@ -432,7 +432,7 @@ export default function ContextPage() {
                   </b>
 
                   <span>
-                    để giữ vị trí trong chuỗi cung ứng bán
+                    để giữ vị thế trong chuỗi cung ứng bán
                     dẫn toàn cầu.
                   </span>
 
