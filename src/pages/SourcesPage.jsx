@@ -46,7 +46,7 @@ export default function SourcesPage() {
                     <div className="card source-note">
                         <span className="eyebrow">NOTE</span>
                         <p>
-                            Ảnh website sử dụng lấy từ các trang báo điện tử chính thống. Phần
+                            Ảnh website sử dụng lấy từ các trang báo điện tử chính thống và dùng Pippit AI để tạo. Phần
                             YouTube dùng iframe của Reuters/CNA.
                         </p>
                         <a
@@ -54,7 +54,7 @@ export default function SourcesPage() {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            Xem thông tin giấy phép ảnh 1↗ 
+                            Xem nguồn ảnh 1↗ 
                         </a>
                         <span> </span>
                         <a
@@ -62,7 +62,7 @@ export default function SourcesPage() {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            Xem thông tin giấy phép ảnh 2↗
+                            Xem nguồn ảnh 2↗
                         </a>
                     </div>
                 </div>
