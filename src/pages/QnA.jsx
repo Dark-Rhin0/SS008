@@ -303,7 +303,7 @@ export default function QnA() {
                           title={q.answer ? 'Chỉnh sửa câu trả lời' : 'Viết câu trả lời'}
                         >
                           {q.answer ? <Edit3 size={14} /> : <MessageCirclePlus size={14} />}
-                          <span>{q.answer ? 'Sửa trả lời' : 'Trả lời'}</span>
+                          <span>{q.answer ? 'Chỉnh sửa' : 'Trả lời'}</span>
                         </button>
 
                         <button
