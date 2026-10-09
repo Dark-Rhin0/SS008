@@ -246,15 +246,6 @@ export default function PageIntro({
 
       </div>
 
-
-      {/* =====================================================
-          DECORATIVE CORNER
-          ===================================================== */}
-
-      <div className="detail-hero-corner">
-        <ArrowUpRight size={18} />
-      </div>
-
     </section>
   )
 }
