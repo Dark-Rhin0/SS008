@@ -85,14 +85,14 @@ export default function Balance2D({ tilt = 0 }) {
         {/* Nhãn nhãn thông tin ECONOMY & LAW */}
         <g className="balance-label balance-label-left">
           <rect x="62" y="52" width="188" height="64" rx="18" fill="#F0F4FF" stroke="#5D7BFF" strokeWidth="2" />
-          <text x="88" y="79" fill="#1428A0" fontWeight="bold" fontSize="14">ECONOMY</text>
-          <text x="88" y="101" fill="#4B5563" fontSize="11">Investment • Jobs • Tech</text>
+          <text x="88" y="79" fill="#1428A0" fontWeight="bold" fontSize="14">KINH TẾ</text>
+          <text x="88" y="101" fill="#4B5563" fontSize="11">Vốn • Việc Làm • Phát Triển</text>
         </g>
 
         <g className="balance-label balance-label-right">
           <rect x="510" y="52" width="188" height="64" rx="18" fill="#FFF0F2" stroke="#FF6674" strokeWidth="2" />
-          <text x="536" y="79" fill="#C42838" fontWeight="bold" fontSize="14">LAW & TRUST</text>
-          <text x="536" y="101" fill="#4B5563" fontSize="11">Equality • Justice • Precedent</text>
+          <text x="536" y="79" fill="#C42838" fontWeight="bold" fontSize="14">TÍNH NGHIÊM MINH</text>
+          <text x="536" y="101" fill="#4B5563" fontSize="11">Công Bằng • Công Lý</text>
         </g>
       </svg>
 

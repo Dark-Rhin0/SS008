@@ -23,7 +23,7 @@ return (
         <Reveal>
           <div className="trade-layout">
             <div className="trade-copy">
-              <span className="eyebrow">THE BALANCE</span>
+              <span className="eyebrow">Sự đánh đổi</span>
               <h2 className="h2" style={{ marginTop: 12 }}>
                 Không có lựa chọn nào “miễn phí”.
               </h2>
@@ -40,7 +40,7 @@ return (
                   >
                     <div>
                       <span className="eyebrow">
-                        {i === 0 ? "BENEFIT" : "RISK"}
+                        {i === 0 ? "Lợi ích" : "Rủi ro"}
                       </span>
                       <h3>{side.side}</h3>
                     </div>

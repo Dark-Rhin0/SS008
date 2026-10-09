@@ -13,7 +13,7 @@ export default function ConclusionPage() {
     <>
       <PageIntro
         number="08 / Kết luận tổng hợp"
-        title="Vậy tại sao?"
+        title="Quyết định hợp lý?"
         subtitle="Câu trả lời cô đọng từ toàn bộ tài liệu — không phải một nguyên nhân duy nhất, mà là một chuỗi 5 yếu tố."
       />
       <section className="section">

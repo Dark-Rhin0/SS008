@@ -756,7 +756,7 @@ export default function Home() {
                 <p className="copy">
 
                   Chỉ khi tự đi tìm câu trả lời, bạn mới hiểu được đằng sau một
-                  quyết định tưởng như đơn giản là cả một bài toán đánh đổi.
+                  quyết định là cả một bài toán đánh đổi.
 
                   <br />
 

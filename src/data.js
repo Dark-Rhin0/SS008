@@ -6,7 +6,7 @@ export const sections = [
   { id: 'debate', number: '05', title: 'Tại sao gây tranh cãi?', subtitle: 'Phục hồi kinh tế ↔ pháp quyền', path: '/debate' },
   { id: 'myth', number: '06', title: 'Điều gì dễ bị hiểu sai?', subtitle: 'Myth vs Fact', path: '/myth' },
   { id: 'tradeoff', number: '07', title: 'Chính phủ đang đánh đổi điều gì?', subtitle: 'Bài toán cân bằng', path: '/tradeoff' },
-  { id: 'conclusion', number: '08', title: 'Các vấn đề liên quan', subtitle: '5 yếu tố để trả lời câu hỏi lớn', path: '/conclusion' },
+  { id: 'conclusion', number: '08', title: 'Quyết định liệu có đúng đắn?', subtitle: '5 yếu tố để trả lời câu hỏi lớn', path: '/conclusion' },
 ]
 
 export const sources = [
