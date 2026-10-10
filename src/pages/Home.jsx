@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate  } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import {
   ArrowDown,
   ArrowUpRight,
@@ -41,22 +41,8 @@ import building from '../assets/samsung-building.png'
  * =========================================================
  * HERO BACKDROP
  * =========================================================
- *
- * Có 2 trạng thái:
- *
- * 1. replay = false
- *    → hoạt động hoàn toàn bằng scroll như hiện tại.
- *
- * 2. replay = true
- *    → khi đang ở Home và bấm logo,
- *      ảnh bắt đầu lớn rồi thu nhỏ về bình thường.
  */
 function HeroBackdrop({ progress, replay }) {
-  /*
-   * =========================================================
-   * SCROLL ANIMATION
-   * =========================================================
-   */
   const scrollScale = useTransform(progress, [0, 0.45, 1], [1, 1.06, 1.12])
   const y = useTransform(progress, [0, 1], [0, 46])
   const brightness = useTransform(
@@ -66,34 +52,16 @@ function HeroBackdrop({ progress, replay }) {
   )
   const overlay = useTransform(progress, [0, 0.6, 1], [0.18, 0.34, 0.55])
 
-  /*
-   * =========================================================
-   * REPLAY SCALE
-   * =========================================================
-   *
-   * Khi replay:
-   * 1.12 → 1
-   *
-   * Khi không replay:
-   * dùng scrollScale bình thường.
-   */
   const replayScale = useMotionValue(replay ? 1.12 : 1)
 
-  /*
-   * =========================================================
-   * REPLAY ANIMATION
-   * =========================================================
-   */
   useEffect(() => {
     if (!replay) {
       replayScale.set(1)
       return
     }
 
-    /* Luôn bắt đầu từ ảnh lớn. */
     replayScale.set(1.12)
 
-    /* Thu nhỏ về kích thước bình thường. */
     const controls = animate(replayScale, 1, {
       duration: 0.65,
       ease: [0.22, 1, 0.36, 1],
@@ -104,10 +72,6 @@ function HeroBackdrop({ progress, replay }) {
     }
   }, [replay, replayScale])
 
-  /*
-   * Khi replay → dùng replayScale.
-   * Bình thường → dùng scrollScale.
-   */
   const finalScale = replay ? replayScale : scrollScale
 
   return (
@@ -136,25 +100,9 @@ function HeroBackdrop({ progress, replay }) {
  * =========================================================
  */
 export default function Home() {
-  /*
-   * =========================================================
-   * ROUTER LOCATION
-   * =========================================================
-   *
-   * Header sẽ truyền state={{ replayHero: true }}
-   * khi người dùng đang ở Home và bấm logo.
-   */
   const location = useLocation()
   const replayHero = location.state?.replayHero === true
 
-  /*
-   * =========================================================
-   * CLEAR REPLAY STATE
-   * =========================================================
-   *
-   * Sau khi nhận replayHero, xóa state khỏi history
-   * để tránh việc refresh Home lại tiếp tục replay.
-   */
   useEffect(() => {
     if (!replayHero) return
 
@@ -165,18 +113,8 @@ export default function Home() {
     )
   }, [replayHero])
 
-  /*
-   * =========================================================
-   * IMAGE LIGHTBOX
-   * =========================================================
-   */
   const [selectedImage, setSelectedImage] = useState(null)
 
-  /*
-   * =========================================================
-   * ESCAPE TO CLOSE IMAGE
-   * =========================================================
-   */
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === 'Escape') {
@@ -190,21 +128,11 @@ export default function Home() {
     }
   }, [])
 
-  /*
-   * =========================================================
-   * THE CENTRAL TENSION
-   * =========================================================
-   */
   const centralTensionRef = useRef(null)
   const centralTensionInView = useInView(centralTensionRef, {
     amount: 0.05,
   })
 
-  /*
-   * =========================================================
-   * HERO & SCROLL PROGRESS
-   * =========================================================
-   */
   const heroRef = useRef(null)
   const { scrollYProgress: heroProgress } = useScroll({
     target: heroRef,
@@ -214,11 +142,6 @@ export default function Home() {
   const copyY = useTransform(heroProgress, [0, 1], [0, -46])
   const copyOpacity = useTransform(heroProgress, [0, 0.48, 1], [1, 1, 0.25])
 
-  /*
-   * =========================================================
-   * CUỘN MƯỢT TỚI STORY MAP
-   * =========================================================
-   */
   const handleStoryScroll = (event) => {
     event.preventDefault()
     const target = document.getElementById('map')
@@ -238,7 +161,6 @@ export default function Home() {
       })
     }
 
-    /* Cập nhật URL hash mà không để browser tự nhảy vị trí. */
     window.history.replaceState(
       null,
       '',
@@ -249,7 +171,7 @@ export default function Home() {
   const openImage = () => {
     setSelectedImage(bigChaebol)
   }
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const closeImage = () => {
     setSelectedImage(null)
   }
@@ -261,9 +183,6 @@ export default function Home() {
           ===================================================== */}
       <section className="home-hero-stage" ref={heroRef}>
         <div className="hero-pin">
-          {/* =================================================
-              HERO BACKDROP
-              ================================================= */}
           <HeroBackdrop progress={heroProgress} replay={replayHero} />
 
           <div className="hero-vignette" />
@@ -335,9 +254,6 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* =================================================
-              SMOOTH SCROLL CUE
-              ================================================= */}
           <motion.a
             href="#map"
             className="scroll-cue scroll-cue-dark"
@@ -365,7 +281,6 @@ export default function Home() {
             ===================================================== */}
         <section className="hero-cover" id="map">
           <div className="container hero-cover-inner">
-            {/* TIÊU ĐỀ ĐẶT RIÊNG Ở TRÊN CÙNG */}
             <div className="hero-cover-header">
               <Reveal>
                 <div className="cover-kicker">
@@ -383,9 +298,7 @@ export default function Home() {
               </Reveal>
             </div>
 
-            {/* KHỐI GRID 2 CỘT: NỘI DUNG (TRÁI) & ẢNH (PHẢI) */}
             <div className="editorial-body-grid">
-              {/* CỘT TRÁI: NỘI DUNG & NÚT */}
               <div className="editorial-content">
                 <Reveal delay={0}>
                   <p className="cover-copy">
@@ -396,7 +309,6 @@ export default function Home() {
                   </p>
                 </Reveal>
 
-                
                 <div className="cover-actions">
                   <Link className="btn btn-primary" to="/context">
                     Xem bối cảnh
@@ -408,10 +320,8 @@ export default function Home() {
                     Xem cán cân
                   </Link>
                 </div>
-                
               </div>
 
-              {/* CỘT PHẢI: KHUNG ẢNH CẠNH NỘI DUNG */}
               <figure className="editorial-figure">
                 <div className="editorial-image-wrapper">
                   <img
@@ -439,7 +349,6 @@ export default function Home() {
 
         <div className="container">
           <div className="lee-layout">
-            {/* CỘT NỘI DUNG */}
             <div className="lee-main-content">
               <div className="lee-heading">
                 <span className="lee-eyebrow">
@@ -447,23 +356,27 @@ export default function Home() {
                   TÌM HIỂU VỀ LEE JAE-YONG
                 </span>
 
-                <Reveal delay={0.2}><h2 className="h2 title2">Điều bạn cần biết</h2></Reveal>
+                <Reveal delay={0.2}>
+                  <h2 className="h2 title2">Điều bạn cần biết</h2>
+                </Reveal>
               </div>
 
               <div className="lee-cards">
-                {/* CARD 1 */}
                 <Reveal delay={0.3}>
-                  <article className="lee-card" onClick={() => navigate("/event")}>
+                  <article
+                    className="lee-card"
+                    onClick={() => navigate('/event')}
+                  >
                     <div className="lee-card-icon">
                       <UserRound size={34} strokeWidth={1.7} />
                     </div>
-                    
+
                     <h3 className="h3 title3">
                       Lee Jae-yong
                       <br />
                       là ai?
                     </h3>
-                    
+
                     <p>
                       Tìm hiểu về lãnh đạo Samsung, vai trò của ông trong nền kinh
                       tế Hàn Quốc và sự kiện ân xá năm 2022.
@@ -476,9 +389,11 @@ export default function Home() {
                   </article>
                 </Reveal>
 
-                {/* CARD 2 */}
                 <Reveal delay={0.45}>
-                  <article className="lee-card" onClick={() => navigate("/event")}>
+                  <article
+                    className="lee-card"
+                    onClick={() => navigate('/event')}
+                  >
                     <div className="lee-card-icon">
                       <Building2 size={34} strokeWidth={1.7} />
                     </div>
@@ -503,7 +418,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* CỘT ẢNH */}
             <div className="lee-portrait" aria-hidden="true">
               <div className="lee-portrait-stage">
                 <div className="lee-portrait-ring"></div>
@@ -533,7 +447,6 @@ export default function Home() {
           ================================================       */}
       <section className="story-map-section" id="map">
         <div className="container">
-          {/* SECTION HEADER */}
           <Reveal>
             <div className="story-map-header">
               <div className="header-left">
@@ -559,17 +472,14 @@ export default function Home() {
             </div>
           </Reveal>
 
-          {/* LƯỚI 4 CARD (2 CỘT x 2 HÀNG) */}
           <div className="story-map-grid">
             {sections.slice(0, 4).map((s, i) => (
               <Reveal key={s.id || i} delay={Math.min(i * 0.04, 0.16)}>
                 <Link className="story-card" to={s.path}>
-                  {/* Số thứ tự chìm ở nền */}
                   <span className="card-watermark-num">
                     {s.number || (i + 1).toString().padStart(2, '0')}
                   </span>
 
-                  {/* Đỉnh thẻ: Tag & Mũi tên */}
                   <div className="card-top">
                     <span className="card-index-tag">
                       CHƯƠNG {s.number || (i + 1).toString().padStart(2, '0')}
@@ -580,20 +490,17 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* Thân thẻ: Tiêu đề & Mô tả */}
                   <div className="card-body">
                     <h3 className="card-title">{s.title}</h3>
                     <p className="card-subtitle">{s.subtitle}</p>
                   </div>
 
-                  {/* Đường viền phát sáng khi Hover */}
                   <div className="card-hover-line" />
                 </Link>
               </Reveal>
             ))}
           </div>
 
-          {/* BANNER NÚT CHUYỂN HƯỚNG TỚI TRANG FULL */}
           <Reveal delay={0.2}>
             <div className="story-map-footer">
               <div className="footer-info">
@@ -607,8 +514,12 @@ export default function Home() {
                 </p>
               </div>
 
+              {/* Nút có hiệu ứng trượt chữ */}
               <Link to="/sections" className="btn-view-all">
-                <span>Mở toàn bộ mục lục</span>
+                <span className="btn-text-wrap">
+                  <span className="btn-text-primary">Mở toàn bộ mục lục</span>
+                  <span className="btn-text-secondary">Xem hết 8 chương</span>
+                </span>
                 <ArrowUpRight size={18} />
               </Link>
             </div>
@@ -621,7 +532,6 @@ export default function Home() {
           ================================================       */}
       <section ref={centralTensionRef} className="section home-feature">
         <div className="container grid grid-2 home-feature-grid">
-          {/* CLICKABLE BIG CHAEBOL IMAGE */}
           <Reveal>
             <button
               type="button"
@@ -684,7 +594,6 @@ export default function Home() {
           ================================================       */}
       <section className="section final-experience">
         <div className="container">
-          {/* TOP MINI NAV */}
           <Reveal>
             <div className="final-mini-nav">
               <a
@@ -714,9 +623,7 @@ export default function Home() {
             </div>
           </Reveal>
 
-          {/* MAIN FEATURE */}
           <div className="final-feature">
-            {/* IMAGE SIDE */}
             <div className="final-feature-image">
               <div className="final-image-overlay" />
 
@@ -727,7 +634,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* CONTENT SIDE */}
             <div className="final-feature-content">
               <span className="eyebrow final-eyebrow">Đa góc nhìn</span>
 
@@ -744,9 +650,7 @@ export default function Home() {
                 quyết định.
               </p>
 
-              {/* OPTIONS */}
               <div className="final-options">
-                {/* ĐÓNG GÓP */}
                 <Link to="/qna" className="final-option">
                   <div className="final-option-number"></div>
 
@@ -765,11 +669,7 @@ export default function Home() {
                   </div>
                 </Link>
 
-                {/* GAME */}
-                <a
-                  href={GAME_URL}
-                  className="final-option final-option-game"
-                >
+                <a href={GAME_URL} className="final-option final-option-game">
                   <div className="final-option-number"></div>
 
                   <div className="final-option-content">
@@ -788,7 +688,6 @@ export default function Home() {
                 </a>
               </div>
 
-              {/* CLOSING LINE */}
               <div className="final-closing">
                 <span className="final-closing-line" />
                 <span>
@@ -803,9 +702,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* =======================================================
-          IMAGE LIGHTBOX
-          ================================================       */}
       {selectedImage && (
         <div
           className="image-lightbox"
@@ -814,7 +710,6 @@ export default function Home() {
           aria-label="Xem ảnh kích thước lớn"
           onClick={closeImage}
         >
-          {/* CLOSE BUTTON */}
           <button
             type="button"
             className="image-lightbox-close"
@@ -824,7 +719,6 @@ export default function Home() {
             <X size={26} />
           </button>
 
-          {/* FULL IMAGE */}
           <img
             src={selectedImage}
             alt="Chaebol / Big 5"
