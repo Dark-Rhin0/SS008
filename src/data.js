@@ -25,11 +25,11 @@ export const sources = [
 ]
 
 export const eventTimeline = [
-  { date: '2015', title: 'Vụ sáp nhập Samsung', text: 'Vụ sáp nhập giữa Samsung C&T và Cheil Industries trị giá 8 tỷ USD là thương vụ mang tính chiến lược giúp Chuyển giao quyền lực từ Chủ tịch Lee Kun-hee sang con trai Lee Jae-yong (thái tử samsung).' },
+  { date: '2015', title: 'Vụ sáp nhập Samsung', text: 'Vụ sáp nhập giữa Samsung C&T và Cheil Industries trị giá 8 tỷ USD là thương vụ mang tính chiến lược giúp Chuyển giao quyền lực từ Chủ tịch Lee Kun-hee sang con trai Lee Jae-Yong (thái tử samsung).' },
   { date: '08/2017', title: 'Bị bắt / kết án', text: 'Đưa hối lộ, tham ô và tài trợ cho bà Choi Soon-sil (bạn thân cựu Tổng thống Park Geun-hye) khoảng 8,6 tỷ won nhằm đổi lấy sự hậu thuẫn của chính phủ để chuyển giao quyền quản lý và kiểm soát tập đoàn Samsung từ cha sang con một cách thuận lợi.' },
-  { date: '08/2021', title: 'Được tạm tha', text: 'Lee Jae-yong (thái tử Samsung) chính thức được tạm tha vào ngày 13/08/2021 sau khi đã thụ án được khoảng 18 tháng tù trong tổng số án phạt 2 năm rưỡi tù giam vì tội hối lộ và tham ô liên quan đến cựu Tổng thống Park Geun-hye.' },
+  { date: '08/2021', title: 'Được tạm tha', text: 'Lee Jae-Yong (thái tử Samsung) chính thức được tạm tha vào ngày 13/08/2021 sau khi đã thụ án được khoảng 18 tháng tù trong tổng số án phạt 2 năm rưỡi tù giam vì tội hối lộ và tham ô liên quan đến cựu Tổng thống Park Geun-hye.' },
   { date: '29/07/2022', title: 'Án tù mãn hạn', text: 'Vào ngày 29/07/2022, án phạt tù của ông Lee Jae-yong chính thức kết thúc, song lệnh hạn chế làm việc 5 năm vẫn tiếp tục hiệu lực do ông được thả tự do theo diện ân xá trước thời hạn.' },
-  { date: '12/08/2022', title: 'Công bố đặc xá', text: 'Tổng thống Yoon Suk-yeol công bố đợt đặc xá cho Lee Jae-yong ("Thái tử Samsung"), Chủ tịch Tập đoàn Lotte Shin Dong-bin, cùng một số lãnh đạo doanh nghiệp khác.' },
+  { date: '12/08/2022', title: 'Công bố đặc xá', text: 'Tổng thống Yoon Suk-yeol công bố đợt đặc xá cho Lee Jae-yong ("Thái tử Samsung"), Chủ tịch Tập đoàn Lotte Shin Dong-bin, cùng một số lãnh đạo doanh nghiệp và hơn 1600 người khác.' },
   { date: '15/08/2022', title: 'Đặc xá có hiệu lực', text: 'Lệnh đặc xá chính thức có hiệu lực nhân Ngày Giải phóng Hàn Quốc.' },
   { date: '10/2022', title: 'Trở lại vị trí lãnh đạo', text: 'Lee Jae-yong được khôi phục đầy đủ quyền điều hành và sau đó trở thành Executive Chairman.' },
 ]

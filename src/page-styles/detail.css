@@ -1632,3 +1632,204 @@
     height: 160px;
   }
 }
+
+/* ==========================================================================
+   13. EVENT PAGE — LEE JAE-YONG INTRO WITH IMAGE
+   ========================================================================== */
+.lee-intro-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(64px, 8vw, 112px);
+  background:
+    radial-gradient(circle at 12% 18%, rgba(47, 91, 255, 0.09), transparent 28%),
+    linear-gradient(135deg, #f3f6fc 0%, #fbfcff 55%, #eef3fb 100%);
+}
+
+.lee-intro-section::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 320px;
+  height: 320px;
+  right: -120px;
+  bottom: -150px;
+  border: 1px solid rgba(47, 91, 255, 0.16);
+  border-radius: 50%;
+  box-shadow: 0 0 0 35px rgba(47, 91, 255, 0.025), 0 0 0 70px rgba(47, 91, 255, 0.02);
+  pointer-events: none;
+}
+
+.lee-intro-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.88fr) minmax(0, 1.12fr);
+  align-items: center;
+  gap: clamp(32px, 6vw, 84px);
+}
+
+.lee-intro-visual {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  padding: 12px 12px 42px;
+  border: 1px solid rgba(20, 40, 100, 0.12);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 24px 70px rgba(16, 35, 80, 0.12);
+  transform: rotate(-1.2deg);
+  transition: transform 260ms ease, box-shadow 260ms ease;
+}
+
+.lee-intro-visual:hover {
+  transform: rotate(0) translateY(-4px);
+  box-shadow: 0 30px 80px rgba(16, 35, 80, 0.16);
+}
+
+.lee-intro-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 4.5;
+  object-fit: cover;
+  object-position: center 28%;
+  border-radius: 19px;
+  background: #dfe6f2;
+}
+
+.lee-intro-image-caption {
+  position: absolute;
+  right: 24px;
+  bottom: 17px;
+  left: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #34415f;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+.lee-intro-caption-line {
+  width: 28px;
+  height: 2px;
+  flex: 0 0 auto;
+  background: #315bdf;
+}
+
+.lee-intro-copy {
+  max-width: 650px;
+}
+
+.lee-intro-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #315bdf;
+}
+
+.lee-intro-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 25px;
+  height: 2px;
+  background: currentColor;
+}
+
+.lee-intro-title {
+  margin: 16px 0 20px;
+  color: #0b1535;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+.lee-intro-copy > .copy {
+  max-width: 62ch;
+  color: #4d5870;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  line-height: 1.85;
+}
+
+.lee-intro-note {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  margin-top: 28px;
+  padding: 20px 22px;
+  border: 1px solid rgba(49, 91, 223, 0.15);
+  border-left: 3px solid #315bdf;
+  border-radius: 0 16px 16px 0;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.lee-intro-note-mark {
+  color: #315bdf;
+  font-family: Georgia, serif;
+  font-size: 3rem;
+  line-height: 0.9;
+}
+
+.lee-intro-note p {
+  margin: 0;
+  color: #25314c;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .lee-intro-layout {
+    grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.2fr);
+    gap: 30px;
+  }
+
+  .lee-intro-visual {
+    padding: 9px 9px 39px;
+    border-radius: 22px;
+  }
+
+  .lee-intro-image {
+    border-radius: 15px;
+  }
+}
+
+@media (max-width: 680px) {
+  .lee-intro-section {
+    padding-block: 56px;
+  }
+
+  .lee-intro-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 34px;
+  }
+
+  .lee-intro-visual {
+    width: min(100%, 420px);
+    margin-inline: auto;
+    transform: none;
+  }
+
+  .lee-intro-visual:hover {
+    transform: translateY(-3px);
+  }
+
+  .lee-intro-image {
+    aspect-ratio: 5 / 4;
+    object-position: center 24%;
+  }
+
+  .lee-intro-title {
+    margin-top: 13px;
+  }
+
+  .lee-intro-note {
+    margin-top: 22px;
+    padding: 17px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lee-intro-visual {
+    transition: none;
+  }
+}
