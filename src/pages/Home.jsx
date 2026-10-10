@@ -1626,7 +1626,7 @@ export default function Home() {
 
                   <span className="highlight-text">
 
-                    Hãy tự tìm hiểu.
+                    Hãy tự mình khám phá.
 
                   </span>
 
