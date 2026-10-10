@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowLeft, ArrowUpRight } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 import { motion, useReducedMotion } from 'framer-motion'
 
 export default function PageIntro({
@@ -15,10 +15,13 @@ export default function PageIntro({
   return (
     <section className="detail-hero">
 
-      {/* Background — không animation liên tục */}
+      {/* Background — giữ nguyên và thêm các đốm giọt mực màu rõ nét hơn */}
       <div className="detail-hero-grid" />
       <div className="detail-hero-glow detail-hero-glow-1" />
       <div className="detail-hero-glow detail-hero-glow-2" />
+      <div className="ink-blob ink-blob-1" />
+      <div className="ink-blob ink-blob-2" />
+      <div className="ink-blob ink-blob-3" />
 
 
       <div className="container detail-hero-inner">
@@ -102,10 +105,6 @@ export default function PageIntro({
 
           {/* =================================================
               TITLE
-
-              QUAN TRỌNG:
-              Không dùng overflow:hidden.
-              Không scale chữ.
               ================================================= */}
 
           <motion.h1

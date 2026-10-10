@@ -2687,3 +2687,48 @@
     padding: 18px 12px;
   }
 }
+/* =========================================================
+   HIỆU ỨNG GIỌT MỰC / ĐỐM SÁNG RÕ NÉT TRÊN NỀN TRẮNG
+   ========================================================= */
+
+.detail-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.ink-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(45px);
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.65;
+  mix-blend-mode: multiply;
+}
+
+/* Đốm màu Xanh dương Samsung (góc phải trên) */
+.ink-blob-1 {
+  width: 420px;
+  height: 420px;
+  top: -60px;
+  right: -30px;
+  background: radial-gradient(circle, rgba(47, 91, 255, 0.28) 0%, rgba(20, 40, 160, 0.02) 70%);
+}
+
+/* Đốm màu Tím (góc trái dưới) */
+.ink-blob-2 {
+  width: 380px;
+  height: 380px;
+  bottom: -80px;
+  left: 5%;
+  background: radial-gradient(circle, rgba(121, 40, 202, 0.2) 0%, rgba(75, 0, 130, 0.02) 70%);
+}
+
+/* Đốm màu Xanh lá điểm xuyết (giữa trái) */
+.ink-blob-3 {
+  width: 300px;
+  height: 300px;
+  top: 20%;
+  left: -50px;
+  background: radial-gradient(circle, rgba(53, 204, 39, 0.18) 0%, rgba(28, 154, 102, 0.02) 70%);
+}
