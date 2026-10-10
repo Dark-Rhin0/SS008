@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Base Layout & Global Sections
+   1. BASE LAYOUT & GLOBAL SECTIONS
    ================================================================---------- */
 .site-header + .page-shell {
   min-height: 100vh;
@@ -14,7 +14,250 @@
 }
 
 /* ==========================================================================
-   Event Facts Component
+   2. PAGE INTRO (HERO) & INK BLOBS (HIỆU ỨNG GIỌT MỰC NỀN TRẮNG)
+   ================================================================---------- */
+.detail-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 540px;
+  display: flex;
+  align-items: center;
+  padding: 135px 0 90px;
+  background: radial-gradient(
+      circle at 82% 20%,
+      rgba(47, 91, 255, 0.08),
+      transparent 28%
+    ),
+    #f7f9fc;
+  border-bottom: 1px solid rgba(20, 40, 160, 0.08);
+}
+
+.detail-hero-grid {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  opacity: 0.45;
+  background-image: linear-gradient(
+      rgba(20, 40, 160, 0.04) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(20, 40, 160, 0.04) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+.detail-hero-glow {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(47, 91, 255, 0.13),
+    rgba(47, 91, 255, 0)
+  );
+  filter: blur(35px);
+}
+
+.detail-hero-glow-1 {
+  width: 360px;
+  height: 360px;
+  top: -190px;
+  right: 5%;
+}
+
+.detail-hero-glow-2 {
+  width: 240px;
+  height: 240px;
+  bottom: -150px;
+  left: 8%;
+  opacity: 0.65;
+}
+
+/* Các đốm giọt mực rõ nét trên nền trắng */
+.ink-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(45px);
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.65;
+  mix-blend-mode: multiply;
+}
+
+.ink-blob-1 {
+  width: 420px;
+  height: 420px;
+  top: -60px;
+  right: -30px;
+  background: radial-gradient(
+    circle,
+    rgba(47, 91, 255, 0.28) 0%,
+    rgba(20, 40, 160, 0.02) 70%
+  );
+}
+
+.ink-blob-2 {
+  width: 380px;
+  height: 380px;
+  bottom: -80px;
+  left: 5%;
+  background: radial-gradient(
+    circle,
+    rgba(121, 40, 202, 0.2) 0%,
+    rgba(75, 0, 130, 0.02) 70%
+  );
+}
+
+.ink-blob-3 {
+  width: 300px;
+  height: 300px;
+  top: 20%;
+  left: -50px;
+  background: radial-gradient(
+    circle,
+    rgba(53, 204, 39, 0.18) 0%,
+    rgba(28, 154, 102, 0.02) 70%
+  );
+}
+
+.detail-hero-inner {
+  position: relative;
+  width: 100%;
+}
+
+.detail-hero-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #667085;
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.detail-hero-back:hover {
+  color: var(--blue);
+  transform: translateX(-3px);
+}
+
+.detail-hero-content {
+  margin-top: 52px;
+  max-width: 1080px;
+}
+
+.detail-hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.detail-hero-number {
+  color: var(--blue);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.detail-hero-meta-line {
+  width: 58px;
+  height: 1px;
+  flex-shrink: 0;
+  background: linear-gradient(90deg, var(--blue), rgba(20, 40, 160, 0));
+}
+
+.detail-hero-meta-label {
+  color: #98a2b3;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.detail-hero-title {
+  position: relative;
+  margin: 0 !important;
+  max-width: 980px !important;
+  font-size: clamp(3rem, 6.5vw, 6.2rem) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+  transform: translateZ(0);
+  padding-top: 0.08em;
+  padding-bottom: 0.16em;
+  color: var(--navy);
+}
+
+.detail-hero-title::after {
+  content: '';
+  position: absolute;
+  left: 2px;
+  bottom: 0;
+  width: 76px;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--blue), var(--blue-2));
+}
+
+.detail-hero-subtitle-wrap {
+  margin-top: 25px;
+}
+
+.detail-hero-subtitle {
+  max-width: 760px !important;
+  margin: 0 !important;
+  color: #475467;
+  line-height: 1.72;
+  font-size: clamp(1rem, 1.35vw, 1.15rem);
+}
+
+.detail-hero-children {
+  margin-top: 28px;
+}
+
+.detail-hero-bottom {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: min(760px, 100%);
+  margin-top: 48px;
+}
+
+.detail-hero-bottom-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(20, 40, 160, 0.11);
+}
+
+.detail-hero-bottom-text {
+  flex-shrink: 0;
+  color: #98a2b3;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.detail-hero-corner {
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: var(--blue);
+  border: 1px solid rgba(20, 40, 160, 0.1);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(8px);
+  opacity: 0.7;
+}
+
+/* ==========================================================================
+   3. EVENT FACTS COMPONENT
    ================================================================---------- */
 .event-facts .fact {
   padding: 24px;
@@ -29,7 +272,7 @@
 
 .fact strong {
   font: 700 clamp(30px, 4vw, 48px) 'Space Grotesk';
-  letter-spacing: -.04em;
+  letter-spacing: -0.04em;
 }
 
 .fact span {
@@ -37,7 +280,7 @@
 }
 
 /* ==========================================================================
-   Story Slider
+   4. STORY SLIDER
    ================================================================---------- */
 .story-slider {
   margin-top: 22px;
@@ -48,12 +291,12 @@
 
 .story-side {
   padding: 34px;
-  background: #0A1333;
+  background: #0a1333;
   color: #fff;
 }
 
 .story-side .eyebrow {
-  color: #9BAEFF;
+  color: #9baeff;
 }
 
 .timeline-nav {
@@ -65,7 +308,7 @@
 .timeline-nav button {
   border: 0;
   background: none;
-  color: #AEB8D1;
+  color: #aeb8d1;
   text-align: left;
   padding: 14px 0;
   display: flex;
@@ -88,7 +331,7 @@
 
 .timeline-nav button.active i {
   background: #fff;
-  box-shadow: 0 0 0 7px rgba(255, 255, 255, .08);
+  box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.08);
 }
 
 .story-main {
@@ -100,8 +343,8 @@
 }
 
 .big-date {
-  font: 700 clamp(50px, 7vw, 100px) / .9 'Space Grotesk';
-  letter-spacing: -.06em;
+  font: 700 clamp(50px, 7vw, 100px) / 0.9 'Space Grotesk';
+  letter-spacing: -0.06em;
   color: var(--blue);
   margin: 16px 0 18px;
 }
@@ -114,7 +357,7 @@
 }
 
 /* ==========================================================================
-   Callout Component
+   5. CALLOUT COMPONENT
    ================================================================---------- */
 .callout {
   padding: 28px;
@@ -133,7 +376,7 @@
 }
 
 /* ==========================================================================
-   Crisis Stage Component
+   6. CRISIS STAGE COMPONENT
    ================================================================---------- */
 .crisis-stage {
   display: grid;
@@ -159,7 +402,7 @@
   padding: 18px;
   border-radius: 17px;
   cursor: pointer;
-  transition: .22s;
+  transition: 0.22s;
 }
 
 .crisis-list button:hover,
@@ -170,7 +413,7 @@
 
 .crisis-list span {
   font-size: 12px;
-  color: #98A2B3;
+  color: #98a2b3;
 }
 
 .crisis-list b {
@@ -191,9 +434,9 @@
 
 .crisis-focus strong {
   display: block;
-  font: 700 clamp(76px, 10vw, 140px) / .9 'Space Grotesk';
+  font: 700 clamp(76px, 10vw, 140px) / 0.9 'Space Grotesk';
   color: var(--blue);
-  letter-spacing: -.08em;
+  letter-spacing: -0.08em;
   margin: 18px 0;
 }
 
@@ -217,14 +460,19 @@
 }
 
 /* ==========================================================================
-   Chaebol Map & Details
+   7. CHAEBOL MAP & DETAILS
    ================================================================---------- */
 .chaebol-map {
   min-height: 560px;
   position: relative;
   border-radius: 34px;
   overflow: hidden;
-  background: radial-gradient(circle at center, #edf2ff 0, #dfe7ff 32%, #f8fafc 68%);
+  background: radial-gradient(
+    circle at center,
+    #edf2ff 0,
+    #dfe7ff 32%,
+    #f8fafc 68%
+  );
 }
 
 .chaebol-center {
@@ -238,8 +486,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle, #1428A0, #0A1333 75%);
-  box-shadow: 0 30px 80px rgba(20, 40, 160, .3);
+  background: radial-gradient(circle, #1428a0, #0a1333 75%);
+  box-shadow: 0 30px 80px rgba(20, 40, 160, 0.3);
   color: #fff;
   text-align: center;
   z-index: 2;
@@ -253,19 +501,19 @@
 
 .center-text span {
   font-size: 10px;
-  letter-spacing: .16em;
-  opacity: .7;
+  letter-spacing: 0.16em;
+  opacity: 0.7;
 }
 
 .center-text b {
   font: 700 44px 'Space Grotesk';
-  letter-spacing: -.08em;
+  letter-spacing: -0.08em;
 }
 
 .center-orbit {
   position: absolute;
   inset: -30px;
-  border: 1px dashed rgba(20, 40, 160, .28);
+  border: 1px dashed rgba(20, 40, 160, 0.28);
   border-radius: 50%;
   animation: spin 18s linear infinite;
 }
@@ -280,8 +528,8 @@
   position: absolute;
   width: 145px;
   height: 110px;
-  border: 1px solid rgba(20, 40, 160, .13);
-  background: rgba(255, 255, 255, .83);
+  border: 1px solid rgba(20, 40, 160, 0.13);
+  background: rgba(255, 255, 255, 0.83);
   backdrop-filter: blur(8px);
   border-radius: 22px;
   display: flex;
@@ -290,16 +538,16 @@
   justify-content: center;
   gap: 6px;
   cursor: pointer;
-  box-shadow: 0 15px 35px rgba(20, 40, 160, .08);
-  transition: .25s;
+  box-shadow: 0 15px 35px rgba(20, 40, 160, 0.08);
+  transition: 0.25s;
   z-index: 3;
 }
 
 .chaebol-node:hover,
 .chaebol-node.selected {
   transform: translateY(-8px) scale(1.03);
-  border-color: rgba(20, 40, 160, .35);
-  box-shadow: 0 24px 50px rgba(20, 40, 160, .17);
+  border-color: rgba(20, 40, 160, 0.35);
+  box-shadow: 0 24px 50px rgba(20, 40, 160, 0.17);
 }
 
 .node-icon {
@@ -321,10 +569,22 @@
   color: var(--muted);
 }
 
-.node-0 { left: 8%; top: 13%; }
-.node-1 { right: 9%; top: 14%; }
-.node-2 { left: 8%; bottom: 13%; }
-.node-3 { right: 9%; bottom: 13%; }
+.node-0 {
+  left: 8%;
+  top: 13%;
+}
+.node-1 {
+  right: 9%;
+  top: 14%;
+}
+.node-2 {
+  left: 8%;
+  bottom: 13%;
+}
+.node-3 {
+  right: 9%;
+  bottom: 13%;
+}
 
 .chaebol-detail {
   padding: 35px;
@@ -333,7 +593,7 @@
 
 .chaebol-detail-grid {
   display: grid;
-  grid-template-columns: 1.5fr .7fr;
+  grid-template-columns: 1.5fr 0.7fr;
   gap: 30px;
   align-items: center;
 }
@@ -348,7 +608,7 @@
 .big-stat span {
   display: block;
   font: 700 clamp(38px, 5vw, 65px) 'Space Grotesk';
-  letter-spacing: -.06em;
+  letter-spacing: -0.06em;
 }
 
 .big-stat small {
@@ -370,7 +630,7 @@
   background: #fff;
   border: 1px solid var(--line);
   border-radius: 18px;
-  transition: .25s;
+  transition: 0.25s;
 }
 
 .logic-stack div:hover {
@@ -383,7 +643,7 @@
 }
 
 /* ==========================================================================
-   Policy Quotes & Stages
+   8. POLICY QUOTES & STAGES
    ================================================================---------- */
 .policy-quote {
   padding: 42px;
@@ -395,12 +655,12 @@
 .policy-quote .quote-mark {
   font: 700 72px 'Space Grotesk';
   color: var(--blue);
-  line-height: .5;
+  line-height: 0.5;
 }
 
 .policy-quote p {
   font: 600 clamp(24px, 3vw, 38px) / 1.25 'Space Grotesk';
-  letter-spacing: -.04em;
+  letter-spacing: -0.04em;
   max-width: 960px;
   margin: 10px 0 15px;
 }
@@ -410,7 +670,7 @@
 }
 
 .policy-quote.dark {
-  background: #0A1333;
+  background: #0a1333;
   color: #fff;
 }
 
@@ -419,7 +679,7 @@
 }
 
 .policy-quote.dark .quote-mark {
-  color: #88A0FF;
+  color: #88a0ff;
 }
 
 .policy-stage {
@@ -445,12 +705,12 @@
   background: #fff;
   border-radius: 16px;
   cursor: pointer;
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .policy-steps button span {
   font-size: 11px;
-  color: #98A2B3;
+  color: #98a2b3;
 }
 
 .policy-steps button b {
@@ -479,20 +739,20 @@
   place-items: center;
   background: #fff;
   border-radius: 18px;
-  box-shadow: 0 12px 25px rgba(20, 40, 160, .12);
+  box-shadow: 0 12px 25px rgba(20, 40, 160, 0.12);
   color: var(--blue);
   margin-bottom: 22px;
 }
 
 .video-grid {
   display: grid;
-  grid-template-columns: .65fr 1.35fr;
+  grid-template-columns: 0.65fr 1.35fr;
   gap: 24px;
   align-items: end;
 }
 
 /* ==========================================================================
-   Flip Card Component
+   9. FLIP CARD COMPONENT
    ================================================================---------- */
 .flip-card {
   border: 0;
@@ -530,7 +790,7 @@
 }
 
 .flip-face.back {
-  background: #0A1333;
+  background: #0a1333;
   color: #fff;
   transform: rotateY(180deg);
 }
@@ -538,12 +798,12 @@
 .flip-face span {
   font-size: 11px;
   font-weight: 800;
-  letter-spacing: .14em;
+  letter-spacing: 0.14em;
 }
 
 .flip-face h3 {
   font: 700 clamp(25px, 3vw, 27px) / 1.15 'Space Grotesk';
-  letter-spacing: -.04em;
+  letter-spacing: -0.04em;
   max-width: 90%;
 }
 
@@ -551,16 +811,15 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  color: #98A2B3;
+  color: #98a2b3;
 }
 
 .flip-face.back small {
-  color: #B6C0D6;
+  color: #b6c0d6;
 }
 
-
 /* ==========================================================================
-   Trade & Conclusion Layouts
+   10. TRADE & CONCLUSION LAYOUTS
    ================================================================---------- */
 .trade-layout {
   display: grid;
@@ -580,12 +839,12 @@
   border-radius: 24px;
   border: 1px solid var(--line);
   background: #fff;
-  transition: .25s;
+  transition: 0.25s;
 }
 
 .trade-side:hover {
   transform: translateX(5px);
-  box-shadow: 0 20px 45px rgba(16, 24, 40, .08);
+  box-shadow: 0 20px 45px rgba(16, 24, 40, 0.08);
 }
 
 .trade-side h3 {
@@ -637,7 +896,7 @@
   position: absolute;
   left: 20px;
   bottom: 18px;
-  background: rgba(255, 255, 255, .74);
+  background: rgba(255, 255, 255, 0.74);
   padding: 7px 10px;
   border-radius: 999px;
 }
@@ -650,14 +909,14 @@
 
 .conclusion-index {
   padding: 12px;
-  background: #0A1333;
+  background: #0a1333;
 }
 
 .conclusion-index button {
   width: 100%;
   border: 0;
   background: transparent;
-  color: #AEB8D1;
+  color: #aeb8d1;
   text-align: left;
   padding: 16px;
   border-radius: 16px;
@@ -673,7 +932,7 @@
 
 .conclusion-index span {
   font-size: 11px;
-  opacity: .7;
+  opacity: 0.7;
 }
 
 .conclusion-index b {
@@ -691,7 +950,7 @@
 
 .final-statement {
   display: grid;
-  grid-template-columns: 1.35fr .65fr;
+  grid-template-columns: 1.35fr 0.65fr;
   gap: 25px;
   align-items: center;
 }
@@ -712,7 +971,7 @@
   gap: 15px;
   align-items: center;
   padding: 20px;
-  transition: .25s;
+  transition: 0.25s;
 }
 
 .source-card:hover {
@@ -752,824 +1011,8 @@
 }
 
 /* ==========================================================================
-   Portals & Extra Visual Elements
+   11. EVENT VIDEO COMPONENT
    ================================================================---------- */
-.flipbook-portal {
-  padding: 38px;
-  display: grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap: 40px;
-  align-items: center;
-}
-
-.fake-book {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 340px;
-  transform: rotate(-2deg);
-  filter: drop-shadow(0 30px 40px rgba(20, 40, 160, .16));
-}
-
-.book-page {
-  padding: 28px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.book-page.left {
-  background: #1428A0;
-  color: #fff;
-  border-radius: 22px 0 0 22px;
-}
-
-.book-page.left b {
-  font: 700 42px / 1 'Space Grotesk';
-  letter-spacing: -.06em;
-}
-
-.book-page.right {
-  background: #fff;
-  border: 1px solid var(--line);
-  border-left: 0;
-  border-radius: 0 22px 22px 0;
-}
-
-.book-page.right h3 {
-  font: 700 38px / 1 'Space Grotesk';
-  letter-spacing: -.06em;
-}
-
-.game-portal {
-  background: #0A1333;
-  color: #fff;
-  padding: 45px;
-  border-radius: 36px;
-  display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 35px;
-  align-items: center;
-}
-
-.game-orb {
-  width: 220px;
-  height: 220px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background: radial-gradient(circle at 35% 25%, #5577ff, #1428A0 55%, #09102B);
-  box-shadow: 0 0 0 18px rgba(47, 91, 255, .08), 0 30px 70px rgba(20, 40, 160, .35);
-  animation: float 4s ease-in-out infinite;
-}
-
-.game-portal .copy {
-  color: #B6C0D6;
-}
-
-.game-portal .eyebrow {
-  color: #9BAEFF;
-}
-
-.game-portal h2 {
-  color: #fff;
-}
-
-@keyframes float {
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-/* =========================================================
-   PAGE INTRO
-   Vietnamese-safe / lightweight
-   ========================================================= */
-
-.detail-hero {
-  position: relative;
-  isolation: isolate;
-
-  overflow: hidden;
-
-  min-height: 540px;
-
-  display: flex;
-  align-items: center;
-
-  padding: 135px 0 90px;
-
-  background:
-    radial-gradient(
-      circle at 82% 20%,
-      rgba(47, 91, 255, 0.08),
-      transparent 28%
-    ),
-    #f7f9fc;
-
-  border-bottom: 1px solid rgba(20, 40, 160, 0.08);
-}
-
-
-/* =========================================================
-   GRID
-   STATIC — KHÔNG ANIMATION
-   ========================================================= */
-
-.detail-hero-grid {
-  position: absolute;
-  inset: 0;
-
-  z-index: -2;
-
-  pointer-events: none;
-
-  opacity: 0.45;
-
-  background-image:
-    linear-gradient(
-      rgba(20, 40, 160, 0.04) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(20, 40, 160, 0.04) 1px,
-      transparent 1px
-    );
-
-  background-size: 72px 72px;
-
-  /*
-   * Không dùng mask-image.
-   * Một số mobile browser xử lý mask + text/rendering
-   * không cần thiết ở đây.
-   */
-}
-
-
-/* =========================================================
-   GLOW
-   STATIC
-   ========================================================= */
-
-.detail-hero-glow {
-  position: absolute;
-
-  z-index: -1;
-
-  pointer-events: none;
-
-  border-radius: 50%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(47, 91, 255, 0.13),
-      rgba(47, 91, 255, 0)
-    );
-
-  filter: blur(35px);
-}
-
-.detail-hero-glow-1 {
-  width: 360px;
-  height: 360px;
-
-  top: -190px;
-  right: 5%;
-}
-
-.detail-hero-glow-2 {
-  width: 240px;
-  height: 240px;
-
-  bottom: -150px;
-  left: 8%;
-
-  opacity: 0.65;
-}
-
-
-/* =========================================================
-   INNER
-   ========================================================= */
-
-.detail-hero-inner {
-  position: relative;
-
-  width: 100%;
-}
-
-
-/* =========================================================
-   BACK LINK
-   ========================================================= */
-
-.detail-hero-back {
-  display: inline-flex;
-
-  align-items: center;
-
-  gap: 7px;
-
-  color: #667085;
-
-  text-decoration: none;
-
-  font-size: 0.78rem;
-  font-weight: 600;
-
-  transition:
-    color 0.2s ease,
-    transform 0.2s ease;
-}
-
-.detail-hero-back:hover {
-  color: var(--blue);
-
-  transform: translateX(-3px);
-}
-
-
-/* =========================================================
-   CONTENT
-   ========================================================= */
-
-.detail-hero-content {
-  margin-top: 52px;
-
-  max-width: 1080px;
-}
-
-
-/* =========================================================
-   META
-   ========================================================= */
-
-.detail-hero-meta {
-  display: flex;
-
-  align-items: center;
-
-  gap: 14px;
-
-  margin-bottom: 18px;
-}
-
-.detail-hero-number {
-  color: var(--blue);
-
-  font-size: 0.72rem;
-
-  font-weight: 800;
-
-  letter-spacing: 0.1em;
-}
-
-.detail-hero-meta-line {
-  width: 58px;
-  height: 1px;
-
-  flex-shrink: 0;
-
-  background:
-    linear-gradient(
-      90deg,
-      var(--blue),
-      rgba(20, 40, 160, 0)
-    );
-}
-
-.detail-hero-meta-label {
-  color: #98a2b3;
-
-  font-size: 0.62rem;
-
-  font-weight: 700;
-
-  letter-spacing: 0.14em;
-}
-
-
-/* =========================================================
-   TITLE
-
-   QUAN TRỌNG CHO TIẾNG VIỆT
-   ========================================================= */
-
-.detail-hero-title {
-  position: relative;
-
-  /*
-   * Không overflow:hidden.
-   * Không clip chữ.
-   */
-
-  margin: 0 !important;
-
-  max-width: 980px !important;
-
-  /*
-   * Line-height cao hơn để dấu tiếng Việt
-   * không bị đè lên nhau.
-   */
-
-  font-size: clamp(
-    3rem,
-    6.5vw,
-    6.2rem
-  ) !important;
-
-  line-height: 1.08 !important;
-
-  /*
-   * Không âm quá mạnh.
-   * Letter-spacing quá âm dễ làm các glyph
-   * tiếng Việt chạm nhau.
-   */
-
-  letter-spacing: -0.035em;
-
-  /*
-   * Cho phép browser tối ưu line wrapping.
-   */
-
-  text-wrap: balance;
-
-  /*
-   * Tránh font rendering bị blur do scale.
-   */
-
-  transform: translateZ(0);
-
-  /*
-   * Chừa khoảng cho dấu phía trên/dưới.
-   */
-
-  padding-top: 0.08em;
-  padding-bottom: 0.16em;
-
-  color: var(--navy);
-}
-
-
-/* =========================================================
-   TITLE ACCENT
-   ========================================================= */
-
-.detail-hero-title::after {
-  content: '';
-
-  position: absolute;
-
-  left: 2px;
-  bottom: 0;
-
-  width: 76px;
-  height: 4px;
-
-  border-radius: 999px;
-
-  background:
-    linear-gradient(
-      90deg,
-      var(--blue),
-      var(--blue-2)
-    );
-}
-
-
-/* =========================================================
-   SUBTITLE
-   ========================================================= */
-
-.detail-hero-subtitle-wrap {
-  margin-top: 25px;
-}
-
-.detail-hero-subtitle {
-  max-width: 760px !important;
-
-  margin: 0 !important;
-
-  color: #475467;
-
-  /*
-   * Vietnamese text đọc tốt hơn.
-   */
-
-  line-height: 1.72;
-
-  font-size: clamp(
-    1rem,
-    1.35vw,
-    1.15rem
-  );
-}
-
-
-/* =========================================================
-   CHILDREN
-   ========================================================= */
-
-.detail-hero-children {
-  margin-top: 28px;
-}
-
-
-/* =========================================================
-   BOTTOM LINE
-   ========================================================= */
-
-.detail-hero-bottom {
-  display: flex;
-
-  align-items: center;
-
-  gap: 16px;
-
-  width: min(760px, 100%);
-
-  margin-top: 48px;
-}
-
-.detail-hero-bottom-line {
-  flex: 1;
-
-  height: 1px;
-
-  background:
-    rgba(20, 40, 160, 0.11);
-}
-
-.detail-hero-bottom-text {
-  flex-shrink: 0;
-
-  color: #98a2b3;
-
-  font-size: 0.58rem;
-
-  font-weight: 800;
-
-  letter-spacing: 0.16em;
-}
-
-
-/* =========================================================
-   CORNER
-   ========================================================= */
-
-.detail-hero-corner {
-  position: absolute;
-
-  right: 30px;
-  bottom: 30px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  width: 44px;
-  height: 44px;
-
-  color: var(--blue);
-
-  border:
-    1px solid rgba(20, 40, 160, 0.1);
-
-  border-radius: 50%;
-
-  background:
-    rgba(255, 255, 255, 0.65);
-
-  /*
-   * Blur ở đây rất nhẹ và chỉ có 1 element.
-   */
-
-  backdrop-filter: blur(8px);
-
-  opacity: 0.7;
-}
-
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
-@media (max-width: 900px) {
-
-  .detail-hero {
-    min-height: 500px;
-
-    padding:
-      120px
-      0
-      78px;
-  }
-
-  .detail-hero-content {
-    margin-top: 44px;
-  }
-
-  .detail-hero-title {
-    font-size: clamp(
-      2.8rem,
-      8vw,
-      5rem
-    ) !important;
-
-    line-height: 1.08 !important;
-
-    letter-spacing: -0.03em;
-  }
-
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 620px) {
-
-  .detail-hero {
-    min-height: auto;
-
-    padding:
-      102px
-      0
-      65px;
-  }
-
-  .detail-hero-grid {
-    opacity: 0.3;
-
-    background-size: 58px 58px;
-  }
-
-  /*
-   * Glow nhỏ hơn → nhẹ hơn trên mobile.
-   */
-
-  .detail-hero-glow-1 {
-    width: 240px;
-    height: 240px;
-
-    top: -130px;
-    right: -80px;
-
-    filter: blur(28px);
-  }
-
-  .detail-hero-glow-2 {
-    width: 160px;
-    height: 160px;
-
-    bottom: -90px;
-    left: -50px;
-
-    filter: blur(24px);
-  }
-
-  .detail-hero-content {
-    margin-top: 38px;
-  }
-
-  .detail-hero-meta {
-    gap: 10px;
-
-    margin-bottom: 14px;
-  }
-
-  .detail-hero-meta-line {
-    width: 38px;
-  }
-
-  .detail-hero-meta-label {
-    font-size: 0.54rem;
-
-    letter-spacing: 0.08em;
-  }
-
-  /*
-   * Đây là phần quan trọng nhất cho tiếng Việt mobile.
-   */
-
-  .detail-hero-title {
-    font-size: clamp(
-      2.45rem,
-      11.5vw,
-      4rem
-    ) !important;
-
-    line-height: 1.1 !important;
-
-    letter-spacing: -0.025em;
-
-    /*
-     * Không clip glyph.
-     */
-
-    padding-top: 0.1em;
-    padding-bottom: 0.18em;
-  }
-
-  .detail-hero-title::after {
-    width: 58px;
-    height: 3px;
-  }
-
-  .detail-hero-subtitle-wrap {
-    margin-top: 22px;
-  }
-
-  .detail-hero-subtitle {
-    font-size: 0.98rem;
-
-    line-height: 1.7;
-  }
-
-  .detail-hero-bottom {
-    margin-top: 38px;
-
-    gap: 12px;
-  }
-
-  .detail-hero-bottom-text {
-    font-size: 0.5rem;
-
-    letter-spacing: 0.08em;
-  }
-
-  .detail-hero-corner {
-    display: none;
-  }
-
-}
-
-
-/* =========================================================
-   SMALL PHONE
-   ========================================================= */
-
-@media (max-width: 380px) {
-
-  .detail-hero {
-    padding:
-      92px
-      0
-      58px;
-  }
-
-  .detail-hero-meta-label {
-    display: none;
-  }
-
-  .detail-hero-title {
-    font-size: 2.35rem !important;
-
-    line-height: 1.1 !important;
-
-    letter-spacing: -0.02em;
-  }
-
-  .detail-hero-subtitle {
-    font-size: 0.94rem;
-
-    line-height: 1.68;
-  }
-
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-  .detail-hero-back {
-    transition: none;
-  }
-
-  .detail-hero-title,
-  .detail-hero-subtitle-wrap,
-  .detail-hero-meta,
-  .detail-hero-bottom {
-    transform: none !important;
-  }
-
-}
-/* ==========================================================================
-   Responsive Media Queries
-   ================================================================---------- */
-@media (max-width: 900px) {
-  .story-slider,
-  .crisis-stage,
-  .policy-stage,
-  .conclusion-wrap {
-    grid-template-columns: 1fr;
-  }
-
-  .story-side {
-    padding: 24px;
-  }
-
-  .timeline-nav {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 3px;
-  }
-
-  .timeline-nav button {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .crisis-list {
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .debate-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .trade-layout,
-  .final-statement,
-  .flipbook-portal,
-  .game-portal,
-  .chaebol-detail-grid,
-  .video-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .trade-illustration {
-    min-height: 430px;
-  }
-
-  .conclusion-main {
-    min-height: 420px;
-  }
-
-  .chaebol-map {
-    min-height: 620px;
-  }
-
-  .node-0 { left: 4%; top: 7%; }
-  .node-1 { right: 4%; top: 7%; }
-  .node-2 { left: 4%; bottom: 7%; }
-  .node-3 { right: 4%; bottom: 7%; }
-}
-
-@media (max-width: 620px) {
-  .crisis-list {
-    grid-template-columns: 1fr;
-  }
-
-  .timeline-nav {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .chaebol-center {
-    width: 165px;
-    height: 165px;
-  }
-
-  .center-text b {
-    font-size: 35px;
-  }
-
-  .chaebol-node {
-    width: 120px;
-    height: 96px;
-  }
-
-  .node-0 { left: 4%; }
-  .node-1 { right: 4%; }
-  .node-2 { left: 4%; }
-  .node-3 { right: 4%; }
-
-  .story-main,
-  .policy-focus,
-  .conclusion-main {
-    padding: 28px;
-  }
-
-  .game-portal {
-    padding: 28px;
-  }
-
-  .game-orb {
-    width: 160px;
-    height: 160px;
-  }
-}/* =========================================================
-   EVENT VIDEO
-   ========================================================= */
-
 .event-video-section {
   margin-top: 70px;
 }
@@ -1629,9 +1072,8 @@
 }
 
 /* ==========================================================================
-   DEBATE PAGE — visual panel, argument carousel, audio player
-   ========================================================================== */
-
+   12. DEBATE PAGE & CAROUSEL
+   ================================================================---------- */
 .debate-section {
   overflow: hidden;
 }
@@ -1705,53 +1147,51 @@
   color: #fff;
 }
 
-.debate-toggle button:focus-visible,
-.debate-nav-button:focus-visible,
-.debate-dot:focus-visible,
-.debate-audio-button:focus-visible,
-.debate-audio-progress:focus-visible {
-  outline: 3px solid #91aaff;
-  outline-offset: 3px;
-}
-
 .debate-visual {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  min-height: 590px;
-  border-radius: 28px;
-  background-color: #101b30;
+  border-radius: 24px;
   background-position: center;
   background-size: cover;
   color: #fff;
 }
 
 .debate-visual.support {
-  background-image: url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2000&q=85");
+  background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2000&q=85');
 }
 
 .debate-visual.against {
-  background-image: url("https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=2000&q=85");
+  background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=2000&q=85');
 }
 
 .debate-visual-overlay {
   position: absolute;
   z-index: -1;
   inset: 0;
-  background: linear-gradient(180deg, rgba(5, 12, 28, 0.62) 0%, rgba(5, 12, 28, 0.48) 36%, rgba(5, 12, 28, 0.9) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(5, 12, 28, 0.62) 0%,
+    rgba(5, 12, 28, 0.48) 36%,
+    rgba(5, 12, 28, 0.9) 100%
+  );
 }
 
 .debate-visual.against .debate-visual-overlay {
-  background: linear-gradient(180deg, rgba(38, 8, 15, 0.66) 0%, rgba(38, 8, 15, 0.52) 36%, rgba(24, 7, 13, 0.93) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(38, 8, 15, 0.66) 0%,
+    rgba(38, 8, 15, 0.52) 36%,
+    rgba(24, 7, 13, 0.93) 100%
+  );
 }
 
 .debate-visual-content {
   position: relative;
   z-index: 1;
   display: flex;
-  min-height: 590px;
   flex-direction: column;
-  padding: clamp(24px, 4vw, 48px);
+  padding: clamp(22px, 3vw, 36px);
 }
 
 .debate-visual-top {
@@ -1777,7 +1217,7 @@
   border-radius: 50%;
   background: #8eb0ff;
   box-shadow: 0 0 16px rgba(142, 176, 255, 0.7);
-  content: "";
+  content: '';
 }
 
 .debate-visual.against .debate-visual-label::before {
@@ -1785,522 +1225,71 @@
   box-shadow: 0 0 16px rgba(255, 156, 165, 0.7);
 }
 
-.debate-visual-index {
-  color: rgba(255, 255, 255, 0.72);
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-}
-
 .debate-visual-intro {
-  max-width: 690px;
-  margin: 50px 0 30px;
-}
-
-.debate-visual-line {
-  display: block;
-  width: 48px;
-  height: 3px;
-  margin-bottom: 20px;
-  border-radius: 999px;
-  background: #91adff;
-}
-
-.debate-visual.against .debate-visual-line {
-  background: #ff9ca5;
+  max-width: 760px;
+  margin: 4px 0 4px;
 }
 
 .debate-visual-intro h2 {
-  margin: 0;
-  color: #fff;
-  font-family: "Space Grotesk", sans-serif;
-  font-size: clamp(30px, 4vw, 52px);
-  line-height: 1.15;
-  letter-spacing: -0.035em;
-  text-wrap: balance;
+  font-size: clamp(25px, 3vw, 38px);
+  line-height: 1.2;
+  margin-bottom: 10px;
 }
 
 .debate-visual-intro p {
-  max-width: 620px;
-  margin: 16px 0 0;
-  color: rgba(255, 255, 255, 0.83);
-  font-size: 15px;
-  line-height: 1.8;
-}
-
-.debate-carousel {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  width: 100%;
-  margin-top: auto;
-}
-
-.debate-featured-card {
-  display: none;
-  width: 100%;
-  min-width: 0;
-  min-height: 340px;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: flex-start;
-  gap: 26px;
-  padding: clamp(25px, 4vw, 48px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 24px;
-  background: rgba(18, 39, 79, 0.84);
-  color: #fff;
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
-}
-
-.debate-featured-card.is-active {
-  display: flex;
-}
-
-.debate-featured-card.support {
-  background: rgba(18, 39, 79, 0.84);
-}
-
-.debate-featured-card.against {
-  background: rgba(69, 22, 31, 0.87);
-}
-
-.debate-featured-card.is-playing {
-  border-color: rgba(255, 255, 255, 0.85);
-}
-
-.debate-featured-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.debate-card-number {
-  color: #c5d5ff;
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-}
-
-.debate-featured-card.against .debate-card-number {
-  color: #ffc0c7;
-}
-
-.debate-featured-count {
-  flex-shrink: 0;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 12px;
-}
-
-.debate-featured-card .debate-card-title {
-  max-width: 850px;
-  margin: 0;
-  color: #fff !important;
-  font-size: clamp(25px, 3vw, 38px);
-  font-weight: 700;
-  line-height: 1.45;
-  overflow-wrap: anywhere;
-}
-
-.debate-card-mark {
-  color: #b9cbff;
-  font-size: 21px;
-  font-weight: 500;
-  line-height: 1;
-}
-
-.debate-featured-card.against .debate-card-mark {
-  color: #ffb9c0;
-}
-
-.debate-audio-player {
-  display: flex;
-  width: 100%;
-  max-width: 720px;
-  flex-direction: column;
-  gap: 22px;
-  margin-top: auto;
-  padding: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 18px;
-  background: rgba(0, 0, 0, 0.17);
-}
-
-.debate-audio-player-heading {
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  color: #fff;
-}
-
-.debate-audio-player-heading > svg {
-  flex-shrink: 0;
-}
-
-.debate-audio-player-heading > div {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.debate-audio-player-heading strong {
-  color: #fff;
-  font-size: 15px;
-}
-
-.debate-audio-player-heading span {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 13px;
-  line-height: 1.5;
-}
-
-.debate-featured-card .debate-audio-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  align-self: flex-start;
-  gap: 10px;
-  min-width: 175px;
-  min-height: 48px;
-  padding: 12px 19px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.13);
-  color: #fff;
-  font-family: inherit;
+  max-width: 680px;
   font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.debate-featured-card .debate-audio-button:hover {
-  background: rgba(255, 255, 255, 0.25);
-}
-
-.debate-featured-card .debate-audio-button:active {
-  transform: scale(0.98);
-}
-
-.debate-audio-timeline {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  gap: 9px;
-}
-
-.debate-audio-progress {
-  display: block;
-  width: 100%;
-  height: 7px;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  border-radius: 999px;
-  appearance: none;
-  -webkit-appearance: none;
-  background: linear-gradient(to right, #fff var(--audio-progress, 0%), rgba(255, 255, 255, 0.25) var(--audio-progress, 0%));
-  cursor: pointer;
-}
-
-.debate-audio-progress::-webkit-slider-thumb {
-  width: 15px;
-  height: 15px;
-  border: 2px solid #fff;
-  border-radius: 50%;
-  appearance: none;
-  -webkit-appearance: none;
-  background: #193c88;
-}
-
-.debate-featured-card.against .debate-audio-progress::-webkit-slider-thumb {
-  background: #a92f3c;
-}
-
-.debate-audio-progress::-moz-range-thumb {
-  width: 12px;
-  height: 12px;
-  border: 2px solid #fff;
-  border-radius: 50%;
-  background: #193c88;
-}
-
-.debate-audio-progress:disabled {
-  cursor: not-allowed;
-  opacity: 0.45;
-}
-
-.debate-audio-times {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 12px;
-  font-variant-numeric: tabular-nums;
-}
-
-.debate-audio-error {
-  display: block;
-  margin: 0;
-  color: #fff;
-  font-size: 13px;
   line-height: 1.6;
-  overflow-wrap: anywhere;
 }
 
-.debate-desktop-navigation {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 18px;
-  margin-top: 25px;
-}
-
-.debate-nav-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  justify-self: start;
-  gap: 9px;
-  min-height: 44px;
-  padding: 10px 15px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.debate-nav-button:last-child {
-  justify-self: end;
-}
-
-.debate-nav-button:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.18);
-}
-
-.debate-nav-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.35;
-}
-
-.debate-dots {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.debate-dot {
-  width: 9px;
-  height: 9px;
-  flex: 0 0 auto;
-  padding: 0;
-  border: 0;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.4);
-  cursor: pointer;
-  transition: width 0.2s ease, background 0.2s ease;
-}
-
-.debate-dot.active {
-  width: 27px;
-  background: #fff;
-}
-
-.debate-visual-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  margin-top: 28px;
-  padding-top: 19px;
-  border-top: 1px solid rgba(255, 255, 255, 0.25);
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-}
-
-.debate-footer-counter {
-  flex-shrink: 0;
-}
-
-.debate-scroll-hint {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  text-align: right;
-}
-
-@media (max-width: 900px) {
-  .debate-visual,
-  .debate-visual-content {
-    min-height: 0;
-  }
-
-  .debate-visual-content {
-    padding: 28px;
-  }
-
-  .debate-visual-intro {
-    margin: 42px 0 25px;
-  }
-}
-
-@media (max-width: 620px) {
-  .debate-heading .h2 {
-    font-size: 31px;
-  }
-
-  .debate-toggle {
-    display: grid;
-    grid-template-columns: 1fr;
-    width: 100%;
-  }
-
-  .debate-toggle button {
-    width: 100%;
-    justify-content: flex-start;
-  }
-
-  .debate-visual {
-    min-height: 0;
-    border-radius: 20px;
-    background-position: center;
-  }
-
-  .debate-visual-content {
-    min-height: 0;
-    padding: 23px 17px;
-  }
-
-  .debate-visual-top {
-    align-items: flex-start;
-  }
-
-  .debate-visual-label {
-    font-size: 10px;
-    letter-spacing: 0.1em;
-  }
-
-  .debate-visual-intro {
-    margin: 43px 0 25px;
-  }
-
-  .debate-visual-intro h2 {
-    font-size: 32px;
-  }
-
-  .debate-visual-intro p {
-    font-size: 14px;
-  }
-
-  /* Trên mobile hiển thị tất cả lập luận theo chiều dọc. */
-  .debate-carousel {
-    gap: 12px;
-  }
-
-  .debate-featured-card,
-  .debate-featured-card.is-active {
-    display: flex;
-    min-height: 0;
-    gap: 20px;
-    padding: 20px 17px;
-    border-radius: 18px;
-  }
-
-  .debate-featured-card .debate-card-title {
-    font-size: 22px;
-    line-height: 1.45;
-  }
-
-  .debate-audio-player {
-    gap: 18px;
-    padding: 16px;
-  }
-
-  .debate-featured-card .debate-audio-button {
-    width: 100%;
-    min-width: 0;
-    min-height: 46px;
-    align-self: stretch;
-  }
-
-  .debate-desktop-navigation {
-    display: none;
-  }
-
-  .debate-visual-footer {
-    align-items: flex-start;
-    font-size: 9px;
-    letter-spacing: 0.08em;
-  }
-
-  .debate-scroll-hint {
-    max-width: 55%;
-  }
-}
-
-@media (hover: none) {
-  .debate-featured-card .debate-audio-button:hover,
-  .debate-nav-button:hover:not(:disabled) {
-    background: rgba(255, 255, 255, 0.13);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .debate-toggle button,
-  .debate-featured-card .debate-audio-button,
-  .debate-nav-button,
-  .debate-dot {
-    transition: none;
-  }
-}
-
-/* Debate carousel: centered active card with neighboring cards peeking in */
 .debate-carousel {
   display: block;
-  width: calc(100% + 64px);
-  max-width: none;
-  margin: 34px -32px 0;
+  width: calc(100% + 72px);
+  margin: 22px -36px 0;
   overflow: hidden;
-  padding: 8px 0 18px;
+  padding: 6px 0 12px;
   position: relative;
 }
 
 .debate-carousel-track {
-  --debate-card-width: min(680px, calc(100vw - 220px));
-  --debate-card-gap: 24px;
+  --debate-card-width: min(400px, calc(100vw - 300px));
+  --debate-card-gap: 35px;
   display: flex;
   align-items: stretch;
   gap: var(--debate-card-gap);
   width: max-content;
   position: relative;
   left: 50%;
-  transform: translateX(calc(-1 * (var(--debate-card-width) / 2 + var(--active-index, 0) * (var(--debate-card-width) + var(--debate-card-gap)))));
+  transform: translateX(
+    calc(
+      -1 * (var(--debate-card-width) / 2 + var(--active-index, 0) *
+            (var(--debate-card-width) + var(--debate-card-gap)))
+    )
+  );
   transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
 }
 
-.debate-carousel .debate-featured-card,
-.debate-carousel .debate-featured-card.is-active {
+.debate-carousel .debate-featured-card {
   display: flex;
   flex: 0 0 var(--debate-card-width);
   width: var(--debate-card-width);
-  min-width: 0;
-  min-height: 340px;
+  min-height: 0;
+  padding: 20px 22px;
+  gap: 14px;
+  border-radius: 17px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(18, 39, 79, 0.84);
+  color: #fff;
   opacity: 0.56;
   transform: scale(0.94);
   filter: saturate(0.72);
   transition: opacity 420ms ease, transform 420ms ease, filter 420ms ease,
     border-color 420ms ease, box-shadow 420ms ease;
+}
+
+.debate-carousel .debate-featured-card.against {
+  background: rgba(69, 22, 31, 0.87);
 }
 
 .debate-carousel .debate-featured-card.is-active {
@@ -2319,338 +1308,275 @@
   pointer-events: none;
 }
 
-@media (max-width: 760px) {
-  .debate-carousel {
-    width: calc(100% + 32px);
-    margin: 28px -16px 0;
-    padding: 6px 0 14px;
-  }
-
-  .debate-carousel-track {
-    --debate-card-width: calc(100vw - 104px);
-    --debate-card-gap: 14px;
-  }
-
-  .debate-carousel .debate-featured-card,
-  .debate-carousel .debate-featured-card.is-active {
-    min-height: 0;
-    gap: 20px;
-    padding: 22px 19px;
-    border-radius: 20px;
-  }
-
-  .debate-carousel .debate-featured-card:not(.is-active) {
-    opacity: 0.45;
-    transform: scale(0.92);
-  }
-
-  .debate-carousel .debate-featured-card.is-active {
-    transform: scale(1);
-  }
-
-  .debate-desktop-navigation {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-}
-
-@media (max-width: 420px) {
-  .debate-carousel-track {
-    --debate-card-width: calc(100vw - 82px);
-    --debate-card-gap: 10px;
-  }
-
-  .debate-carousel .debate-featured-card,
-  .debate-carousel .debate-featured-card.is-active {
-    padding: 19px 15px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .debate-carousel-track,
-  .debate-carousel .debate-featured-card {
-    transition-duration: 0.01ms;
-  }
-}
-
-/* Debate carousel refinement: wider landscape cards with less vertical bulk */
-.debate-carousel-track {
-  --debate-card-width: min(560px, calc(100vw - 260px));
-  --debate-card-gap: 22px;
-}
-
-.debate-carousel .debate-featured-card,
-.debate-carousel .debate-featured-card.is-active {
-  min-height: 0;
-  padding: 26px 28px 24px;
-  gap: 18px;
-  border-radius: 20px;
-}
-
-.debate-carousel .debate-featured-card .debate-card-title {
+.debate-carousel .debate-card-title {
   max-width: 100%;
-  font-size: clamp(23px, 2.2vw, 30px);
-  line-height: 1.32;
+  font-size: clamp(19px, 1.8vw, 25px);
+  line-height: 1.3;
+  color: #fff !important;
 }
 
-.debate-carousel .debate-audio-player {
-  max-width: none;
-  gap: 14px;
-  margin-top: 0;
-  padding: 16px 18px;
-  border-radius: 14px;
+.debate-audio-player {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.17);
 }
 
-.debate-carousel .debate-audio-player-heading strong {
-  font-size: 14px;
+.debate-audio-player-heading {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #fff;
 }
 
-.debate-carousel .debate-audio-player-heading span {
-  font-size: 12px;
+.debate-audio-player-heading strong {
+  font-size: 13px;
+  color: #fff;
 }
 
-.debate-carousel .debate-featured-card .debate-audio-button {
-  min-height: 42px;
-  min-width: 150px;
-  padding: 9px 15px;
+.debate-audio-player-heading span {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
 }
 
-@media (max-width: 760px) {
-  .debate-carousel-track {
-    --debate-card-width: calc(100vw - 112px);
-    --debate-card-gap: 12px;
-  }
-
-  .debate-carousel .debate-featured-card,
-  .debate-carousel .debate-featured-card.is-active {
-    padding: 20px 17px;
-    gap: 16px;
-  }
-
-  .debate-carousel .debate-featured-card .debate-card-title {
-    font-size: 21px;
-    line-height: 1.35;
-  }
-
-  .debate-carousel .debate-audio-player {
-    gap: 13px;
-    padding: 14px;
-  }
-}
-
-@media (max-width: 420px) {
-  .debate-carousel-track {
-    --debate-card-width: calc(100vw - 84px);
-    --debate-card-gap: 10px;
-  }
-
-  .debate-carousel .debate-featured-card,
-  .debate-carousel .debate-featured-card.is-active {
-    padding: 17px 14px;
-    gap: 14px;
-  }
-
-  .debate-carousel .debate-featured-card .debate-card-title {
-    font-size: 19px;
-  }
-}
-
-/* Final adjustment: landscape debate backdrop and compact carousel cards */
-.debate-visual {
-  min-height: 0;
-  border-radius: 24px;
-  background-position: center;
-  background-size: cover;
-}
-
-.debate-visual-content {
-  min-height: 0;
-  padding: clamp(22px, 3vw, 36px);
-}
-
-.debate-visual-intro {
-  max-width: 760px;
-  margin-bottom: 4px;
-}
-
-.debate-visual-intro h2 {
-  font-size: clamp(25px, 3vw, 38px);
-  line-height: 1.2;
-  margin-bottom: 10px;
-}
-
-.debate-visual-intro p {
-  max-width: 680px;
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-.debate-carousel {
-  width: calc(100% + 72px);
-  margin: 22px -36px 0;
-  padding: 6px 0 12px;
-}
-
-.debate-carousel-track {
-  --debate-card-width: min(400px, calc(100vw - 300px));
-  --debate-card-gap: 35px;
-}
-
-
-/* Hàng chính: thanh tua bên trái, âm lượng bên phải */
 .debate-audio-progress-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: start;
   gap: 14px;
   width: 100%;
-  min-width: 0;
 }
 
-/* Khu vực thanh tua và thời gian */
 .debate-audio-progress-main {
   display: flex;
   flex-direction: column;
-  min-width: 0;
   width: 100%;
 }
 
-.debate-audio-progress-main .debate-audio-progress {
+.debate-audio-progress {
   display: block;
   width: 100%;
-  box-sizing: border-box;
+  height: 7px;
   margin: 0;
+  border: 0;
+  border-radius: 999px;
+  appearance: none;
+  background: linear-gradient(
+    to right,
+    #fff var(--audio-progress, 0%),
+    rgba(255, 255, 255, 0.25) var(--audio-progress, 0%)
+  );
+  cursor: pointer;
 }
 
-/* Hai mốc thời gian */
-.debate-audio-progress-main .debate-audio-times {
+.debate-audio-times {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  margin-top: 8px;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 12px;
 }
 
-/* Nhóm icon loa và thanh âm lượng */
 .debate-volume-control {
   display: flex;
   align-items: center;
-  align-self: start;
   gap: 6px;
-  padding-top: 0;
-  margin: 0;
   color: #fff;
 }
 
-/* Nút bật/tắt tiếng */
 .debate-mute-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 0 0 20px;
   width: 20px;
   height: 24px;
-  padding: 0;
-  border: 0;
   background: transparent;
+  border: 0;
   color: inherit;
   cursor: pointer;
 }
 
-.debate-mute-button:hover {
-  opacity: 0.75;
-}
-
-.debate-mute-button:focus-visible {
-  outline: 2px solid #fff;
-  outline-offset: 2px;
-  border-radius: 4px;
-}
-
-/* Thanh điều chỉnh âm lượng */
-.debate-volume-control input[type="range"] {
-  display: block;
+.debate-volume-control input[type='range'] {
   width: 76px;
   height: 24px;
-  margin: 0;
-  padding: 0;
   accent-color: #fff;
   cursor: pointer;
 }
 
-/* Điện thoại */
-@media (max-width: 480px) {
-  .debate-audio-progress-row {
-    gap: 8px;
-  }
-
-  .debate-volume-control {
-    gap: 4px;
-  }
-
-  .debate-volume-control input[type="range"] {
-    width: 52px;
-  }
-}
-
-.debate-carousel .debate-featured-card,
-.debate-carousel .debate-featured-card.is-active {
-  min-height: 0;
-  padding: 20px 22px;
-  gap: 14px;
-  border-radius: 17px;
-}
-
-.debate-carousel .debate-featured-top {
-  gap: 10px;
-}
-
-.debate-carousel .debate-card-number,
-.debate-carousel .debate-featured-count {
-  font-size: 10px;
-}
-
-.debate-carousel .debate-featured-card .debate-card-title {
-  font-size: clamp(19px, 1.8vw, 25px);
-  line-height: 1.3;
-}
-
-.debate-carousel .debate-audio-player {
-  gap: 10px;
-  padding: 12px 14px;
-  border-radius: 12px;
-}
-
-.debate-carousel .debate-audio-player-heading {
-  gap: 9px;
-}
-
-.debate-carousel .debate-audio-player-heading strong {
-  font-size: 13px;
-}
-
-.debate-carousel .debate-audio-player-heading span {
-  font-size: 11px;
-}
-
-.debate-carousel .debate-featured-card .debate-audio-button {
-  min-width: 0;
-  min-height: 38px;
-  padding: 8px 12px;
-  font-size: 12px;
-}
-
 .debate-visual-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
   margin-top: 16px;
+  padding-top: 19px;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+/* ==========================================================================
+   13. PORTALS (FLIPBOOK & GAME)
+   ================================================================---------- */
+.flipbook-portal {
+  padding: 38px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.fake-book {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 340px;
+  transform: rotate(-2deg);
+  filter: drop-shadow(0 30px 40px rgba(20, 40, 160, 0.16));
+}
+
+.book-page {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.book-page.left {
+  background: #1428a0;
+  color: #fff;
+  border-radius: 22px 0 0 22px;
+}
+
+.book-page.left b {
+  font: 700 42px / 1 'Space Grotesk';
+  letter-spacing: -0.06em;
+}
+
+.book-page.right {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-left: 0;
+  border-radius: 0 22px 22px 0;
+}
+
+.book-page.right h3 {
+  font: 700 38px / 1 'Space Grotesk';
+  letter-spacing: -0.06em;
+}
+
+.game-portal {
+  background: #0a1333;
+  color: #fff;
+  padding: 45px;
+  border-radius: 36px;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 35px;
+  align-items: center;
+}
+
+.game-orb {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(
+    circle at 35% 25%,
+    #5577ff,
+    #1428a0 55%,
+    #09102b
+  );
+  box-shadow: 0 0 0 18px rgba(47, 91, 255, 0.08),
+    0 30px 70px rgba(20, 40, 160, 0.35);
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ==========================================================================
+   14. RESPONSIVE MEDIA QUERIES
+   ================================================================---------- */
+@media (max-width: 900px) {
+  .story-slider,
+  .crisis-stage,
+  .policy-stage,
+  .conclusion-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .story-side {
+    padding: 24px;
+  }
+
+  .timeline-nav {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
+  }
+
+  .timeline-nav button {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .crisis-list {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .trade-layout,
+  .final-statement,
+  .flipbook-portal,
+  .game-portal,
+  .chaebol-detail-grid,
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .trade-illustration {
+    min-height: 430px;
+  }
+
+  .conclusion-main {
+    min-height: 420px;
+  }
+
+  .chaebol-map {
+    min-height: 620px;
+  }
+
+  .node-0 {
+    left: 4%;
+    top: 7%;
+  }
+  .node-1 {
+    right: 4%;
+    top: 7%;
+  }
+  .node-2 {
+    left: 4%;
+    bottom: 7%;
+  }
+  .node-3 {
+    right: 4%;
+    bottom: 7%;
+  }
 }
 
 @media (max-width: 760px) {
-  .debate-visual-content {
-    padding: 22px 16px;
-  }
-
   .debate-carousel {
     width: calc(100% + 32px);
     margin: 20px -16px 0;
@@ -2660,75 +1586,49 @@
     --debate-card-width: calc(100vw - 112px);
     --debate-card-gap: 12px;
   }
+}
 
-  .debate-carousel .debate-featured-card,
-  .debate-carousel .debate-featured-card.is-active {
-    padding: 17px 15px;
-    gap: 12px;
+@media (max-width: 620px) {
+  .crisis-list {
+    grid-template-columns: 1fr;
   }
 
-  .debate-carousel .debate-featured-card .debate-card-title {
-    font-size: 18px;
+  .timeline-nav {
+    grid-template-columns: 1fr 1fr;
   }
 
-  .debate-carousel .debate-audio-player {
-    padding: 11px;
-    gap: 10px;
-  }
-}
-
-@media (max-width: 420px) {
-  .debate-carousel-track {
-    --debate-card-width: calc(100vw - 88px);
-    --debate-card-gap: 10px;
+  .chaebol-center {
+    width: 165px;
+    height: 165px;
   }
 
-  .debate-visual-content {
-    padding: 18px 12px;
+  .center-text b {
+    font-size: 35px;
   }
-}
-/* =========================================================
-   HIỆU ỨNG GIỌT MỰC / ĐỐM SÁNG RÕ NÉT TRÊN NỀN TRẮNG
-   ========================================================= */
 
-.detail-hero {
-  position: relative;
-  overflow: hidden;
-}
+  .chaebol-node {
+    width: 120px;
+    height: 96px;
+  }
 
-.ink-blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(45px);
-  pointer-events: none;
-  z-index: -1;
-  opacity: 0.65;
-  mix-blend-mode: multiply;
-}
+  .node-0,
+  .node-2 {
+    left: 4%;
+  }
+  .node-1,
+  .node-3 {
+    right: 4%;
+  }
 
-/* Đốm màu Xanh dương Samsung (góc phải trên) */
-.ink-blob-1 {
-  width: 420px;
-  height: 420px;
-  top: -60px;
-  right: -30px;
-  background: radial-gradient(circle, rgba(47, 91, 255, 0.28) 0%, rgba(20, 40, 160, 0.02) 70%);
-}
+  .story-main,
+  .policy-focus,
+  .conclusion-main,
+  .game-portal {
+    padding: 28px;
+  }
 
-/* Đốm màu Tím (góc trái dưới) */
-.ink-blob-2 {
-  width: 380px;
-  height: 380px;
-  bottom: -80px;
-  left: 5%;
-  background: radial-gradient(circle, rgba(121, 40, 202, 0.2) 0%, rgba(75, 0, 130, 0.02) 70%);
-}
-
-/* Đốm màu Xanh lá điểm xuyết (giữa trái) */
-.ink-blob-3 {
-  width: 300px;
-  height: 300px;
-  top: 20%;
-  left: -50px;
-  background: radial-gradient(circle, rgba(53, 204, 39, 0.18) 0%, rgba(28, 154, 102, 0.02) 70%);
+  .game-orb {
+    width: 160px;
+    height: 160px;
+  }
 }
