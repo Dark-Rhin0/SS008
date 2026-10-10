@@ -36,15 +36,25 @@ function Shell() {
   // KHỞI TẠO LENIS
   // =========================================================
   useEffect(() => {
+    // Trên thiết bị cảm ứng, dùng native scrolling
+    // để tránh Lenis can thiệp vào thao tác vuốt.
+    const isTouchDevice = window.matchMedia(
+      '(pointer: coarse)'
+    ).matches
+
+    if (isTouchDevice) {
+      lenisRef.current = null
+      delete window.__lenis
+      return
+    }
+
     const lenis = new Lenis({
       duration: 1.2,
       smoothWheel: true,
-      wheelMultiplier: 1.25,
+      wheelMultiplier: 1.5,
     })
 
     lenisRef.current = lenis
-
-    // Cho các component khác có thể truy cập Lenis
     window.__lenis = lenis
 
     let rafId
@@ -58,7 +68,6 @@ function Shell() {
 
     return () => {
       cancelAnimationFrame(rafId)
-
       lenis.destroy()
 
       if (window.__lenis === lenis) {
