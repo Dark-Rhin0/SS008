@@ -5,7 +5,6 @@ import PageIntro from '../components/PageIntro';
 import '../page-styles/sections.css';
 import PageFooterNav from "../components/PageFooterNav";
 import { FLIPBOOK_URL, GAME_URL } from '../config';
-import RouteCard from '../components/RouteCard';
 import Reveal from '../components/Reveal';
 
 // 1. DỮ LIỆU 8 CHƯƠNG ĐÃ TÍCH HỢP CATEGORY BỘ LỌC
@@ -141,6 +140,7 @@ export default function Sections() {
       <div className="sections-body container">
         <div className="sections-grid">
           {filteredSections.map(item => (
+            <Reveal delay={0.3}>
             <Link key={item.id} to={item.path} className="full-story-card">
               <div className="card-watermark">{item.number}</div>
 
@@ -164,7 +164,7 @@ export default function Sections() {
               </div>
 
               <div className="card-accent-border" />
-            </Link>
+            </Link></Reveal>
           ))}
         </div>
 
