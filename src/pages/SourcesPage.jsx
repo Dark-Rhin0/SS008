@@ -72,6 +72,13 @@ export default function SourcesPage() {
                         >
                             Xem nguồn ảnh 3↗
                         </a>
+                        <a
+                            href="https://english.hani.co.kr/arti/english_edition/e_business/1064706.html"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            Xem nguồn ảnh 4↗
+                        </a>
                     </div>
                 </div>
             </section>
