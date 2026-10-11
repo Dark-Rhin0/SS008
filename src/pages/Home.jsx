@@ -303,10 +303,10 @@ export default function Home() {
               <div className="editorial-content">
                 <Reveal delay={0}>
                   <p className="cover-copy">
-                    Kinh tế Hàn Quốc năm 2022 chịu sức ép từ lạm phát, thương
-                    mại, năng lượng và cạnh tranh công nghệ. Chính phủ đặt cược
-                    vào năng lực của các Chaebol — đồng thời chấp nhận một cuộc
-                    tranh luận lớn về pháp quyền.
+                    Vào tháng 8/2022, Hàn Quốc ân xá cho nhiều phạm nhân, 
+                    đặc biệt là các nhà tài phiệt, trong đó có "thái tử" Samsung 
+                    với lí do mong muốn họ đóng góp vượt qua khủng hoảng kinh tế 
+                    quốc gia, điều gì đã khiến Chính phủ Hàn quốc có hành động đó?
                   </p>
                 </Reveal>
 
