@@ -6,6 +6,8 @@ import Reveal from "../components/Reveal";
 import PageFooterNav from "../components/PageFooterNav";
 import { chaebols } from "../data";
 import "../page-styles/detail.css";
+import { FLIPBOOK_URL, GAME_URL } from '../config'
+import RouteCard from '../components/RouteCard'
 
 const iconMap = {
   samsung: Cpu,
@@ -124,6 +126,10 @@ export default function ChaebolPage() {
           </Reveal>
         </div>
       </section>
+      <RouteCard 
+        gameUrl={GAME_URL} 
+        flipbookUrl={FLIPBOOK_URL} 
+      />
       <PageFooterNav nextPath="/government" nextLabel="Đến trang kế" />
     </>
   );

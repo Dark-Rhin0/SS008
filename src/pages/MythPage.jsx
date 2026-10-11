@@ -7,7 +7,8 @@ import PageIntro from "../components/PageIntro";
 import Reveal from "../components/Reveal";
 import PageFooterNav from "../components/PageFooterNav";
 import { myths } from "../data";
-
+import { FLIPBOOK_URL, GAME_URL } from '../config'
+import RouteCard from '../components/RouteCard'
 import "../page-styles/detail.css";
 import "../page-styles/myth.css";
 
@@ -131,6 +132,11 @@ export default function MythPage() {
           })}
         </div>
       </section>
+
+      <RouteCard 
+        gameUrl={GAME_URL} 
+        flipbookUrl={FLIPBOOK_URL} 
+      />
 
       <PageFooterNav
         nextPath="/tradeoff"

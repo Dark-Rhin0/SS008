@@ -16,6 +16,8 @@ import PageIntro from "../components/PageIntro";
 import PageFooterNav from "../components/PageFooterNav";
 import Reveal from "../components/Reveal";
 import "../page-styles/detail.css";
+import { FLIPBOOK_URL, GAME_URL } from '../config'
+import RouteCard from '../components/RouteCard'
 
 const argumentsData = {
   support: {
@@ -656,6 +658,11 @@ export default function DebatePage() {
           </Reveal>
         </div>
       </section>
+
+      <RouteCard 
+        gameUrl={GAME_URL} 
+        flipbookUrl={FLIPBOOK_URL} 
+      />
 
       <PageFooterNav nextPath="/myth" nextLabel="Đến trang kế" />
     </>

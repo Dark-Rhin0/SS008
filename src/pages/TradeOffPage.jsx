@@ -6,6 +6,8 @@ import Balance2D from '../components/Balance2D'
 import PageFooterNav from '../components/PageFooterNav'
 import { tradeoffs } from '../data'
 import '../page-styles/detail.css'
+import { FLIPBOOK_URL, GAME_URL } from '../config'
+import RouteCard from '../components/RouteCard'
 export default function TradeOffPage(){
  const [tilt,setTilt]=useState(0)
 
@@ -76,6 +78,10 @@ return (
         </Reveal>
       </div>
     </section>
+    <RouteCard 
+        gameUrl={GAME_URL} 
+        flipbookUrl={FLIPBOOK_URL} 
+      />
     <PageFooterNav
       nextPath="/conclusion"
       nextLabel="Đến trang kế"

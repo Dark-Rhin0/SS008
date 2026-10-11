@@ -30,6 +30,8 @@ import Reveal from '../components/Reveal'
 
 import { eventTimeline } from '../data'
 import leeJaeYongImage from '../assets/leeJaeYongImage.png'
+import { FLIPBOOK_URL, GAME_URL } from '../config'
+import RouteCard from '../components/RouteCard'
 
 
 
@@ -688,7 +690,10 @@ export default function EventPage() {
 
       </section>
 
-
+      <RouteCard 
+        gameUrl={GAME_URL} 
+        flipbookUrl={FLIPBOOK_URL} 
+      />
 
       {/* =====================================================
 

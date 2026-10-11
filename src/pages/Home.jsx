@@ -24,6 +24,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import { sections } from '../data'
 import { FLIPBOOK_URL, GAME_URL } from '../config'
+import RouteCard from '../components/RouteCard'
 import Reveal from '../components/Reveal'
 
 import '../page-styles/home.css'
@@ -592,115 +593,10 @@ export default function Home() {
       {/* =======================================================
           FLIPBOOK + GAME
           ================================================       */}
-      <section className="section final-experience">
-        <div className="container">
-          <Reveal>
-            <div className="final-mini-nav">
-              <a
-                href={GAME_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="final-mini-link"
-              >
-                Game
-                <ArrowUpRight size={15} />
-              </a>
-
-              <a
-                href={FLIPBOOK_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="final-mini-link"
-              >
-                Flipbook
-                <ArrowUpRight size={15} />
-              </a>
-
-              <Link to="/sources" className="final-mini-link">
-                Nguồn
-                <ArrowUpRight size={15} />
-              </Link>
-            </div>
-          </Reveal>
-
-          <div className="final-feature">
-            <div className="final-feature-image">
-              <div className="final-image-overlay" />
-
-              <div className="final-image-label">
-                SS008
-                <span>·</span>
-                2022
-              </div>
-            </div>
-
-            <div className="final-feature-content">
-              <span className="eyebrow final-eyebrow">Đa góc nhìn</span>
-
-              <h2 className="final-title">
-                Một quyết định.
-                <br />
-                <span>Nhiều cách để nhìn.</span>
-              </h2>
-
-              <p className="final-description">
-                Bạn đã thấy vì sao Chính phủ Hàn Quốc lựa chọn đặc xá cho Lee
-                Jae-yong và các lãnh đạo Chaebol. Nhưng để hiểu đầy đủ quyết
-                định ấy, hãy nhìn nó từ cả dữ kiện lẫn góc nhìn của người ra
-                quyết định.
-              </p>
-
-              <div className="final-options">
-                <Link to="/qna" className="final-option">
-                  <div className="final-option-number"></div>
-
-                  <div className="final-option-content">
-                    <span className="final-option-label">ĐỐNG GÓP</span>
-
-                    <h3>
-                      Câu hỏi của bạn
-                      <ArrowUpRight size={19} />
-                    </h3>
-
-                    <p>
-                      Gửi cho mình câu hỏi phản biện của bạn để mình có thể trả
-                      lời ngay.
-                    </p>
-                  </div>
-                </Link>
-
-                <a href={GAME_URL} className="final-option final-option-game">
-                  <div className="final-option-number"></div>
-
-                  <div className="final-option-content">
-                    <span className="final-option-label">TƯƠNG TÁC</span>
-
-                    <h3>
-                      Thử đưa ra quyết định
-                      <ArrowUpRight size={19} />
-                    </h3>
-
-                    <p>
-                      Nếu bạn là người ra quyết định, bạn sẽ cân bằng tăng
-                      trưởng kinh tế và pháp quyền như thế nào?
-                    </p>
-                  </div>
-                </a>
-              </div>
-
-              <div className="final-closing">
-                <span className="final-closing-line" />
-                <span>
-                  KINH TẾ
-                  <b>{' × '}</b>
-                  PHÁP QUYỀN
-                </span>
-                <span className="final-closing-line" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <RouteCard 
+        gameUrl={GAME_URL} 
+        flipbookUrl={FLIPBOOK_URL} 
+      />
 
       {selectedImage && (
         <div

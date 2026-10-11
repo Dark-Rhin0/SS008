@@ -13,6 +13,8 @@ import PageFooterNav from "../components/PageFooterNav";
 import Reveal from "../components/Reveal";
 import { policySteps } from "../data";
 import "../page-styles/detail.css";
+import { FLIPBOOK_URL, GAME_URL } from '../config'
+import RouteCard from '../components/RouteCard'
 
 const icons = [Gavel, BriefcaseBusiness, Factory, Globe2];
 export default function GovernmentPage() {
@@ -118,6 +120,12 @@ export default function GovernmentPage() {
           </Reveal>
         </div>
       </section>
+
+      <RouteCard 
+        gameUrl={GAME_URL} 
+        flipbookUrl={FLIPBOOK_URL} 
+      />
+
       <PageFooterNav nextPath="/debate" nextLabel="Đến trang kế" />
     </>
   );

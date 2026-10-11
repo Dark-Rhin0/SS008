@@ -14,7 +14,8 @@ import PageIntro from '../components/PageIntro'
 import PageFooterNav from '../components/PageFooterNav'
 import Reveal from '../components/Reveal'
 import { crisisStats } from '../data'
-
+import { FLIPBOOK_URL, GAME_URL } from '../config'
+import RouteCard from '../components/RouteCard'
 import '../page-styles/detail.css'
 
 
@@ -447,7 +448,11 @@ export default function ContextPage() {
         </div>
 
       </section>
-
+        
+      <RouteCard 
+        gameUrl={GAME_URL} 
+        flipbookUrl={FLIPBOOK_URL} 
+      />
 
       {/* =====================================================
           FOOTER NAVIGATION
