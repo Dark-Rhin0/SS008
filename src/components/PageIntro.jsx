@@ -97,7 +97,7 @@ export default function PageIntro({
             <span className="detail-hero-meta-line" />
 
             <span className="detail-hero-meta-label">
-              HÀN QUỐC / 2022
+              NHÓM 6 / SS008
             </span>
 
           </motion.div>
@@ -234,7 +234,7 @@ export default function PageIntro({
             <span className="detail-hero-bottom-line" />
 
             <span className="detail-hero-bottom-text">
-              SS008 · KOREA · 2022
+              SS008 · HÀN QUỐC · 2022
             </span>
 
             <span className="detail-hero-bottom-line" />

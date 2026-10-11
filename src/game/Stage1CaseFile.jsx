@@ -1,54 +1,165 @@
-// Vị trí: src/game/Stage1CaseFile.jsx
+
 import { useState } from 'react';
 
-export default function Stage1CaseFile({ onStartCase, onNext, initialStep = 1 }) {
+export default function Stage1CaseFile({
+  onStartCase,
+  onNext,
+  initialStep = 1,
+}) {
   const [step, setStep] = useState(initialStep);
 
   const handleStartClick = () => {
     setStep(2);
+
     if (onStartCase) {
       onStartCase();
     }
   };
 
   return (
-    <div className="case-folder" data-lenis-prevent>
-      <div className="stamp-secret">CONFIDENTIAL // SEOUL AUGUST 2022</div>
-      
+    <section className="sid-dossier">
+      <div className="sid-dossier__record">
+        <span className="sid-dossier__record-dot" />
+        HỒ SƠ ĐIỀU TRA ĐẶC BIỆT
+      </div>
+
+      <span className="sid-dossier__number">
+        TÀI LIỆU NO. 0815
+      </span>
+
       {step === 1 ? (
-        <div>
-          <h2 style={{ fontSize: '2rem', marginBottom: '8px', color: '#f8fafc' }}>
-            CASE #0815: THE PARDON
-          </h2>
-          <p style={{ color: '#94a3b8', marginBottom: '24px' }}>
-            Ngày 15/8/2022, Hàn Quốc chuẩn bị công bố danh sách đặc xá. Một doanh nhân từng bị kết án hối lộ sắp nhận được lệnh ân xá từ Tổng thống.
-          </p>
-          <div style={{ background: '#1e293b', padding: '16px', borderRadius: '6px', marginBottom: '20px' }}>
-            <strong>NHIỆM VỤ CỦA BẠN:</strong>
-            <p style={{ margin: '8px 0 0 0', color: '#38bdf8' }}>
-              Vào vai phóng viên điều tra, hãy tìm hiểu TẠI SAO.
+        <div className="sid-dossier__layout">
+          <div className="sid-dossier__content">
+
+            <h2 className="sid-dossier__title">
+              Một quyết định.
+              <span>Nhiều góc nhìn.</span>
+            </h2>
+
+            <p className="sid-dossier__description">
+              Quyết định đặc xá tháng 8/2022 đặt ra những câu hỏi
+              về lợi ích kinh tế, trách nhiệm pháp lý và lợi ích công.
+              Vai trò của bạn là phân tích hồ sơ trước khi đưa ra
+              đánh giá độc lập.
             </p>
+
+            <div className="sid-dossier__steps">
+              <div className="sid-dossier__step">
+                <span className="sid-dossier__step-number">01</span>
+                <div>
+                  <strong>Thu thập</strong>
+                  <span>Chứng cứ</span>
+                </div>
+              </div>
+
+              <div className="sid-dossier__step">
+                <span className="sid-dossier__step-number">02</span>
+                <div>
+                  <strong>Phân tích</strong>
+                  <span>Hai chiều</span>
+                </div>
+              </div>
+
+              <div className="sid-dossier__step">
+                <span className="sid-dossier__step-number">03</span>
+                <div>
+                  <strong>Kết luận</strong>
+                  <span>Báo cáo</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <button className="game-btn" onClick={handleStartClick}>
-            [ START CASE ]
-          </button>
+
+          
+<div className="sid-dossier__visual">
+  <span
+    className="sid-dossier__cross sid-dossier__cross--top"
+    aria-hidden="true"
+  >
+    +
+  </span>
+
+  <div className="sid-dossier__orbit">
+    <div className="sid-dossier__orbit-inner" />
+
+    <button
+      type="button"
+      className="sid-dossier__file"
+      onClick={handleStartClick}
+      aria-label="Mở hồ sơ 0815 và bắt đầu điều tra"
+    >
+      <span>PLAY</span>
+      <strong>0815</strong>
+      <i />
+      <small>SEOUL · 2022</small>
+      <span className="sid-dossier__file-hint">
+        OPEN FILE ↗
+      </span>
+    </button>
+  </div>
+
+  <span
+    className="sid-dossier__cross sid-dossier__cross--bottom"
+    aria-hidden="true"
+  >
+    +
+  </span>
+
+  <div className="sid-dossier__coordinates">
+    <span>37°33′ N</span>
+    <span>126°58′ E</span>
+  </div>
+</div>
+
         </div>
       ) : (
-        <div>
-          <h3 style={{ color: '#f59e0b', margin: '0 0 12px 0' }}>HỒ SƠ ĐỐI TƯỢNG (SUBJECT PROFILE)</h3>
-          <div className="profile-card">
-            <h2 style={{ margin: '0 0 8px 0', color: '#fff' }}>LEE JAE-YONG</h2>
-            <p style={{ margin: '6px 0', color: '#cbd5e1' }}><strong>Chức vụ:</strong> Phó Chủ tịch Samsung Electronics ("Thái tử" Samsung)</p>
-            <p style={{ margin: '6px 0', color: '#cbd5e1' }}><strong>Tiền án:</strong> Kết án liên quan đến đại án hối lộ</p>
-            <p style={{ margin: '6px 0', color: '#cbd5e1' }}><strong>Bản án:</strong> 2 năm 6 tháng tù giam</p>
-            <p style={{ margin: '6px 0', color: '#cbd5e1' }}><strong>Ngày ra tù:</strong> Tháng 8/2021, được tạm tha với các hạn chế về kinh doanh trong vòng 5 năm</p>
-            <p style={{ margin: '6px 0', color: '#38bdf8' }}><strong>Ân xá tháng 8/2022:</strong> Được Tổng thống đặc xá khôi phục quyền kinh doanh.</p>
+        <div className="sid-dossier__profile">
+          <div className="sid-dossier__eyebrow">
+            <span />
+            SUBJECT PROFILE / 0815-A
           </div>
-          <button className="game-btn" onClick={onNext}>
-            [ OPEN INVESTIGATION ]
-          </button>
+
+          <h2 className="sid-dossier__title">
+            Hồ sơ đối tượng.
+            <span>Lee Jae-yong.</span>
+          </h2>
+
+          <div className="sid-dossier__profile-grid">
+            <div>
+              <span>ĐỐI TƯỢNG</span>
+              <strong>LEE JAE-YONG</strong>
+            </div>
+
+            <div>
+              <span>CHỨC VỤ</span>
+              <strong>Phó Chủ tịch Samsung Electronics</strong>
+            </div>
+
+            <div>
+              <span>TIỀN ÁN</span>
+              <strong>Vụ án hối lộ liên quan đến bê bối chính trị</strong>
+            </div>
+
+            <div>
+              <span>BẢN ÁN</span>
+              <strong>2 năm 6 tháng tù</strong>
+            </div>
+
+            <div>
+              <span>TÌNH TRẠNG NĂM 2021</span>
+              <strong>Được tạm tha vào tháng 8/2021</strong>
+            </div>
+
+            <div>
+              <span>QUYẾT ĐỊNH NĂM 2022</span>
+              <strong>
+                Được đặc xá, khôi phục quyền kinh doanh theo quyết định
+                của chính phủ Hàn Quốc
+              </strong>
+            </div>
+          </div>
         </div>
       )}
-    </div>
+    </section>
   );
 }

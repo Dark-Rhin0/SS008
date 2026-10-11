@@ -11,7 +11,7 @@ export default function GamePage() {
   return (
     <>
       <PageIntro
-        number="INTERACTIVE CASE #0815"
+        number="hồ sơ số #0815"
         title="Hồ sơ Đặc xá — Phóng viên Điều tra."
         subtitle="Tháng 8/2022, 'Thái tử' Samsung Lee Jae-yong xuất hiện trong danh sách đặc xá. Hãy thu thập bằng chứng, phân tích hai mặt của vấn đề và hoàn thành báo cáo của bạn."
       />

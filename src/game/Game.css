@@ -2,22 +2,16 @@
 
 /* 1. KHUNG TỔNG CỦA GAME Ở TRẠNG THÁI BÌNH THƯỜNG */
 .game-container {
-  max-width: 1100px;
-  height: 75vh;
-  min-height: 550px;
-  max-height: 750px;
-  margin: 0 auto;
-  background-color: #1e293b;
-  color: #e2e8f0;
-  border: 1px solid #334155;
-  border-radius: 16px;
-  padding: 24px;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.35);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  box-sizing: border-box;
-  transition: all 0.25s ease;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 50px 0 100px 0;
+  margin: 0;
+  min-height: 0;
+  height: auto;
+  max-height: none;
+  overflow: visible;
 }
 
 .game-standalone-page {
@@ -2511,5 +2505,622 @@ html.game-mode body::-webkit-scrollbar {
 
   .game-sheet .leaderboard-table td:last-child {
     width: auto;
+  }
+}
+
+/* =========================================
+   SPECIAL INVESTIGATION DOSSIER
+   Samsung Blue / Case 0815
+========================================= */
+
+.sid-dossier {
+  --sid-blue: #a3b4ff;
+  --sid-accent: #6578ff;
+  --sid-white: #f8faff;
+
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 480px;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 54px 58px 32px;
+  border-left: 4px solid #7182ff;
+  background:
+    radial-gradient(
+      circle at 85% 60%,
+      rgba(74, 100, 210, 0.32),
+      transparent 35%
+    ),
+    linear-gradient(115deg, #1a204f 0%, #252d70 100%);
+  color: var(--sid-white);
+  font-family: inherit;
+}
+
+/* Technical grid */
+
+.sid-dossier::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black 30%,
+    black 100%
+  );
+}
+
+.sid-dossier__record {
+  position: absolute;
+  top: 22px;
+  left: 26px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #aab8ff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.sid-dossier__record-dot {
+  width: 7px;
+  height: 2px;
+  background: var(--sid-blue);
+}
+
+.sid-dossier__number {
+  position: absolute;
+  top: 27px;
+  right: 30px;
+  color: #aab8ff;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+/* Main layout */
+
+.sid-dossier__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(250px, 0.9fr);
+  align-items: center;
+  gap: 34px;
+  min-height: 390px;
+}
+
+.sid-dossier__content {
+  min-width: 0;
+  padding-top: 12px;
+}
+
+.sid-dossier__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+  color: #b2c0ff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+.sid-dossier__eyebrow > span {
+  width: 24px;
+  height: 2px;
+  flex-shrink: 0;
+  background: #a4b5ff;
+}
+
+.sid-dossier__title {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0 0 23px;
+  color: #ffffff;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 850;
+  line-height: 1.13;
+  letter-spacing: -0.045em;
+}
+
+.sid-dossier__title > span {
+  color: var(--sid-blue);
+}
+
+.sid-dossier__description {
+  max-width: 510px;
+  margin: 0;
+  color: #e0e6ff;
+  font-size: 13px;
+  line-height: 2.15;
+}
+
+/* Three investigation stages */
+
+.sid-dossier__steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  margin-top: 30px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(202, 213, 255, 0.2);
+}
+
+.sid-dossier__step {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+  padding: 0 12px;
+  border-right: 1px solid rgba(202, 213, 255, 0.2);
+}
+
+.sid-dossier__step:first-child {
+  padding-left: 0;
+}
+
+.sid-dossier__step:last-child {
+  padding-right: 0;
+  border-right: 0;
+}
+
+.sid-dossier__step-number {
+  padding-top: 2px;
+  color: #8fa4ff;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.sid-dossier__step > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sid-dossier__step strong {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.sid-dossier__step > div > span {
+  color: #c5d0ff;
+  font-size: 11px;
+}
+
+/* Right-side case illustration */
+
+.sid-dossier__visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 340px;
+}
+
+.sid-dossier__orbit {
+  position: relative;
+  display: grid;
+  width: min(100%, 340px);
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgba(181, 195, 255, 0.24);
+  border-radius: 50%;
+}
+
+.sid-dossier__orbit::before {
+  position: absolute;
+  inset: 13%;
+  border: 1px dashed rgba(181, 195, 255, 0.28);
+  border-radius: 50%;
+  content: "";
+}
+
+.sid-dossier__orbit-inner {
+  position: absolute;
+  inset: 24%;
+  border: 1px solid rgba(181, 195, 255, 0.15);
+  border-radius: 50%;
+}
+
+.sid-dossier__file {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 48%;
+  aspect-ratio: 0.78;
+  border: 1px solid rgba(205, 215, 255, 0.48);
+  background: linear-gradient(
+    145deg,
+    rgba(67, 83, 164, 0.6),
+    rgba(24, 31, 83, 0.92)
+  );
+  box-shadow: 0 20px 50px rgba(5, 10, 40, 0.2);
+  transform: rotate(-3deg);
+}
+
+.sid-dossier__file > span,
+.sid-dossier__file > small {
+  color: #c2ceff;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.sid-dossier__file > strong {
+  color: #ffffff;
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 850;
+  letter-spacing: -0.04em;
+}
+
+.sid-dossier__file > i {
+  width: 42px;
+  height: 1px;
+  background: #a9baff;
+}
+
+.sid-dossier__cross {
+  position: absolute;
+  color: #93a8ff;
+  font-size: 25px;
+  font-weight: 300;
+}
+
+.sid-dossier__cross--top {
+  top: 12%;
+  left: 9%;
+}
+
+.sid-dossier__cross--bottom {
+  right: 10%;
+  bottom: 20%;
+}
+
+.sid-dossier__coordinates {
+  position: absolute;
+  right: 0;
+  bottom: -2px;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid rgba(202, 213, 255, 0.2);
+  color: #bdcaff;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+/* Subject profile — second step */
+
+.sid-dossier__profile {
+  position: relative;
+  max-width: 900px;
+  margin: 35px auto 0;
+  padding-bottom: 16px;
+}
+
+.sid-dossier__profile .sid-dossier__title {
+  margin-bottom: 28px;
+}
+
+.sid-dossier__profile-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  border: 1px solid rgba(202, 213, 255, 0.18);
+  background: rgba(202, 213, 255, 0.18);
+}
+
+.sid-dossier__profile-grid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  padding: 18px;
+  background: rgba(23, 31, 82, 0.9);
+}
+
+.sid-dossier__profile-grid > div > span {
+  color: #a7b7ff;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.sid-dossier__profile-grid > div > strong {
+  color: #f8faff;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.7;
+}
+
+/* Responsive */
+
+@media (max-width: 850px) {
+  .sid-dossier {
+    padding: 66px 32px 32px;
+  }
+
+  .sid-dossier__layout {
+    grid-template-columns: minmax(0, 1fr) minmax(200px, 0.75fr);
+    gap: 22px;
+  }
+
+  .sid-dossier__title {
+    font-size: clamp(30px, 5vw, 43px);
+  }
+
+  .sid-dossier__visual {
+    min-height: 280px;
+  }
+
+  .sid-dossier__step {
+    gap: 7px;
+    padding: 0 8px;
+  }
+
+  .sid-dossier__step strong {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 620px) {
+  .sid-dossier {
+    min-height: 0;
+    padding: 65px 22px 25px;
+  }
+
+  .sid-dossier__record {
+    left: 18px;
+    font-size: 8px;
+  }
+
+  .sid-dossier__number {
+    right: 16px;
+    font-size: 8px;
+  }
+
+  .sid-dossier__layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .sid-dossier__content {
+    padding-top: 8px;
+  }
+
+  .sid-dossier__eyebrow {
+    margin-bottom: 20px;
+    font-size: 9px;
+  }
+
+  .sid-dossier__title {
+    font-size: clamp(32px, 8vw, 44px);
+  }
+
+  .sid-dossier__description {
+    font-size: 12px;
+    line-height: 1.9;
+  }
+
+  .sid-dossier__steps {
+    margin-top: 24px;
+    padding-top: 20px;
+  }
+
+  .sid-dossier__step {
+    flex-direction: column;
+    gap: 5px;
+    padding: 0 8px;
+  }
+
+  .sid-dossier__step-number {
+    font-size: 12px;
+  }
+
+  .sid-dossier__step strong {
+    font-size: 10px;
+  }
+
+  .sid-dossier__step > div > span {
+    font-size: 10px;
+  }
+
+  .sid-dossier__visual {
+    min-height: 250px;
+    margin-top: 8px;
+  }
+
+  .sid-dossier__orbit {
+    width: min(80%, 260px);
+  }
+
+  .sid-dossier__coordinates {
+    bottom: 0;
+  }
+
+  .sid-dossier__profile {
+    margin-top: 18px;
+  }
+
+  .sid-dossier__profile-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sid-dossier__profile-grid > div {
+    padding: 15px;
+  }
+}
+
+/* Thẻ hồ sơ 0815 có thể nhấn */
+
+.sid-dossier__file {
+  z-index: 2;
+  appearance: none;
+  padding: 0;
+  color: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  overflow: hidden;
+
+  transition:
+    transform 350ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 350ms ease,
+    background 350ms ease,
+    box-shadow 350ms ease;
+}
+
+/* Ánh sáng xanh tím chạy bên trong thẻ */
+
+.sid-dossier__file::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(
+    125deg,
+    transparent 20%,
+    rgba(176, 190, 255, 0.22) 48%,
+    transparent 72%
+  );
+  transform: translateX(-130%);
+  transition: transform 650ms ease;
+}
+
+/* Gợi ý chỉ xuất hiện khi hover */
+
+.sid-dossier__file-hint {
+  position: absolute;
+  right: 0;
+  bottom: 12px;
+  left: 0;
+  color: #c7d2ff;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  opacity: 0;
+  transform: translateY(5px);
+  transition:
+    opacity 250ms ease,
+    transform 250ms ease;
+}
+
+/* Hover */
+
+.sid-dossier__file:hover {
+  z-index: 5;
+  border-color: #c3ceff;
+  background: linear-gradient(
+    145deg,
+    rgba(91, 111, 220, 0.85),
+    rgba(26, 34, 91, 0.98)
+  );
+  box-shadow:
+    0 0 0 1px rgba(154, 171, 255, 0.2),
+    0 0 28px rgba(104, 123, 255, 0.38),
+    0 22px 48px rgba(7, 12, 45, 0.35);
+  transform: translateY(-9px) rotate(0deg) scale(1.045);
+}
+
+.sid-dossier__file:hover::before {
+  transform: translateX(130%);
+}
+
+.sid-dossier__file:hover .sid-dossier__file-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Phản hồi khi nhấn */
+
+.sid-dossier__file:active {
+  transform: translateY(-2px) rotate(0deg) scale(0.98);
+}
+
+.sid-dossier__file:focus-visible {
+  outline: 2px solid #c3ceff;
+  outline-offset: 6px;
+}
+
+/* Vòng quỹ đạo phản hồi khi rê chuột vào thẻ */
+
+.sid-dossier__orbit:has(.sid-dossier__file:hover)::before {
+  border-color: rgba(177, 192, 255, 0.65);
+  animation: sid-orbit-pulse 1.8s ease-in-out infinite;
+}
+
+.sid-dossier__orbit:has(.sid-dossier__file:hover) {
+  border-color: rgba(177, 192, 255, 0.5);
+  transition: border-color 300ms ease;
+}
+
+@keyframes sid-orbit-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.65;
+  }
+
+  50% {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sid-dossier__file,
+  .sid-dossier__file::before,
+  .sid-dossier__file-hint {
+    transition: none;
+  }
+
+  .sid-dossier__orbit:has(.sid-dossier__file:hover)::before {
+    animation: none;
+  }
+}
+
+/* Thẻ hồ sơ 0815 nhấp nhô liên tục */
+
+.sid-dossier__file {
+  animation: sid-card-float 3.2s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Khi hover: dừng nhấp nhô để ưu tiên hiệu ứng tương tác */
+.sid-dossier__file:hover,
+.sid-dossier__file:focus-visible {
+  animation-play-state: paused;
+}
+
+@keyframes sid-card-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(-1deg);
+  }
+}
+
+/* Tôn trọng thiết lập giảm chuyển động của người dùng */
+@media (prefers-reduced-motion: reduce) {
+  .sid-dossier__file {
+    animation: none;
+    will-change: auto;
   }
 }
