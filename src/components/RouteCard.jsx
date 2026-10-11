@@ -72,7 +72,7 @@ export default function RouteCard({
                 <div className="final-option-number"></div>
 
                 <div className="final-option-content">
-                  <span className="final-option-label">ĐỐNG GÓP</span>
+                  <span className="final-option-label">ĐÓNG GÓP</span>
 
                   <h3>
                     Câu hỏi của bạn
