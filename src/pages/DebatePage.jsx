@@ -332,7 +332,7 @@ export default function DebatePage() {
       <PageIntro
         number="05 / Tranh cãi"
         title="Tại sao quyết định này gây tranh cãi?"
-        subtitle="Tranh luận nằm ở xung đột giữa phục hồi kinh tế và pháp quyền."
+        subtitle="Tranh luận nằm ở xung đột giữa phục hồi kinh tế, pháp quyền và tính công bằng xã hội."
       />
 
       <section className="section debate-section">

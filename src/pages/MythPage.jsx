@@ -20,7 +20,7 @@ export default function MythPage() {
       <PageIntro
         number="06 / tin đồn và sự thật"
         title="Điều gì dễ bị hiểu sai?"
-        subtitle="Bấm vào từng thẻ để lật mặt sau. Trang chính chỉ cho bạn những câu hỏi đáng chú ý; câu trả lời xuất hiện sau tương tác."
+        subtitle="Bản chất thực sự đằng sau những lệnh ân xá Chaebol và những lầm tưởng phổ biến của công luận."
       />
 
       <section className="section myth-section">

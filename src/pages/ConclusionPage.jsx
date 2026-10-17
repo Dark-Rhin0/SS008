@@ -14,7 +14,7 @@ export default function ConclusionPage() {
       <PageIntro
         number="08 / Kết luận tổng hợp"
         title="Quyết định hợp lý?"
-        subtitle="Câu trả lời cô đọng từ toàn bộ tài liệu — không phải một nguyên nhân duy nhất, mà là một chuỗi 5 yếu tố."
+        subtitle="Để đánh giá một quyết định cần suy xét trên nhiều phương diện — không phải chỉ một, mà là một chuỗi 5 yếu tố."
       />
       <section className="section">
         <div className="container">

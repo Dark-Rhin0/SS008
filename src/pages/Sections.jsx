@@ -41,7 +41,7 @@ export const sections = [
     number: '04', 
     category: 'gov', 
     title: 'Chính phủ nói gì?', 
-    subtitle: 'Lập luận chính thức và cơ chế kỳ vọng', 
+    subtitle: 'Quyết định chính thức và lí do', 
     path: '/government',
     readTime: '2-4 phút'
   },
@@ -50,7 +50,7 @@ export const sections = [
     number: '05', 
     category: 'pview', 
     title: 'Tại sao gây tranh cãi?', 
-    subtitle: 'Phục hồi kinh tế ↔ pháp quyền', 
+    subtitle: 'Quyết định có tiền lệ ↔ Vụ bê bối chấn động', 
     path: '/debate',
     readTime: '4-6 phút'
   },
