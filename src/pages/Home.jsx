@@ -11,6 +11,7 @@ import {
   Compass,
   UserRound,
   Building2,
+  Clock,
 } from 'lucide-react'
 import {
   animate,
@@ -102,6 +103,7 @@ function HeroBackdrop({ progress, replay }) {
  */
 export default function Home() {
   const location = useLocation()
+  const navigate = useNavigate()
   const replayHero = location.state?.replayHero === true
 
   useEffect(() => {
@@ -172,7 +174,7 @@ export default function Home() {
   const openImage = () => {
     setSelectedImage(bigChaebol)
   }
-  const navigate = useNavigate()
+  
   const closeImage = () => {
     setSelectedImage(null)
   }
@@ -200,42 +202,28 @@ export default function Home() {
                 SS008 / HÀN QUỐC / 2022
               </span>
 
-              <h1
-                className="h1 hero-title"
-                style={{
-                  marginTop: 12,
-                }}
-              >
-                Khi{' '}
-                <span
-                  style={{
-                    color: '#35cc27',
-                  }}
-                >
-                  KINH TẾ
-                </span>
-                <br />
-                <span>tác động đến</span>
-                <br />
-                <span
-                  style={{
-                    color: '#0c6ec9',
-                    lineHeight: 1.2,
-                  }}
-                >
-                  CHÍNH TRỊ
-                </span>
-              </h1>
+              {/* Áp dụng class màu chuẩn & typography thu hút */}
+           <h1 className="h1 hero-title" style={{ marginTop: 12 }}>
+          Khi{' '}
+          <span className="highlight-blue-light">
+            KINH TẾ
+          </span>
+          <br />
+          <span>tác động đến</span>
+          <br />
+          <span className="highlight-blue-dark">
+            CHÍNH TRỊ
+          </span>
+        </h1>
 
-              <p className="lead hero-lead">
-                Tại sao Chính phủ Hàn Quốc đặc xá cho Lee Jae-yong và nhiều lãnh
-                đạo Chaebol vào tháng 8/2022?
+              <p className="lead hero-lead" style={{ maxWidth: 640 }}>
+                Tại sao Chính phủ Hàn Quốc quyết định đặc xá cho <strong>Lee Jae-yong</strong> và nhiều lãnh đạo Chaebol vào tháng 8/2022?
               </p>
 
               <div className="hero-actions">
-                <Link className="btn btn-primary" to="/event">
+                <Link className="btn btn-primary" to="/event" style={{ padding: '14px 24px' }}>
                   Bắt đầu câu chuyện
-                  <ArrowUpRight size={17} />
+                  <ArrowUpRight size={18} />
                 </Link>
 
                 <a
@@ -247,10 +235,6 @@ export default function Home() {
                   <BookOpen size={16} />
                   Mở Flipbook
                 </a>
-              </div>
-
-              <div className="hero-under">
-                <span className="hero-under-copy"></span>
               </div>
             </motion.div>
           </div>
@@ -302,15 +286,12 @@ export default function Home() {
             <div className="editorial-body-grid">
               <div className="editorial-content">
                 <Reveal delay={0}>
-                  <p className="cover-copy">
-                    Vào tháng 8/2022, Hàn Quốc ân xá cho nhiều phạm nhân, 
-                    đặc biệt là các nhà tài phiệt, trong đó có "thái tử" Samsung 
-                    với lí do mong muốn họ đóng góp vượt qua khủng hoảng kinh tế 
-                    quốc gia, điều gì đã khiến Chính phủ Hàn quốc có hành động đó?
+                  <p className="cover-copy" style={{ fontSize: '1.15rem', lineHeight: '1.7' }}>
+                    Vào <strong>tháng 8/2022</strong>, Hàn Quốc đưa ra quyết định đặc xá cho các nhà tài phiệt lớn — đặc biệt là <strong>"Thái tử" Samsung Lee Jae-yong</strong>. Với kỳ vọng thúc đẩy họ đầu tư giúp đất nước vượt qua khủng hoảng kinh tế, quyết định này đã châm ngòi cho một cuộc tranh luận nảy lửa về tính nghiêm minh của pháp luật.
                   </p>
                 </Reveal>
 
-                <div className="cover-actions">
+                <div className="cover-actions" style={{ marginTop: 28 }}>
                   <Link className="btn btn-primary" to="/context">
                     Xem bối cảnh
                     <ArrowUpRight size={16} />
@@ -332,9 +313,7 @@ export default function Home() {
                   />
                 </div>
                 <figcaption className="editorial-caption">
-                  Ông <strong>Lee Jae-yong</strong> (Phó chủ tịch Samsung) xuất
-                  hiện tại phiên tòa — biểu tượng của cuộc tranh luận giữa lợi
-                  ích kinh tế và tính nghiêm minh của pháp luật.
+                  Ông <strong>Lee Jae-yong</strong> (Phó chủ tịch Samsung) xuất hiện tại phiên tòa — biểu tượng của cuộc tranh luận giữa lợi ích kinh tế và tính nghiêm minh của pháp luật.
                 </figcaption>
               </figure>
             </div>
@@ -367,26 +346,29 @@ export default function Home() {
                   <article
                     className="lee-card"
                     onClick={() => navigate('/event')}
+                    style={{ cursor: 'pointer' }}
                   >
-                    <div className="lee-card-icon">
-                      <UserRound size={34} strokeWidth={1.7} />
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+                      <div className="lee-card-icon">
+                        <UserRound size={32} strokeWidth={1.7} />
+                      </div>
+                      <span className="source-chip" style={{ fontSize: 11 }}>
+                        <Clock size={12} /> 3 phút đọc
+                      </span>
                     </div>
 
                     <h3 className="h3 title3">
-                      Lee Jae-yong
-                      <br />
-                      là ai?
+                      Lee Jae-yong<br />là ai?
                     </h3>
 
                     <p>
-                      Tìm hiểu về lãnh đạo Samsung, vai trò của ông trong nền kinh
-                      tế Hàn Quốc và sự kiện ân xá năm 2022.
+                      Lãnh đạo Samsung, vai trò đối với nền kinh tế Hàn Quốc và diễn biến vụ án đặc xá năm 2022.
                     </p>
 
-                    <a href="/event" className="lee-card-link">
-                      <ArrowRight size={25} strokeWidth={1.5} />
+                    <span className="lee-card-link">
                       <span>TÌM HIỂU THÊM</span>
-                    </a>
+                      <ArrowRight size={20} strokeWidth={1.5} />
+                    </span>
                   </article>
                 </Reveal>
 
@@ -394,26 +376,29 @@ export default function Home() {
                   <article
                     className="lee-card"
                     onClick={() => navigate('/chaebol')}
+                    style={{ cursor: 'pointer' }}
                   >
-                    <div className="lee-card-icon">
-                      <Building2 size={34} strokeWidth={1.7} />
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+                      <div className="lee-card-icon">
+                        <Building2 size={32} strokeWidth={1.7} />
+                      </div>
+                      <span className="source-chip" style={{ fontSize: 11 }}>
+                        <Clock size={12} /> 4 phút đọc
+                      </span>
                     </div>
 
                     <h3 className="h3 title3">
-                      Chaebol
-                      <br />
-                      là gì?
+                      Chaebol<br />là gì?
                     </h3>
 
                     <p>
-                      Khám phá mô hình tập đoàn gia đình tại Hàn Quốc và ảnh hưởng
-                      của các chaebol đến kinh tế, chính trị và xã hội.
+                      Mô hình tập đoàn gia đình cai trị kinh tế Hàn Quốc và mối quan hệ phức tạp với chính trị.
                     </p>
 
-                    <a href="/chaebol" className="lee-card-link">
-                      <ArrowRight size={25} strokeWidth={1.5} />
+                    <span className="lee-card-link">
                       <span>TÌM HIỂU THÊM</span>
-                    </a>
+                      <ArrowRight size={20} strokeWidth={1.5} />
+                    </span>
                   </article>
                 </Reveal>
               </div>
@@ -465,9 +450,7 @@ export default function Home() {
 
               <div className="header-right">
                 <p className="copy header-desc">
-                  Chỉ khi tự đi tìm câu trả lời, bạn mới hiểu được đằng sau một
-                  quyết định là cả một bài toán đánh đổi. Mỗi chương bạn khám phá
-                  sẽ mở ra một góc nhìn khác.
+                  Chỉ khi tự đi tìm câu trả lời, bạn mới hiểu được đằng sau một quyết định là cả một bài toán đánh đổi.
                 </p>
               </div>
             </div>
@@ -510,12 +493,10 @@ export default function Home() {
                 </span>
 
                 <p className="footer-text">
-                  Vẫn còn nhiều góc nhìn quan trọng về kinh tế, con người và pháp
-                  quyền phía trước.
+                  Vẫn còn nhiều góc nhìn quan trọng về kinh tế, con người và pháp quyền phía trước.
                 </p>
               </div>
 
-              {/* Nút có hiệu ứng trượt chữ */}
               <Link to="/sections" className="btn-view-all">
                 <span className="btn-text-wrap">
                   <span className="btn-text-primary">Mở toàn bộ mục lục</span>
@@ -547,34 +528,18 @@ export default function Home() {
           </Reveal>
 
           <Reveal delay={0.12}>
-            <div
-              style={{
-                alignSelf: 'center',
-              }}
-            >
+            <div style={{ alignSelf: 'center' }}>
               <span className="eyebrow">Tâm điểm tranh luận</span>
 
-              <h2
-                className="h2"
-                style={{
-                  marginTop: 16,
-                }}
-              >
+              <h2 className="h2" style={{ marginTop: 16 }}>
                 “Liệu Samsung có quan trọng đến thế?”
               </h2>
 
-              <p
-                className="copy"
-                style={{
-                  marginTop: 22,
-                }}
-              >
-                Tài liệu đặt trọng tâm vào mối căng thẳng giữa hai giá trị: một
-                phía là phục hồi kinh tế, đầu tư, việc làm và công nghệ; phía còn
-                lại là bình đẳng trước pháp luật và niềm tin vào tư pháp.
+              <p className="copy" style={{ marginTop: 22, lineHeight: '1.7' }}>
+                Mối căng thẳng giữa hai giá trị cốt lõi: Một bên là <strong>phục hồi kinh tế, dòng vốn đầu tư và vị thế công nghệ quốc gia</strong>; bên còn lại là <strong>tính nghiêm minh của pháp luật và niềm tin xã hội vào tư pháp</strong>.
               </p>
 
-              <div className="mini-actions">
+              <div className="mini-actions" style={{ marginTop: 28, display: 'flex', gap: 12 }}>
                 <Link className="btn btn-ghost" to="/tradeoff">
                   Xem bài toán đánh đổi
                   <Scale size={16} />
