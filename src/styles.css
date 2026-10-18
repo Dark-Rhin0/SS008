@@ -1222,17 +1222,21 @@ a:focus-visible {
    HIGHLIGHT STYLES
    ========================================================= */
 
-/* Đổi màu chữ KINH TẾ sang xanh dương nhạt và trả về font Be Vietnam Pro */
+/* =========================================================
+   HIGHLIGHT STYLES
+   ========================================================= */
+
+/* Từ KINH TẾ (#00c2ff) */
 .highlight-blue-light {
-    color: #3b82f6 !important; /* Mã màu xanh dương nhạt (có thể đổi sang #60a5fa nếu muốn nhạt hơn) */
-    font-family: 'Be Vietnam Pro', system-ui, sans-serif !important; /* Phông chữ gốc */
-    font-weight: 800;
+    color: #00c2ff !important;
+    font-family: 'Be Vietnam Pro', system-ui, sans-serif !important;
+    font-weight: 800 !important;
 }
 
-/* Từ CHÍNH TRỊ (Màu xanh dương đậm) */
+/* Từ CHÍNH TRỊ (#0e62ff) */
 .highlight-blue-dark {
-    color: #1428A0 !important; /* Đã đổi sang màu xanh Navy đậm sắc nét */
+    color: #0e62ff !important;
     font-family: 'Be Vietnam Pro', system-ui, sans-serif !important;
-    font-weight: 800 !important; /* Đảm bảo độ dày bằng chữ KINH TẾ */
+    font-weight: 800 !important;
     line-height: 1.1;
 }
