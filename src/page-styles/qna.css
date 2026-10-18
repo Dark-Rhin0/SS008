@@ -1,0 +1,617 @@
+/* ==========================================================================
+   Q&A PAGE - EDITORIAL LIGHT THEME (SCOPED)
+   ========================================================================== */
+
+.qna-page {
+  background-color: #ffffff;
+  color: #0f172a;
+  min-height: 100vh;
+}
+
+.qna-container {
+  max-width: 900px;
+  margin: 3rem auto 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* 1. THẺ CƠ BẢN (CARD) */
+.qna-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.03);
+  margin-bottom: 2rem;
+}
+
+/* 2. FORM GỬI CÂU HỎI */
+.qna-form-card {
+  border-top: 4px solid #0c6ec9;
+}
+
+.form-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.form-card-header .icon-header {
+  color: #0c6ec9;
+}
+
+.form-card-header h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.qna-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.qna-select,
+.qna-input,
+.qna-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.8rem 1rem;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  color: #0f172a;
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  transition: all 0.2s ease;
+}
+
+.qna-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.qna-select:focus,
+.qna-input:focus,
+.qna-textarea:focus {
+  outline: none;
+  border-color: #0c6ec9;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(12, 110, 201, 0.12);
+}
+
+.form-action {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
+/* BUTTONS */
+.qna-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #0c6ec9;
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.qna-btn-primary:hover {
+  background: #0284c7;
+  transform: translateY(-1px);
+}
+
+.qna-btn-secondary {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+  padding: 0.75rem 1.25rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.qna-btn-secondary:hover {
+  background: #e2e8f0;
+}
+
+.qna-btn-save {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #0f172a;
+  color: #ffffff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.qna-btn-save:hover:not(:disabled) {
+  background: #1e293b;
+}
+
+.qna-btn-save:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* 3. DANH SÁCH THẺ CÂU HỎI */
+.qna-list-header {
+  margin-bottom: 1.5rem;
+}
+
+.qna-list-header h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.qna-item-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.item-meta-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.badge-group {
+  background: #0f172a;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 6px;
+  letter-spacing: 0.03em;
+}
+
+.item-time {
+  font-size: 0.82rem;
+  color: #94a3b8;
+}
+
+.status-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  margin-left: auto;
+}
+
+.status-answered {
+  background: #ecfdf5;
+  color: #059669;
+}
+
+.status-pending {
+  background: #fffbebf1;
+  color: #d97706;
+}
+
+/* VĂN BẢN DÀI (LONG TEXT DESIGN) */
+.item-question-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #0c6ec9;
+  border-radius: 10px;
+  padding: 1.25rem;
+}
+
+.box-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #0c6ec9;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.text-content {
+  font-size: 0.98rem;
+  line-height: 1.68;
+  color: #1e293b;
+  margin: 0;
+  white-space: pre-line; /* Giữ nguyên xuống dòng của bài viết dài */
+  word-break: break-word;
+}
+
+.text-truncated {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.btn-toggle-expand {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  color: #0c6ec9;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0;
+  margin-top: 0.75rem;
+  cursor: pointer;
+}
+
+.btn-toggle-expand:hover {
+  text-decoration: underline;
+}
+
+/* KHUNG CÂU TRẢ LỜI CHÍNH THỨC */
+.item-answer-box {
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: 10px;
+  padding: 1.25rem;
+}
+
+.answer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.author-tag {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #0369a1;
+  text-transform: uppercase;
+}
+
+.answer-time {
+  font-size: 0.78rem;
+  color: #0284c7;
+}
+
+.answer-text {
+  color: #0f172a;
+}
+
+/* KHUNG SOẠN THẢO TRẢ LỜI */
+.item-editor-box {
+  padding-top: 1rem;
+  border-top: 1px dashed #e2e8f0;
+}
+
+.editor-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: #64748b;
+  margin-bottom: 0.5rem;
+}
+
+.editor-textarea {
+  min-height: 90px;
+  background: #ffffff;
+}
+
+.editor-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.75rem;
+}
+
+/* 4. MODAL BẮT NHẬP MẬT KHẨU */
+.qna-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 1.5rem;
+}
+
+.qna-modal-content {
+  position: relative;
+  background: #ffffff;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 420px;
+  padding: 2rem;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.2);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 0.3rem;
+  border-radius: 6px;
+}
+
+.modal-close-btn:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.modal-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.modal-icon-wrap {
+  width: 48px;
+  height: 48px;
+  background: #f0f9ff;
+  color: #0c6ec9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem auto;
+}
+
+.modal-header h3 {
+  font-size: 1.2rem;
+  margin: 0 0 0.4rem 0;
+  color: #0f172a;
+}
+
+.modal-header p {
+  font-size: 0.88rem;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal-error-msg {
+  color: #dc2626;
+  font-size: 0.83rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.modal-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+/* NÚT XÓA CÂU HỎI */
+.btn-delete-q {
+  background: none;
+  border: 1px solid #e2e8f0;
+  color: #94a3b8;
+  padding: 0.3rem 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  margin-left: 0.5rem;
+}
+
+.btn-delete-q:hover {
+  background: #fef2f2;
+  border-color: #fca5a5;
+  color: #dc2626;
+}
+
+/* STYLE DÀNH CHO MODAL CẢNH BÁO XÓA (DANGER) */
+.icon-wrap-delete {
+  background: #fef2f2 !important;
+  color: #dc2626 !important;
+}
+
+.btn-modal-danger {
+  background: #dc2626 !important;
+  color: #ffffff !important;
+}
+
+.btn-modal-danger:hover {
+  background: #b91c1c !important;
+}
+
+/* NHÓM NÚT TRẢ LỜI & XÓA */
+.item-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.btn-action-q {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  padding: 0.35rem 0.7rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-answer-q:hover {
+  background: #f0f9ff;
+  border-color: #0c6ec9;
+  color: #0c6ec9;
+}
+
+.btn-delete-q:hover {
+  background: #fef2f2;
+  border-color: #fca5a5;
+  color: #dc2626;
+}
+
+/* POP-UP SOẠN THẢO CÂU TRẢ LỜI */
+.modal-editor-content {
+  max-width: 560px !important;
+}
+
+.editor-modal-textarea {
+  min-height: 180px;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.editor-modal-textarea:focus {
+  background: #ffffff;
+  border-color: #0c6ec9;
+}
+
+/* MODAL DANGER (XÓA) */
+.icon-wrap-delete {
+  background: #fef2f2 !important;
+  color: #dc2626 !important;
+}
+
+.btn-modal-danger {
+  background: #dc2626 !important;
+}
+
+.btn-modal-danger:hover {
+  background: #b91c1c !important;
+}
+
+/* BỘ LỌC PHÂN LOẠI THEO NHÓM */
+.qna-filter-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 0.75rem 1.25rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  flex-wrap: wrap;
+}
+
+.filter-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: #475569;
+  white-space: nowrap;
+}
+
+.filter-tabs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.35rem 0.8rem;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-tab:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+.filter-tab.active {
+  background: #0c6ec9;
+  border-color: #0c6ec9;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.tab-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.25);
+  color: inherit;
+  font-size: 0.72rem;
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.filter-tab:not(.active) .tab-count {
+  background: #e2e8f0;
+  color: #475569;
+}
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  .qna-container {
+    padding: 0 1rem;
+  }
+  .qna-card {
+    padding: 1.25rem;
+  }
+}

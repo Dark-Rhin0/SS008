@@ -1,0 +1,595 @@
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import {
+  ArrowDown,
+  ArrowUpRight,
+  ArrowRight,
+  BookOpen,
+  Scale,
+  FileText,
+  X,
+  Maximize2,
+  Compass,
+  UserRound,
+  Building2,
+  Clock,
+} from 'lucide-react'
+import {
+  animate,
+  motion,
+  useInView,
+  useMotionValue,
+  useScroll,
+  useTransform,
+} from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+
+import { sections } from '../data'
+import { FLIPBOOK_URL, GAME_URL } from '../config'
+import RouteCard from '../components/RouteCard'
+import Reveal from '../components/Reveal'
+
+import '../page-styles/home.css'
+
+/*
+ * =========================================================
+ * IMPORT IMAGE
+ * =========================================================
+ */
+import bigChaebol from '../assets/bigChaebol.jpg'
+import leeJaeYong from '../assets/LeeJaeYong.jpg'
+import building from '../assets/samsung-building.png'
+
+/*
+ * =========================================================
+ * HERO BACKDROP
+ * =========================================================
+ */
+function HeroBackdrop({ progress, replay }) {
+  const scrollScale = useTransform(progress, [0, 0.45, 1], [1, 1.06, 1.12])
+  const y = useTransform(progress, [0, 1], [0, 46])
+  const brightness = useTransform(
+    progress,
+    [0, 0.65, 1],
+    ['brightness(1)', 'brightness(.84)', 'brightness(.64)']
+  )
+  const overlay = useTransform(progress, [0, 0.6, 1], [0.18, 0.34, 0.55])
+
+  const replayScale = useMotionValue(replay ? 1.12 : 1)
+
+  useEffect(() => {
+    if (!replay) {
+      replayScale.set(1)
+      return
+    }
+
+    replayScale.set(1.12)
+
+    const controls = animate(replayScale, 1, {
+      duration: 0.65,
+      ease: [0.22, 1, 0.36, 1],
+    })
+
+    return () => {
+      controls.stop()
+    }
+  }, [replay, replayScale])
+
+  const finalScale = replay ? replayScale : scrollScale
+
+  return (
+    <>
+      <motion.div
+        className="hero-photo"
+        style={{
+          scale: finalScale,
+          y,
+          filter: brightness,
+        }}
+      />
+      <motion.div
+        className="hero-photo-tint"
+        style={{
+          opacity: overlay,
+        }}
+      />
+    </>
+  )
+}
+
+/*
+ * =========================================================
+ * HOME
+ * =========================================================
+ */
+export default function Home() {
+  const location = useLocation()
+  const navigate = useNavigate()
+  const replayHero = location.state?.replayHero === true
+
+  useEffect(() => {
+    if (!replayHero) return
+
+    window.history.replaceState(
+      {},
+      document.title,
+      window.location.pathname + window.location.search
+    )
+  }, [replayHero])
+
+  const [selectedImage, setSelectedImage] = useState(null)
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setSelectedImage(null)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [])
+
+  const centralTensionRef = useRef(null)
+  const centralTensionInView = useInView(centralTensionRef, {
+    amount: 0.05,
+  })
+
+  const heroRef = useRef(null)
+  const { scrollYProgress: heroProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  })
+
+  const copyY = useTransform(heroProgress, [0, 1], [0, -46])
+  const copyOpacity = useTransform(heroProgress, [0, 0.48, 1], [1, 1, 0.25])
+
+  const handleStoryScroll = (event) => {
+    event.preventDefault()
+    const target = document.getElementById('map')
+    if (!target) return
+
+    const lenis = window.__lenis
+    if (lenis) {
+      lenis.scrollTo(target, {
+        duration: 1.15,
+        immediate: false,
+        force: false,
+      })
+    } else {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      })
+    }
+
+    window.history.replaceState(
+      null,
+      '',
+      `${window.location.pathname}${window.location.search}#map`
+    )
+  }
+
+  const openImage = () => {
+    setSelectedImage(bigChaebol)
+  }
+  
+  const closeImage = () => {
+    setSelectedImage(null)
+  }
+
+  return (
+    <div>
+      {/* =====================================================
+          HERO
+          ===================================================== */}
+      <section className="home-hero-stage" ref={heroRef}>
+        <div className="hero-pin">
+          <HeroBackdrop progress={heroProgress} replay={replayHero} />
+
+          <div className="hero-vignette" />
+
+          <div className="container hero-content-wrap">
+            <motion.div
+              className="hero-copy"
+              style={{
+                y: copyY,
+                opacity: copyOpacity,
+              }}
+            >
+              <span className="eyebrow hero-eyebrow">
+                SS008 / HÀN QUỐC / 2022
+              </span>
+
+              {/* Áp dụng class màu chuẩn & typography thu hút */}
+           <h1 className="h1 hero-title" style={{ marginTop: 12 }}>
+          Khi{' '}
+          <span className="highlight-blue-light">
+            KINH TẾ
+          </span>
+          <br />
+          <span>tác động đến</span>
+          <br />
+          <span className="highlight-blue-dark">
+            CHÍNH TRỊ
+          </span>
+        </h1>
+
+              <p className="lead hero-lead" style={{ maxWidth: 640 }}>
+                Tại sao Chính phủ Hàn Quốc quyết định đặc xá cho <strong>Lee Jae-yong</strong> và nhiều lãnh đạo Chaebol vào tháng 8/2022?
+              </p>
+
+              <div className="hero-actions">
+                <Link className="btn btn-primary" to="/event" style={{ padding: '14px 24px' }}>
+                  Bắt đầu câu chuyện
+                  <ArrowUpRight size={18} />
+                </Link>
+
+                <a
+                  className="btn btn-hero-ghost"
+                  href={FLIPBOOK_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <BookOpen size={16} />
+                  Mở Flipbook
+                </a>
+              </div>
+            </motion.div>
+          </div>
+
+          <motion.a
+            href="#map"
+            className="scroll-cue scroll-cue-dark"
+            onClick={handleStoryScroll}
+            animate={{
+              opacity: centralTensionInView ? 0 : 1,
+            }}
+            transition={{
+              duration: 0.25,
+              ease: 'easeOut',
+            }}
+            style={{
+              position: 'fixed',
+              bottom: '5vh',
+              pointerEvents: centralTensionInView ? 'none' : 'auto',
+            }}
+          >
+            <ArrowDown size={16} />
+            cuộn để xem tiếp
+          </motion.a>
+        </div>
+
+        {/* =====================================================
+            HERO COVER
+            ===================================================== */}
+        <section className="hero-cover" id="map">
+          <div className="container hero-cover-inner">
+            <div className="hero-cover-header">
+              <Reveal>
+                <div className="cover-kicker">
+                  <span className="eyebrow">BÀI TOÁN ĐÁNH ĐỔI</span>
+                  <span className="cover-rule" />
+                </div>
+              </Reveal>
+
+              <Reveal delay={0}>
+                <h2 className="cover-title">
+                  Một quyết định đặc xá.
+                  <br />
+                  <span>Nhưng đằng sau nó là một bài toán quốc gia.</span>
+                </h2>
+              </Reveal>
+            </div>
+
+            <div className="editorial-body-grid">
+              <div className="editorial-content">
+                <Reveal delay={0}>
+                  <p className="cover-copy" style={{ fontSize: '1.15rem', lineHeight: '1.7' }}>
+                    Vào <strong>tháng 8/2022</strong>, Hàn Quốc đưa ra quyết định đặc xá cho các nhà tài phiệt lớn — đặc biệt là <strong>"Thái tử" Samsung Lee Jae-yong</strong>. Với kỳ vọng thúc đẩy họ đầu tư giúp đất nước vượt qua khủng hoảng kinh tế, quyết định này đã châm ngòi cho một cuộc tranh luận nảy lửa về tính nghiêm minh của pháp luật.
+                  </p>
+                </Reveal>
+
+                <div className="cover-actions" style={{ marginTop: 28 }}>
+                  <Link className="btn btn-primary" to="/context">
+                    Xem bối cảnh
+                    <ArrowUpRight size={16} />
+                  </Link>
+
+                  <Link className="btn btn-ghost" to="/tradeoff">
+                    <Scale size={16} />
+                    Xem cán cân
+                  </Link>
+                </div>
+              </div>
+
+              <figure className="editorial-figure">
+                <div className="editorial-image-wrapper">
+                  <img
+                    src={leeJaeYong}
+                    alt="Lee Jae-yong tại tòa án"
+                    className="editorial-img"
+                  />
+                </div>
+                <figcaption className="editorial-caption">
+                  Ông <strong>Lee Jae-yong</strong> (Phó chủ tịch Samsung) xuất hiện tại phiên tòa — biểu tượng của cuộc tranh luận giữa lợi ích kinh tế và tính nghiêm minh của pháp luật.
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      {/* =======================================================
+          TIỂU SỬ THÁI TỬ SAMSUNG
+          ================================================       */}
+      <section className="Lee-Jae-yong-section">
+        <div className="lee-decor-circle" aria-hidden="true"></div>
+
+        <div className="container">
+          <div className="lee-layout">
+            <div className="lee-main-content">
+              <div className="lee-heading">
+                <span className="lee-eyebrow">
+                  <span className="eyebrow-line"></span>
+                  TÌM HIỂU VỀ LEE JAE-YONG
+                </span>
+
+                <Reveal delay={0.2}>
+                  <h2 className="h2 title2">Điều bạn cần biết</h2>
+                </Reveal>
+              </div>
+
+              <div className="lee-cards">
+                <Reveal delay={0.3}>
+                  <article
+                    className="lee-card"
+                    onClick={() => navigate('/event')}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+                      <div className="lee-card-icon">
+                        <UserRound size={32} strokeWidth={1.7} />
+                      </div>
+                      <span className="source-chip" style={{ fontSize: 11 }}>
+                        <Clock size={12} /> 3 phút đọc
+                      </span>
+                    </div>
+
+                    <h3 className="h3 title3">
+                      Lee Jae-yong<br />là ai?
+                    </h3>
+
+                    <p>
+                      Lãnh đạo Samsung, vai trò đối với nền kinh tế Hàn Quốc và diễn biến vụ án đặc xá năm 2022.
+                    </p>
+
+                    <span className="lee-card-link">
+                      <span>TÌM HIỂU THÊM</span>
+                      <ArrowRight size={20} strokeWidth={1.5} />
+                    </span>
+                  </article>
+                </Reveal>
+
+                <Reveal delay={0.45}>
+                  <article
+                    className="lee-card"
+                    onClick={() => navigate('/chaebol')}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+                      <div className="lee-card-icon">
+                        <Building2 size={32} strokeWidth={1.7} />
+                      </div>
+                      <span className="source-chip" style={{ fontSize: 11 }}>
+                        <Clock size={12} /> 4 phút đọc
+                      </span>
+                    </div>
+
+                    <h3 className="h3 title3">
+                      Chaebol<br />là gì?
+                    </h3>
+
+                    <p>
+                      Mô hình tập đoàn gia đình cai trị kinh tế Hàn Quốc và mối quan hệ phức tạp với chính trị.
+                    </p>
+
+                    <span className="lee-card-link">
+                      <span>TÌM HIỂU THÊM</span>
+                      <ArrowRight size={20} strokeWidth={1.5} />
+                    </span>
+                  </article>
+                </Reveal>
+              </div>
+            </div>
+
+            <div className="lee-portrait" aria-hidden="true">
+              <div className="lee-portrait-stage">
+                <div className="lee-portrait-ring"></div>
+
+                <div className="lee-image-overlay">
+                  <img
+                    src={building}
+                    alt=""
+                    className="lee-banner-image"
+                    draggable="false"
+                    onDragStart={(e) => e.preventDefault()}
+                  />
+                </div>
+              </div>
+
+              <div className="lee-portrait-label">
+                <span className="lee-label-line"></span>
+                <span>LEE JAE-YONG</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =======================================================
+          STORY MAP
+          ================================================       */}
+      <section className="story-map-section" id="map">
+        <div className="container">
+          <Reveal>
+            <div className="story-map-header">
+              <div className="header-left">
+                <span className="eyebrow-badge">
+                  <Compass size={14} /> BẢNG MỤC LỤC
+                </span>
+
+                <h2 className="h2 header-title">
+                  Đừng chỉ nghe kể.{' '}
+                  <span className="highlight-text">
+                    Hãy tự mình khám phá.
+                  </span>
+                </h2>
+              </div>
+
+              <div className="header-right">
+                <p className="copy header-desc">
+                  Chỉ khi tự đi tìm câu trả lời, bạn mới hiểu được đằng sau một quyết định là cả một bài toán đánh đổi.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="story-map-grid">
+            {sections.slice(0, 4).map((s, i) => (
+              <Reveal key={s.id || i} delay={Math.min(i * 0.04, 0.16)}>
+                <Link className="story-card" to={s.path}>
+                  <span className="card-watermark-num">
+                    {s.number || (i + 1).toString().padStart(2, '0')}
+                  </span>
+
+                  <div className="card-top">
+                    <span className="card-index-tag">
+                      CHƯƠNG {s.number || (i + 1).toString().padStart(2, '0')}
+                    </span>
+
+                    <div className="card-arrow-circle">
+                      <ArrowUpRight size={18} className="arrow-icon" />
+                    </div>
+                  </div>
+
+                  <div className="card-body">
+                    <h3 className="card-title">{s.title}</h3>
+                    <p className="card-subtitle">{s.subtitle}</p>
+                  </div>
+
+                  <div className="card-hover-line" />
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={0.2}>
+            <div className="story-map-footer">
+              <div className="footer-info">
+                <span className="footer-badge">
+                  Đang hiển thị 4 / {sections.length || 8} chương
+                </span>
+
+                <p className="footer-text">
+                  Vẫn còn nhiều góc nhìn quan trọng về kinh tế, con người và pháp quyền phía trước.
+                </p>
+              </div>
+
+              <Link to="/sections" className="btn-view-all">
+                <span className="btn-text-wrap">
+                  <span className="btn-text-primary">Mở toàn bộ mục lục</span>
+                  <span className="btn-text-secondary">Xem hết 8 chương</span>
+                </span>
+                <ArrowUpRight size={18} />
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* =======================================================
+          CENTRAL TENSION
+          ================================================       */}
+      <section ref={centralTensionRef} className="section home-feature">
+        <div className="container grid grid-2 home-feature-grid">
+          <Reveal>
+            <button
+              type="button"
+              className="editorial-image image-expand-trigger"
+              onClick={openImage}
+              aria-label="Xem ảnh Chaebol kích thước lớn"
+            >
+              <span className="image-expand-icon">
+                <Maximize2 size={18} />
+              </span>
+            </button>
+          </Reveal>
+
+          <Reveal delay={0.12}>
+            <div style={{ alignSelf: 'center' }}>
+              <span className="eyebrow">Tâm điểm tranh luận</span>
+
+              <h2 className="h2" style={{ marginTop: 16 }}>
+                “Liệu Samsung có quan trọng đến thế?”
+              </h2>
+
+              <p className="copy" style={{ marginTop: 22, lineHeight: '1.7' }}>
+                Mối căng thẳng giữa hai giá trị cốt lõi: Một bên là <strong>phục hồi kinh tế, dòng vốn đầu tư và vị thế công nghệ quốc gia</strong>; bên còn lại là <strong>tính nghiêm minh của pháp luật và niềm tin xã hội vào tư pháp</strong>.
+              </p>
+
+              <div className="mini-actions" style={{ marginTop: 28, display: 'flex', gap: 12 }}>
+                <Link className="btn btn-ghost" to="/tradeoff">
+                  Xem bài toán đánh đổi
+                  <Scale size={16} />
+                </Link>
+
+                <Link className="btn btn-ghost" to="/sources">
+                  <FileText size={16} />
+                  Xem nguồn
+                </Link>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* =======================================================
+          FLIPBOOK + GAME
+          ================================================       */}
+      <RouteCard 
+        gameUrl={GAME_URL} 
+        flipbookUrl={FLIPBOOK_URL} 
+      />
+
+      {selectedImage && (
+        <div
+          className="image-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Xem ảnh kích thước lớn"
+          onClick={closeImage}
+        >
+          <button
+            type="button"
+            className="image-lightbox-close"
+            onClick={closeImage}
+            aria-label="Đóng ảnh"
+          >
+            <X size={26} />
+          </button>
+
+          <img
+            src={selectedImage}
+            alt="Chaebol / Big 5"
+            className="image-lightbox-img"
+            onClick={(event) => {
+              event.stopPropagation()
+            }}
+          />
+        </div>
+      )}
+    </div>
+  )
+}
