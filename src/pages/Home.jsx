@@ -393,7 +393,7 @@ export default function Home() {
                 <Reveal delay={0.45}>
                   <article
                     className="lee-card"
-                    onClick={() => navigate('/event')}
+                    onClick={() => navigate('/chaebol')}
                   >
                     <div className="lee-card-icon">
                       <Building2 size={34} strokeWidth={1.7} />
