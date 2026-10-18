@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// Component Nền kinh tế
 function EcoBackdrop({ type = 'line' }) {
   return (
     <div className="eco-backdrop" aria-hidden="true">
@@ -36,11 +35,16 @@ function EcoBackdrop({ type = 'line' }) {
   );
 }
 
-// Component PageIntro chính
 export default function PageIntro({
-  number,
-  title,
-  subtitle,
+  number = '01 / SỰ KIỆN',
+  title = (
+    <>
+      Lee Jae-yong<br />
+      và quyết định<br />
+      <span className="underline-dac">đặc</span> xá năm 2022
+    </>
+  ),
+  subtitle = 'Bối cảnh, diễn biến và những tranh luận xoay quanh quyết định khoan hồng dành cho lãnh đạo Samsung.',
   children,
   backText = 'Tổng quan',
   backLink = '/',
@@ -59,22 +63,30 @@ export default function PageIntro({
       </div>
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        <div className="detail-hero-nav" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
-          <Link to={backLink} className="back-link">
-            ← {backText}
-          </Link>
-          <span className="meta-label">{metaLabel}</span>
-        </div>
+        <div className="detail-hero-inner">
+          <div className="detail-hero-nav">
+            <Link to={backLink} className="detail-hero-back back-link">
+              ← {backText}
+            </Link>
+          </div>
 
-        <div className="detail-hero-content">
-          {number && <span className="hero-number">{number}</span>}
-          <h1>{title}</h1>
-          {subtitle && <p className="hero-subtitle">{subtitle}</p>}
-          {children}
-        </div>
+          <div className="detail-hero-content">
+            <div className="detail-hero-meta">
+              {number && <span className="detail-hero-number hero-number">{number}</span>}
+              <span className="detail-hero-meta-line"></span>
+              {metaLabel && <span className="detail-hero-meta-label meta-label">{metaLabel}</span>}
+            </div>
 
-        <div className="detail-hero-footer">
-          <span>{bottomText}</span>
+            <h1 className="detail-hero-title">{title}</h1>
+            {subtitle && <p className="detail-hero-subtitle hero-subtitle">{subtitle}</p>}
+            {children}
+          </div>
+
+          {bottomText && (
+            <div className="detail-hero-footer-tag detail-hero-footer">
+              <span>{bottomText}</span>
+            </div>
+          )}
         </div>
       </div>
     </section>

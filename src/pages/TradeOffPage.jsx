@@ -9,30 +9,16 @@ import '../page-styles/detail.css'
 import { FLIPBOOK_URL, GAME_URL } from '../config'
 import RouteCard from '../components/RouteCard'
 
-// Component Nền Biểu đồ cột tổng thể (phía sau trang)
 function BarChartBackdrop() {
   return (
     <div 
       aria-hidden="true" 
       style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        width: '100%',
-        height: '100%',
-        pointerEvents: 'none',
-        zIndex: 0,
-        opacity: 0.06,
-        overflow: 'hidden'
+        position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
+        width: '100%', height: '100%', pointerEvents: 'none', zIndex: 0, opacity: 0.06, overflow: 'hidden'
       }}
     >
-      <svg 
-        viewBox="0 0 1000 400" 
-        preserveAspectRatio="none" 
-        style={{ width: '100%', height: '100%' }}
-      >
+      <svg viewBox="0 0 1000 400" preserveAspectRatio="none" style={{ width: '100%', height: '100%' }}>
         <g fill="#00c2ff">
           <rect x="30" y="180" width="40" height="220" rx="4" />
           <rect x="100" y="100" width="40" height="300" rx="4" />
@@ -54,32 +40,17 @@ function BarChartBackdrop() {
   );
 }
 
-// Component Biểu đồ cột nằm TRONG TỪNG CARD (Lợi ích - Xanh / Rủi ro - Đỏ)
 function SideBarChart({ color }) {
   const fillColor = color === 'blue' ? '#00c2ff' : '#ff4d4f';
   return (
     <div
       aria-hidden="true"
       style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        width: '100%',
-        height: '100%',
-        pointerEvents: 'none',
-        zIndex: 0,
-        opacity: 0.12, // Độ mờ vừa phải dịu mắt
-        overflow: 'hidden',
-        borderRadius: 'inherit'
+        position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
+        width: '100%', height: '100%', pointerEvents: 'none', zIndex: 0, opacity: 0.12, overflow: 'hidden', borderRadius: 'inherit'
       }}
     >
-      <svg
-        viewBox="0 0 500 200"
-        preserveAspectRatio="none"
-        style={{ width: '100%', height: '100%' }}
-      >
+      <svg viewBox="0 0 500 200" preserveAspectRatio="none" style={{ width: '100%', height: '100%' }}>
         <g fill={fillColor}>
           <rect x="15" y="90" width="22" height="110" rx="3" />
           <rect x="50" y="40" width="22" height="160" rx="3" />
@@ -103,20 +74,32 @@ function SideBarChart({ color }) {
 
 export default function TradeOffPage() {
   const [tilt, setTilt] = useState(0)
-  const [selectedTag, setSelectedTag] = useState(null)
+  const [popover, setPopover] = useState(null) // Luu thong tin & vi tri popup
 
-  const handleTagClick = (tagName, sideIndex) => {
-    setTilt(sideIndex === 0 ? -1 : 1)
-    
-    if (TRADE_OFF_DETAILS && TRADE_OFF_DETAILS[tagName]) {
-      setSelectedTag(TRADE_OFF_DETAILS[tagName])
-    } else {
-      setSelectedTag({
-        title: tagName,
-        desc: `Thông tin chi tiết về ${tagName} trong bối cảnh đánh đổi kinh tế và thể chế.`
-      })
-    }
+ const handleTagClick = (e, tagName, sideIndex) => {
+  setTilt(sideIndex === 0 ? -1 : 1)
+  
+  const rect = e.currentTarget.getBoundingClientRect()
+  
+  if (popover && popover.title === tagName) {
+    setPopover(null)
+    return
   }
+
+  const detail = (TRADE_OFF_DETAILS && TRADE_OFF_DETAILS[tagName]) ? TRADE_OFF_DETAILS[tagName] : {
+    title: tagName,
+    desc: `Thông tin chi tiết về ${tagName} trong bối cảnh đánh đổi kinh tế.`
+  }
+
+  setPopover({
+    title: detail.title,
+    desc: detail.desc,
+    // Đặt popup ngay phía trên nút bấm (cách 10px)
+    top: rect.top + window.scrollY - 10,
+    // Đặt mép trái popup trùng với vị trí nhấn trên nút
+    left: rect.left + 15 
+  })
+}
 
   return (
     <>
@@ -127,7 +110,6 @@ export default function TradeOffPage() {
       />
 
       <section className="section" style={{ position: 'relative', overflow: 'hidden' }}>
-        {/* Nền biểu đồ cột lớn toàn trang */}
         <BarChartBackdrop />
 
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
@@ -143,7 +125,7 @@ export default function TradeOffPage() {
                 </p>
                 
                 <div className="trade-side-list">
-                  {tradeoffs.map((side, i) => (
+                  {tradeoffs && tradeoffs.map((side, i) => (
                     <div
                       key={side.side}
                       className={`trade-side ${side.color}`}
@@ -155,7 +137,6 @@ export default function TradeOffPage() {
                       onMouseEnter={() => setTilt(i === 0 ? -1 : 1)}
                       onMouseLeave={() => setTilt(0)}
                     >
-                      {/* TẠO NỀN BIỂU ĐỒ CỘT TRONG MỖI KHUNG (CARD) */}
                       <SideBarChart color={side.color} />
 
                       <div style={{ position: 'relative', zIndex: 1 }}>
@@ -166,13 +147,13 @@ export default function TradeOffPage() {
                           <h3>{side.side}</h3>
                         </div>
                         <div className="trade-points">
-                          {side.points.map((p) => (
+                          {side.points && side.points.map((p) => (
                             <motion.button
                               whileHover={{ x: 5, scale: 1.02 }}
                               whileTap={{ scale: 0.98 }}
                               key={p}
                               className="trade-tag-btn"
-                              onClick={() => handleTagClick(p, i)}
+                              onClick={(e) => handleTagClick(e, p, i)}
                             >
                               {p}
                             </motion.button>
@@ -205,20 +186,35 @@ export default function TradeOffPage() {
         </div>
       </section>
 
-      {/* POPUP MODAL NHẬT KÝ */}
-      {selectedTag && (
-        <div className="trade-modal-overlay" onClick={() => setSelectedTag(null)}>
-          <div className="trade-modal-card journal-style" onClick={(e) => e.stopPropagation()}>
+      {/* BONG BÓNG TIN NHẮN HIỆN NGAY TRÊN ĐẦU NÚT VỪA BẤM */}
+      {popover && (
+        <>
+          {/* Lớp click ẩn popup khi bấm ra ngoài */}
+          <div 
+            style={{ position: 'fixed', inset: 0, zIndex: 99998 }} 
+            onClick={() => setPopover(null)} 
+          />
+          <div 
+            className="tag-popover-bubble"
+            style={{
+              top: `${popover.top}px`,
+              left: `${popover.left}px`,
+            }}
+          >
             <button 
-              className="trade-modal-close journal-close" 
-              onClick={() => setSelectedTag(null)}
+              className="tag-popover-close" 
+              onClick={() => setPopover(null)}
             >
               &times;
             </button>
-            <h3 className="trade-modal-title journal-title">📝 {selectedTag.title}</h3>
-            <p className="trade-modal-desc journal-desc">{selectedTag.desc}</p>
+            <h4 className="tag-popover-title">
+              💬 {popover.title ? popover.title.normalize('NFC') : ''}
+            </h4>
+            <p className="tag-popover-desc">
+              {popover.desc ? popover.desc.normalize('NFC') : ''}
+            </p>
           </div>
-        </div>
+        </>
       )}
 
       <RouteCard 
@@ -232,4 +228,4 @@ export default function TradeOffPage() {
       />
     </>
   )
-} 
+}
