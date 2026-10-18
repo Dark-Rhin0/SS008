@@ -1240,3 +1240,174 @@ a:focus-visible {
     font-weight: 800 !important;
     line-height: 1.1;
 }
+/* Styling cho các tag nút bấm */
+.trade-tag-btn {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 0.875rem;
+    color: #1e293b;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-block;
+    margin: 4px;
+    text-align: left;
+}
+
+    .trade-tag-btn:hover {
+        background: #00c2ff;
+        color: #ffffff;
+        border-color: #00c2ff;
+    }
+
+/* CSS Popup Modal */
+.trade-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: tradeFadeIn 0.2s ease-out;
+}
+
+.trade-modal-card {
+    background: #ffffff;
+    padding: 28px 32px;
+    border-radius: 16px;
+    max-width: 480px;
+    width: 90%;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    position: relative;
+    animation: tradeScaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.trade-modal-title {
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: #0f172a;
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+.trade-modal-desc {
+    color: #475569;
+    line-height: 1.6;
+    margin: 0;
+    font-size: 1rem;
+}
+
+.trade-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    background: none;
+    border: none;
+    font-size: 1.75rem;
+    color: #94a3b8;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.15s ease;
+}
+
+    .trade-modal-close:hover {
+        color: #0f172a;
+    }
+
+@keyframes tradeFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes tradeScaleUp {
+    from {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+/* POPUP PHONG CÁCH TỜ GIẤY NHẬT KÝ (OVEREIDE) */
+.trade-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.7) !important;
+    backdrop-filter: blur(6px) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 99999 !important;
+}
+
+.trade-modal-card.journal-style,
+.modal-content {
+    /* Màu nền giấy kem antique */
+    background-color: #fcf8f2 !important;
+    /* Dòng kẻ ngang trang giấy nhật ký */
+    background-image: linear-gradient(#e5ddd0 1px, transparent 1px) !important;
+    background-size: 100% 32px !important;
+    padding: 40px 32px 28px 48px !important; /* Dành khoảng trống lề trái */
+    border-radius: 4px 12px 12px 4px !important;
+    max-width: 480px !important;
+    width: 90% !important;
+    position: relative !important;
+    /* Lề đỏ đôi đường gáy tập bên trái */
+    border: none !important;
+    border-left: 4px double #e57373 !important;
+    /* Hiệu ứng bóng đổ và độ nghiêng như tờ giấy đặt trên bàn */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25), inset 0 0 50px rgba(210, 190, 165, 0.3) !important;
+    transform: rotate(-1.5deg) !important;
+}
+
+    /* Tiêu đề nhật ký */
+    .trade-modal-title.journal-title,
+    .modal-content h3 {
+        font-family: 'Playfair Display', 'Merriweather', 'Georgia', serif !important;
+        font-size: 1.45rem !important;
+        font-weight: 800 !important;
+        color: #1a2a3a !important;
+        margin-top: 0 !important;
+        margin-bottom: 12px !important;
+        line-height: 32px !important;
+        border-bottom: 2px solid #1a2a3a !important;
+        display: inline-block !important;
+    }
+
+    /* Nội dung chữ viết trên dòng kẻ */
+    .trade-modal-desc.journal-desc,
+    .modal-content p {
+        font-family: 'Be Vietnam Pro', system-ui, sans-serif !important;
+        font-size: 1rem !important;
+        color: #2c3e50 !important;
+        line-height: 32px !important; /* Căn chuẩn dòng chữ nằm trên dòng kẻ */
+        margin: 0 !important;
+    }
+
+/* Nút đóng */
+.trade-modal-close.journal-close,
+.modal-close-btn {
+    position: absolute !important;
+    top: 12px !important;
+    right: 16px !important;
+    background: none !important;
+    border: none !important;
+    font-size: 1.8rem !important;
+    color: #8c7b6c !important;
+    cursor: pointer !important;
+}
+
+    .trade-modal-close.journal-close:hover,
+    .modal-close-btn:hover {
+        color: #d32f2f !important;
+    }

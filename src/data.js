@@ -10,7 +10,7 @@ export const sections = [
 ]
 
 export const sources = [
-  { name: 'Bộ Tư pháp Hàn Quốc', title: '2022년 광복절 특별사면 실시 — 12/08/2022', url: 'https://www.moj.go.kr/moj/221/subview.do?enc=Zm5jdDF8QEB8JTJGYmJzJTJGbW9qJTJGMTgyJTJGNTYyMTA4JTJGYXJ0Y2xWaWV3LmRvJTNGcGFzc3dvcmQlM0QlMjZyZ3NCZ25kZVN0ciUzRCUyNmJic0NsU2VxJTNEJTI2cmdzRW5kZGVTdHIlM0QlMjZpc1ZpZXdNaW5lJTNEZmFsc2UlMjZwYWdlJTNEMSUyNmJic09wZW5XcmRfJTNEJUVDJTgyJUFDJUVCJUE5JUI0JTI2' },
+  { name: 'Bộ Tư pháp Hàn Quốc', title: '2022년 광복절 특별사면 실시 — 12/08/2022', url: 'https://www.moj.go.kr/moj/221/subview.do?enc=Zm5jdDF8QEB8JTJGYmJzJTJGbW9qJTJGMTgyJTJGNTYyMTA4JTJGYx3I2Vi13aWV3LmRvJTNGcGFzc3dvcmQlM0QlMjZyZ3NCZ25kZVN0ciUzRCUyNmJic0NsU2VxJTNEJTI2cmdzRW5kZGVTdHIlM0QlMjZpc1ZpZXdNaW5lJTNEZmFsc2UlMjZwYWdlJTNEMSUyNmJic09wZW5XcmRfJTNEJUVDJTgyJUFDJUVCJUE5JUI0JTI2' },
   { name: 'Yonhap News Agency', title: 'Samsung heir Lee granted special presidential pardon', url: 'https://en.yna.co.kr/view/AEN20220812001253315' },
   { name: 'Yonhap News Agency', title: "Samsung's Lee expected to solidify leadership after pardon", url: 'https://en.yna.co.kr/view/AEN20220812006000320' },
   { name: 'Reuters', title: "South Korea pardons Samsung's Lee over 'economic crisis'", url: 'https://www.youtube.com/watch?v=R59cneCcUt8' },
@@ -68,6 +68,49 @@ export const tradeoffs = [
   { side: 'Kỳ vọng kinh tế', color: 'blue', points: ['Đầu tư', 'Việc làm', 'Xuất khẩu', 'Công nghệ', 'Cạnh tranh quốc tế'] },
   { side: 'Rủi ro thể chế', color: 'red', points: ['Bình đẳng trước pháp luật', 'Niềm tin tư pháp', 'Tiền lệ cho Chaebol', 'Tập trung quyền lực', 'Tranh luận đặc quyền'] },
 ]
+
+export const TRADE_OFF_DETAILS = {
+  "Đầu tư": {
+    title: "Kỳ vọng Đầu tư",
+    desc: "Tạo điều kiện để các tập đoàn triển khai các dự án đầu tư lớn."
+  },
+  "Việc làm": {
+    title: "Tạo việc làm",
+    desc: "Duy trì và tạo thêm việc làm thông qua mở rộng sản xuất, kinh doanh."
+  },
+  "Xuất khẩu": {
+    title: "Thúc đẩy Xuất khẩu",
+    desc: "Tăng khả năng duy trì năng lực xuất khẩu của các doanh nghiệp lớn."
+  },
+  "Công nghệ": {
+    title: "Bứt phá Công nghệ",
+    desc: "Thúc đẩy đầu tư vào bán dẫn, điện tử và các ngành công nghệ cao."
+  },
+  "Cạnh tranh quốc tế": {
+    title: "Năng lực Cạnh tranh",
+    desc: "Giúp các tập đoàn Hàn Quốc ứng phó với cạnh tranh toàn cầu."
+  },
+  "Bình đẳng trước pháp luật": {
+    title: "Bình đẳng Pháp lý",
+    desc: "Đặt ra câu hỏi liệu người có quyền lực kinh tế có được đối xử khác biệt hay không."
+  },
+  "Niềm tin tư pháp": {
+    title: "Xói mòn Niềm tin",
+    desc: "Đặc xá các doanh nhân lớn có thể gây tranh luận về tính bình đẳng của pháp luật."
+  },
+  "Tiền lệ cho Chaebol": {
+    title: "Tiền lệ Xấu",
+    desc: "Có thể tạo tiền lệ cho việc xem xét lợi ích kinh tế khi xử lý các lãnh đạo tập đoàn lớn."
+  },
+  "Tập trung quyền lực": {
+    title: "Tập trung Quyền lực",
+    desc: "Có nguy cơ tiếp tục củng cố vai trò của các chaebol trong nền kinh tế."
+  },
+  "Tranh luận đặc quyền": {
+    title: "Tranh luận Đặc quyền",
+    desc: " Xã hội có thể đặt câu hỏi về sự ưu đãi dành cho giới tài phiệt."
+  }
+};
 
 export const conclusion = [
   ['01', 'Bối cảnh kinh tế', 'Lạm phát, bất ổn toàn cầu, suy giảm thương mại và áp lực tăng trưởng.'],
