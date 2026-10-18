@@ -564,6 +564,13 @@ iframe {
   gap: 9px;
   margin-top: 28px;
 }
+.detail-hero-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Đẩy "← Tổng quan" sang trái, "NHÓM 6 / SS008" sang phải */
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
 
 
 /* =========================================================
@@ -1177,4 +1184,55 @@ button:focus-visible,
 a:focus-visible {
   outline: 3px solid rgba(47, 91, 255, .45);
   outline-offset: 4px;
+}
+/* Eco Backdrop Styles */
+.eco-backdrop {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    color: var(--blue, #2563eb);
+    pointer-events: none;
+    overflow: hidden;
+}
+
+    .eco-backdrop svg {
+        width: 100%;
+        height: 100%;
+    }
+
+.eco-line {
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+    animation: eco-draw 3s ease forwards;
+}
+
+@keyframes eco-draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .eco-line {
+        animation: none;
+        stroke-dashoffset: 0;
+    }
+}
+/* =========================================================
+   HIGHLIGHT STYLES
+   ========================================================= */
+
+/* Đổi màu chữ KINH TẾ sang xanh dương nhạt và trả về font Be Vietnam Pro */
+.highlight-blue-light {
+    color: #3b82f6 !important; /* Mã màu xanh dương nhạt (có thể đổi sang #60a5fa nếu muốn nhạt hơn) */
+    font-family: 'Be Vietnam Pro', system-ui, sans-serif !important; /* Phông chữ gốc */
+    font-weight: 800;
+}
+
+/* Từ CHÍNH TRỊ (Màu xanh dương đậm) */
+.highlight-blue-dark {
+    color: #1428A0 !important; /* Đã đổi sang màu xanh Navy đậm sắc nét */
+    font-family: 'Be Vietnam Pro', system-ui, sans-serif !important;
+    font-weight: 800 !important; /* Đảm bảo độ dày bằng chữ KINH TẾ */
+    line-height: 1.1;
 }
