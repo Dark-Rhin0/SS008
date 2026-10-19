@@ -295,13 +295,7 @@ export default function ChaebolPage() {
                 className="copy"
                 style={{ marginTop: 20 }}
               >
-                Dù một cá nhân không thể tự tay vực dậy cả nền 
-                kinh tế, nhưng vai trò lãnh đạo tối cao tại 
-                Samsung chính là nút thắt trung tâm. Sự trở lại
-                của ông gỡ bỏ thế bế tắc, mở đường cho hàng loạt
-                siêu dự án đầu tư dài hạn, các thương vụ M&A chiến
-                lược và tạo hiệu ứng Domino tích cực lên toàn
-                bộ chuỗi cung ứng.
+                Dù một cá nhân không thể tự tay vực dậy cả nền kinh tế, nhưng vai trò lãnh đạo tối cao tại Samsung chính là nút thắt trung tâm. Sự trở lại ncủa ông gỡ bỏ thế bế tắc, mở đường cho hàng loạt siêu dự án đầu tư dài hạn, các thương vụ M&A chiến lược và tạo hiệu ứng Domino tích cực lên toàn bộ chuỗi cung ứng.
               </p>
             </div>
           </Reveal>
