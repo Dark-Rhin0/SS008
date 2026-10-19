@@ -281,25 +281,21 @@ export default function ChaebolPage() {
           <Reveal>
             <div>
               <span className="eyebrow">
-                WHY THE PARDON WAS ECONOMIC
+                TẠI SAO LỆNH ÂN XÁ LẠI MANG TÍNH KINH TẾ
               </span>
 
               <h2
                 className="h2"
                 style={{ marginTop: 15 }}
               >
-                Một người không “cứu” nền kinh tế.
+                Vị Trí "Chìa Khóa" Mở Khóa Động Lực Kinh Tế Quốc Gia.
               </h2>
 
               <p
                 className="copy"
                 style={{ marginTop: 20 }}
               >
-                Luận điểm trong tài liệu khác: vai trò của Lee
-                nằm ở vị trí trung tâm quyền kiểm soát Samsung.
-                Việc trở lại hoạt động có thể mở đường cho quyết
-                định đầu tư dài hạn, M&A, đối ngoại và tác động
-                lan tỏa sang chuỗi cung ứng.
+                Dù một cá nhân không thể tự tay vực dậy cả nền kinh tế, nhưng vai trò lãnh đạo tối cao tại Samsung chính là nút thắt trung tâm. Sự trở lại ncủa ông gỡ bỏ thế bế tắc, mở đường cho hàng loạt siêu dự án đầu tư dài hạn, các thương vụ M&A chiến lược và tạo hiệu ứng Domino tích cực lên toàn bộ chuỗi cung ứng.
               </p>
             </div>
           </Reveal>
@@ -307,22 +303,22 @@ export default function ChaebolPage() {
           <Reveal delay={0.12}>
             <div className="logic-stack">
               <div>
-                <b>đầu tư vốn</b>
+                <b>Khơi thông dòng vốn đầu tư</b>
                 <ArrowUpRight />
               </div>
 
               <div>
-                <b>nhà máy / R&D</b>
+                <b>Đẩy mạnh cụm Nhà máy & R&D</b>
                 <ArrowUpRight />
               </div>
 
               <div>
-                <b>nhà cung cấp + việc làm</b>
+                <b>Trợ lực nhà cung cấp & Việc làm</b>
                 <ArrowUpRight />
               </div>
 
               <div>
-                <b>xuất khẩu + năng lực công nghệ</b>
+                <b>Nâng tầm xuất khẩu & Công nghệ</b>
               </div>
             </div>
           </Reveal>
