@@ -53,8 +53,8 @@ export const chaebols = [
 export const policySteps = [
   { no: '01', title: 'Khôi phục quyền điều hành', body: 'Dỡ hạn chế làm việc 5 năm để Lee Jae-yong có thể chính thức tham gia điều hành Samsung.' },
   { no: '02', title: 'Giải phóng quyết định đầu tư', body: 'Chính phủ kỳ vọng các nhà lãnh đạo doanh nghiệp lớn có thể thúc đẩy những quyết định vốn và công nghệ quy mô lớn.' },
-  { no: '03', title: 'Hiệu ứng lan tỏa', body: 'Đầu tư lớn được kỳ vọng kéo theo nhà cung cấp, việc làm, sản xuất và doanh thu xuất khẩu.' },
-  { no: '04', title: 'Ngoại giao kinh tế', body: 'Lãnh đạo Chaebol có thể trực tiếp tham gia các cuộc gặp quốc tế liên quan chuỗi cung ứng, công nghệ và hợp tác.' },
+  { no: '03', title: 'Hiệu ứng lan tỏa', body: 'Các dự án kinh tế lớn sẽ tạo ra hàng nghìn đơn hàng cho các nhà cung cấp nhỏ và vừa, kéo theo việc làm, sản xuất và doanh thu xuất khẩu phục hồi.' },
+  { no: '04', title: 'Ngoại giao kinh tế', body: 'Lãnh đạo Chaebol có thể trực tiếp tham gia các cuộc gặp quốc tế liên quan chuỗi cung ứng, công nghệ và hợp tác. Qua đó, giữ vững vị thế trên trường Quốc tế.' },
 ]
 
 export const myths = [
