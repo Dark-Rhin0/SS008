@@ -3001,3 +3001,145 @@
     animation: none;
   }
 }
+
+/* Container bao quanh nút để làm mốc định vị cho tooltip */
+.trade-point-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Thẻ Pop-up / Tooltip kiểu Bong bóng chat */
+.speech-bubble-popup {
+  position: absolute;
+  bottom: calc(100% + 10px); /* Nằm ngay phía trên nút bấm */
+  left: 0;
+  width: 260px;
+  background: #ffffff;
+  padding: 12px 14px 12px 16px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+  z-index: 100;
+  text-align: left;
+}
+
+/* Mũi tên nhỏ trỏ xuống dưới của bong bóng */
+.speech-bubble-popup::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 24px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: #ffffff transparent transparent transparent;
+}
+
+/* Viền cho mũi tên (tạo độ nét với border ngoài) */
+.speech-bubble-popup::before {
+  content: '';
+  position: absolute;
+  top: calc(100% + 1px);
+  left: 23px;
+  border-width: 7px;
+  border-style: solid;
+  border-color: #e2e8f0 transparent transparent transparent;
+}
+
+/* Header bên trong bong bóng */
+.bubble-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.bubble-icon {
+  font-size: 0.85rem;
+}
+
+.bubble-title {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* Đoạn mô tả nội dung */
+.bubble-desc {
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Nút đóng (dấu X) */
+.bubble-close {
+  position: absolute !important;
+  top: 8px !important;
+  right: 12px !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  font-size: 1.35rem !important;
+  color: #94a3b8 !important;
+  cursor: pointer !important;
+  line-height: 1 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  transition: color 0.2s ease !important;
+}
+
+/* Hover dấu X đổi màu đỏ */
+.bubble-close:hover {
+  background: transparent !important;
+  color: #e60909 !important;
+}
+
+/* ==========================================================================
+   STYLE NÚT BẤM (GỘP HIỆU ỨNG HOVER VÀ ACTIVE/KHI ĐƯỢC CHỌN)
+   ================================================================---------- */
+
+/* Phía Lợi ích (Blue): Khi HOVER hoặc ĐANG ĐƯỢC CHỌN (.active) */
+.trade-side.blue .trade-points button:hover,
+.trade-side.blue .trade-points button.active {
+  background-color: #00c2ff;
+  color: #ffffff;
+  border-color: #00c2ff;
+}
+
+/* Phía Rủi ro (Red): Khi HOVER hoặc ĐANG ĐƯỢC CHỌN (.active) */
+.trade-side.red .trade-points button:hover,
+.trade-side.red .trade-points button.active {
+  background-color: #ef4444;
+  color: #ffffff;
+  border-color: #ef4444;
+}
+
+/* ==========================================================================
+   BAR CHART BACKDROP (NỀN BIỂU ĐỒ CỘT)
+   ================================================================---------- */
+.section-with-chart {
+  position: relative;
+  overflow: hidden;
+}
+
+.bar-chart-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.07;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.bar-chart-backdrop svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}

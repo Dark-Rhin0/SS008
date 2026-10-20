@@ -65,8 +65,28 @@ export const myths = [
 ]
 
 export const tradeoffs = [
-  { side: 'Kỳ vọng kinh tế', color: 'blue', points: ['Đầu tư', 'Việc làm', 'Xuất khẩu', 'Công nghệ', 'Cạnh tranh quốc tế'] },
-  { side: 'Rủi ro thể chế', color: 'red', points: ['Bình đẳng trước pháp luật', 'Niềm tin tư pháp', 'Tiền lệ cho Chaebol', 'Tập trung quyền lực', 'Tranh luận đặc quyền'] },
+  { 
+    side: 'Kỳ vọng kinh tế', 
+    color: 'blue', 
+    points: [
+      { title: 'Đầu tư', detail: 'Tạo điều kiện để các tập đoàn triển khai các dự án đầu tư lớn.' },
+      { title: 'Việc làm', detail: 'Duy trì và tạo thêm việc làm thông qua mở rộng sản xuất, kinh doanh.' },
+      { title: 'Xuất khẩu', detail: 'Tăng khả năng duy trì năng lực xuất khẩu của các doanh nghiệp lớn.' },
+      { title: 'Công nghệ', detail: 'Thúc đẩy đầu tư vào bán dẫn, điện tử và các ngành công nghệ cao.' },
+      { title: 'Cạnh tranh quốc tế', detail: 'Giúp các tập đoàn Hàn Quốc ứng phó với cạnh tranh toàn cầu.' }
+    ] 
+  },
+  { 
+    side: 'Rủi ro thể chế', 
+    color: 'red', 
+    points: [
+      { title: 'Bình đẳng trước pháp luật', detail: 'Đặt ra câu hỏi liệu người có quyền lực kinh tế có được đối xử khác biệt hay không.' },
+      { title: 'Niềm tin tư pháp', detail: 'Đặc xá các doanh nhân lớn có thể gây tranh luận về tính bình đẳng của pháp luật.' },
+      { title: 'Tiền lệ cho Chaebol', detail: 'Có thể tạo tiền lệ cho việc xem xét lợi ích kinh tế khi xử lý các lãnh đạo tập đoàn lớn.' },
+      { title: 'Tập trung quyền lực', detail: 'Có nguy cơ tiếp tục củng cố vai trò của các chaebol trong nền kinh tế.' },
+      { title: 'Tranh luận đặc quyền', detail: 'Xã hội có thể đặt câu hỏi về sự ưu đãi dành cho giới tài phiệt.' }
+    ] 
+  },
 ]
 
 export const conclusion = [

@@ -209,7 +209,7 @@ export default function Home() {
                 Khi{' '}
                 <span
                   style={{
-                    color: '#35cc27',
+                    color: '#00c2ff',
                   }}
                 >
                   KINH TẾ
@@ -219,7 +219,7 @@ export default function Home() {
                 <br />
                 <span
                   style={{
-                    color: '#0c6ec9',
+                    color: '#0e62ff',
                     lineHeight: 1.2,
                   }}
                 >
