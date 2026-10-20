@@ -58,15 +58,11 @@ export default function ChaebolPage() {
     }
 
     // Tọa độ tâm của hai phần tử, tính tương đối với sơ đồ.
-    const x1 =
-      centerRect.left + centerRect.width / 2 - mapRect.left;
-    const y1 =
-      centerRect.top + centerRect.height / 2 - mapRect.top;
+    const x1 = centerRect.left + centerRect.width / 2 - mapRect.left;
+    const y1 = centerRect.top + centerRect.height / 2 - mapRect.top;
 
-    const x2 =
-      nodeRect.left + nodeRect.width / 2 - mapRect.left;
-    const y2 =
-      nodeRect.top + nodeRect.height / 2 - mapRect.top;
+    const x2 = nodeRect.left + nodeRect.width / 2 - mapRect.left;
+    const y2 = nodeRect.top + nodeRect.height / 2 - mapRect.top;
 
     const dx = x2 - x1;
     const dy = y2 - y1;
@@ -94,10 +90,8 @@ export default function ChaebolPage() {
       });
     };
 
-    // Đợi trình duyệt bố trí xong giao diện.
     scheduleUpdate();
 
-    // Theo dõi thay đổi kích thước sơ đồ.
     const map = mapRef.current;
     const observer = map ? new ResizeObserver(scheduleUpdate) : null;
 
@@ -115,7 +109,6 @@ export default function ChaebolPage() {
       }
     }
 
-    // Cập nhật thêm sau khi các hiệu ứng xuất hiện.
     window.addEventListener("resize", scheduleUpdate);
 
     return () => {
@@ -133,6 +126,9 @@ export default function ChaebolPage() {
         subtitle="Chaebol là các tập đoàn quy mô khổng lồ thuộc sở hữu và được điều hành chi phối bởi các gia tộc tại Hàn Quốc."
       />
 
+      {/* =====================================================
+          SƠ ĐỒ INTERACTIVE CHAEBOL
+      ===================================================== */}
       <section className="section">
         <div className="container">
           <Reveal>
@@ -276,56 +272,52 @@ export default function ChaebolPage() {
         </div>
       </section>
 
+      {/* =====================================================
+          ĐẶC ĐIỂM CHAEBOL & SỰ BẢO TRỢ CỦA NHÀ NƯỚC
+      ===================================================== */}
       <section className="section section-soft">
-        <div className="container grid grid-2">
+        <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '80px' }}>
+          
+          {/* KHỐI 1: KINH DOANH ĐA NGÀNH */}
           <Reveal>
-            <div>
-              <span className="eyebrow">
-                WHY THE PARDON WAS ECONOMIC
-              </span>
+            <div className="reason-layout">
+              <div className="reason-content">
+                <span className="eyebrow">ĐẶC ĐIỂM CHAEBOL</span>
+                <h2 className="h2 reason-title">Kinh doanh đa ngành xuyên lĩnh vực (Conglomerate)</h2>
+                <p className="copy reason-text">
+                  Hoạt động từ sản xuất công nghiệp nặng, công nghệ cao, đóng tàu, hóa chất, xe hơi cho đến bán lẻ, bảo hiểm, bất động sản, bệnh viện, giải trí, truyền thông.
+                </p>
+              </div>
 
-              <h2
-                className="h2"
-                style={{ marginTop: 15 }}
-              >
-                Một người không “cứu” nền kinh tế.
-              </h2>
-
-              <p
-                className="copy"
-                style={{ marginTop: 20 }}
-              >
-                Luận điểm trong tài liệu khác: vai trò của Lee
-                nằm ở vị trí trung tâm quyền kiểm soát Samsung.
-                Việc trở lại hoạt động có thể mở đường cho quyết
-                định đầu tư dài hạn, M&A, đối ngoại và tác động
-                lan tỏa sang chuỗi cung ứng.
-              </p>
+              <div className="reason-media-grid" style={{ gridTemplateColumns: '1fr' }}>
+                <div className="reason-media-card" style={{ aspectRatio: '16/11' }}>
+                  <img src="/images/myth5.png" alt="Các tập đoàn Chaebol tiêu biểu: SK, Samsung, Hyundai, LG" />
+                  <span>Các trụ cột kinh tế: SK, Samsung, Hyundai, LG</span>
+                </div>
+              </div>
             </div>
           </Reveal>
 
+          {/* KHỐI 2: SỰ BẢO TRỢ CỦA NHÀ NƯỚC */}
           <Reveal delay={0.12}>
-            <div className="logic-stack">
-              <div>
-                <b>đầu tư vốn</b>
-                <ArrowUpRight />
+            <div className="reason-layout">
+              <div className="reason-content">
+                <span className="eyebrow">MỐI QUAN HỆ THỂ CHẾ</span>
+                <h2 className="h2 reason-title">Sự bảo trợ đặc biệt của Nhà nước</h2>
+                <p className="copy reason-text">
+                  Tồn tại mối liên hệ hữu cơ, gắn bó mật thiết với chính phủ trong suốt lịch sử phát triển thông qua việc tiếp cận tín dụng rẻ, ưu đãi thuế quan và bảo hộ thị trường.
+                </p>
               </div>
 
-              <div>
-                <b>nhà máy / R&D</b>
-                <ArrowUpRight />
-              </div>
-
-              <div>
-                <b>nhà cung cấp + việc làm</b>
-                <ArrowUpRight />
-              </div>
-
-              <div>
-                <b>xuất khẩu + năng lực công nghệ</b>
+              <div className="reason-media-grid" style={{ gridTemplateColumns: '1fr' }}>
+                <div className="reason-media-card" style={{ aspectRatio: '16/11' }}>
+                  <img src="/images/myth6.png" alt="Tổng thống Park Chung-hee thăm nhà máy" />
+                  <span>Tổng thống Park Chung-hee thăm nhà máy hoặc khu công nghiệp trong giai đoạn công nghiệp hóa.</span>
+                </div>
               </div>
             </div>
           </Reveal>
+
         </div>
       </section>
 

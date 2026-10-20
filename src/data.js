@@ -10,7 +10,7 @@ export const sections = [
 ]
 
 export const sources = [
-  { name: 'Bộ Tư pháp Hàn Quốc', title: '2022년 광복절 특별사면 실시 — 12/08/2022', url: 'https://www.moj.go.kr/moj/221/subview.do?enc=Zm5jdDF8QEB8JTJGYmJzJTJGbW9qJTJGMTgyJTJGNTYyMTA4JTJGYx3I2Vi13aWV3LmRvJTNGcGFzc3dvcmQlM0QlMjZyZ3NCZ25kZVN0ciUzRCUyNmJic0NsU2VxJTNEJTI2cmdzRW5kZGVTdHIlM0QlMjZpc1ZpZXdNaW5lJTNEZmFsc2UlMjZwYWdlJTNEMSUyNmJic09wZW5XcmRfJTNEJUVDJTgyJUFDJUVCJUE5JUI0JTI2' },
+  { name: 'Bộ Tư pháp Hàn Quốc', title: '2022년 광복절 특별사면 실시 — 12/08/2022', url: 'https://www.moj.go.kr/moj/221/subview.do?enc=Zm5jdDF8QEB8JTJGYmJzJTJGbW9qJTJGMTgyJTJGNTYyMTA4JTJGYXJ0Y2xWaWV3LmRvJTNGcGFzc3dvcmQlM0QlMjZyZ3NCZ25kZVN0ciUzRCUyNmJic0NsU2VxJTNEJTI2cmdzRW5kZGVTdHIlM0QlMjZpc1ZpZXdNaW5lJTNEZmFsc2UlMjZwYWdlJTNEMSUyNmJic09wZW5XcmRfJTNEJUVDJTgyJUFDJUVCJUE5JUI0JTI2' },
   { name: 'Yonhap News Agency', title: 'Samsung heir Lee granted special presidential pardon', url: 'https://en.yna.co.kr/view/AEN20220812001253315' },
   { name: 'Yonhap News Agency', title: "Samsung's Lee expected to solidify leadership after pardon", url: 'https://en.yna.co.kr/view/AEN20220812006000320' },
   { name: 'Reuters', title: "South Korea pardons Samsung's Lee over 'economic crisis'", url: 'https://www.youtube.com/watch?v=R59cneCcUt8' },
@@ -44,17 +44,17 @@ export const crisisStats = [
 ]
 
 export const chaebols = [
-  { id: 'samsung', name: 'Samsung', tag: 'Bán dẫn', text: 'Được ví như "viên ngọc quý" của nền kinh tế Hàn Quốc, Samsung Electronics không chỉ đóng góp phần lớn vào nguồn thu thuế doanh nghiệp và chiếm tỷ trọng áp đảo trong tổng vốn hóa thị trường chứng khoán, mà còn là hạt nhân công nghệ mang tính sống còn đối với quốc gia này. Với việc nắm giữ thị phần thống trị trên thị trường chip nhớ toàn cầu, Samsung cùng các doanh nghiệp nội địa đang kiểm soát phần lớn nguồn cung của thế giới, tạo thành một "Lá chắn Silicon" – công cụ phòng thủ chiến lược và ngoại giao không thể thay thế của Seoul. Để duy trì quyền lực tuyệt đối này, hãng công nghệ lớn nhất châu Á liên tục rót nguồn vốn khổng lồ cho hoạt động Nghiên cứu & Phát triển, dẫn đầu về lượng bằng sáng chế tại Mỹ và là một trong những nhà sản xuất hiếm hoi trên thế giới làm chủ được công nghệ đúc chip tiên tiến bậc nhất hiện nay.', stat: '450.000 tỷ won', statLabel: 'gói đầu tư 5 năm được tài liệu nêu' },
-  { id: 'hyundai', name: 'Hyundai', tag: 'Ô tô', text: 'Được xem là xương sống của nền công nghiệp nặng và chế tạo Hàn Quốc, Hyundai Motor Group chính là động cơ thúc đẩy cơ sở hạ tầng và năng lực sản xuất cơ khí của nền kinh tế. Không chỉ duy trì sự áp đảo tại thị trường ô tô nội địa và vươn lên thành một trong những nhà sản xuất xe hơi hàng đầu thế giới, tập đoàn này còn sở hữu một hệ sinh thái khép kín vô cùng mạnh mẽ kéo dài từ luyện kim (thép), sản xuất linh kiện đến dịch vụ tài chính, kéo theo hàng chục nghìn doanh nghiệp vận động và phát triển và tạo ra vô số việc làm cho người dân. Sự hội nhập sâu rộng của hệ sinh thái khổng lồ này vào chuỗi cung ứng toàn cầu đã củng cố vị thế của Hyundai như một trụ cột kinh tế không thể lay chuyển trong "kỳ tích sông Hàn" và chiến lược vươn tầm quốc tế của Seoul.', stat: 'Top 3', statLabel: 'nhà sản xuất ô tô theo tài liệu' },
-  { id: 'sk', name: 'SK', tag: 'Bán dẫn / HBM', text: 'Đóng vai trò là "mạch máu" duy trì sự vận hành của nền kinh tế Hàn Quốc, SK Group là một trong những trụ cột quyền lực nhất định hình cả không gian số lẫn an ninh năng lượng của quốc gia. SK chính là nền tảng hạ tầng cốt lõi làm bệ đỡ cho toàn bộ sự phát triển của nền kinh tế. Nắm giữ huyết mạch mạng lưới viễn thông quốc gia và thống trị ngành công nghiệp lọc hóa dầu thiết yếu, tập đoàn này bảo đảm sự ổn định cho những nhu cầu vận hành cơ bản nhất của nền kinh tế. Trên bình diện quốc tế, thông qua SK Hynix, SK Group đóng vai trò là một nửa quan trọng tạo nên "Lá chắn Silicon" của Hàn Quốc, tiên phong định hình thị trường chip nhớ hiệu năng cao phục vụ kỷ nguyên trí tuệ nhân tạo toàn cầu.', stat: 'HBM', statLabel: 'chip nhớ AI chiến lược' },
+  { id: 'samsung', name: 'Samsung', tag: 'Bán dẫn', text: 'Được ví như "viên ngọc quý" của nền kinh tế Hàn Quốc, Samsung Electronics không chỉ đóng góp phần lớn vào nguồn thu thuế doanh nghiệp và chiếm tỷ trọng áp đảo trong tổng vốn hóa thị trường chứng khoán, mà còn là hạt nhân công nghệ mang tính sống còn đối với quốc gia này. Với việc nắm giữ thị phần thống trị trên thị trường chip nhớ toàn cầu, Samsung cùng các doanh nghiệp nội địa đang kiểm soát phần lớn nguồn cung của thế giới, tạo thành một "Lá chắn Silicon" – công cụ phòng thủ chiến lược và ngoại giao không thể thay thế của Seoul. Để duy trì quyền lực tuyệt đối này, hãng công nghệ lớn nhất châu Á liên tục rót nguồn vốn khổng lồ cho hoạt động Nghiên cứu & Phát triển, dẫn đầu về lượng bằng sáng chế tại Mỹ và là một trong những nhà sản xuất hiếm hoi trên thế giới làm chủ được công nghệ đúc chip tiên tiến bậc nhất hiện nay.', stat: '450.000 tỷ won', statLabel: 'gói siêu đầu tư thúc đẩy phát triển 5 năm' },
+  { id: 'hyundai', name: 'Hyundai', tag: 'Ô tô', text: 'Được xem là xương sống của nền công nghiệp nặng và chế tạo Hàn Quốc, Hyundai Motor Group chính là động cơ thúc đẩy cơ sở hạ tầng và năng lực sản xuất cơ khí của nền kinh tế. Không chỉ duy trì sự áp đảo tại thị trường ô tô nội địa và vươn lên thành một trong những nhà sản xuất xe hơi hàng đầu thế giới, tập đoàn này còn sở hữu một hệ sinh thái khép kín vô cùng mạnh mẽ kéo dài từ luyện kim (thép), sản xuất linh kiện đến dịch vụ tài chính, kéo theo hàng chục nghìn doanh nghiệp vận động và phát triển và tạo ra vô số việc làm cho người dân. Sự hội nhập sâu rộng của hệ sinh thái khổng lồ này vào chuỗi cung ứng toàn cầu đã củng cố vị thế của Hyundai như một trụ cột kinh tế không thể lay chuyển trong "kỳ tích sông Hàn" và chiến lược vươn tầm quốc tế của Seoul.', stat: 'Top 3', statLabel: 'nhà sản xuất ô tô lớn nhất thể giới' },
+  { id: 'sk', name: 'SK', tag: 'Bán dẫn / HBM', text: 'Đóng vai trò là "mạch máu" duy trì sự vận hành của nền kinh tế Hàn Quốc, SK Group là một trong những trụ cột quyền lực nhất định hình cả không gian số lẫn an ninh năng lượng của quốc gia. SK chính là nền tảng hạ tầng cốt lõi làm bệ đỡ cho toàn bộ sự phát triển của nền kinh tế. Nắm giữ huyết mạch mạng lưới viễn thông quốc gia và thống trị ngành công nghiệp lọc hóa dầu thiết yếu, tập đoàn này bảo đảm sự ổn định cho những nhu cầu vận hành cơ bản nhất của nền kinh tế. Trên bình diện quốc tế, thông qua SK Hynix, SK Group đóng vai trò là một nửa quan trọng tạo nên "Lá chắn Silicon" của Hàn Quốc, tiên phong định hình thị trường chip nhớ hiệu năng cao phục vụ kỷ nguyên trí tuệ nhân tạo toàn cầu.', stat: 'HBM', statLabel: 'tiên phong sản xuất chip nhớ AI chiến lược' },
   { id: 'lg', name: 'LG', tag: 'Pin / điện tử', text: 'Được mệnh danh là "người kiến tạo" tiêu chuẩn sống hiện đại, LG Group đóng vai trò là một trong những trụ cột tiên phong đưa ngành công nghiệp điện tử và hóa chất của Hàn Quốc vươn ra toàn cầu. Với phương châm đưa sự đổi mới thâm nhập sâu vào không gian sống của hàng tỷ người thông qua hệ sinh thái thiết bị gia dụng thông minh và công nghệ màn hình hiển thị dẫn đầu ngành. Trên trường quốc tế, LG đang thực hiện một cuộc chuyển mình mang tính chiến lược, vươn lên trở thành một thế lực thống trị trong chuỗi cung ứng toàn cầu về linh kiện và pin xe điện. Sự trỗi dậy mạnh mẽ trong lĩnh vực năng lượng xanh không chỉ củng cố vị thế vững chắc của LG như một đối tác không thể thiếu của các hãng xe hơi lớn nhất thế giới, mà còn đóng góp trọng yếu vào nỗ lực dẫn dắt tương lai giao thông bền vững, giúp Hàn Quốc nắm giữ lợi thế lớn trong kỷ nguyên công nghệ hậu carbon.', stat: 'EV', statLabel: 'pin xe điện và công nghệ năng lượng mới' },
 ]
 
 export const policySteps = [
   { no: '01', title: 'Khôi phục quyền điều hành', body: 'Dỡ hạn chế làm việc 5 năm để Lee Jae-yong có thể chính thức tham gia điều hành Samsung.' },
   { no: '02', title: 'Giải phóng quyết định đầu tư', body: 'Chính phủ kỳ vọng các nhà lãnh đạo doanh nghiệp lớn có thể thúc đẩy những quyết định vốn và công nghệ quy mô lớn.' },
-  { no: '03', title: 'Hiệu ứng lan tỏa', body: 'Đầu tư lớn được kỳ vọng kéo theo nhà cung cấp, việc làm, sản xuất và doanh thu xuất khẩu.' },
-  { no: '04', title: 'Ngoại giao kinh tế', body: 'Lãnh đạo Chaebol có thể trực tiếp tham gia các cuộc gặp quốc tế liên quan chuỗi cung ứng, công nghệ và hợp tác.' },
+  { no: '03', title: 'Hiệu ứng lan tỏa', body: 'Các dự án kinh tế lớn sẽ tạo ra hàng nghìn đơn hàng cho các nhà cung cấp nhỏ và vừa, kéo theo việc làm, sản xuất và doanh thu xuất khẩu phục hồi.' },
+  { no: '04', title: 'Ngoại giao kinh tế', body: 'Lãnh đạo Chaebol có thể trực tiếp tham gia các cuộc gặp quốc tế liên quan chuỗi cung ứng, công nghệ và hợp tác. Qua đó, giữ vững vị thế trên trường Quốc tế.' },
 ]
 
 export const myths = [
@@ -65,52 +65,29 @@ export const myths = [
 ]
 
 export const tradeoffs = [
-  { side: 'Kỳ vọng kinh tế', color: 'blue', points: ['Đầu tư', 'Việc làm', 'Xuất khẩu', 'Công nghệ', 'Cạnh tranh quốc tế'] },
-  { side: 'Rủi ro thể chế', color: 'red', points: ['Bình đẳng trước pháp luật', 'Niềm tin tư pháp', 'Tiền lệ cho Chaebol', 'Tập trung quyền lực', 'Tranh luận đặc quyền'] },
+  { 
+    side: 'Kỳ vọng kinh tế', 
+    color: 'blue', 
+    points: [
+      { title: 'Đầu tư', detail: 'Tạo điều kiện để các tập đoàn triển khai các dự án đầu tư lớn.' },
+      { title: 'Việc làm', detail: 'Duy trì và tạo thêm việc làm thông qua mở rộng sản xuất, kinh doanh.' },
+      { title: 'Xuất khẩu', detail: 'Tăng khả năng duy trì năng lực xuất khẩu của các doanh nghiệp lớn.' },
+      { title: 'Công nghệ', detail: 'Thúc đẩy đầu tư vào bán dẫn, điện tử và các ngành công nghệ cao.' },
+      { title: 'Cạnh tranh quốc tế', detail: 'Giúp các tập đoàn Hàn Quốc ứng phó với cạnh tranh toàn cầu.' }
+    ] 
+  },
+  { 
+    side: 'Rủi ro thể chế', 
+    color: 'red', 
+    points: [
+      { title: 'Bình đẳng trước pháp luật', detail: 'Đặt ra câu hỏi liệu người có quyền lực kinh tế có được đối xử khác biệt hay không.' },
+      { title: 'Niềm tin tư pháp', detail: 'Đặc xá các doanh nhân lớn có thể gây tranh luận về tính bình đẳng của pháp luật.' },
+      { title: 'Tiền lệ cho Chaebol', detail: 'Có thể tạo tiền lệ cho việc xem xét lợi ích kinh tế khi xử lý các lãnh đạo tập đoàn lớn.' },
+      { title: 'Tập trung quyền lực', detail: 'Có nguy cơ tiếp tục củng cố vai trò của các chaebol trong nền kinh tế.' },
+      { title: 'Tranh luận đặc quyền', detail: 'Xã hội có thể đặt câu hỏi về sự ưu đãi dành cho giới tài phiệt.' }
+    ] 
+  },
 ]
-
-export const TRADE_OFF_DETAILS = {
-  "Đầu tư": {
-    title: "Kỳ vọng Đầu tư",
-    desc: "Tạo điều kiện để các tập đoàn triển khai các dự án đầu tư lớn."
-  },
-  "Việc làm": {
-    title: "Tạo việc làm",
-    desc: "Duy trì và tạo thêm việc làm thông qua mở rộng sản xuất, kinh doanh."
-  },
-  "Xuất khẩu": {
-    title: "Thúc đẩy Xuất khẩu",
-    desc: "Tăng khả năng duy trì năng lực xuất khẩu của các doanh nghiệp lớn."
-  },
-  "Công nghệ": {
-    title: "Bứt phá Công nghệ",
-    desc: "Thúc đẩy đầu tư vào bán dẫn, điện tử và các ngành công nghệ cao."
-  },
-  "Cạnh tranh quốc tế": {
-    title: "Năng lực Cạnh tranh",
-    desc: "Giúp các tập đoàn Hàn Quốc ứng phó với cạnh tranh toàn cầu."
-  },
-  "Bình đẳng trước pháp luật": {
-    title: "Bình đẳng Pháp lý",
-    desc: "Đặt ra câu hỏi liệu người có quyền lực kinh tế có được đối xử khác biệt hay không."
-  },
-  "Niềm tin tư pháp": {
-    title: "Xói mòn Niềm tin",
-    desc: "Đặc xá các doanh nhân lớn có thể gây tranh luận về tính bình đẳng của pháp luật."
-  },
-  "Tiền lệ cho Chaebol": {
-    title: "Tiền lệ Xấu",
-    desc: "Có thể tạo tiền lệ cho việc xem xét lợi ích kinh tế khi xử lý các lãnh đạo tập đoàn lớn."
-  },
-  "Tập trung quyền lực": {
-    title: "Tập trung Quyền lực",
-    desc: "Có nguy cơ tiếp tục củng cố vai trò của các chaebol trong nền kinh tế."
-  },
-  "Tranh luận đặc quyền": {
-    title: "Tranh luận Đặc quyền",
-    desc: " Xã hội có thể đặt câu hỏi về sự ưu đãi dành cho giới tài phiệt."
-  }
-};
 
 export const conclusion = [
   ['01', 'Bối cảnh kinh tế', 'Lạm phát, bất ổn toàn cầu, suy giảm thương mại và áp lực tăng trưởng.'],

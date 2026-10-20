@@ -11,7 +11,7 @@ export default function SourcesPage() {
             <PageIntro
                 number="SOURCES"
                 title="Nguồn & tư liệu"
-                subtitle="Các nguồn được tách thành một trang riêng để nội dung chính không bị ngắt nhịp. Tài liệu PDF người dùng cung cấp là cơ sở chính để chọn lọc nội dung website."
+                subtitle="Các nguồn được tách thành một trang riêng để nội dung chính không bị ngắt nhịp."
             />
             <section className="section">
                 <div className="container grid grid-2">
