@@ -5,7 +5,10 @@ import {
   Car,
   BatteryCharging,
   Network,
-  ArrowUpRight,
+  Building2,
+  Scale,
+  Gavel,
+  AlertTriangle,
 } from "lucide-react";
 
 import PageIntro from "../components/PageIntro";
@@ -32,7 +35,6 @@ export default function ChaebolPage() {
   const nodeRefs = useRef({});
 
   const x = chaebols.find((v) => v.id === id);
-  const Icon = iconMap[id];
 
   // Tính đường điện từ tâm sơ đồ đến ô đang được chọn.
   const updateElectricPath = useCallback(() => {
@@ -57,7 +59,6 @@ export default function ChaebolPage() {
       return;
     }
 
-    // Tọa độ tâm của hai phần tử, tính tương đối với sơ đồ.
     const x1 = centerRect.left + centerRect.width / 2 - mapRect.left;
     const y1 = centerRect.top + centerRect.height / 2 - mapRect.top;
 
@@ -68,8 +69,6 @@ export default function ChaebolPage() {
     const dy = y2 - y1;
 
     const length = Math.sqrt(dx * dx + dy * dy) || 1;
-
-    // Độ cong nhẹ của đường điện.
     const bend = 24;
 
     const mx = (x1 + x2) / 2 - (dy / length) * bend;
@@ -78,13 +77,11 @@ export default function ChaebolPage() {
     setElectricPath(`M ${x1} ${y1} Q ${mx} ${my} ${x2} ${y2}`);
   }, [id]);
 
-  // Tự vẽ đường điện khi tải trang và khi đổi chaebol.
   useEffect(() => {
     let animationFrame;
 
     const scheduleUpdate = () => {
       cancelAnimationFrame(animationFrame);
-
       animationFrame = requestAnimationFrame(() => {
         updateElectricPath();
       });
@@ -97,16 +94,9 @@ export default function ChaebolPage() {
 
     if (map && observer) {
       observer.observe(map);
-
-      if (centerRef.current) {
-        observer.observe(centerRef.current);
-      }
-
+      if (centerRef.current) observer.observe(centerRef.current);
       const selectedNode = nodeRefs.current[id];
-
-      if (selectedNode) {
-        observer.observe(selectedNode);
-      }
+      if (selectedNode) observer.observe(selectedNode);
     }
 
     window.addEventListener("resize", scheduleUpdate);
@@ -161,10 +151,7 @@ export default function ChaebolPage() {
                     width="200%"
                     height="200%"
                   >
-                    <feGaussianBlur
-                      stdDeviation="3"
-                      result="blur"
-                    />
+                    <feGaussianBlur stdDeviation="3" result="blur" />
                     <feMerge>
                       <feMergeNode in="blur" />
                       <feMergeNode in="SourceGraphic" />
@@ -174,28 +161,15 @@ export default function ChaebolPage() {
 
                 {electricPath && (
                   <>
-                    <path
-                      className="electric-path-glow"
-                      d={electricPath}
-                    />
-                    <path
-                      className="electric-path-core"
-                      d={electricPath}
-                    />
-                    <path
-                      className="electric-path-pulse"
-                      d={electricPath}
-                    />
+                    <path className="electric-path-glow" d={electricPath} />
+                    <path className="electric-path-core" d={electricPath} />
+                    <path className="electric-path-pulse" d={electricPath} />
                   </>
                 )}
               </svg>
 
-              <div
-                className="chaebol-center"
-                ref={centerRef}
-              >
+              <div className="chaebol-center" ref={centerRef}>
                 <div className="center-orbit" />
-
                 <div className="center-text">
                   <span>KINH TẾ</span>
                   <b>TRỤ CỘT</b>
@@ -246,17 +220,11 @@ export default function ChaebolPage() {
                   <div>
                     <span className="eyebrow">{x.tag}</span>
 
-                    <h2
-                      className="h2"
-                      style={{ marginTop: 12 }}
-                    >
+                    <h2 className="h2" style={{ marginTop: 12 }}>
                       {x.name}
                     </h2>
 
-                    <p
-                      className="copy"
-                      style={{ marginTop: 18 }}
-                    >
+                    <p className="copy" style={{ marginTop: 18 }}>
                       {x.text}
                     </p>
                   </div>
@@ -273,46 +241,96 @@ export default function ChaebolPage() {
       </section>
 
       {/* =====================================================
-          ĐẶC ĐIỂM CHAEBOL & SỰ BẢO TRỢ CỦA NHÀ NƯỚC
+          VAI TRÒ CỦA SAMSUNG VÀ NGÀNH BÁN DẪN
       ===================================================== */}
       <section className="section section-soft">
-        <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '80px' }}>
+        <div className="container" style={{ display: "flex", flexDirection: "column", gap: "80px" }}>
           
-          {/* KHỐI 1: KINH DOANH ĐA NGÀNH */}
+          <Reveal>
+            <div>
+              <span className="eyebrow">SAMSUNG & NỀN KINH TẾ HÀN QUỐC</span>
+              <h2 className="h2" style={{ marginTop: 12 }}>
+                Lá chắn Silicon & Động lực tăng trưởng
+              </h2>
+            </div>
+          </Reveal>
+
+          {/* Vai trò của Samsung Electronics */}
           <Reveal>
             <div className="reason-layout">
               <div className="reason-content">
-                <span className="eyebrow">ĐẶC ĐIỂM CHAEBOL</span>
-                <h2 className="h2 reason-title">Kinh doanh đa ngành xuyên lĩnh vực (Conglomerate)</h2>
-                <p className="copy reason-text">
-                  Hoạt động từ sản xuất công nghiệp nặng, công nghệ cao, đóng tàu, hóa chất, xe hơi cho đến bán lẻ, bảo hiểm, bất động sản, bệnh viện, giải trí, truyền thông.
-                </p>
+                <span className="eyebrow">VƯƠNG MIỆN KINH TẾ</span>
+                <h2 className="h2 reason-title">Samsung Electronics: Trụ cột tài chính</h2>
+                <ul className="bullet-list" style={{ marginTop: 16 }}>
+                  <li>
+                    <b>Đóng góp ngân sách:</b> Chiếm 15-20% tổng số thu thuế TNDN của Chính phủ Hàn Quốc hàng năm.
+                  </li>
+                  <li>
+                    <b>Vốn hóa thị trường:</b> Đạt 20-25% tổng vốn hóa chứng khoán KOSPI, ảnh hưởng trực tiếp tới chỉ số tài chính quốc gia.
+                  </li>
+                </ul>
               </div>
 
-              <div className="reason-media-grid" style={{ gridTemplateColumns: '1fr' }}>
-                <div className="reason-media-card" style={{ aspectRatio: '16/11' }}>
-                  <img src="/images/myth5.png" alt="Các tập đoàn Chaebol tiêu biểu: SK, Samsung, Hyundai, LG" />
-                  <span>Các trụ cột kinh tế: SK, Samsung, Hyundai, LG</span>
+              <div className="reason-media-grid" style={{ gridTemplateColumns: "1fr" }}>
+                <div className="reason-media-card" style={{ aspectRatio: "16/11" }}>
+                  <img src="/images/myth7.png" alt="Samsung Electronics Logo" />
+                  <span>Samsung Electronics - Doanh nghiệp công nghệ hàng đầu châu Á</span>
                 </div>
               </div>
             </div>
           </Reveal>
 
-          {/* KHỐI 2: SỰ BẢO TRỢ CỦA NHÀ NƯỚC */}
+          {/* Ngành bán dẫn đối với Hàn Quốc */}
           <Reveal delay={0.12}>
             <div className="reason-layout">
               <div className="reason-content">
-                <span className="eyebrow">MỐI QUAN HỆ THỂ CHẾ</span>
-                <h2 className="h2 reason-title">Sự bảo trợ đặc biệt của Nhà nước</h2>
-                <p className="copy reason-text">
-                  Tồn tại mối liên hệ hữu cơ, gắn bó mật thiết với chính phủ trong suốt lịch sử phát triển thông qua việc tiếp cận tín dụng rẻ, ưu đãi thuế quan và bảo hộ thị trường.
-                </p>
+                <span className="eyebrow">AN NINH QUỐC GIA</span>
+                <h2 className="h2 reason-title">Tầm quan trọng của ngành Bán dẫn</h2>
+                <ul className="bullet-list" style={{ marginTop: 16 }}>
+                  <li>
+                    <b>Trụ cột xuất khẩu:</b> Chiếm 18-22% tổng kim ngạch xuất khẩu toàn quốc.
+                  </li>
+                  <li>
+                    <b>Thống trị chip nhớ:</b> Nắm giữ 40-45% thị phần DRAM và hơn 30% NAND Flash toàn cầu.
+                  </li>
+                  <li>
+                    <b>Lá chắn Silicon:</b> Biến Hàn Quốc thành mắt xích cốt lõi trong chuỗi cung ứng công nghệ toàn cầu.
+                  </li>
+                </ul>
               </div>
 
-              <div className="reason-media-grid" style={{ gridTemplateColumns: '1fr' }}>
-                <div className="reason-media-card" style={{ aspectRatio: '16/11' }}>
-                  <img src="/images/myth6.png" alt="Tổng thống Park Chung-hee thăm nhà máy" />
-                  <span>Tổng thống Park Chung-hee thăm nhà máy hoặc khu công nghiệp trong giai đoạn công nghiệp hóa.</span>
+              <div className="reason-media-grid" style={{ gridTemplateColumns: "1fr" }}>
+                <div className="reason-media-card" style={{ aspectRatio: "16/11" }}>
+                  <img src="/images/myth8.png" alt="Nhà máy sản xuất chip bán dẫn Samsung" />
+                  <span>Khu sản xuất chip bán dẫn tiên tiến của Samsung</span>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Vị trí xuất khẩu và công nghệ */}
+          <Reveal delay={0.16}>
+            <div className="reason-layout">
+              <div className="reason-content">
+                <span className="eyebrow">TIÊN PHONG CÔNG NGHỆ</span>
+                <h2 className="h2 reason-title">Vị thế Xuất khẩu & R&D Toàn cầu</h2>
+                <ul className="bullet-list" style={{ marginTop: 16 }}>
+                  <li>
+                    <b>Đầu tư R&D:</b> Chi trả 20-25 tỷ USD/năm, đứng Top 2 thế giới cạnh tranh với Google, Amazon.
+                  </li>
+                  <li>
+                    <b>Sở hữu bằng sáng chế:</b> Liên tục dẫn đầu về số lượng bằng sáng chế tại USPTO (Hoa Kỳ).
+                  </li>
+                  <li>
+                    <b>Đúc chip siêu nhỏ:</b> Cùng TSMC tiên phong công nghệ 3nm & 2nm sử dụng cấu trúc GAA.
+                  </li>
+                </ul>
+              </div>
+
+              <div className="reason-media-grid" style={{ gridTemplateColumns: "1fr" }}>
+                <div className="reason-media-card" style={{ aspectRatio: "16/11" }}>
+                  <img src="/images/myth9.png" alt="Cấu trúc đúc chip GAAFET" />
+                  <span>Công nghệ đúc chip tiến trình cao cấp GAAFET</span>
                 </div>
               </div>
             </div>
@@ -321,15 +339,91 @@ export default function ChaebolPage() {
         </div>
       </section>
 
-      <RouteCard
-        gameUrl={GAME_URL}
-        flipbookUrl={FLIPBOOK_URL}
-      />
+      {/* =====================================================
+          MẶT TRÁI CỦA MÔ HÌNH CHAEBOL
+      ===================================================== */}
+      <section className="section">
+        <div className="container" style={{ display: "flex", flexDirection: "column", gap: "60px" }}>
+          
+          <Reveal>
+            <div>
+              <span className="eyebrow">MẶT TRÁI CỦA MÔ HÌNH CHAEBOL</span>
+              <h2 className="h2" style={{ marginTop: 12 }}>
+                Góc khuất quyền lực & Thách thức thể chế
+              </h2>
+            </div>
+          </Reveal>
 
-      <PageFooterNav
-        nextPath="/government"
-        nextLabel="Đến trang kế"
-      />
+          {/* Các góc khuất lý thuyết */}
+          <Reveal>
+            <div className="grid grid-2" style={{ gap: "24px" }}>
+              <div className="card callout">
+                <Building2 size={28} color="var(--blue)" />
+                <strong>Tập trung quyền lực kinh tế</strong>
+                <p>
+                  Độc quyền bành trướng làm chèn ép doanh nghiệp vừa và nhỏ. Vận dụng KTCT Mác - Lênin: Sự tập trung sản xuất dẫn tới tổ chức độc quyền "bóp chết những ai không phục tùng".
+                </p>
+              </div>
+
+              <div className="card callout">
+                <AlertTriangle size={28} color="#D73645" />
+                <strong>Quan hệ sở hữu gia đình</strong>
+                <p>
+                  Mô hình hình tháp giúp gia tộc kiểm soát toàn bộ tập đoàn dù sở hữu ít cổ phần, dẫn tới rủi ro chia rẽ kinh tế khi xảy ra tranh chấp quyền lực.
+                </p>
+              </div>
+
+              <div className="card callout">
+                <Gavel size={28} color="var(--blue)" />
+                <strong>Quản trị doanh nghiệp</strong>
+                <p>
+                  Quyết định mang tính độc đoán cá nhân của "Tổng tài" (Chairman). HĐQT và Ban kiểm soát thường chỉ đóng vai trò "con dấu cao su".
+                </p>
+              </div>
+
+              <div className="card callout">
+                <Scale size={28} color="#D73645" />
+                <strong>Đặc quyền "Quy tắc 3-5"</strong>
+                <p>
+                  Nhiều lãnh đạo phạm tội nhận án 3 năm tù, 5 năm án treo rồi được đặc xá với lý do "công lao kinh tế", tạo sự bất bình đẳng xã hội ("Thìa vàng - Thìa đất").
+                </p>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Bê bối chấn động chính trường 2016 - 2017 */}
+          <Reveal delay={0.12}>
+            <div className="reason-layout" style={{ background: "var(--surface-soft, #f8fafc)", padding: "32px", borderRadius: "24px" }}>
+              <div className="reason-content">
+                <span className="eyebrow" style={{ color: "#D73645" }}>BÊ BỐI LỊCH SỬ</span>
+                <h2 className="h2 reason-title">Chính trường chấn động (2016 - 2017)</h2>
+                <p className="copy reason-text">
+                  Lee Jae-yong bị điều tra do đưa hối lộ nhằm vận động Quỹ Hưu trí Quốc gia (NPS) ủng hộ thương vụ sáp nhập Samsung C&T và Cheil Industries (2015), giúp củng cố quyền kiểm soát Samsung Electronics.
+                </p>
+                <div style={{ marginTop: "16px", padding: "16px", background: "#fff", borderRadius: "12px", borderLeft: "4px solid #D73645" }}>
+                  <b>Hậu quả pháp lý:</b> Dẫn đến phong trào biểu tình thắp nến khổng lồ, Tổng thống Park Geun-hye bị phế truất, còn Lee Jae-yong bị tuyên phạt 2 năm 6 tháng tù giam vào tháng 1/2021.
+                </div>
+              </div>
+
+              <div className="reason-media-grid" style={{ gridTemplateColumns: "1fr", gap: "16px" }}>
+                <div className="reason-media-card" style={{ aspectRatio: "16/10" }}>
+                  <img src="/images/myth10.png" alt="Biểu tình thắp nến tại Quảng trường Gwanghwamun" />
+                  <span>Biểu tình thắp nến tại Quảng trường Gwanghwamun (Seoul, 2016)</span>
+                </div>
+                <div className="reason-media-card" style={{ aspectRatio: "16/10" }}>
+                  <img src="/images/myth11.png" alt="Toàn cảnh các cuộc biểu tình thắp nến phản đối bê bối" />
+                  <span>Toàn cảnh làn sóng biểu tình yêu cầu phế truất Tổng thống</span>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+        </div>
+      </section>
+
+      <RouteCard gameUrl={GAME_URL} flipbookUrl={FLIPBOOK_URL} />
+
+      <PageFooterNav nextPath="/government" nextLabel="Đến trang kế" />
     </>
   );
 }
