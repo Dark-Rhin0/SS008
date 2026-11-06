@@ -5,8 +5,8 @@ import { motion, useReducedMotion } from 'framer-motion'
 // Component Nền kinh tế chứa đường Line xanh xuất hiện 1 lần
 function EcoBackdrop({ type = 'line', shouldReduceMotion }) {
   return (
-    <div className="eco-backdrop" aria-hidden="true">
-      <svg viewBox="0 0 1200 600" preserveAspectRatio="none">
+    <div className="eco-backdrop" aria-hidden="true" style={{ position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none' }}>
+      <svg viewBox="0 0 1200 600" preserveAspectRatio="none" style={{ width: '100%', height: '100%' }}>
         <defs>
           <pattern id="eco-grid" width="60" height="60" patternUnits="userSpaceOnUse">
             <path d="M60 0H0V60" fill="none" stroke="currentColor" strokeOpacity=".08" />
@@ -52,12 +52,24 @@ export default function PageIntro({
   subtitle,
   children,
   backdropType = 'line',
+  style,
 }) {
   const shouldReduceMotion = useReducedMotion()
   const motionDuration = shouldReduceMotion ? 0 : 0.55
 
   return (
-    <section className="detail-hero" style={{ position: 'relative' }}>
+    <section 
+      className="detail-hero" 
+      style={{ 
+        position: 'relative',
+        backgroundImage: `linear-gradient(120deg, rgba(248, 251, 255, 0.88) 0%, rgba(238, 243, 255, 0.78) 50%, rgba(255, 255, 255, 0.4) 100%), url('/city-economy.jpg')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        overflow: 'hidden',
+        ...style 
+      }}
+    >
 
       {/* SVG Eco Backdrop chứa đường Line xanh chạy 1 lần */}
       <EcoBackdrop type={backdropType} shouldReduceMotion={shouldReduceMotion} />
@@ -70,7 +82,7 @@ export default function PageIntro({
       <div className="ink-blob ink-blob-2" />
       <div className="ink-blob ink-blob-3" />
 
-      <div className="container detail-hero-inner" style={{ position: 'relative', zIndex: 1 }}>
+      <div className="container detail-hero-inner" style={{ position: 'relative', zIndex: 2 }}>
 
         {/* BACK BUTTON */}
         <motion.div
