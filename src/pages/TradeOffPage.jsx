@@ -1,10 +1,10 @@
-import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { useState, useEffect, useRef } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import PageIntro from '../components/PageIntro'
 import Reveal from '../components/Reveal'
 import Balance2D from '../components/Balance2D'
 import PageFooterNav from '../components/PageFooterNav'
-import { tradeoffs, TRADE_OFF_DETAILS } from '../data'
+import { tradeoffs } from '../data'
 import '../page-styles/detail.css'
 import { FLIPBOOK_URL, GAME_URL } from '../config'
 import RouteCard from '../components/RouteCard'
@@ -15,91 +15,62 @@ function BarChartBackdrop() {
       aria-hidden="true" 
       style={{
         position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
-        width: '100%', height: '100%', pointerEvents: 'none', zIndex: 0, opacity: 0.06, overflow: 'hidden'
+        width: '100%', height: '100%', pointerEvents: 'none', zIndex: 0, opacity: 0.07, overflow: 'hidden'
       }}
     >
-      <svg viewBox="0 0 1000 400" preserveAspectRatio="none" style={{ width: '100%', height: '100%' }}>
+      <svg viewBox="0 0 1400 400" preserveAspectRatio="none" style={{ width: '100%', height: '100%' }}>
         <g fill="#00c2ff">
-          <rect x="30" y="180" width="40" height="220" rx="4" />
-          <rect x="100" y="100" width="40" height="300" rx="4" />
-          <rect x="170" y="240" width="40" height="160" rx="4" />
-          <rect x="240" y="60" width="40" height="340" rx="4" />
-          <rect x="310" y="150" width="40" height="250" rx="4" />
-          <rect x="380" y="40" width="40" height="360" rx="4" />
-          <rect x="450" y="180" width="40" height="220" rx="4" />
-          <rect x="520" y="90" width="40" height="310" rx="4" />
-          <rect x="590" y="220" width="40" height="180" rx="4" />
-          <rect x="660" y="70" width="40" height="330" rx="4" />
-          <rect x="730" y="130" width="40" height="270" rx="4" />
-          <rect x="800" y="200" width="40" height="200" rx="4" />
-          <rect x="870" y="50" width="40" height="350" rx="4" />
-          <rect x="940" y="140" width="40" height="260" rx="4" />
+          <rect x="20" y="160" width="45" height="240" rx="6" />
+          <rect x="120" y="90" width="50" height="310" rx="6" />
+          <rect x="230" y="220" width="40" height="180" rx="6" />
+          <rect x="340" y="50" width="60" height="350" rx="6" />
+          <rect x="460" y="140" width="45" height="260" rx="6" />
+          <rect x="570" y="70" width="55" height="330" rx="6" />
+          <rect x="690" y="190" width="40" height="210" rx="6" />
+          <rect x="800" y="100" width="50" height="300" rx="6" />
+          <rect x="910" y="240" width="45" height="160" rx="6" />
+          <rect x="1030" y="60" width="55" height="340" rx="6" />
+          <rect x="1150" y="150" width="45" height="250" rx="6" />
+          <rect x="1270" y="110" width="50" height="290" rx="6" />
         </g>
       </svg>
     </div>
   );
 }
 
-function SideBarChart({ color }) {
-  const fillColor = color === 'blue' ? '#00c2ff' : '#ff4d4f';
-  return (
-    <div
-      aria-hidden="true"
-      style={{
-        position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
-        width: '100%', height: '100%', pointerEvents: 'none', zIndex: 0, opacity: 0.12, overflow: 'hidden', borderRadius: 'inherit'
-      }}
-    >
-      <svg viewBox="0 0 500 200" preserveAspectRatio="none" style={{ width: '100%', height: '100%' }}>
-        <g fill={fillColor}>
-          <rect x="15" y="90" width="22" height="110" rx="3" />
-          <rect x="50" y="40" width="22" height="160" rx="3" />
-          <rect x="85" y="110" width="22" height="90" rx="3" />
-          <rect x="120" y="20" width="22" height="180" rx="3" />
-          <rect x="155" y="70" width="22" height="130" rx="3" />
-          <rect x="190" y="30" width="22" height="170" rx="3" />
-          <rect x="225" y="90" width="22" height="110" rx="3" />
-          <rect x="260" y="50" width="22" height="150" rx="3" />
-          <rect x="295" y="100" width="22" height="100" rx="3" />
-          <rect x="330" y="25" width="22" height="175" rx="3" />
-          <rect x="365" y="60" width="22" height="140" rx="3" />
-          <rect x="400" y="95" width="22" height="105" rx="3" />
-          <rect x="435" y="35" width="22" height="165" rx="3" />
-          <rect x="470" y="75" width="22" height="125" rx="3" />
-        </g>
-      </svg>
-    </div>
-  );
-}
-
-export default function TradeOffPage() {
+export default function TradeOffPage(){
   const [tilt, setTilt] = useState(0)
-  const [popover, setPopover] = useState(null) // Luu thong tin & vi tri popup
+  const [selectedPoint, setSelectedPoint] = useState(null)
 
- const handleTagClick = (e, tagName, sideIndex) => {
-  setTilt(sideIndex === 0 ? -1 : 1)
-  
-  const rect = e.currentTarget.getBoundingClientRect()
-  
-  if (popover && popover.title === tagName) {
-    setPopover(null)
-    return
-  }
+  // Ref để theo dõi vùng danh sách danh mục (dùng để bắt click-outside)
+  const tradeContainerRef = useRef(null)
 
-  const detail = (TRADE_OFF_DETAILS && TRADE_OFF_DETAILS[tagName]) ? TRADE_OFF_DETAILS[tagName] : {
-    title: tagName,
-    desc: `Thông tin chi tiết về ${tagName} trong bối cảnh đánh đổi kinh tế.`
-  }
+  // 1. TỰ ĐỘNG ĐÓNG POPUP KHI CLICK RA NGOÀI (Thay thế hoàn toàn cho bubble-backdrop)
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (tradeContainerRef.current && !tradeContainerRef.current.contains(event.target)) {
+        setSelectedPoint(null)
+      }
+    }
 
-  setPopover({
-    title: detail.title,
-    desc: detail.desc,
-    // Đặt popup ngay phía trên nút bấm (cách 10px)
-    top: rect.top + window.scrollY - 10,
-    // Đặt mép trái popup trùng với vị trí nhấn trên nút
-    left: rect.left + 15 
-  })
-}
+    if (selectedPoint) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [selectedPoint])
+
+  // 2. Tính toán phía đang mở pop-up (0: Lợi ích / Bên trái, 1: Rủi ro / Bên phải)
+  const activeSideIndex = selectedPoint 
+    ? tradeoffs.findIndex(side => side.points.some(p => p.title === selectedPoint.title))
+    : -1;
+
+  // 3. Khóa cán cân nghiêng về phía có pop-up. Nếu không mở -> Dùng tilt khi hover.
+  const activeTilt = activeSideIndex !== -1 
+    ? (activeSideIndex === 0 ? -1 : 1) 
+    : tilt;
 
   return (
     <>
@@ -109,9 +80,8 @@ export default function TradeOffPage() {
         subtitle="Hai phía cùng tồn tại: lợi ích kinh tế kỳ vọng ↔ công bằng pháp luật và niềm tin xã hội."
       />
 
-      <section className="section" style={{ position: 'relative', overflow: 'hidden' }}>
+      <section className="section section-with-chart">
         <BarChartBackdrop />
-
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <Reveal>
             <div className="trade-layout">
@@ -123,42 +93,67 @@ export default function TradeOffPage() {
                 <p className="copy" style={{ marginTop: 18 }}>
                   Di chuột hoặc chạm vào hai phía để làm chiếc cân nghiêng. Bấm vào một mục để xem giải thích chi tiết.
                 </p>
-                
-                <div className="trade-side-list">
-                  {tradeoffs && tradeoffs.map((side, i) => (
+
+                {/* Gắn ref vào container này */}
+                <div className="trade-side-list" ref={tradeContainerRef}>
+                  {tradeoffs.map((side, i) => (
                     <div
                       key={side.side}
                       className={`trade-side ${side.color}`}
-                      style={{ 
-                        position: 'relative', 
-                        overflow: 'hidden',
-                        backgroundColor: 'rgba(255, 255, 255, 0.92)'
-                      }}
                       onMouseEnter={() => setTilt(i === 0 ? -1 : 1)}
                       onMouseLeave={() => setTilt(0)}
                     >
-                      <SideBarChart color={side.color} />
+                      <div>
+                        <span className="eyebrow">
+                          {i === 0 ? "Lợi ích" : "Rủi ro"}
+                        </span>
+                        <h3>{side.side}</h3>
+                      </div>
+                      <div className="trade-points">
+                        {side.points.map((p) => {
+                          const isSelected = selectedPoint?.title === p.title;
+                          return (
+                            <div className="trade-point-wrapper" key={p.title}>
+                              <motion.button 
+                                whileHover={{ x: 5 }} 
+                                className={isSelected ? "active" : ""}
+                                onClick={() => setSelectedPoint(isSelected ? null : p)}
+                              >
+                                {p.title}
+                              </motion.button>
 
-                      <div style={{ position: 'relative', zIndex: 1 }}>
-                        <div>
-                          <span className="eyebrow">
-                            {i === 0 ? "LỢI ÍCH" : "RỦI RO"}
-                          </span>
-                          <h3>{side.side}</h3>
-                        </div>
-                        <div className="trade-points">
-                          {side.points && side.points.map((p) => (
-                            <motion.button
-                              whileHover={{ x: 5, scale: 1.02 }}
-                              whileTap={{ scale: 0.98 }}
-                              key={p}
-                              className="trade-tag-btn"
-                              onClick={(e) => handleTagClick(e, p, i)}
-                            >
-                              {p}
-                            </motion.button>
-                          ))}
-                        </div>
+                              {/* POP-UP KHÔNG CẦN LỚP PHỦ BACKDROP NỮA */}
+                              <AnimatePresence>
+                                {isSelected && (
+                                  <motion.div 
+                                    className="speech-bubble-popup"
+                                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                                    exit={{ opacity: 0, y: 8, scale: 0.95 }}
+                                    transition={{ duration: 0.15 }}
+                                  >
+                                    <button 
+                                      className="bubble-close" 
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        setSelectedPoint(null);
+                                      }}
+                                    >
+                                      ×
+                                    </button>
+                                    <div className="bubble-header">
+                                      <span className="bubble-icon">💬</span>
+                                      <span className="bubble-title">{p.title}</span>
+                                    </div>
+                                    <p className="bubble-desc">
+                                      {p.detail}
+                                    </p>
+                                  </motion.div>
+                                )}
+                              </AnimatePresence>
+                            </div>
+                          );
+                        })}
                       </div>
                     </div>
                   ))}
@@ -166,7 +161,7 @@ export default function TradeOffPage() {
               </div>
 
               <div className="trade-illustration">
-                <Balance2D tilt={tilt} />
+                <Balance2D tilt={activeTilt} />
               </div>
             </div>
           </Reveal>
@@ -186,46 +181,14 @@ export default function TradeOffPage() {
         </div>
       </section>
 
-      {/* BONG BÓNG TIN NHẮN HIỆN NGAY TRÊN ĐẦU NÚT VỪA BẤM */}
-      {popover && (
-        <>
-          {/* Lớp click ẩn popup khi bấm ra ngoài */}
-          <div 
-            style={{ position: 'fixed', inset: 0, zIndex: 99998 }} 
-            onClick={() => setPopover(null)} 
-          />
-          <div 
-            className="tag-popover-bubble"
-            style={{
-              top: `${popover.top}px`,
-              left: `${popover.left}px`,
-            }}
-          >
-            <button 
-              className="tag-popover-close" 
-              onClick={() => setPopover(null)}
-            >
-              &times;
-            </button>
-            <h4 className="tag-popover-title">
-              💬 {popover.title ? popover.title.normalize('NFC') : ''}
-            </h4>
-            <p className="tag-popover-desc">
-              {popover.desc ? popover.desc.normalize('NFC') : ''}
-            </p>
-          </div>
-        </>
-      )}
-
       <RouteCard 
         gameUrl={GAME_URL} 
         flipbookUrl={FLIPBOOK_URL} 
       />
-      
       <PageFooterNav
         nextPath="/conclusion"
         nextLabel="Đến trang kế"
       />
     </>
-  )
+  );
 }

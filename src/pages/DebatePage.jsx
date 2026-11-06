@@ -27,7 +27,7 @@ const argumentsData = {
       "Đặc xá được nhìn nhận như một cơ hội để khôi phục năng lực lãnh đạo và thúc đẩy các quyết định đầu tư dài hạn.",
     points: [
       {
-        text: "Giúp giao kinh tế và thu hút vốn đầu tư nước ngoài",
+        text: "Giúp ngoại giao kinh tế và thu hút vốn đầu tư nước ngoài",
         audio: "/audio/ung-ho/lap-luan-01.mp3",
       },
       {
@@ -35,7 +35,7 @@ const argumentsData = {
         audio: "/audio/ung-ho/lap-luan-02.mp3",
       },
       {
-        text: "Cần lãnh đạo đầy đủ quyền hạn cho quyết định dài hạn",
+        text: "Cần đầy đủ quyền hạn cho quyết định dài hạn",
         audio: "/audio/ung-ho/lap-luan-03.mp3",
       },
       {

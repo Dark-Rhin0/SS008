@@ -26,7 +26,7 @@ export default function GovernmentPage() {
       <PageIntro
         number="04 / GÓC NHÌN CỦA CHÍNH TRỊ GIA"
         title="Chính phủ nói gì?"
-        subtitle="Nguồn chính thức và tài liệu trình bày lý do đặc xá như một nỗ lực phục hồi kinh tế và xã hội."
+        subtitle="Góc nhìn của Chính phủ cho thấy Lệnh đặc xá là một nỗ lực phục hồi kinh tế và đóng góp vào tương lai của đất nước."
       />
       <section className="section">
         <div className="container">
@@ -38,8 +38,7 @@ export default function GovernmentPage() {
                 lực quốc gia để vượt qua cuộc khủng hoảng kinh tế toàn diện.
               </p>
               <small>
-                — thông điệp được tài liệu dẫn lại từ quyết định đặc xá ngày
-                12/08/2022
+                — nguyên văn mục tiêu của Văn phòng Tổng thống và Bộ Tư pháp Hàn Quốc khi công bố lệnh đặc xá ngày 12/8/2022
               </small>
             </div>
           </Reveal>
