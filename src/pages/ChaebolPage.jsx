@@ -119,7 +119,7 @@ export default function ChaebolPage() {
       <section className="section section-soft">
         <div className="container" style={{ display: "flex", flexDirection: "column", gap: "80px" }}>
           
-          <Reveal>
+          <Reveal delay={0.3}>
             <div className="reason-layout">
               <div className="reason-content">
                 <span className="eyebrow">CHAEBOL LÀ GÌ?</span>

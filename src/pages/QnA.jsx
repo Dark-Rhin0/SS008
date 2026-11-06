@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Send, Lock, MessageSquare, CheckCircle2, 
-  HelpCircle, ChevronDown, ChevronUp, KeyRound, X, Trash2, Edit3, MessageCirclePlus, Filter 
+  HelpCircle, ChevronDown, ChevronUp, KeyRound, X, Trash2, Edit3, MessageCirclePlus, Filter, Download 
 } from 'lucide-react';
 import PageIntro from '../components/PageIntro';
 import '../page-styles/qna.css';
 import PageFooterNav from "../components/PageFooterNav";
+
+// Import thư viện tạo file docx
+import { Document, Packer, Paragraph, TextRun } from 'docx';
+import { saveAs } from 'file-saver';
 
 // 1. Import kết nối Database và các hàm thao tác từ Firestore
 import { db } from '../firebase';
@@ -41,7 +45,6 @@ export default function QnA() {
   useEffect(() => {
     const q = query(collection(db, 'questions'), orderBy('timestamp', 'desc'));
 
-    // Lắng nghe biến động dữ liệu từ đám mây
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const fetchedQuestions = snapshot.docs.map(docSnap => ({
         id: docSnap.id,
@@ -84,7 +87,7 @@ export default function QnA() {
         answer: '',
         createdAt: new Date().toLocaleString('vi-VN', { dateStyle: 'short', timeStyle: 'short' }),
         answeredAt: null,
-        timestamp: serverTimestamp() // Dùng làm mốc thời gian để sắp xếp câu hỏi mới nhất lên đầu
+        timestamp: serverTimestamp()
       });
 
       setQuestionText('');
@@ -120,7 +123,6 @@ export default function QnA() {
 
     if (action === 'delete') {
       try {
-        // Xóa document khỏi Firestore
         await deleteDoc(doc(db, 'questions', qId));
       } catch (err) {
         alert("Xóa thất bại!");
@@ -162,6 +164,128 @@ export default function QnA() {
   const filteredQuestions = filterGroup === 'ALL' 
     ? questions 
     : questions.filter(q => q.group === filterGroup);
+
+  // --- HÀM XUẤT FILE DOCX THEO YÊU CẦU ---
+const exportToDocx = async () => {
+    const dataToExport = filteredQuestions;
+
+    if (dataToExport.length === 0) {
+      alert("Không có dữ liệu để xuất file!");
+      return;
+    }
+
+    const docChildren = [];
+
+    // Tiêu đề chính
+    docChildren.push(
+      new Paragraph({
+        children: [
+          new TextRun({
+            text: "DANH SÁCH CÂU HỎI VÀ PHẢN HỒI PHẢN BIỆN",
+            font: "Times New Roman",
+            bold: true,
+            size: 32, // 16pt
+          }),
+        ],
+        alignment: "center", // Căn giữa tiêu đề
+        spacing: { after: 400 },
+      })
+    );
+
+    // Duyệt qua danh sách câu hỏi
+    dataToExport.forEach((q) => {
+      // 1. Tên Nhóm
+      docChildren.push(
+        new Paragraph({
+          children: [
+            new TextRun({
+              text: `${q.group || 'Nhóm ?'}:`,
+              font: "Times New Roman",
+              bold: true,
+              size: 28, // 14pt
+            }),
+          ],
+          spacing: { before: 200, after: 100 },
+        })
+      );
+
+      // 2. Câu hỏi (Hỗ trợ xuống dòng nếu văn bản có ký tự \n)
+      const rawQuestion = q.question || '';
+      const questionLines = rawQuestion.split('\n');
+
+      questionLines.forEach((line, lineIndex) => {
+        docChildren.push(
+          new Paragraph({
+            children: [
+              ...(lineIndex === 0 ? [new TextRun({ text: "Câu hỏi: ", font: "Times New Roman", bold: true, size: 26 })] : []),
+              new TextRun({ 
+                text: line || '', 
+                font: "Times New Roman", 
+                size: 26 
+              }),
+            ],
+            indent: { left: 360 },
+            spacing: { after: lineIndex === questionLines.length - 1 ? 100 : 40 },
+          })
+        );
+      });
+
+      // 3. Trả lời: Dòng 1 chỉ chứa chữ "Trả lời:", các dòng sau là nội dung được tách theo \n
+      docChildren.push(
+        new Paragraph({
+          children: [
+            new TextRun({ 
+              text: "Trả lời:", 
+              font: "Times New Roman", 
+              bold: true, 
+              size: 26 
+            }),
+          ],
+          indent: { left: 360 },
+          spacing: { after: 60 }, // Khoảng cách nhỏ từ chữ "Trả lời:" xuống nội dung bên dưới
+        })
+      );
+
+      const rawAnswer = q.answer || '(Chưa có phản hồi)';
+      const answerLines = rawAnswer.split('\n');
+
+      answerLines.forEach((line, lineIndex) => {
+        docChildren.push(
+          new Paragraph({
+            children: [
+              new TextRun({ 
+                text: line || '', 
+                font: "Times New Roman", 
+                size: 26 
+              }),
+            ],
+            indent: { left: 720 }, // Thụt lề sâu hơn một chút cho phần nội dung trả lời
+            spacing: { 
+              // Dòng cuối của câu trả lời này sẽ cách ra một khoảng lớn hơn để sang câu hỏi tiếp theo
+              after: lineIndex === answerLines.length - 1 ? 300 : 40 
+            },
+          })
+        );
+      });
+    });
+
+    const doc = new Document({
+      sections: [
+        {
+          properties: {},
+          children: docChildren,
+        },
+      ],
+    });
+
+    try {
+      const blob = await Packer.toBlob(doc);
+      saveAs(blob, "Nhóm_6_Trả_lời_câu_hỏi_phản_biện.docx");
+    } catch (error) {
+      console.error("Lỗi khi xuất file docx:", error);
+      alert("Xuất file thất bại!");
+    }
+  };
 
   return (
     <div className="qna-page">
@@ -225,8 +349,18 @@ export default function QnA() {
 
         {/* DANH SÁCH CÂU HỎI */}
         <section className="qna-list-section">
-          <div className="qna-list-header">
+          <div className="qna-list-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
             <h3>Danh sách câu hỏi ({filteredQuestions.length}/{questions.length})</h3>
+            
+            {/* NÚT XUẤT FILE DOCX */}
+            <button
+              type="button"
+              className="qna-btn-primary"
+              onClick={exportToDocx}
+              style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 14px', fontSize: '14px' }}
+            >
+              <Download size={16} /> Xuất file .docx
+            </button>
           </div>
 
           {/* BỘ LỌC THEO NHÓM */}
