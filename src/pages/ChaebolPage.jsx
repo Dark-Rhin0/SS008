@@ -281,21 +281,25 @@ export default function ChaebolPage() {
           <Reveal>
             <div>
               <span className="eyebrow">
-                TẠI SAO LỆNH ÂN XÁ LẠI MANG TÍNH KINH TẾ
+                WHY THE PARDON WAS ECONOMIC
               </span>
 
               <h2
                 className="h2"
                 style={{ marginTop: 15 }}
               >
-                Ân xá - gỡ bỏ nút thắt lãnh đạo.
+                Một người không “cứu” nền kinh tế.
               </h2>
 
               <p
                 className="copy"
                 style={{ marginTop: 20 }}
               >
-                Dù một cá nhân không thể tự tay vực dậy cả nền kinh tế, nhưng vai trò lãnh đạo tối cao tại Samsung chính là nút thắt trung tâm. Sự trở lại của Lee Jae-yong gỡ bỏ thế bế tắc, mở đường cho hàng loạt siêu dự án đầu tư dài hạn, các thương vụ M&A chiến lược và tạo hiệu ứng Domino tích cực lên toàn bộ chuỗi cung ứng.
+                Luận điểm trong tài liệu khác: vai trò của Lee
+                nằm ở vị trí trung tâm quyền kiểm soát Samsung.
+                Việc trở lại hoạt động có thể mở đường cho quyết
+                định đầu tư dài hạn, M&A, đối ngoại và tác động
+                lan tỏa sang chuỗi cung ứng.
               </p>
             </div>
           </Reveal>
@@ -303,22 +307,22 @@ export default function ChaebolPage() {
           <Reveal delay={0.12}>
             <div className="logic-stack">
               <div>
-                <b>Khơi thông dòng vốn đầu tư</b>
+                <b>đầu tư vốn</b>
                 <ArrowUpRight />
               </div>
 
               <div>
-                <b>Đẩy mạnh cụm Nhà máy & R&D</b>
+                <b>nhà máy / R&D</b>
                 <ArrowUpRight />
               </div>
 
               <div>
-                <b>Trợ lực nhà cung cấp & Việc làm</b>
+                <b>nhà cung cấp + việc làm</b>
                 <ArrowUpRight />
               </div>
 
               <div>
-                <b>Nâng tầm xuất khẩu & Công nghệ</b>
+                <b>xuất khẩu + năng lực công nghệ</b>
               </div>
             </div>
           </Reveal>
