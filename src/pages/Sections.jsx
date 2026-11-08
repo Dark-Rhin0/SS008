@@ -172,10 +172,10 @@ export default function Sections() {
         <div className="sections-cta-box">
           <div className="cta-content">
             <h3>Bắt đầu theo tiến trình lịch sử?</h3>
-            <p>Đọc tuần tự từ Chương 01 đến Chương 08 để có góc nhìn toàn diện nhất.</p>
+            <p>Đọc tuần tự từ Chương 00 đến Chương 08 để có góc nhìn toàn diện nhất.</p>
           </div>
-          <Link to="/event" className="btn-start-reading">
-            <BookOpen size={16} /> Bắt đầu đọc Chương 01
+          <Link to="/basis" className="btn-start-reading">
+            <BookOpen size={16} /> Bắt đầu đọc chương 00
           </Link>
         </div>
       </div>

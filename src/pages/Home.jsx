@@ -233,7 +233,7 @@ export default function Home() {
               </p>
 
               <div className="hero-actions">
-                <Link className="btn btn-primary" to="/event">
+                <Link className="btn btn-primary" to="/basis">
                   Bắt đầu câu chuyện
                   <ArrowUpRight size={17} />
                 </Link>

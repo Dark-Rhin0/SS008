@@ -133,6 +133,16 @@ export default function Header() {
             Tổng quan
           </Link>
 
+          <Link
+            className={
+              pathname === '/basis'
+                ? 'active'
+                : ''
+            }
+            to="/basis"
+          >
+            Lý thuyết
+          </Link>
 
           <Link
             className={

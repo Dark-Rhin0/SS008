@@ -21,6 +21,7 @@ import GamePage from './pages/GamePage'
 import GamePlayPage from './pages/GamePlayPage'
 import Sections from './pages/Sections'
 import QnA from './pages/QnA'
+import Basis from './pages/Basis'
 
 function Shell() {
   const location = useLocation()
@@ -213,6 +214,7 @@ function Shell() {
     <Routes location={location}>
       <Route path="/" element={<Home />} />
 
+      <Route path="/basis" element={<Basis />} />
       <Route path="/sections" element={<Sections />} />
       <Route path="/event" element={<EventPage />} />
       <Route path="/context" element={<ContextPage />} />
