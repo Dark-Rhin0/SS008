@@ -18,6 +18,7 @@ export default function ConclusionPage() {
       />
       <section className="section">
         <div className="container">
+          <span className="eyebrow">các yếu tố tác động </span>
           <Reveal>
             <div className="conclusion-wrap card">
               <div className="conclusion-index">
@@ -74,7 +75,7 @@ export default function ConclusionPage() {
           <Reveal>
             <div className="final-statement">
               <div>
-                <span className="eyebrow">đáp án</span>
+                <span className="eyebrow">Kết Luận </span>
                 <h2 className="h2" style={{ marginTop: 15 }}>
                   Khó khăn kinh tế + vai trò lớn của Chaebol + nhu cầu đầu tư và
                   công nghệ → Chính phủ lựa chọn đặc xá.

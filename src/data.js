@@ -90,9 +90,9 @@ export const tradeoffs = [
 ]
 
 export const conclusion = [
-  ['01', 'Bối cảnh kinh tế', 'Lạm phát, bất ổn toàn cầu, suy giảm thương mại và áp lực tăng trưởng.'],
-  ['02', 'Vai trò của Chaebol', 'Samsung, Lotte, Hyundai, SK có khả năng huy động vốn, đầu tư, công nghệ, việc làm và xuất khẩu.'],
-  ['03', 'Mục tiêu Chính phủ', 'Phục hồi tăng trưởng, thúc đẩy đầu tư, tạo việc làm và duy trì cạnh tranh công nghệ.'],
-  ['04', 'Trường hợp Lee Jae-yong', 'Nhân vật lãnh đạo Samsung được nhìn như một mắt xích quan trọng để khôi phục quyền điều hành.'],
-  ['05', 'Đánh đổi', 'Kỳ vọng kinh tế phải đi cùng tranh luận về pháp quyền, bình đẳng và niềm tin xã hội.'],
-]
+  ['01', 'Bối cảnh kinh tế', 'Năm 2022, Hàn Quốc đối mặt với lạm phát, bất ổn kinh tế toàn cầu, suy giảm thương mại và áp lực tăng trưởng.'],
+  ['02', 'Vai trò của Chaebol', 'Các tập đoàn lớn như Samsung, Lotte, Hyundai, SK có quy mô lớn và khả năng huy động vốn, đầu tư, phát triển công nghệ, tạo việc làm và thúc đẩy xuất khẩu.'],
+  ['03', 'Mục tiêu Chính phủ', 'Chính phủ muốn phục hồi tăng trưởng, thúc đẩy đầu tư, tạo việc làm và duy trì năng lực cạnh tranh công nghệ. Vì vậy, chính phủ cho rằng việc tạo điều kiện để các lãnh đạo doanh nghiệp lớn trở lại hoạt động có thể hỗ trợ nền kinh tế.'],
+  ['04', 'Về Lee Jae-yong', 'Lee Jae-yong là lãnh đạo chủ chốt của Samsung, một tập đoàn có vai trò lớn trong các ngành bán dẫn và công nghệ cao.\nĐặc biệt, dù đã hoàn thành thời hạn tù, ông vẫn còn bị hạn chế quyền hoạt động kinh doanh. Việc đặc xá giúp khôi phục quyền kinh doanh, tạo điều kiện để ông tham gia đầy đủ hơn vào các quyết định của Samsung.'],
+  ['05', 'Đánh đổi', 'Chính sách này có thể mang lại kỳ vọng về đầu tư, việc làm, công nghệ và tăng trưởng, nhưng đồng thời gây tranh luận về bình đẳng trước pháp luật, đặc quyền của Chaebol và niềm tin vào hệ thống tư pháp.'],
+];

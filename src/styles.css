@@ -198,6 +198,7 @@ html.lenis body {
     font-size: clamp(18px, 2.1vw, 23px);
     font-weight: 400;
     line-height: 1.55;
+    white-space: pre-line;
     color: #334155;
 }
 
