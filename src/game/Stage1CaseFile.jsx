@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 
 export default function Stage1CaseFile({
@@ -70,46 +69,45 @@ export default function Stage1CaseFile({
             </div>
           </div>
 
-          
-<div className="sid-dossier__visual">
-  <span
-    className="sid-dossier__cross sid-dossier__cross--top"
-    aria-hidden="true"
-  >
-    +
-  </span>
+          <div className="sid-dossier__visual">
+            <span
+              className="sid-dossier__cross sid-dossier__cross--top"
+              aria-hidden="true"
+            >
+              +
+            </span>
 
-  <div className="sid-dossier__orbit">
-    <div className="sid-dossier__orbit-inner" />
+            <div className="sid-dossier__orbit">
+              <div className="sid-dossier__orbit-inner" />
 
-    <button
-      type="button"
-      className="sid-dossier__file"
-      onClick={handleStartClick}
-      aria-label="Mở hồ sơ 0815 và bắt đầu điều tra"
-    >
-      <span>PLAY</span>
-      <strong>0815</strong>
-      <i />
-      <small>SEOUL · 2022</small>
-      <span className="sid-dossier__file-hint">
-        OPEN FILE ↗
-      </span>
-    </button>
-  </div>
+              <button
+                type="button"
+                className="sid-dossier__file"
+                onClick={handleStartClick}
+                aria-label="Mở hồ sơ 0815 và bắt đầu điều tra"
+              >
+                <span>PLAY</span>
+                <strong>0815</strong>
+                <i />
+                <small>SEOUL · 2022</small>
+                <span className="sid-dossier__file-hint">
+                  OPEN FILE ↗
+                </span>
+              </button>
+            </div>
 
-  <span
-    className="sid-dossier__cross sid-dossier__cross--bottom"
-    aria-hidden="true"
-  >
-    +
-  </span>
+            <span
+              className="sid-dossier__cross sid-dossier__cross--bottom"
+              aria-hidden="true"
+            >
+              +
+            </span>
 
-  <div className="sid-dossier__coordinates">
-    <span>37°33′ N</span>
-    <span>126°58′ E</span>
-  </div>
-</div>
+            <div className="sid-dossier__coordinates">
+              <span>37°33′ N</span>
+              <span>126°58′ E</span>
+            </div>
+          </div>
 
         </div>
       ) : (
@@ -158,6 +156,19 @@ export default function Stage1CaseFile({
               </strong>
             </div>
           </div>
+
+          {/* NÚT BẤM CHUYỂN SANG MÀN 2 */}
+          {onNext && (
+            <div style={{ marginTop: '28px', textAlign: 'right' }}>
+              <button 
+                type="button" 
+                className="game-btn"
+                onClick={onNext}
+              >
+                SANG MÀN 2: BẢNG ĐIỀU TRA →
+              </button>
+            </div>
+          )}
         </div>
       )}
     </section>
