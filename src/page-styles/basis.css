@@ -1131,3 +1131,34 @@
   color: #1a1a74; /* Chỉnh màu trùng với màu số nếu cần */
   padding-top: 8px; /* Cân bằng với padding của số nếu có border */
 }
+
+/* FIX: Tránh navbar che khuất nội dung Hero */
+.basis-hero {
+  box-sizing: border-box;
+}
+
+.basis-hero-content {
+  box-sizing: border-box;
+  padding-top: clamp(100px, 13vh, 140px);
+}
+
+/* Laptop */
+@media (max-width: 1366px) {
+  .basis-hero-content {
+    padding-top: 110px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .basis-hero-content {
+    padding-top: 120px;
+  }
+}
+
+/* Tablet nhỏ và điện thoại */
+@media (max-width: 768px) {
+  .basis-hero-content {
+    padding-top: 105px;
+  }
+}
