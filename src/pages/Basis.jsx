@@ -44,7 +44,7 @@ const causes = [
     body: 'Cạnh tranh gay gắt khiến nhiều doanh nghiệp vừa và nhỏ phá sản; những doanh nghiệp lớn còn tồn tại cũng có thể bị suy yếu. Để tiếp tục phát triển, các doanh nghiệp tìm cách tích tụ và tập trung tư bản, hình thành những doanh nghiệp có quy mô lớn hơn.',
     quote:
       '“... tự do cạnh tranh đẻ ra tập trung sản xuất và sự tập trung sản xuất này, khi phát triển tới một mức độ nhất định, lại dẫn tới độc quyền.”',
-    author: 'V.I. Lênin',
+    author: 'V.I. Lênin: Toàn tập, Sđd, t.27, tr.402',
   },
   {
     number: '03',
@@ -53,9 +53,7 @@ const causes = [
     image:
       'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=85',
     imageAlt: 'Trung tâm tài chính và hệ thống ngân hàng',
-    body: 'Khủng hoảng kinh tế năm 1873 làm nhiều doanh nghiệp vừa và nhỏ phá sản, trong khi các doanh nghiệp lớn còn tồn tại có điều kiện củng cố vị thế độc quyền.',
-    result:
-      'Hệ thống tín dụng huy động và tập trung nguồn tiền nhàn rỗi trong xã hội, thúc đẩy tập trung sản xuất. Sự hình thành và phát triển của công ty cổ phần là một biểu hiện rõ nét, tạo tiền đề cho các tổ chức độc quyền ra đời.',
+    body: 'Khủng hoảng kinh tế năm 1873 làm nhiều doanh nghiệp vừa và nhỏ phá sản, trong khi các doanh nghiệp lớn còn tồn tại có điều kiện củng cố vị thế độc quyền.\n\nHệ thống tín dụng huy động và tập trung nguồn tiền nhàn rỗi trong xã hội, thúc đẩy tập trung sản xuất. Sự hình thành và phát triển của công ty cổ phần là một biểu hiện rõ nét, tạo tiền đề cho các tổ chức độc quyền ra đời.',
   },
 ]
 
@@ -83,7 +81,7 @@ const positiveEffects = [
     number: '03',
     icon: Building2,
     title: 'Thúc đẩy sản xuất lớn, hiện đại',
-    text: 'Nguồn lực kinh tế tập trung tạo điều kiện đầu tư vào những lĩnh vực trọng tâm, mũi nhọn, góp phần thúc đẩy nền kinh tế theo hướng sản xuất quy mô lớn và hiện đại.',
+    text: 'Với lợi thế nguồn lực kinh tế tập trung, độc quyền có nhiều điều kiện đầu tư vào những lĩnh vực trọng tâm, mũi nhọn, góp phần thúc đẩy nền kinh tế theo hướng sản xuất quy mô lớn và hiện đại.',
   },
 ]
 
@@ -279,7 +277,7 @@ export default function Basis() {
                       tập trung sản xuất này, khi phát triển tới một mức
                       độ nhất định, lại dẫn tới độc quyền.
                     </p>
-                    <cite>C.Mác</cite>
+                    <cite>C.Mác - trích V.I.Lênin: Toàn tập, Sđd, t.27, tr.402</cite>
                   </blockquote>
 
                   <p>
@@ -408,9 +406,9 @@ export default function Basis() {
                   <p>
                     Nếu không có tín dụng, doanh nghiệp muốn có 1.000 tỷ
                     đồng để mở nhà máy phải tự tích lũy hoặc tìm đến từng
-                    người cho vay. Thông qua hệ thống tín dụng, nguồn vốn
+                    người cho vay. Nhưng thông qua hệ thống tín dụng, nguồn vốn
                     có thể được huy động từ nhiều chủ thể trong xã hội.
-                    Ví dụ đơn giản: chia thành 10 triệu phần, mỗi phần
+                    Ví dụ đơn giản: doanh nghiệp có thể chia thành 10 triệu phần, mỗi phần
                     tương ứng 100.000 đồng, rồi huy động vốn thông qua
                     việc phát hành cổ phiếu.
                   </p>
@@ -574,9 +572,9 @@ export default function Basis() {
             >
               <SectionHeading
                 index="05"
-                eyebrow="Hai mặt của độc quyền"
+                eyebrow="Mặt có lợi của độc quyền"
                 title="Những tác động tích cực trong nền kinh tế thị trường"
-                description="Bên cạnh những hạn chế, độc quyền cũng có thể tạo ra một số động lực thúc đẩy sản xuất và đổi mới kỹ thuật."
+                description="Khi nói về mặt tích cực, độc quyền cũng có thể tạo ra một số động lực thúc đẩy sản xuất và đổi mới kỹ thuật."
               />
 
               <div className="basis-effects-grid">
@@ -610,7 +608,7 @@ export default function Basis() {
                   nền sản xuất lớn hơn nữa.
                 </p>
 
-                <cite>V.I. Lênin</cite>
+                <cite>V.I. Lênin: Toàn tập, Sđd, t.27, tr.488</cite>
               </blockquote>
             </section>
           </Reveal>
