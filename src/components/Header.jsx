@@ -196,12 +196,10 @@ export default function Header() {
             href={FLIPBOOK_URL}
             target="_blank"
             rel="noreferrer"
+            className="nav-feature nav-flipbook"
           >
-
             <BookOpen size={15} />
-
-            Flipbook
-
+            <span>Flipbook</span>
           </a>
 
 
@@ -209,12 +207,10 @@ export default function Header() {
             href={GAME_URL}
             target="_blank"
             rel="noreferrer"
+            className="nav-feature nav-game"
           >
-
             <Gamepad2 size={15} />
-
-            Game
-
+            <span>Game</span>
           </a>
 
         </nav>
