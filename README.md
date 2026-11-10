@@ -73,3 +73,24 @@ Bản Web có ánh sáng/hiệu ứng đơn giản hơn desktop. Không cần b�
 website, nên nội dung và dịch vụ bên ngoài của nhóm vẫn dùng bình thường.
 Game 3D dùng bảng xếp hạng riêng của nguồn Godot, tách khỏi bảng của trò chơi bốn
 màn. Chưa có điều khiển cảm ứng cho bản 3D.
+
+## Cấu hình bảng xếp hạng Lệnh Xóa
+
+Dùng **SUPABASE2_URL** và **SUPABASE2_ANON_KEY** trên Vercel cho game Godot.
+Giữ nguyên **VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY** của trò chơi bốn màn.
+Vite đọc hai biến SUPABASE2 trước khi chạy dev/build và tạo
+`public/games/lenh-xoa/leaderboard-config.json`; bản Godot đọc cấu hình qua loader
+trước khi khởi động. Chỉ xuất URL và public/publishable key, không xuất khóa quản trị.
+
+Đặt cả hai biến cho môi trường cần dùng (Production, Preview nếu cần), rồi redeploy.
+Biến Vercel không tự thay các hằng số bên trong một bản Godot đã export. Khi không
+có override, bản phát triển dùng cặp cấu hình public đã được nhóm cung cấp.
+
+Bảng phân biệt đang tải, rỗng và lỗi; lỗi được giữ trên màn hình cùng nút Làm mới.
+Request có timeout; tải bảng và gửi thành tích dùng request riêng để tránh bỏ lỡ
+khi chạy đồng thời. Mốc ghi thành tích hiện tại của game vẫn là nộp báo cáo cuối
+hợp lệ, không phải chỉ bấm một kết thúc cốt truyện.
+
+Lưu ý kỹ thuật: bản Web tắt giải nén tự động trong HTTPRequest vì trình duyệt đã
+giải nén phản hồi Supabase. Nếu bật cả hai, HTTP 200 vẫn có thể bị Godot báo lỗi
+BODY_DECOMPRESS_FAILED và không hiển thị các dòng đã nhận.

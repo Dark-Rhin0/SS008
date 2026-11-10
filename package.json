@@ -8,7 +8,8 @@
     "build": "node scripts/check-game.mjs && vite build",
     "preview": "vite preview",
     "game:export": "node scripts/export-game.mjs",
-    "game:check": "node scripts/check-game.mjs"
+    "game:check": "node scripts/check-game.mjs",
+    "postgame:export": "node scripts/write-game-config.mjs"
   },
   "dependencies": {
     "@studio-freight/lenis": "^1.0.42",

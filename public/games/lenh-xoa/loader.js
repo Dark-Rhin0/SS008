@@ -24,6 +24,8 @@
     const missing = Engine.getMissingFeatures({ threads: false })
     if (missing.length) throw new Error(missing.join(', '))
     if (!('DecompressionStream' in window)) throw new Error('Trình duyệt chưa hỗ trợ giải nén dữ liệu game.')
+    const leaderboardConfig = await fetch('leaderboard-config.json', { cache: 'no-cache' })
+    if (leaderboardConfig.ok) window.lenhXoaLeaderboardConfig = await leaderboardConfig.json()
     const manifestResponse = await fetch('runtime.json', { cache: 'no-cache' })
     if (!manifestResponse.ok) throw new Error('Không tìm thấy bản game (' + manifestResponse.status + ').')
     const manifest = await manifestResponse.json()

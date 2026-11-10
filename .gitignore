@@ -17,3 +17,6 @@ GameDesign/
 .DS_Store
 Thumbs.db
 korea-pardon-interactive-react.zip
+
+# Generated public configuration for the exported Godot game.
+/public/games/lenh-xoa/leaderboard-config.json

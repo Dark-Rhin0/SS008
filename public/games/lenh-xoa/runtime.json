@@ -1,7 +1,7 @@
 {
   "title": "LỆNH XÓA",
   "sourceRepository": "https://github.com/Dingglebell/ktct-game",
-  "sourceRevision": "544ac865f64578053bd68aff38e0e9c5a7792c8d",
+  "sourceRevision": "be290d6f57fc17dd3f8c11a665c80844f63b1376",
   "engine": {
     "args": [],
     "canvasResizePolicy": 2,
@@ -10,7 +10,7 @@
     "executable": "index",
     "experimentalVK": false,
     "fileSizes": {
-      "index.pck": 143615144,
+      "index.pck": 143623448,
       "index.wasm": 39514754
     },
     "focusCanvas": true,
@@ -19,8 +19,8 @@
   },
   "pack": {
     "file": "index.pck.gz",
-    "downloadBytes": 80966404,
-    "uncompressedBytes": 143615144,
-    "sha256": "cf7cfd6c34a024f06dabfc9a36bf3c35114df201aefdb366b38f3d2585cad0fe"
+    "downloadBytes": 80968563,
+    "uncompressedBytes": 143623448,
+    "sha256": "2cf18d12664c36bea69a3300c3031bd12b1aec1a6faa20eb2de918f82171dfd9"
   }
 }
