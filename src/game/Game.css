@@ -3124,3 +3124,26 @@ html.game-mode body::-webkit-scrollbar {
     will-change: auto;
   }
 }
+
+/* Thẻ bằng chứng đã được ghép đúng */
+.evidence-card.used {
+  opacity: 0.35;
+  filter: grayscale(100%);
+  cursor: not-allowed;
+  pointer-events: none;
+  transform: none;
+  box-shadow: none;
+  border-color: rgba(148, 163, 184, 0.2);
+}
+
+/* Nhãn đã sử dụng */
+.ev-used-label {
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(148, 163, 184, 0.2);
+
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #22c55e;
+}
