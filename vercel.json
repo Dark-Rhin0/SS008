@@ -1,7 +1,36 @@
 {
+  "headers": [
+    {
+      "source": "/games/lenh-xoa/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/games/lenh-xoa/index.wasm",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/wasm"
+        }
+      ]
+    },
+    {
+      "source": "/games/lenh-xoa/index.pck.gz",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/gzip"
+        }
+      ]
+    }
+  ],
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/((?!games/lenh-xoa/).*)",
       "destination": "/index.html"
     }
   ]
