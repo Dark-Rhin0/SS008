@@ -5,21 +5,23 @@ const BRANCHES = [
     id: 'economy',
     title: 'NHÁNH 1: LẬP LUẬN KINH TẾ',
     nodes: [
-      'Áp lực kinh tế',
-      'Trụ cột bán dẫn',
-      'SAMSUNG',
-      'LEE JAE-YONG',
-      'Đặc xá kinh tế',
+      'VAI TRÒ KINH TẾ CỦA SAMSUNG',
+      'CẠNH TRANH BÁN DẪN TOÀN CẦU',
+      'KẾ HOẠCH ĐẦU TƯ 450 NGHÌN TỶ WON',
+      'KỲ VỌNG ĐẦU TƯ VÀ TẠO VIỆC LÀM',
+      'ĐẶC XÁ VỚI LÝ DO PHỤC HỒI KINH TẾ',
     ],
   },
   {
     id: 'justice',
     title: 'NHÁNH 2: LO NGẠI PHÁP QUYỀN',
     nodes: [
-      'LEE JAE-YONG',
-      'Kết án hối lộ',
-      'Nguyên tắc pháp quyền',
-      'Tranh cãi dư luận',
+      'VỤ ÁN HỐI LỘ',
+      'BẢN ÁN 2 NĂM 6 THÁNG',
+      'THA TÙ TRƯỚC THỜI HẠN 2021',
+      'MÃN HẠN TÙ NGÀY 29/07/2022',
+      'ĐẶC XÁ CÓ HIỆU LỰC 15/08/2022',
+      'TRANH LUẬN VỀ BÌNH ĐẲNG TRƯỚC PHÁP LUẬT',
     ],
   },
 ]
@@ -70,7 +72,7 @@ export default function Stage3Connect({ onNext }) {
   const [lines, setLines] = useState({})
   const [dragging, setDragging] = useState(null)
   const [keyboardSource, setKeyboardSource] = useState(null)
-  const [feedback, setFeedback] = useState('Kéo đầu dây từ điểm bắt đầu đến mắt xích kế tiếp để nối chuỗi.')
+  const [feedback, setFeedback] = useState('Hãy lần theo hai chuỗi: lập luận kinh tế của chính phủ và những lo ngại về tính bình đẳng trước pháp luật.')
   const boardRef = useRef(null)
   const branchRefs = useRef(new Map())
   const nodeRefs = useRef(new Map())
@@ -149,7 +151,7 @@ export default function Stage3Connect({ onNext }) {
       [branch.id]: [...current[branch.id], targetIndex],
     }))
     setKeyboardSource(null)
-    setFeedback(`Đã nối thành công: ${branch.nodes[targetIndex]}. Đầu dây mới đã sẵn sàng.`)
+    setFeedback(`Đã nối đúng mắt xích: ${branch.nodes[targetIndex]}. Hãy tiếp tục lần theo chuỗi lập luận.`)
   }
 
   const beginDrag = (event, branch, sourceIndex) => {
@@ -212,7 +214,7 @@ export default function Stage3Connect({ onNext }) {
     <div className="stage3-investigation">
       <h2 className="stage3-heading">MÀN 3: NỐI CÁC MẮT XÍCH</h2>
       <p className="stage3-instructions">
-        Kéo đầu dây từ điểm bắt đầu đến mắt xích kế tiếp. Các mối nối đúng sẽ mở ra đầu dây mới.
+        Nối các sự kiện theo trình tự để khám phá hai cách nhìn đối lập về quyết định đặc xá Lee Jae-yong năm 2022.
       </p>
       <div className="stage3-feedback" role="status" aria-live="polite">{feedback}</div>
 
@@ -336,12 +338,19 @@ export default function Stage3Connect({ onNext }) {
 
       {isCompleted && (
         <div className="stage3-conclusion">
-          <h3>HAI PHÍA CỦA CÂU CHUYỆN ĐÃ ĐƯỢC NỐI</h3>
+          <h3>HAI LẬP LUẬN – MỘT QUYẾT ĐỊNH GÂY TRANH CÃI</h3>
           <p>
-            <strong>LẬP LUẬN KINH TẾ:</strong> Tầm quan trọng về công nghệ và cam kết đầu tư của Samsung được đưa ra làm lý do khôi phục quyền tự do kinh doanh cho ông Lee.
+            <strong>LẬP LUẬN KINH TẾ:</strong> Chính phủ Hàn Quốc cho rằng việc khôi phục đầy đủ quyền của Lee Jae-yong có thể giúp Samsung đẩy mạnh đầu tư công nghệ, duy trì năng lực cạnh tranh và đóng góp cho tăng trưởng, việc làm.
           </p>
           <p>
-            <strong>LO NGẠI PHÁP QUYỀN:</strong> Các nhà phê bình đặt câu hỏi liệu tầm quan trọng về kinh tế có nên biện minh cho việc đối xử đặc biệt đối với một lãnh đạo tập đoàn chaebol bị kết tội hay không.
+            <strong>LO NGẠI PHÁP QUYỀN:</strong> Các tổ chức xã hội dân sự và những người chỉ trích cho rằng việc đặc xá một lãnh đạo tập đoàn đã bị kết án hối lộ có thể tạo cảm giác người giàu và quyền lực được đối xử khoan hồng hơn.
+          </p>
+          <p>
+            <strong>MỐC LỊCH SỬ:</strong> Lee được tha tù trước thời hạn vào tháng 8/2021. Bản án kết thúc ngày 29/07/2022; quyết định đặc xá năm 2022 có hiệu lực từ ngày 15/08/2022, giúp khôi phục đầy đủ các quyền bị hạn chế.
+          </p>
+          <h4>CÂU HỎI PHẢN BIỆN</h4>
+          <p>
+            <strong>Lợi ích kinh tế có thể biện minh đến đâu cho sự khoan hồng đối với một cá nhân có quyền lực kinh tế?</strong>
           </p>
           <button className="game-btn" onClick={onNext}>
             VIẾT BÁO CÁO KẾT LUẬN →
