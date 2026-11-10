@@ -5,6 +5,7 @@ import {
   ArrowRight,
   BookOpen,
   Scale,
+  ScrollText,
   FileText,
   X,
   Maximize2,
@@ -575,9 +576,9 @@ export default function Home() {
               </p>
 
               <div className="mini-actions">
-                <Link className="btn btn-ghost" to="/tradeoff">
-                  Xem bài toán đánh đổi
-                  <Scale size={16} />
+                <Link className="btn btn-ghost" to="/conclusion">
+                  Xem kết luận
+                  <ScrollText size={16} />
                 </Link>
 
                 <Link className="btn btn-ghost" to="/sources">
