@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "node scripts/check-game.mjs && vite build",
+    "preview": "vite preview",
+    "game:export": "node scripts/export-game.mjs",
+    "game:check": "node scripts/check-game.mjs"
   },
   "dependencies": {
     "@studio-freight/lenis": "^1.0.42",

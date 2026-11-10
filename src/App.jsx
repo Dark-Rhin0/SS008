@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { useEffect, useRef } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Lenis from '@studio-freight/lenis'
@@ -18,6 +18,7 @@ import ConclusionPage from './pages/ConclusionPage'
 import SourcesPage from './pages/SourcesPage'
 import FlipbookPage from './pages/FlipbookPage'
 import GamePage from './pages/GamePage'
+import GodotGamePage from './pages/GodotGamePage'
 import GamePlayPage from './pages/GamePlayPage'
 import Sections from './pages/Sections'
 import QnA from './pages/QnA'
@@ -26,7 +27,7 @@ import Basis from './pages/Basis'
 function Shell() {
   const location = useLocation()
   const lenisRef = useRef(null)
-  const isStandaloneGame = location.pathname.replace(/\/$/, '') === '/game/play'
+  const isStandaloneGame = ['/game/play', '/game/lenh-xoa'].includes(location.pathname.replace(/\/$/, ''))
 
   useEffect(() => {
     document.documentElement.classList.toggle('game-mode', isStandaloneGame)
@@ -49,6 +50,7 @@ function Shell() {
       return
     }
 
+    if (isStandaloneGame) return
     const lenis = new Lenis({
       duration: 1.2,
       smoothWheel: true,
@@ -77,7 +79,7 @@ function Shell() {
 
       lenisRef.current = null
     }
-  }, [])
+  }, [isStandaloneGame])
 
   // =========================================================
   // XỬ LÝ ANCHOR SCROLL MƯỢT
@@ -227,6 +229,8 @@ function Shell() {
       <Route path="/sources" element={<SourcesPage />} />
       <Route path="/qna" element={<QnA />} />
       <Route path="/flipbook" element={<FlipbookPage />} />
+      <Route path="/game.html" element={<Navigate to="/game/lenh-xoa" replace />} />
+      <Route path="/game/lenh-xoa" element={<GodotGamePage />} />
       <Route path="/game/play" element={<GamePlayPage />} />
       <Route path="/game" element={<GamePage />} />
     </Routes>

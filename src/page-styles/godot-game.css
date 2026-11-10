@@ -1,0 +1,31 @@
+.godot-page { position:fixed; inset:0; z-index:220; display:grid; grid-template-rows:60px minmax(0,1fr) auto; background:#090e12; color:#e8e6df; font-family:Inter,Arial,sans-serif; }
+.godot-toolbar { display:flex; align-items:center; justify-content:space-between; padding:0 24px; gap:16px; border-bottom:1px solid #26343b; background:#10191e; }
+.godot-toolbar a { color:inherit; text-decoration:none; }
+.godot-back { display:flex; gap:9px; align-items:center; font-size:14px; }
+.godot-title { font-size:14px; letter-spacing:.2em; color:#dbbd88; }
+.godot-actions { display:flex; gap:10px; }
+.godot-actions button,.godot-actions a { display:grid; place-items:center; width:38px; height:38px; background:#1c2a31; border:1px solid #34454d; border-radius:8px; color:inherit; cursor:pointer; }
+.godot-actions :is(a,button):hover { background:#2c4049; }
+.godot-stage { position:relative; min-height:0; overflow:hidden; background:#080e12; }
+.godot-stage iframe { width:100%; height:100%; display:block; border:0; background:#080e12; }
+.godot-stage:fullscreen { width:100vw; height:100dvh; }
+.godot-intro { height:100%; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:32px 24px; overflow:auto; background:radial-gradient(ellipse at 50% 28%,#28444a 0%,#101f27 42%,#080e12 80%); }
+.godot-kicker { color:#a8bebd; font-size:13px; letter-spacing:.16em; }
+.godot-intro h1 { font-size:clamp(48px,9vw,112px); font-weight:750; letter-spacing:.06em; line-height:1.15; margin:20px 0; color:#e4cfaa; }
+.godot-intro p { max-width:600px; font-size:18px; line-height:1.7; color:#c1d0d0; margin:0 0 30px; }
+.godot-start { display:flex; align-items:center; gap:10px; padding:16px 26px; border:1px solid #edc991; border-radius:8px; background:#e1c18d; color:#101b20; font-family:inherit; font-weight:700; font-size:16px; cursor:pointer; }
+.godot-start:hover { background:#f1d5a8; }
+.godot-intro small { max-width:440px; color:#a1b3b5; margin:18px 0 0; font-size:14px; line-height:1.7; }
+.godot-controls { display:flex; flex-wrap:wrap; justify-content:center; gap:12px 22px; margin-top:35px; color:#a7b9bc; font-size:13px; }
+.godot-controls b { color:#e3e9e7; padding-right:5px; }
+.godot-footer { padding:10px 24px; background:#10191e; color:#9aafb2; font-size:12px; line-height:1.5; display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px; }
+.godot-error { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; padding:24px; text-align:center; background:#10191ef5; }
+.godot-error p { max-width:600px; line-height:1.7; }
+.godot-error button { padding:12px 22px; cursor:pointer; border:0; border-radius:6px; background:#e1c18d; color:#101b20; }
+.godot-error a { color:#bdd8d7; }
+.godot-hub-card { margin:24px 0 42px; padding:36px; border:1px solid #45646c; border-radius:18px; background:linear-gradient(120deg,#10232d,#254b50); color:#e7ece9; display:flex; align-items:center; justify-content:space-between; gap:28px; }
+.godot-hub-card h2 { color:#e9ce9d; font-size:clamp(30px,5vw,48px); margin:8px 0 12px; letter-spacing:.04em; }
+.godot-hub-card p { color:#c3d5d5; max-width:620px; line-height:1.7; margin:0; }
+.godot-hub-card .godot-kicker { color:#c3dbd8; }
+.godot-hub-card a { display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:15px 22px; color:#15272d; background:#e9ce9d; text-decoration:none; font-weight:700; border-radius:8px; white-space:nowrap; }
+@media(max-width:650px) { .godot-toolbar{padding:0 12px;gap:8px} .godot-title{display:none} .godot-back{font-size:13px} .godot-footer{padding:8px 12px} .godot-intro p{font-size:16px} .godot-controls{margin-top:22px;gap:10px 16px} .godot-hub-card{padding:26px;align-items:flex-start;flex-direction:column} }
