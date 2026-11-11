@@ -94,3 +94,14 @@ hợp lệ, không phải chỉ bấm một kết thúc cốt truyện.
 Lưu ý kỹ thuật: bản Web tắt giải nén tự động trong HTTPRequest vì trình duyệt đã
 giải nén phản hồi Supabase. Nếu bật cả hai, HTTP 200 vẫn có thể bị Godot báo lỗi
 BODY_DECOMPRESS_FAILED và không hiển thị các dòng đã nhận.
+
+Nếu không tải được cấu hình bảng xếp hạng, game vẫn khởi động; tính năng online
+sẽ báo chưa có cấu hình. Nếu gửi thành tích thất bại, màn hình kết thúc giữ lại
+thông báo lỗi thay vì im lặng.
+
+Kiểm tra loader trước khi cập nhật bản Web:
+
+```text
+node --test tests/lenh-xoa-loader.test.mjs
+npm run build
+```

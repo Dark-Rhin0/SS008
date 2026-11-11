@@ -5,12 +5,16 @@
   const status = document.getElementById('status')
   const details = document.getElementById('details')
   const progress = document.getElementById('progress')
+  let failed = false
+  const startup = new AbortController()
   const notify = (type, extra = {}) => {
     if (parent !== window) parent.postMessage({ source: 'lenh-xoa', type, ...extra }, location.origin)
   }
   document.getElementById('retry').onclick = () => location.reload()
   canvas.addEventListener('contextmenu', (event) => event.preventDefault())
   const fail = (error) => {
+    failed = true
+    startup.abort()
     const message = error instanceof Error ? error.message : String(error)
     console.error('Lệnh Xóa:', message)
     overlay.hidden = false
@@ -24,9 +28,20 @@
     const missing = Engine.getMissingFeatures({ threads: false })
     if (missing.length) throw new Error(missing.join(', '))
     if (!('DecompressionStream' in window)) throw new Error('Trình duyệt chưa hỗ trợ giải nén dữ liệu game.')
-    const leaderboardConfig = await fetch('leaderboard-config.json', { cache: 'no-cache' })
-    if (leaderboardConfig.ok) window.lenhXoaLeaderboardConfig = await leaderboardConfig.json()
-    const manifestResponse = await fetch('runtime.json', { cache: 'no-cache' })
+    // A leaderboard/config outage must not prevent the game itself from loading.
+    const configRequest = new AbortController()
+    const configTimeout = setTimeout(() => configRequest.abort(), 5000)
+    try {
+      const response = await fetch('leaderboard-config.json', { cache: 'no-cache', signal: configRequest.signal })
+      if (!response.ok) throw new Error('Leaderboard configuration HTTP ' + response.status)
+      const config = await response.json()
+      if (typeof config?.url !== 'string' || typeof config?.anonKey !== 'string') throw new Error('Invalid leaderboard configuration')
+      window.lenhXoaLeaderboardConfig = config
+    } catch (error) {
+      window.lenhXoaLeaderboardConfig = { url: '', anonKey: '' }
+      console.warn('Leaderboard temporarily unavailable:', error.message)
+    } finally { clearTimeout(configTimeout) }
+    const manifestResponse = await fetch('runtime.json', { cache: 'no-cache', signal: startup.signal })
     if (!manifestResponse.ok) throw new Error('Không tìm thấy bản game (' + manifestResponse.status + ').')
     const manifest = await manifestResponse.json()
     const engine = new Engine({
@@ -37,19 +52,21 @@
       onExit: () => notify('exited'),
     })
     const download = async () => {
-      const response = await fetch(manifest.pack.file)
+      const response = await fetch(manifest.pack.file, { signal: startup.signal })
       if (!response.ok || !response.body) throw new Error('Không tải được dữ liệu game (' + response.status + ').')
       const reader = response.body.getReader()
       const chunks = []
       let received = 0
       while (true) {
         const { done, value } = await reader.read()
+        if (failed) throw new Error('Startup cancelled')
         if (done) break
         chunks.push(value)
         received += value.length
         progress.value = Math.min(received / manifest.pack.downloadBytes, 1)
         status.textContent = 'Đang tải game: ' + (received / 1048576).toFixed(1) + ' / ' + (manifest.pack.downloadBytes / 1048576).toFixed(1) + ' MB'
       }
+      if (failed) throw new Error('Startup cancelled')
       status.textContent = 'Đang mở khu liên hợp Haneul…'
       progress.removeAttribute('value')
       const blob = new Blob(chunks)
